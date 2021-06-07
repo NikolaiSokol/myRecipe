@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		606281C4266E9CF500D05EE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C3266E9CF500D05EE2 /* AppDelegate.swift */; };
 		606281C6266E9CF500D05EE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C5266E9CF500D05EE2 /* SceneDelegate.swift */; };
-		606281C8266E9CF500D05EE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C7266E9CF500D05EE2 /* ViewController.swift */; };
-		606281CB266E9CF500D05EE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606281C9266E9CF500D05EE2 /* Main.storyboard */; };
+		606281C8266E9CF500D05EE2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C7266E9CF500D05EE2 /* MainViewController.swift */; };
 		606281CE266E9CF500D05EE2 /* myRecipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 606281CC266E9CF500D05EE2 /* myRecipe.xcdatamodeld */; };
 		606281D0266E9CF600D05EE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606281CF266E9CF600D05EE2 /* Assets.xcassets */; };
 		606281D3266E9CF600D05EE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606281D1266E9CF600D05EE2 /* LaunchScreen.storyboard */; };
-		606281DE266E9CF700D05EE2 /* myRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281DD266E9CF700D05EE2 /* myRecipeTests.swift */; };
-		606281E9266E9CF700D05EE2 /* myRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281E8266E9CF700D05EE2 /* myRecipeUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,17 +36,14 @@
 		606281C0266E9CF500D05EE2 /* myRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606281C3266E9CF500D05EE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606281C5266E9CF500D05EE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		606281C7266E9CF500D05EE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		606281CA266E9CF500D05EE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		606281C7266E9CF500D05EE2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		606281CD266E9CF500D05EE2 /* myRecipe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myRecipe.xcdatamodel; sourceTree = "<group>"; };
 		606281CF266E9CF600D05EE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		606281D2266E9CF600D05EE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		606281D4266E9CF600D05EE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606281D9266E9CF700D05EE2 /* myRecipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myRecipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		606281DD266E9CF700D05EE2 /* myRecipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRecipeTests.swift; sourceTree = "<group>"; };
 		606281DF266E9CF700D05EE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606281E4266E9CF700D05EE2 /* myRecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myRecipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		606281E8266E9CF700D05EE2 /* myRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRecipeUITests.swift; sourceTree = "<group>"; };
 		606281EA266E9CF700D05EE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,8 +97,7 @@
 			children = (
 				606281C3266E9CF500D05EE2 /* AppDelegate.swift */,
 				606281C5266E9CF500D05EE2 /* SceneDelegate.swift */,
-				606281C7266E9CF500D05EE2 /* ViewController.swift */,
-				606281C9266E9CF500D05EE2 /* Main.storyboard */,
+				606281C7266E9CF500D05EE2 /* MainViewController.swift */,
 				606281CF266E9CF600D05EE2 /* Assets.xcassets */,
 				606281D1266E9CF600D05EE2 /* LaunchScreen.storyboard */,
 				606281D4266E9CF600D05EE2 /* Info.plist */,
@@ -116,7 +109,6 @@
 		606281DC266E9CF700D05EE2 /* myRecipeTests */ = {
 			isa = PBXGroup;
 			children = (
-				606281DD266E9CF700D05EE2 /* myRecipeTests.swift */,
 				606281DF266E9CF700D05EE2 /* Info.plist */,
 			);
 			path = myRecipeTests;
@@ -125,7 +117,6 @@
 		606281E7266E9CF700D05EE2 /* myRecipeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				606281E8266E9CF700D05EE2 /* myRecipeUITests.swift */,
 				606281EA266E9CF700D05EE2 /* Info.plist */,
 			);
 			path = myRecipeUITests;
@@ -141,6 +132,7 @@
 				606281BC266E9CF500D05EE2 /* Sources */,
 				606281BD266E9CF500D05EE2 /* Frameworks */,
 				606281BE266E9CF500D05EE2 /* Resources */,
+				606281F6266E9DB600D05EE2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -236,7 +228,6 @@
 			files = (
 				606281D3266E9CF600D05EE2 /* LaunchScreen.storyboard in Resources */,
 				606281D0266E9CF600D05EE2 /* Assets.xcassets in Resources */,
-				606281CB266E9CF500D05EE2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,12 +247,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		606281F6266E9DB600D05EE2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		606281BC266E9CF500D05EE2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606281C8266E9CF500D05EE2 /* ViewController.swift in Sources */,
+				606281C8266E9CF500D05EE2 /* MainViewController.swift in Sources */,
 				606281C4266E9CF500D05EE2 /* AppDelegate.swift in Sources */,
 				606281C6266E9CF500D05EE2 /* SceneDelegate.swift in Sources */,
 				606281CE266E9CF500D05EE2 /* myRecipe.xcdatamodeld in Sources */,
@@ -272,7 +283,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606281DE266E9CF700D05EE2 /* myRecipeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +290,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606281E9266E9CF700D05EE2 /* myRecipeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,14 +309,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		606281C9266E9CF500D05EE2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				606281CA266E9CF500D05EE2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		606281D1266E9CF600D05EE2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,6 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCV48HS79W;
 				INFOPLIST_FILE = myRecipe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCV48HS79W;
 				INFOPLIST_FILE = myRecipe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
