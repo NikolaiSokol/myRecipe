@@ -8,7 +8,6 @@
 import Foundation
 
 struct RecipesSearchParameters {
-    
     let query: String
     let cuisine: String
     let excludeCuisine: String

@@ -5,18 +5,20 @@
 //  Created by Nikolai Sokol on 10.06.2021.
 //
 
-import Foundation
+import UIKit
 
 struct SearchRecipesNetworkManager {
     
     private let session: URLSession = .shared
-    private let baseURL = "https://api.spoonacular.com/recipes/complexSearch"
+    private let searchBaseURL = "https://api.spoonacular.com/recipes/complexSearch"
+    private let autocompleteBaseURL = "https://api.spoonacular.com/recipes/autocomplete"
     private let apiKey = "6553758da0eb441587641966ca80aeb9"
     
-    typealias SearchCompletion = (Result<[SearchedRecipe], Error>) -> Void
+    typealias SearchCompletion = (Result<SearchedRecipesResponse, Error>) -> Void
+    typealias AutocompleteCompletion = (Result<[AutocompleteRecipeSearchResponse], Error>) -> Void
     
-    public func searchRecipesWith(text: String, offset: Int, number: Int, completion: @escaping SearchCompletion) {
-        var components = URLComponents(string: baseURL)
+    func searchRecipesWith(text: String, offset: Int, number: Int, completion: @escaping SearchCompletion) {
+        var components = URLComponents(string: searchBaseURL)
         components?.queryItems = [
             URLQueryItem(name: "query", value: text),
             URLQueryItem(name: "offset", value: String(offset)),
@@ -29,8 +31,8 @@ struct SearchRecipesNetworkManager {
         }
     }
     
-    public func searchRecipesWith(parameters: RecipesSearchParameters, offset: Int, number: Int, completion: @escaping SearchCompletion) {
-        var components = URLComponents(string: baseURL)
+    func searchRecipesWith(parameters: RecipesSearchParameters, offset: Int, number: Int, completion: @escaping SearchCompletion) {
+        var components = URLComponents(string: searchBaseURL)
         components?.queryItems = [
             URLQueryItem(name: "query", value: parameters.query),
             URLQueryItem(name: "cuisine", value: parameters.cuisine),
@@ -138,8 +140,48 @@ struct SearchRecipesNetworkManager {
             if let data = data {
                 do {
                     let decodedResponse = try JSONDecoder().decode(SearchedRecipesResponse.self, from: data)
-                    let recipes = decodedResponse.results
+                    let recipes = decodedResponse
                     completion(.success(recipes))
+                } catch let DecodingError.dataCorrupted(context) {
+                    print(context)
+                    completion(.failure(DecodingError.dataCorrupted(context)))
+                } catch let DecodingError.keyNotFound(key, context) {
+                    print("Key '\(key)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                    completion(.failure(DecodingError.keyNotFound(key, context)))
+                } catch let DecodingError.valueNotFound(value, context) {
+                    print("Value '\(value)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                    completion(.failure(DecodingError.valueNotFound(value, context)))
+                } catch let DecodingError.typeMismatch(type, context) {
+                    print("Type '\(type)' mismatch:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                    completion(.failure(DecodingError.typeMismatch(type, context)))
+                } catch {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
+    }
+    
+    func loadAutocomplete(text: String, completion: @escaping AutocompleteCompletion) {
+        var components = URLComponents(string: autocompleteBaseURL)
+        components?.queryItems = [
+            URLQueryItem(name: "query", value: text),
+            URLQueryItem(name: "number", value: "10"),
+            URLQueryItem(name: "apiKey", value: apiKey)
+        ]
+        
+        guard let url = components?.url else { return }
+        let request = URLRequest(url: url)
+        
+        session.dataTask(with: request) { data, _, error in
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode([AutocompleteRecipeSearchResponse].self, from: data)
+                    let autocomplete = decodedResponse
+                    completion(.success(autocomplete))
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)
                     completion(.failure(DecodingError.dataCorrupted(context)))

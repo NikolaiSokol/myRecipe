@@ -10,7 +10,11 @@ import UIKit
 final class TabBarViewController: UITabBarController {
 
     private lazy var mainViewController: UIViewController = {
-        let viewController = MainViewController()
+        let searchRecipesNetworkManager = SearchRecipesNetworkManager()
+        let imageLoader = ImageLoadingManager()
+        let homeViewModel = HomeViewModel(searchManager: searchRecipesNetworkManager, imageLoader: imageLoader)
+        
+        let viewController = HomeViewController(viewModel: homeViewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Main"
