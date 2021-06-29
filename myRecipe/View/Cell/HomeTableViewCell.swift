@@ -21,7 +21,9 @@ final class HomeTableViewCell: UITableViewCell {
     private lazy var recipeNameLabelBackground: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        if let color = UIColor(named: "background") {
+            view.backgroundColor = color.withAlphaComponent(0.7)
+        }
         return view
     }()
     
@@ -29,22 +31,26 @@ final class HomeTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        contentView.addSubview(recipeImageView)
-        recipeImageView.addSubview(recipeNameLabelBackground)
-        recipeNameLabelBackground.addSubview(recipeNameLabel)
+        setupViews()
         setupAutoLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    private func setupViews() {
+        contentView.backgroundColor = UIColor(named: "background")
+        
+        contentView.addSubview(recipeImageView)
+        recipeImageView.addSubview(recipeNameLabelBackground)
+        recipeNameLabelBackground.addSubview(recipeNameLabel)
     }
     
     private func setupAutoLayout() {

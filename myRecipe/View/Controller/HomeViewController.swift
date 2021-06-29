@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
-
+    
     private let viewModel: HomeViewModel
     
     private var cancellable = Set<AnyCancellable>()
@@ -23,19 +23,19 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search"
         
-        resultController.selectedAutocompletion = { [weak self] text in
-            self?.viewModel.recipes.removeAll()
-            self?.viewModel.loadRecipesWith(text: text)
-            searchController.searchBar.text = text
+        resultController.autocompletionWasChosen = { [weak self] _ in
+            self?.viewModel.loadRecipesWithText()
+            searchController.searchBar.text = self?.viewModel.searchedText
         }
         
         return searchController
     }()
     
-    private lazy var parametersButton: UIButton = {
+    private lazy var searchParametersButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
+        button.setImage(UIImage(systemName: "slider.vertical.3"), for: .normal)
         button.tintColor = UIColor(named: "buttonTint")
+        button.addTarget(self, action: #selector(showSearchParametersController), for: .touchUpInside)
         return button
     }()
     
@@ -80,14 +80,14 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     private func setupNavigationBar() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
         navigationItem.searchController = searchController
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: parametersButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchParametersButton)
     }
     
     private func setupViews() {
         view.backgroundColor = UIColor(named: "background")
         
         definesPresentationContext = true
-
+        
         view.addSubview(tableView)
         setupAutoLayout()
     }
@@ -100,7 +100,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
+    
+    @objc private func showSearchParametersController() {
+        let parametersController = SearchParametersViewController(viewModel: viewModel)
+        navigationController?.pushViewController(parametersController, animated: true)
+    }
+    
     // MARK: - Searching
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -110,8 +115,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchController.dismiss(animated: true, completion: nil)
-        viewModel.recipes.removeAll()
-        viewModel.loadRecipesWith(text: viewModel.searchedText)
+        viewModel.loadRecipesWithText()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -121,11 +125,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Infinite Scrolling
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
+        let contentOffset = scrollView.contentOffset.y
+        let height = scrollView.contentSize.height - scrollView.frame.height + 5
         
-        if (offsetY > contentHeight - scrollView.frame.height * 4) && !viewModel.recipes.isEmpty {
-            viewModel.loadRecipesWith(text: viewModel.searchedText)
+        if contentOffset >= height {
+            viewModel.loadMoreRecipes()
         }
     }
     

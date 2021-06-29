@@ -17,8 +17,8 @@ final class TabBarViewController: UITabBarController {
         let viewController = HomeViewController(viewModel: homeViewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
-        viewControllerItem.title = "Main"
-        viewControllerItem.image = UIImage(systemName: "house")
+        viewControllerItem.title = "Search"
+        viewControllerItem.image = UIImage(systemName: "text.magnifyingglass")
         viewController.tabBarItem = viewControllerItem
         return navigationController
     }()
@@ -52,15 +52,14 @@ final class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTabBar()
+        setupTabBar()
     }
     
-    private func setUpTabBar() {
+    private func setupTabBar() {
         let controllers = [mainViewController, contactsViewController, profileViewController, cartViewController]
         viewControllers = controllers
         
-        tabBar.barTintColor = .white
-        tabBar.tintColor = .red
-        tabBar.unselectedItemTintColor = .gray
+        tabBar.tintColor = UIColor(named: "buttonTint")
+        tabBar.unselectedItemTintColor = .systemGray3
     }
 }

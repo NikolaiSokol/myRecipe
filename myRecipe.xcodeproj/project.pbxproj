@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60007B7626848B980019A56C /* MultipleChoosingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60007B7526848B980019A56C /* MultipleChoosingViewController.swift */; };
+		60007B7826848BBC0019A56C /* MultipleChoosingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60007B7726848BBC0019A56C /* MultipleChoosingTableViewCell.swift */; };
+		604447932683611500B6A512 /* SearchParametersViewsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447922683611500B6A512 /* SearchParametersViewsBuilder.swift */; };
+		604447972683622A00B6A512 /* KeyWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447962683622A00B6A512 /* KeyWordsView.swift */; };
+		60444799268365D300B6A512 /* CuisineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60444798268365D300B6A512 /* CuisineView.swift */; };
+		6044479B268367F700B6A512 /* DietView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044479A268367F700B6A512 /* DietView.swift */; };
+		6044479D2683695700B6A512 /* EquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044479C2683695700B6A512 /* EquipmentView.swift */; };
+		6044479F26836A0600B6A512 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6044479E26836A0600B6A512 /* IngredientsView.swift */; };
+		604447A126836AF100B6A512 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447A026836AF100B6A512 /* TypeView.swift */; };
+		604447A326836B9300B6A512 /* InstructionsRequiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447A226836B9300B6A512 /* InstructionsRequiredView.swift */; };
+		604447A526836C4200B6A512 /* MaxReadyTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447A426836C4200B6A512 /* MaxReadyTimeView.swift */; };
+		604447A726836CDF00B6A512 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447A626836CDF00B6A512 /* SortView.swift */; };
+		604447A926836DBC00B6A512 /* CarbsProteinFatCaloriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447A826836DBC00B6A512 /* CarbsProteinFatCaloriesView.swift */; };
+		604447AB26836E6300B6A512 /* FromAlchoholToZincView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447AA26836E6300B6A512 /* FromAlchoholToZincView.swift */; };
 		606281C4266E9CF500D05EE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C3266E9CF500D05EE2 /* AppDelegate.swift */; };
 		606281C6266E9CF500D05EE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C5266E9CF500D05EE2 /* SceneDelegate.swift */; };
 		606281C8266E9CF500D05EE2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606281C7266E9CF500D05EE2 /* HomeViewController.swift */; };
@@ -28,6 +42,7 @@
 		60979F432677B54D009C941C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60979F422677B54D009C941C /* HomeViewModel.swift */; };
 		60979F462677BDFA009C941C /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60979F452677BDFA009C941C /* HomeTableViewCell.swift */; };
 		60B8A69C267A2BF200063ADF /* AutocompleteRecipeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A69B267A2BF200063ADF /* AutocompleteRecipeSearchResponse.swift */; };
+		60C81C732681EB75004DACA2 /* SearchParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81C722681EB75004DACA2 /* SearchParametersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +63,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60007B7526848B980019A56C /* MultipleChoosingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoosingViewController.swift; sourceTree = "<group>"; };
+		60007B7726848BBC0019A56C /* MultipleChoosingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoosingTableViewCell.swift; sourceTree = "<group>"; };
+		604447922683611500B6A512 /* SearchParametersViewsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParametersViewsBuilder.swift; sourceTree = "<group>"; };
+		604447962683622A00B6A512 /* KeyWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordsView.swift; sourceTree = "<group>"; };
+		60444798268365D300B6A512 /* CuisineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineView.swift; sourceTree = "<group>"; };
+		6044479A268367F700B6A512 /* DietView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietView.swift; sourceTree = "<group>"; };
+		6044479C2683695700B6A512 /* EquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentView.swift; sourceTree = "<group>"; };
+		6044479E26836A0600B6A512 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
+		604447A026836AF100B6A512 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		604447A226836B9300B6A512 /* InstructionsRequiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsRequiredView.swift; sourceTree = "<group>"; };
+		604447A426836C4200B6A512 /* MaxReadyTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxReadyTimeView.swift; sourceTree = "<group>"; };
+		604447A626836CDF00B6A512 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
+		604447A826836DBC00B6A512 /* CarbsProteinFatCaloriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbsProteinFatCaloriesView.swift; sourceTree = "<group>"; };
+		604447AA26836E6300B6A512 /* FromAlchoholToZincView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromAlchoholToZincView.swift; sourceTree = "<group>"; };
 		606281C0266E9CF500D05EE2 /* myRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606281C3266E9CF500D05EE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606281C5266E9CF500D05EE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +104,7 @@
 		60979F422677B54D009C941C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		60979F452677BDFA009C941C /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		60B8A69B267A2BF200063ADF /* AutocompleteRecipeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteRecipeSearchResponse.swift; sourceTree = "<group>"; };
+		60C81C722681EB75004DACA2 /* SearchParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParametersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +132,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		604447942683620200B6A512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				604447952683620700B6A512 /* Search Parameters */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		604447952683620700B6A512 /* Search Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				604447962683622A00B6A512 /* KeyWordsView.swift */,
+				60444798268365D300B6A512 /* CuisineView.swift */,
+				6044479A268367F700B6A512 /* DietView.swift */,
+				6044479C2683695700B6A512 /* EquipmentView.swift */,
+				6044479E26836A0600B6A512 /* IngredientsView.swift */,
+				604447A026836AF100B6A512 /* TypeView.swift */,
+				604447A226836B9300B6A512 /* InstructionsRequiredView.swift */,
+				604447A426836C4200B6A512 /* MaxReadyTimeView.swift */,
+				604447A626836CDF00B6A512 /* SortView.swift */,
+				604447A826836DBC00B6A512 /* CarbsProteinFatCaloriesView.swift */,
+				604447AA26836E6300B6A512 /* FromAlchoholToZincView.swift */,
+			);
+			path = "Search Parameters";
+			sourceTree = "<group>";
+		};
 		606281B7266E9CF500D05EE2 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +215,7 @@
 		6087A72F267239620039563C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				604447942683620200B6A512 /* View */,
 				60979F472677C248009C941C /* Controller */,
 				60979F442677BDE2009C941C /* Cell */,
 			);
@@ -206,10 +263,19 @@
 			children = (
 				6087A737267244F30039563C /* SearchedRecipesResponse.swift */,
 				6087A7392672450B0039563C /* SearchedRecipe.swift */,
-				607A3D76267370B600B3D17F /* RecipesSearchParameters.swift */,
 				60B8A69B267A2BF200063ADF /* AutocompleteRecipeSearchResponse.swift */,
+				60961731267CC96F00372BD1 /* Search with Parameters */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		60961731267CC96F00372BD1 /* Search with Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				607A3D76267370B600B3D17F /* RecipesSearchParameters.swift */,
+				604447922683611500B6A512 /* SearchParametersViewsBuilder.swift */,
+			);
+			path = "Search with Parameters";
 			sourceTree = "<group>";
 		};
 		60979F412677A91D009C941C /* ViewModel */ = {
@@ -225,6 +291,7 @@
 			children = (
 				60979F452677BDFA009C941C /* HomeTableViewCell.swift */,
 				6093A5F3267B67A600C861CE /* SearchResultsTableViewCell.swift */,
+				60007B7726848BBC0019A56C /* MultipleChoosingTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -235,6 +302,8 @@
 				6087A72D2672386B0039563C /* TabBarViewController.swift */,
 				606281C7266E9CF500D05EE2 /* HomeViewController.swift */,
 				6093A5F1267B663700C861CE /* SearchResultsViewController.swift */,
+				60C81C722681EB75004DACA2 /* SearchParametersViewController.swift */,
+				60007B7526848B980019A56C /* MultipleChoosingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,22 +460,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				604447A126836AF100B6A512 /* TypeView.swift in Sources */,
 				606281C8266E9CF500D05EE2 /* HomeViewController.swift in Sources */,
 				60B8A69C267A2BF200063ADF /* AutocompleteRecipeSearchResponse.swift in Sources */,
 				6087A73426723BE80039563C /* Cells.swift in Sources */,
 				609382672678CD79002178A8 /* ImageLoadingManager.swift in Sources */,
+				604447AB26836E6300B6A512 /* FromAlchoholToZincView.swift in Sources */,
+				6044479D2683695700B6A512 /* EquipmentView.swift in Sources */,
+				60007B7626848B980019A56C /* MultipleChoosingViewController.swift in Sources */,
+				604447A326836B9300B6A512 /* InstructionsRequiredView.swift in Sources */,
+				60C81C732681EB75004DACA2 /* SearchParametersViewController.swift in Sources */,
 				6093A5F2267B663700C861CE /* SearchResultsViewController.swift in Sources */,
 				60979F462677BDFA009C941C /* HomeTableViewCell.swift in Sources */,
+				604447932683611500B6A512 /* SearchParametersViewsBuilder.swift in Sources */,
 				6087A738267244F30039563C /* SearchedRecipesResponse.swift in Sources */,
 				606281C4266E9CF500D05EE2 /* AppDelegate.swift in Sources */,
 				6087A73626723D630039563C /* SearchRecipesNetworkManager.swift in Sources */,
+				604447A726836CDF00B6A512 /* SortView.swift in Sources */,
+				6044479F26836A0600B6A512 /* IngredientsView.swift in Sources */,
 				606281C6266E9CF500D05EE2 /* SceneDelegate.swift in Sources */,
 				607A3D77267370B600B3D17F /* RecipesSearchParameters.swift in Sources */,
+				604447972683622A00B6A512 /* KeyWordsView.swift in Sources */,
+				60007B7826848BBC0019A56C /* MultipleChoosingTableViewCell.swift in Sources */,
 				60979F432677B54D009C941C /* HomeViewModel.swift in Sources */,
 				6093A5F4267B67A600C861CE /* SearchResultsTableViewCell.swift in Sources */,
 				6087A73A2672450B0039563C /* SearchedRecipe.swift in Sources */,
+				604447A526836C4200B6A512 /* MaxReadyTimeView.swift in Sources */,
 				6093A5F6267B6B4200C861CE /* String.swift in Sources */,
+				604447A926836DBC00B6A512 /* CarbsProteinFatCaloriesView.swift in Sources */,
 				6087A72E2672386B0039563C /* TabBarViewController.swift in Sources */,
+				60444799268365D300B6A512 /* CuisineView.swift in Sources */,
+				6044479B268367F700B6A512 /* DietView.swift in Sources */,
 				606281CE266E9CF500D05EE2 /* myRecipe.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
