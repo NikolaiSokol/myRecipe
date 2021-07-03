@@ -9,6 +9,10 @@ import UIKit
 
 struct SearchRecipesNetworkManager {
     
+    private enum SearchError: Error {
+        case invalidURL
+    }
+    
     private let session: URLSession = .shared
     private let searchBaseURL = "https://api.spoonacular.com/recipes/complexSearch"
     private let autocompleteBaseURL = "https://api.spoonacular.com/recipes/autocomplete"
@@ -131,7 +135,11 @@ struct SearchRecipesNetworkManager {
     }
     
     private func loadRecipes(components: URLComponents?, completion: @escaping SearchCompletion) {
-        guard let url = components?.url else { return }
+        guard let url = components?.url else {
+            completion(.failure(SearchError.invalidURL))
+            return
+        }
+        
         let request = URLRequest(url: url)
         
         session.dataTask(with: request) { data, _, error in
@@ -171,7 +179,10 @@ struct SearchRecipesNetworkManager {
             URLQueryItem(name: "apiKey", value: apiKey)
         ]
         
-        guard let url = components?.url else { return }
+        guard let url = components?.url else {
+            completion(.failure(SearchError.invalidURL))
+            return
+        }
         let request = URLRequest(url: url)
         
         session.dataTask(with: request) { data, _, error in

@@ -9,7 +9,7 @@ import UIKit
 
 final class SearchParametersViewController: UIViewController {
     
-    private let viewModel: HomeViewModel
+    private let viewModel: SearchViewModel
     private let viewsBuilder = SearchParametersViewsBuilder()
     
     private let spacingBetweenGroups: CGFloat = 20
@@ -160,7 +160,7 @@ final class SearchParametersViewController: UIViewController {
         return view
     }()
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -179,6 +179,10 @@ final class SearchParametersViewController: UIViewController {
     private func setupViews() {
         title = "Search with parameters"
         view.backgroundColor = UIColor(named: "background")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Search", style: .done, target: self, action: #selector(search)
+        )
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         view.addGestureRecognizer(tap)
@@ -367,10 +371,10 @@ final class SearchParametersViewController: UIViewController {
             maxZinc: fromAlchoholToZincView.maxZinc
         )
         
-        viewModel.searchParameters = searchParameters
-        viewModel.loadRecipesWithParameters()
-        
         navigationController?.popViewController(animated: true)
+        
+        viewModel.recipes.removeAll()
+        viewModel.searchParameters = searchParameters
     }
     
     @objc private func pickerDoneButtonTapped() {

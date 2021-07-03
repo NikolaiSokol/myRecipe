@@ -10,7 +10,7 @@ import Combine
 
 final class SearchResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let viewModel: HomeViewModel
+    private let viewModel: SearchViewModel
     
     private var cancellable = Set<AnyCancellable>()
     
@@ -26,7 +26,7 @@ final class SearchResultsViewController: UIViewController, UITableViewDelegate, 
         return tableView
     }()
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

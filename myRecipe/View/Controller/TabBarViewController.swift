@@ -12,9 +12,9 @@ final class TabBarViewController: UITabBarController {
     private lazy var mainViewController: UIViewController = {
         let searchRecipesNetworkManager = SearchRecipesNetworkManager()
         let imageLoader = ImageLoadingManager()
-        let homeViewModel = HomeViewModel(searchManager: searchRecipesNetworkManager, imageLoader: imageLoader)
+        let homeViewModel = SearchViewModel(searchManager: searchRecipesNetworkManager, imageLoader: imageLoader)
         
-        let viewController = HomeViewController(viewModel: homeViewModel)
+        let viewController = SearchViewController(viewModel: homeViewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Search"

@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  SearchViewModel.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 14.06.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeViewModel {
+final class SearchViewModel {
     
     private enum LastSearchType {
         case withText
@@ -24,8 +24,6 @@ final class HomeViewModel {
     
     var searchedText = "" {
         didSet {
-            recipes.removeAll()
-            
             if !searchedText.isEmpty {
                 loadAutocomplete()
             }
@@ -34,7 +32,7 @@ final class HomeViewModel {
     
     var searchParameters: RecipesSearchParameters? {
         didSet {
-            recipes.removeAll()
+            loadRecipesWithParameters()
         }
     }
     
@@ -43,7 +41,11 @@ final class HomeViewModel {
             offset = recipes.count
         }
     }
+    
     @Published var autocompletions = [AutocompleteRecipeSearchResponse]()
+    
+    @Published var isLoading = false
+    @Published var errorOccured = false
     
     init(searchManager: SearchRecipesNetworkManager, imageLoader: ImageLoadingManager) {
         self.searchManager = searchManager
@@ -51,16 +53,21 @@ final class HomeViewModel {
         lastSearch = .withText
     }
     
+    // MARK: - Recipes
+    
     func loadRecipesWithText() {
         if recipes.count < totalResults {
+            isLoading = true
             searchManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { [weak self] result in
                 switch result {
                 case .success(let loadedRecipes):
                     self?.lastSearch = .withText
                     self?.recipes += loadedRecipes.results
-                    self?.totalResults = loadedRecipes.totalResults
-                case .failure(let error):
-                    print(error.localizedDescription)
+                    self?.totalResults = loadedRecipes.results.isEmpty ? 1 : loadedRecipes.totalResults
+                    self?.isLoading = false
+                case .failure:
+                    self?.errorOccured = true
+                    self?.isLoading = false
                 }
             }
         }
@@ -70,21 +77,24 @@ final class HomeViewModel {
         guard let parameters = searchParameters else { return }
         
         if recipes.count < totalResults {
+            isLoading = true
             searchManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { [weak self] result in
                 switch result {
                 case .success(let loadedRecipes):
                     self?.lastSearch = .withParameters
                     self?.recipes += loadedRecipes.results
-                    self?.totalResults = loadedRecipes.totalResults
-                case .failure(let error):
-                    print(error.localizedDescription)
+                    self?.totalResults = loadedRecipes.results.isEmpty ? 1 : loadedRecipes.totalResults
+                    self?.isLoading = false
+                case .failure:
+                    self?.errorOccured = true
+                    self?.isLoading = false
                 }
             }
         }
     }
     
     func loadMoreRecipes() {
-        if !recipes.isEmpty {
+        if !recipes.isEmpty && !isLoading {
             switch lastSearch {
             case .withText:
                 loadRecipesWithText()
@@ -94,21 +104,26 @@ final class HomeViewModel {
         }
     }
     
-    func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: url) { loadedImage in
-            DispatchQueue.main.async {
-                completion(loadedImage)
-            }
-        }
-    }
+    // MARK: - Autocomplete
     
     func loadAutocomplete() {
+        print("chlen")
         searchManager.loadAutocomplete(text: searchedText.lowercased()) { [weak self] result in
             switch result {
             case .success(let autocompletions):
                 self?.autocompletions = autocompletions
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure:
+                self?.errorOccured = true
+            }
+        }
+    }
+    
+    // MARK: - Image
+    
+    func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
+        imageLoader.loadImage(imageUrl: url) { loadedImage in
+            DispatchQueue.main.async {
+                completion(loadedImage)
             }
         }
     }

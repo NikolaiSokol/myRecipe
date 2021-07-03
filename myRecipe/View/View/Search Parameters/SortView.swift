@@ -69,7 +69,7 @@ final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var chosenSort = "" {
         didSet {
-            chosenSortLabel.text = chosenSort
+            chosenSortLabel.text = chosenSort.capitalizingFirstLetter()
         }
     }
     
@@ -170,7 +170,7 @@ final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        sorts[row]
+        sorts[row].capitalizingFirstLetter()
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  SearchViewController.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 07.06.2021.
@@ -8,11 +8,15 @@
 import UIKit
 import Combine
 
-final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
-    private let viewModel: HomeViewModel
+    private let loadingScreen = LoadingScreenViewController()
+    
+    private let viewModel: SearchViewModel
     
     private var cancellable = Set<AnyCancellable>()
+    
+    var autocompletionTimer: Timer?
     
     private lazy var searchController: UISearchController = {
         let resultController = SearchResultsViewController(viewModel: viewModel)
@@ -24,6 +28,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchBar.placeholder = "Search"
         
         resultController.autocompletionWasChosen = { [weak self] _ in
+            self?.viewModel.recipes.removeAll()
             self?.viewModel.loadRecipesWithText()
             searchController.searchBar.text = self?.viewModel.searchedText
         }
@@ -51,7 +56,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         return tableView
     }()
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -73,6 +78,22 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
+            }
+            .store(in: &cancellable)
+        
+        viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                self?.showLoadingScreen(isLoading: isLoading)
+            }
+            .store(in: &cancellable)
+        
+        viewModel.$errorOccured
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorOccured in
+                if errorOccured {
+                    self?.showErrorAlert()
+                }
             }
             .store(in: &cancellable)
     }
@@ -106,15 +127,47 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationController?.pushViewController(parametersController, animated: true)
     }
     
+    // MARK: - Loading Screen
+    
+    private func showLoadingScreen(isLoading: Bool) {
+        if isLoading {
+            addChild(loadingScreen)
+            loadingScreen.view.frame = view.frame
+            view.addSubview(loadingScreen.view)
+            loadingScreen.didMove(toParent: self)
+        } else {
+            loadingScreen.willMove(toParent: nil)
+            loadingScreen.view.removeFromSuperview()
+            loadingScreen.removeFromParent()
+        }
+    }
+    
+    // MARK: - Error Alert
+    
+    private func showErrorAlert() {
+        let alert = UIAlertController(title: "Something went wrong", message: "", preferredStyle: .alert)
+        
+        present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Searching
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        viewModel.searchedText = text
+        
+        autocompletionTimer?.invalidate()
+        autocompletionTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [weak self] _ in
+            self?.viewModel.searchedText = text
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchController.dismiss(animated: true, completion: nil)
+        viewModel.recipes.removeAll()
         viewModel.loadRecipesWithText()
     }
     
@@ -136,19 +189,25 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.recipes.count
+        if viewModel.recipes.isEmpty {
+            tableView.setEmptyView(text: "No results")
+        } else {
+            tableView.restore()
+        }
+        
+        return viewModel.recipes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.reuseIdentifier, for: indexPath) as? HomeTableViewCell
         else { preconditionFailure("Failed to load table view cell") }
         
-        cell.setRecipeName(viewModel.recipes[indexPath.row].title)
+                cell.setRecipeName(viewModel.recipes[indexPath.row].title)
         
-        let imageUrl = viewModel.recipes[indexPath.row].image
-        viewModel.loadImage(url: imageUrl) { image in
-            cell.setRecipeImage(image)
-        }
+                let imageUrl = viewModel.recipes[indexPath.row].image
+                viewModel.loadImage(url: imageUrl) { image in
+                    cell.setRecipeImage(image)
+                }
         
         return cell
     }
