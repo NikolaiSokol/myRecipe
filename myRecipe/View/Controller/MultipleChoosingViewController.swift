@@ -36,6 +36,7 @@ final class MultipleChoosingViewController: UIViewController, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupAutoLayout()
     }
     
     private func setupViews() {
@@ -49,7 +50,6 @@ final class MultipleChoosingViewController: UIViewController, UITableViewDelegat
         )
         
         view.addSubview(tableView)
-        setupAutoLayout()
     }
     
     private func setupAutoLayout() {

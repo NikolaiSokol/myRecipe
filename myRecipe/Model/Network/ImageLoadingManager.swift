@@ -9,15 +9,18 @@ import UIKit
 
 final class ImageLoadingManager {
     
-    func loadImage(imageUrl: String, completion: @escaping (UIImage) -> Void) {
-        guard let url = URL(string: imageUrl) else { return }
+    func loadImage(imageUrl: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        guard let url = URL(string: imageUrl) else {
+            completion(.failure(URLError.invalidURL))
+            return
+        }
         
         let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         
         URLSession.shared.dataTask(with: request) { data, _, _ in
             if let data = data {
                 if let image = UIImage(data: data) {
-                    completion(image)
+                    completion(.success(image))
                 }
             }
         }.resume()

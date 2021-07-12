@@ -6,13 +6,10 @@
 //
 
 import UIKit
-import Combine
 
 final class SearchResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let viewModel: SearchViewModel
-    
-    private var cancellable = Set<AnyCancellable>()
     
     var autocompletionWasChosen: ((Bool) -> Void)?
     
@@ -40,20 +37,17 @@ final class SearchResultsViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
         bindViewModel()
         setupViews()
+        setupAutoLayout()
     }
     
     private func bindViewModel() {
-        viewModel.$autocompletions
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
-            }
-            .store(in: &cancellable)
+        viewModel.autocompletionsChanged = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     private func setupViews() {
         view.addSubview(tableView)
-        setupAutoLayout()
     }
     
     private func setupAutoLayout() {

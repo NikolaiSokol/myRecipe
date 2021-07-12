@@ -9,12 +9,12 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
 
-    private lazy var mainViewController: UIViewController = {
+    private lazy var searchViewController: UIViewController = {
         let searchRecipesNetworkManager = SearchRecipesNetworkManager()
         let imageLoader = ImageLoadingManager()
-        let homeViewModel = SearchViewModel(searchManager: searchRecipesNetworkManager, imageLoader: imageLoader)
+        let searchViewModel = SearchViewModel(searchManager: searchRecipesNetworkManager, imageLoader: imageLoader)
         
-        let viewController = SearchViewController(viewModel: homeViewModel)
+        let viewController = SearchViewController(viewModel: searchViewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Search"
@@ -56,7 +56,7 @@ final class TabBarViewController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let controllers = [mainViewController, contactsViewController, profileViewController, cartViewController]
+        let controllers = [searchViewController, contactsViewController, profileViewController, cartViewController]
         viewControllers = controllers
         
         tabBar.tintColor = UIColor(named: "buttonTint")

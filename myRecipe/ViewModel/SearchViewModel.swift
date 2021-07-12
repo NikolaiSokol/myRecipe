@@ -22,6 +22,18 @@ final class SearchViewModel {
     private var offset = 0
     private var totalResults = 1
     
+    private var searchParameters: RecipesSearchParameters? {
+        didSet {
+            loadRecipesWithParameters()
+        }
+    }
+    
+    private var isLoading = false {
+        didSet {
+            showingSpinner?(isLoading)
+        }
+    }
+    
     var searchedText = "" {
         didSet {
             if !searchedText.isEmpty {
@@ -30,22 +42,23 @@ final class SearchViewModel {
         }
     }
     
-    var searchParameters: RecipesSearchParameters? {
+    var recipes = [SearchedRecipe]() {
         didSet {
-            loadRecipesWithParameters()
-        }
-    }
-    
-    @Published var recipes = [SearchedRecipe]() {
-        didSet {
+            recipesChanged?()
             offset = recipes.count
         }
     }
     
-    @Published var autocompletions = [AutocompleteRecipeSearchResponse]()
+    var autocompletions = [AutocompleteRecipeSearchResponse]() {
+        didSet {
+            autocompletionsChanged?()
+        }
+    }
     
-    @Published var isLoading = false
-    @Published var errorOccured = false
+    var recipesChanged: (() -> Void)?
+    var autocompletionsChanged: (() -> Void)?
+    var showingSpinner: ((Bool) -> Void)?
+    var errorOccured: (() -> Void)?
     
     init(searchManager: SearchRecipesNetworkManager, imageLoader: ImageLoadingManager) {
         self.searchManager = searchManager
@@ -56,18 +69,20 @@ final class SearchViewModel {
     // MARK: - Recipes
     
     func loadRecipesWithText() {
-        if recipes.count < totalResults {
+        if offset < totalResults {
             isLoading = true
-            searchManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { [weak self] result in
-                switch result {
-                case .success(let loadedRecipes):
-                    self?.lastSearch = .withText
-                    self?.recipes += loadedRecipes.results
-                    self?.totalResults = loadedRecipes.results.isEmpty ? 1 : loadedRecipes.totalResults
-                    self?.isLoading = false
-                case .failure:
-                    self?.errorOccured = true
-                    self?.isLoading = false
+            searchManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { result in
+                DispatchQueue.main.async { [weak self] in
+                    switch result {
+                    case .success(let loadedRecipes):
+                        self?.lastSearch = .withText
+                        self?.recipes += loadedRecipes.results
+                        self?.totalResults = loadedRecipes.results.isEmpty ? 1 : loadedRecipes.totalResults
+                        self?.isLoading = false
+                    case .failure:
+                        self?.errorOccured?()
+                        self?.isLoading = false
+                    }
                 }
             }
         }
@@ -76,18 +91,20 @@ final class SearchViewModel {
     func loadRecipesWithParameters() {
         guard let parameters = searchParameters else { return }
         
-        if recipes.count < totalResults {
+        if offset < totalResults {
             isLoading = true
-            searchManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { [weak self] result in
-                switch result {
-                case .success(let loadedRecipes):
-                    self?.lastSearch = .withParameters
-                    self?.recipes += loadedRecipes.results
-                    self?.totalResults = loadedRecipes.results.isEmpty ? 1 : loadedRecipes.totalResults
-                    self?.isLoading = false
-                case .failure:
-                    self?.errorOccured = true
-                    self?.isLoading = false
+            searchManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { result in
+                DispatchQueue.main.async { [weak self] in
+                    switch result {
+                    case .success(let loadedRecipes):
+                        self?.lastSearch = .withParameters
+                        self?.recipes += loadedRecipes.results
+                        self?.totalResults = loadedRecipes.results.isEmpty ? 1 : loadedRecipes.totalResults
+                        self?.isLoading = false
+                    case .failure:
+                        self?.errorOccured?()
+                        self?.isLoading = false
+                    }
                 }
             }
         }
@@ -107,13 +124,14 @@ final class SearchViewModel {
     // MARK: - Autocomplete
     
     func loadAutocomplete() {
-        print("chlen")
-        searchManager.loadAutocomplete(text: searchedText.lowercased()) { [weak self] result in
-            switch result {
-            case .success(let autocompletions):
-                self?.autocompletions = autocompletions
-            case .failure:
-                self?.errorOccured = true
+        searchManager.loadAutocomplete(text: searchedText.lowercased()) { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let autocompletions):
+                    self?.autocompletions = autocompletions
+                case .failure:
+                    self?.errorOccured?()
+                }
             }
         }
     }
@@ -121,10 +139,27 @@ final class SearchViewModel {
     // MARK: - Image
     
     func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: url) { loadedImage in
-            DispatchQueue.main.async {
-                completion(loadedImage)
+        imageLoader.loadImage(imageUrl: url) { result in
+            DispatchQueue.main.async {  [weak self] in
+                switch result {
+                case .success(let loadedImage):
+                    completion(loadedImage)
+                case .failure:
+                    self?.errorOccured?()
+                }
             }
         }
+    }
+    
+    // MARK: - Search Parameters
+    
+    func setSearchParameters(_ parameters: RecipesSearchParameters) {
+        searchParameters = parameters
+    }
+    
+    // MARK: - Image Loader Getter
+    
+    func getImageLoader() -> ImageLoadingManager {
+        imageLoader
     }
 }

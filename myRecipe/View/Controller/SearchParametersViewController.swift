@@ -374,7 +374,7 @@ final class SearchParametersViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         
         viewModel.recipes.removeAll()
-        viewModel.searchParameters = searchParameters
+        viewModel.setSearchParameters(searchParameters)
     }
     
     @objc private func pickerDoneButtonTapped() {

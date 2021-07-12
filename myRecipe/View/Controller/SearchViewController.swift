@@ -6,15 +6,12 @@
 //
 
 import UIKit
-import Combine
 
-final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+final class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     private let loadingScreen = LoadingScreenViewController()
     
     private let viewModel: SearchViewModel
-    
-    private var cancellable = Set<AnyCancellable>()
     
     var autocompletionTimer: Timer?
     
@@ -71,31 +68,21 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         bindViewModel()
         setupNavigationBar()
         setupViews()
+        setupAutoLayout()
     }
     
     private func bindViewModel() {
-        viewModel.$recipes
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
-            }
-            .store(in: &cancellable)
+        viewModel.recipesChanged = { [weak self] in
+            self?.tableView.reloadData()
+        }
         
-        viewModel.$isLoading
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isLoading in
-                self?.showLoadingScreen(isLoading: isLoading)
-            }
-            .store(in: &cancellable)
+        viewModel.showingSpinner = { [weak self] isLoading in
+            self?.showLoadingScreen(isLoading)
+        }
         
-        viewModel.$errorOccured
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] errorOccured in
-                if errorOccured {
-                    self?.showErrorAlert()
-                }
-            }
-            .store(in: &cancellable)
+        viewModel.errorOccured = { [weak self] in
+            self?.showErrorAlert()
+        }
     }
     
     private func setupNavigationBar() {
@@ -110,7 +97,6 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         definesPresentationContext = true
         
         view.addSubview(tableView)
-        setupAutoLayout()
     }
     
     private func setupAutoLayout() {
@@ -129,7 +115,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Loading Screen
     
-    private func showLoadingScreen(isLoading: Bool) {
+    private func showLoadingScreen(_ isLoading: Bool) {
         if isLoading {
             addChild(loadingScreen)
             loadingScreen.view.frame = view.frame
@@ -187,6 +173,13 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // MARK: - Table View
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recipeViewModel = RecipeViewModel(imageLoader: viewModel.getImageLoader())
+        let recipeViewController = RecipeViewController(viewModel: recipeViewModel)
+        
+        navigationController?.pushViewController(recipeViewController, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.recipes.isEmpty {
