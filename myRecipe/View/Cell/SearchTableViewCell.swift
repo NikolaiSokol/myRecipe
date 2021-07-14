@@ -1,5 +1,5 @@
 //
-//  HomeTableViewCell.swift
+//  SearchTableViewCell.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 14.06.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeTableViewCell: UITableViewCell {
+final class SearchTableViewCell: UITableViewCell {
     
     private lazy var recipeImageView: UIImageView = {
         let imageView = UIImageView()
@@ -46,7 +46,7 @@ final class HomeTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-        contentView.backgroundColor = UIColor(named: "background")
+        contentView.backgroundColor = UIColor(named: "cell")
         
         contentView.addSubview(recipeImageView)
         recipeImageView.addSubview(recipeNameLabelBackground)

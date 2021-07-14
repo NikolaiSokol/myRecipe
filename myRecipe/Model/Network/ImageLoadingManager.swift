@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ImageLoadingManager {
+struct ImageLoadingManager {
     
     func loadImage(imageUrl: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let url = URL(string: imageUrl) else {
@@ -17,11 +17,14 @@ final class ImageLoadingManager {
         
         let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         
-        URLSession.shared.dataTask(with: request) { data, _, _ in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let data = data {
                 if let image = UIImage(data: data) {
                     completion(.success(image))
                 }
+            }
+            if let error = error {
+                completion(.failure(error))
             }
         }.resume()
     }

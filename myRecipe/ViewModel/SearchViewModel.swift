@@ -14,7 +14,7 @@ final class SearchViewModel {
         case withParameters
     }
     
-    private let searchManager: SearchRecipesNetworkManager
+    private let searchManager = SearchRecipesNetworkManager()
     private let imageLoader: ImageLoadingManager
     
     private var lastSearch: LastSearchType
@@ -60,8 +60,7 @@ final class SearchViewModel {
     var showingSpinner: ((Bool) -> Void)?
     var errorOccured: (() -> Void)?
     
-    init(searchManager: SearchRecipesNetworkManager, imageLoader: ImageLoadingManager) {
-        self.searchManager = searchManager
+    init(imageLoader: ImageLoadingManager) {
         self.imageLoader = imageLoader
         lastSearch = .withText
     }
@@ -155,11 +154,5 @@ final class SearchViewModel {
     
     func setSearchParameters(_ parameters: RecipesSearchParameters) {
         searchParameters = parameters
-    }
-    
-    // MARK: - Image Loader Getter
-    
-    func getImageLoader() -> ImageLoadingManager {
-        imageLoader
     }
 }

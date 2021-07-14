@@ -12,6 +12,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private let loadingScreen = LoadingScreenViewController()
     
     private let viewModel: SearchViewModel
+    private let imageLoader: ImageLoadingManager
     
     var autocompletionTimer: Timer?
     
@@ -44,17 +45,17 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor(named: "background")
-        tableView.rowHeight = 180
+        tableView.rowHeight = view.frame.height / 5
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.reuseIdentifier)
+        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
         return tableView
     }()
     
-    init(viewModel: SearchViewModel) {
+    init(viewModel: SearchViewModel, imageLoader: ImageLoadingManager) {
         self.viewModel = viewModel
+        self.imageLoader = imageLoader
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -175,7 +176,10 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let recipeViewModel = RecipeViewModel(imageLoader: viewModel.getImageLoader())
+        let recipeViewModel = RecipeViewModel(
+            imageLoader: imageLoader,
+            recipeId: viewModel.recipes[indexPath.row].id
+        )
         let recipeViewController = RecipeViewController(viewModel: recipeViewModel)
         
         navigationController?.pushViewController(recipeViewController, animated: true)
@@ -183,7 +187,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.recipes.isEmpty {
-            tableView.setEmptyView(text: "No results")
+            tableView.setEmptyView(text: "No recipes")
         } else {
             tableView.restore()
         }
@@ -192,16 +196,15 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.reuseIdentifier, for: indexPath) as? HomeTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell
         else { preconditionFailure("Failed to load table view cell") }
         
-                cell.setRecipeName(viewModel.recipes[indexPath.row].title)
+        cell.setRecipeName(viewModel.recipes[indexPath.row].title)
         
-                let imageUrl = viewModel.recipes[indexPath.row].image
-                viewModel.loadImage(url: imageUrl) { image in
-                    cell.setRecipeImage(image)
-                }
-        
+        let imageUrl = viewModel.recipes[indexPath.row].image
+        viewModel.loadImage(url: imageUrl) { image in
+            cell.setRecipeImage(image)
+        }
         return cell
     }
 }

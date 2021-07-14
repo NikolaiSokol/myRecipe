@@ -12,7 +12,8 @@ extension String {
         prefix(1).capitalized + dropFirst()
     }
     
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
+    func removedHtmlTags() -> String {
+        let str = self.replacingOccurrences(of: "<style>[^>]+</style>", with: "", options: .regularExpression, range: nil)
+        return str.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
 }
