@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Nutrients: Decodable {
+struct Nutrients: Codable {
     let name: String
     let amount: Float
     let unit: String

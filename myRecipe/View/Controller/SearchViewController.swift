@@ -13,6 +13,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     private let viewModel: SearchViewModel
     private let imageLoader: ImageLoadingManager
+    private let coreDataStack: CoreDataStack
     
     var autocompletionTimer: Timer?
     
@@ -53,9 +54,10 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         return tableView
     }()
     
-    init(viewModel: SearchViewModel, imageLoader: ImageLoadingManager) {
+    init(viewModel: SearchViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
         self.viewModel = viewModel
         self.imageLoader = imageLoader
+        self.coreDataStack = coreDataStack
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -108,6 +110,8 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    // MARK: - Search parameters
     
     @objc private func showSearchParametersController() {
         let parametersController = SearchParametersViewController(viewModel: viewModel)
@@ -178,6 +182,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipeViewModel = RecipeViewModel(
             imageLoader: imageLoader,
+            coreDataStack: coreDataStack,
             recipeId: viewModel.recipes[indexPath.row].id
         )
         let recipeViewController = RecipeViewController(viewModel: recipeViewModel)

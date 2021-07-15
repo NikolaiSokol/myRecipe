@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeightPerServing: Decodable {
+struct WeightPerServing: Codable {
     let amount: Int
     let unit: String
 }

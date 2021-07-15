@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchedRecipesResponse: Decodable {
+struct SearchedRecipesResponse: Codable {
     let results: [SearchedRecipe]
     let totalResults: Int
 }

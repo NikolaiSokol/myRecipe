@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Metric: Decodable {
+struct Metric: Codable {
     let amount: Float
     let unitLong: String
 }

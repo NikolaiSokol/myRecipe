@@ -13,7 +13,7 @@ struct RecipeNetworkManager {
     private let baseURL = "https://api.spoonacular.com/recipes/"
     private let apiKey = "6553758da0eb441587641966ca80aeb9"
     
-    typealias RecipeCompletion = (Result<RecipeResponse, Error>) -> Void
+    typealias RecipeCompletion = (Result<Recipe, Error>) -> Void
     
     func loadRecipe(id: Int, completion: @escaping RecipeCompletion) {
         var components = URLComponents(string: baseURL + String(id) + "/information")
@@ -31,7 +31,7 @@ struct RecipeNetworkManager {
         session.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
-                    let decodedResponse = try JSONDecoder().decode(RecipeResponse.self, from: data)
+                    let decodedResponse = try JSONDecoder().decode(Recipe.self, from: data)
                     let autocomplete = decodedResponse
                     completion(.success(autocomplete))
                 } catch let DecodingError.dataCorrupted(context) {

@@ -8,12 +8,14 @@
 import UIKit
 
 final class TabBarViewController: UITabBarController {
+    
+    private let imageLoader = ImageLoadingManager()
+    private let coreDataStack = CoreDataStack()
 
     private lazy var searchViewController: UIViewController = {
-        let imageLoader = ImageLoadingManager()
         let searchViewModel = SearchViewModel(imageLoader: imageLoader)
         
-        let viewController = SearchViewController(viewModel: searchViewModel, imageLoader: imageLoader)
+        let viewController = SearchViewController(viewModel: searchViewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Search"
@@ -22,31 +24,16 @@ final class TabBarViewController: UITabBarController {
         return navigationController
     }()
     
-    private lazy var contactsViewController: UIViewController = {
-        let viewController = UIViewController()
+    private lazy var savedRecipesViewController: UIViewController = {
+        let viewModel = SavedRecipesViewModel(imageLoader: imageLoader, coreDataStack: coreDataStack)
+        
+        let viewController = SevedRecipesViewController(viewModel: viewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
-        viewControllerItem.title = "Contacts"
-        viewControllerItem.image = UIImage(systemName: "mappin")
+        viewControllerItem.title = "Saved"
+        viewControllerItem.image = UIImage(systemName: "pin")
         viewController.tabBarItem = viewControllerItem
-        return viewController
-    }()
-    
-    private lazy var profileViewController: UIViewController = {
-        let viewController = UIViewController()
-        let viewControllerItem = UITabBarItem()
-        viewControllerItem.title = "Profile"
-        viewControllerItem.image = UIImage(systemName: "person")
-        viewController.tabBarItem = viewControllerItem
-        return viewController
-    }()
-    
-    private lazy var cartViewController: UIViewController = {
-        let viewController = UIViewController()
-        let viewControllerItem = UITabBarItem()
-        viewControllerItem.title = "Cart"
-        viewControllerItem.image = UIImage(systemName: "cart")
-        viewController.tabBarItem = viewControllerItem
-        return viewController
+        return navigationController
     }()
     
     override func viewDidLoad() {
@@ -55,7 +42,7 @@ final class TabBarViewController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let controllers = [searchViewController, contactsViewController, profileViewController, cartViewController]
+        let controllers = [searchViewController, savedRecipesViewController]
         viewControllers = controllers
         
         tabBar.tintColor = UIColor(named: "buttonTint")

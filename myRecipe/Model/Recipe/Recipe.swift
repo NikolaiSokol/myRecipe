@@ -1,5 +1,5 @@
 //
-//  RecipeResponse.swift
+//  Recipe.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 12.07.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeResponse: Decodable {
+struct Recipe: Codable {
     let id: Int
     let title: String
     let image: String

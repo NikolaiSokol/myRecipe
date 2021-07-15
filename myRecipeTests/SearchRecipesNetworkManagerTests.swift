@@ -28,7 +28,7 @@ class SearchRecipesNetworkManagerTests: XCTestCase {
         searchRecipesNetworkManager?.searchRecipesWith(text: "pasta", offset: 0, number: 10) { response in
             switch response {
             case .success(let recipes):
-                XCTAssertEqual(recipes.count, 10)
+                XCTAssertEqual(recipes.results.count, 10)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExtendedIngredients: Decodable {
+struct ExtendedIngredients: Codable {
     let name: String
     let id: Int
     let image: String

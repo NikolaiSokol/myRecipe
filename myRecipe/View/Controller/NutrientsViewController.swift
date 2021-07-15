@@ -72,7 +72,7 @@ final class NutrientsViewController: UIViewController, UITableViewDelegate, UITa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NutrientsTableViewCell.reuseIdentifier, for: indexPath) as? NutrientsTableViewCell
         else { preconditionFailure("Failed to load table view cell") }
         
-        if let nutrients = viewModel.recipe?.nutrition.nutrients {
+        if let nutrients = viewModel.recipe?.nutrition.nutrients.sorted(by: { $0.name < $1.name }) {
             cell.setupCell(nutrients: nutrients[indexPath.row])
         }
         

@@ -303,7 +303,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: - Core Data
     
     @objc private func saveRecipe() {
-        
+        viewModel.saveToCoreData()
     }
     
     // MARK: - Showing detailed nutrients

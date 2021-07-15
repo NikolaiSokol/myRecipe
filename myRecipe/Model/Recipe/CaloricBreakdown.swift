@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CaloricBreakdown: Decodable {
+struct CaloricBreakdown: Codable {
     let percentProtein: Float
     let percentFat: Float
     let percentCarbs: Float

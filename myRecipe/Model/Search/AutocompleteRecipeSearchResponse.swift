@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct AutocompleteRecipeSearchResponse: Decodable {
+struct AutocompleteRecipeSearchResponse: Codable {
     let title: String
 }

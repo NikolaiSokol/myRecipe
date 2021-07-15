@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchedRecipe: Decodable {
+struct SearchedRecipe: Codable {
     let id: Int
     let title: String
     let image: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Nutrition: Decodable {
+struct Nutrition: Codable {
     let nutrients: [Nutrients]
     let caloricBreakdown: CaloricBreakdown
     let weightPerServing: WeightPerServing

@@ -1,19 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Recipe" representedClassName="Recipe" syncable="YES">
-        <attribute name="dishTypes" optional="YES" attributeType="Transformable" customClassName="[String]"/>
-        <attribute name="extendedIngredients" optional="YES" attributeType="Transformable" customClassName="[ExtendedIngredients]"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="image" optional="YES" attributeType="String"/>
-        <attribute name="instructions" optional="YES" attributeType="String"/>
-        <attribute name="nutrition" optional="YES" attributeType="Transformable" customClassName="Nutrition"/>
-        <attribute name="readyInMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="servings" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sourceName" optional="YES" attributeType="String"/>
-        <attribute name="sourceUrl" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+    <entity name="CaloricBreakdownCoreData" representedClassName="CaloricBreakdownCoreData" syncable="YES">
+        <attribute name="percentCarbs" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="percentFat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="percentProtein" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="nutrition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionCoreData" inverseName="caloricBreakdown" inverseEntity="NutritionCoreData"/>
+    </entity>
+    <entity name="ExtendedIngredientsCoreData" representedClassName="ExtendedIngredientsCoreData" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" attributeType="String" defaultValueString=""/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="measures" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresCoreData" inverseName="extendedIngredients" inverseEntity="MeasuresCoreData"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeCoreData" inverseName="extendedIngredients" inverseEntity="RecipeCoreData"/>
+    </entity>
+    <entity name="MeasuresCoreData" representedClassName="MeasuresCoreData" syncable="YES">
+        <relationship name="extendedIngredients" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExtendedIngredientsCoreData" inverseName="measures" inverseEntity="ExtendedIngredientsCoreData"/>
+        <relationship name="metric" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MetricCoreData" inverseName="measuresMetric" inverseEntity="MetricCoreData"/>
+        <relationship name="us" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MetricCoreData" inverseName="measuresUs" inverseEntity="MetricCoreData"/>
+    </entity>
+    <entity name="MetricCoreData" representedClassName="MetricCoreData" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unitLong" attributeType="String" defaultValueString=""/>
+        <relationship name="measuresMetric" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresCoreData" inverseName="metric" inverseEntity="MeasuresCoreData"/>
+        <relationship name="measuresUs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresCoreData" inverseName="us" inverseEntity="MeasuresCoreData"/>
+    </entity>
+    <entity name="NutrientsCoreData" representedClassName="NutrientsCoreData" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="percentOfDailyNeeds" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unit" attributeType="String" defaultValueString=""/>
+        <relationship name="nutrition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionCoreData" inverseName="nutrients" inverseEntity="NutritionCoreData"/>
+    </entity>
+    <entity name="NutritionCoreData" representedClassName="NutritionCoreData" syncable="YES">
+        <relationship name="caloricBreakdown" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CaloricBreakdownCoreData" inverseName="nutrition" inverseEntity="CaloricBreakdownCoreData"/>
+        <relationship name="nutrients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientsCoreData" inverseName="nutrition" inverseEntity="NutrientsCoreData"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeCoreData" inverseName="nutrition" inverseEntity="RecipeCoreData"/>
+        <relationship name="weightPerServing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeightPerServingCoreData" inverseName="nutrition" inverseEntity="WeightPerServingCoreData"/>
+    </entity>
+    <entity name="RecipeCoreData" representedClassName="RecipeCoreData" syncable="YES">
+        <attribute name="dishTypes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" attributeType="String" defaultValueString=""/>
+        <attribute name="instructions" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="readyInMinutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="savedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="servings" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sourceName" attributeType="String" defaultValueString=""/>
+        <attribute name="sourceUrl" attributeType="String" defaultValueString=""/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <relationship name="extendedIngredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExtendedIngredientsCoreData" inverseName="recipe" inverseEntity="ExtendedIngredientsCoreData"/>
+        <relationship name="nutrition" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NutritionCoreData" inverseName="recipe" inverseEntity="NutritionCoreData"/>
+    </entity>
+    <entity name="WeightPerServingCoreData" representedClassName="WeightPerServingCoreData" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="unit" attributeType="String" defaultValueString=""/>
+        <relationship name="nutrition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionCoreData" inverseName="weightPerServing" inverseEntity="NutritionCoreData"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="14"/>
+        <element name="CaloricBreakdownCoreData" positionX="-18" positionY="72" width="128" height="103"/>
+        <element name="ExtendedIngredientsCoreData" positionX="-36" positionY="81" width="128" height="104"/>
+        <element name="MeasuresCoreData" positionX="0" positionY="90" width="128" height="88"/>
+        <element name="MetricCoreData" positionX="-9" positionY="90" width="128" height="89"/>
+        <element name="NutrientsCoreData" positionX="27" positionY="108" width="128" height="104"/>
+        <element name="NutritionCoreData" positionX="9" positionY="99" width="128" height="103"/>
+        <element name="RecipeCoreData" positionX="-2062.725708007812" positionY="-6888.168655395508" width="128" height="209"/>
+        <element name="WeightPerServingCoreData" positionX="-9" positionY="81" width="128" height="74"/>
     </elements>
 </model>

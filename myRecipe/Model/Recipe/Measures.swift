@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Measures: Decodable {
+struct Measures: Codable {
     let metric, us: Metric
 }
