@@ -12,13 +12,6 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     private let viewModel: RecipeViewModel
     private let loadingScreen = LoadingScreenViewController()
     
-    private enum Measure {
-        case metric
-        case US
-    }
-    
-    private var chosenMeasure = Measure.metric
-    
     private lazy var saveRecipeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
@@ -156,6 +149,14 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(measuresSegmentedControlDidChange), for: .valueChanged)
+        
+        switch viewModel.chosenMeasure {
+        case .metric:
+            segmentedControl.selectedSegmentIndex = 0
+        case .US:
+            segmentedControl.selectedSegmentIndex = 1
+        }
+        
         return segmentedControl
     }()
     
@@ -328,9 +329,9 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     
     @objc private func measuresSegmentedControlDidChange() {
         if measuresSegmentedControl.selectedSegmentIndex == 0 {
-            chosenMeasure = .metric
+            viewModel.setMeasureSystem(.metric)
         } else {
-            chosenMeasure = .US
+            viewModel.setMeasureSystem(.US)
         }
         
         extendedIngredientsCollectionView.reloadData()
@@ -396,7 +397,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
             
             cell.setName(recipe.extendedIngredients[indexPath.item].name.capitalizingFirstLetter())
             
-            switch chosenMeasure {
+            switch viewModel.chosenMeasure {
             case .metric:
                 cell.setAmount(String(recipe.extendedIngredients[indexPath.item].measures.metric.amount) + " " + recipe.extendedIngredients[indexPath.item].measures.metric.unitLong)
             case .US:

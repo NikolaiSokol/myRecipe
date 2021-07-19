@@ -9,36 +9,9 @@ import UIKit
 
 final class CuisineView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
-    private let cuisines = [
-        "African",
-        "American",
-        "British",
-        "Cajun",
-        "Caribbean",
-        "Chinese",
-        "Eastern European",
-        "European",
-        "French",
-        "German",
-        "Greek",
-        "Indian",
-        "Irish",
-        "Italian",
-        "Japanese",
-        "Jewish",
-        "Korean",
-        "Latin American",
-        "Mediterranean",
-        "Mexican",
-        "Middle Eastern",
-        "Nordic",
-        "Southern",
-        "Spanish",
-        "Thai",
-        "Vietnamese"
-    ]
+    private let cuisines = ChoosingSearchParameters.cuisines
     
     var chosenCuisine = "" {
         didSet {
@@ -108,7 +81,7 @@ final class CuisineView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
     
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

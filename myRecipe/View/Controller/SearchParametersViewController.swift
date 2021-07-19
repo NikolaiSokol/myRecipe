@@ -10,7 +10,7 @@ import UIKit
 final class SearchParametersViewController: UIViewController {
     
     private let viewModel: SearchViewModel
-    private let viewsBuilder = SearchParametersViewsBuilder()
+    private let viewsBuilder: ParametersViewBuilder
     
     private let spacingBetweenGroups: CGFloat = 20
     
@@ -160,8 +160,9 @@ final class SearchParametersViewController: UIViewController {
         return view
     }()
     
-    init(viewModel: SearchViewModel) {
+    init(viewModel: SearchViewModel, viewsBuilder: ParametersViewBuilder) {
         self.viewModel = viewModel
+        self.viewsBuilder = viewsBuilder
         super.init(nibName: nil, bundle: nil)
     }
     

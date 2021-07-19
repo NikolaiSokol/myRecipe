@@ -9,7 +9,7 @@ import UIKit
 
 final class InstructionsRequiredView: UIView {
 
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
     var instructionsRequired = false 
     
@@ -26,7 +26,7 @@ final class InstructionsRequiredView: UIView {
         return switchView
     }()
 
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

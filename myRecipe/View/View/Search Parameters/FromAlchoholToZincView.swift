@@ -9,7 +9,7 @@ import UIKit
 
 final class FromAlchoholToZincView: UIView {
     
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
     private let min = "0"
     private let max = "100"
@@ -660,7 +660,7 @@ final class FromAlchoholToZincView: UIView {
         return viewsBuilder.buildMinMaxStack(minTextField: minTextField, maxTextField: maxTextField)
     }()
     
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

@@ -66,8 +66,6 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
         view.backgroundColor = UIColor(named: "background")
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
         
-        definesPresentationContext = true
-        
         view.addSubview(tableView)
     }
     

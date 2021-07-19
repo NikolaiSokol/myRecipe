@@ -9,7 +9,7 @@ import UIKit
 
 final class EquipmentView: UIView {
     
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
     var equipment = ""
     
@@ -26,7 +26,7 @@ final class EquipmentView: UIView {
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

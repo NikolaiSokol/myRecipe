@@ -9,7 +9,7 @@ import UIKit
 
 final class MaxReadyTimeView: UIView {
     
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
     var maxReadyTime = "60"
     
@@ -27,7 +27,7 @@ final class MaxReadyTimeView: UIView {
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

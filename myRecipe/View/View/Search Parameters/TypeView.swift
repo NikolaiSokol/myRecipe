@@ -9,24 +9,9 @@ import UIKit
 
 final class TypeView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
-    private let types = [
-        "Main course",
-        "Side dish",
-        "Dessert",
-        "Appetizer",
-        "Salad",
-        "Bread",
-        "Breakfast",
-        "Soup",
-        "Beverage",
-        "Sauce",
-        "Marinade",
-        "Fingerfood",
-        "Snack",
-        "Drink"
-    ]
+    private let types = ChoosingSearchParameters.types
     
     var chosenType = "" {
         didSet {
@@ -61,7 +46,7 @@ final class TypeView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
 
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

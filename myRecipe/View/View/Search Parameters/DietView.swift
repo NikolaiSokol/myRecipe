@@ -9,35 +9,13 @@ import UIKit
 
 final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
-    private let diets = [
-        "Gluten Free",
-        "Ketogenic",
-        "Vegetarian",
-        "Lacto-Vegetarian",
-        "Ovo-Vegetarian",
-        "Vegan",
-        "Pescetarian",
-        "Paleo",
-        "Primal",
-        "Whole30"
-    ]
+    private let userDefaults = UserDefaults.standard
     
-    private let intolerances = [
-        "Dairy",
-        "Egg",
-        "Gluten",
-        "Grain",
-        "Peanut",
-        "Seafood",
-        "Sesame",
-        "Shellfish",
-        "Soy",
-        "Sulfite",
-        "Tree Nut",
-        "Wheat"
-    ]
+    private let diets = ChoosingSearchParameters.diets
+    
+    private let intolerances = ChoosingSearchParameters.intolerances
     
     var chosenDiet = "" {
         didSet {
@@ -45,7 +23,7 @@ final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    var chosenIntolerances = [String]() {
+    lazy var chosenIntolerances = userDefaults.string(forKey: "Intolerances")?.components(separatedBy: ",") ?? [String]() {
         didSet {
             if chosenIntolerances.isEmpty {
                 chosenIntolerancesLabel.text = "Choose"
@@ -90,7 +68,7 @@ final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }()
 
     private lazy var chosenIntolerancesLabel: UILabel = {
-        let label = viewsBuilder.buildChosenLabel(text: "Choose")
+        let label = viewsBuilder.buildChosenLabel(text: userDefaults.string(forKey: "Intolerances") ?? "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(showMultipleChoosingController))
@@ -107,7 +85,7 @@ final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
     
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

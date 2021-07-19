@@ -1,5 +1,5 @@
 //
-//  SearchParametersViewBuilder.swift
+//  ParametersViewBuilder.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 23.06.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchParametersViewsBuilder {
+final class ParametersViewBuilder {
     
     func buildTitleLabel(text: String) -> UILabel {
         let label = UILabel()

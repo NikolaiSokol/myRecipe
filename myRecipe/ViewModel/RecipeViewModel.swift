@@ -17,6 +17,8 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     private let recipeId: Int
     private let coreDataRecipe: RecipeCoreData?
     
+    private let userDefaults = UserDefaults.standard
+    
     private lazy var fetchedResultsController: NSFetchedResultsController<RecipeCoreData> = {
         FetchedResultsController.getFetchedResultsController(delegate: self, context: coreDataStack.backgroundContext)
     }()
@@ -32,6 +34,17 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
             recipeChanged?()
         }
     }
+    
+    private(set) lazy var chosenMeasure: MeasureSystem = {
+        if let chosenMeasure = userDefaults.string(forKey: "MeasureSystem") {
+            if chosenMeasure == "Metric" {
+                return .metric
+            } else {
+                return .US
+            }
+        }
+        return .metric
+    }()
     
     var recipeChanged: (() -> Void)?
     var showingSpinner: ((Bool) -> Void)?
@@ -238,6 +251,12 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.recipeChanged?()
         }
+    }
+    
+    // MARK: - Measure System
+    
+    func setMeasureSystem(_ measure: MeasureSystem) {
+        chosenMeasure = measure
     }
     
     // MARK: - Image

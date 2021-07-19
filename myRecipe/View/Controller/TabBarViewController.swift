@@ -9,13 +9,14 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
     
+    private let parametersViewBuilder = ParametersViewBuilder()
     private let imageLoader = ImageLoadingManager()
     private let coreDataStack = CoreDataStack()
 
     private lazy var searchViewController: UIViewController = {
         let searchViewModel = SearchViewModel(imageLoader: imageLoader)
         
-        let viewController = SearchViewController(viewModel: searchViewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let viewController = SearchViewController(viewModel: searchViewModel, parametersViewBuilder: parametersViewBuilder, imageLoader: imageLoader, coreDataStack: coreDataStack)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Search"
@@ -36,13 +37,25 @@ final class TabBarViewController: UITabBarController {
         return navigationController
     }()
     
+    private lazy var settingsViewController: UIViewController = {
+        let viewModel = SettingsViewModel()
+        
+        let viewController = SettingsViewController(viewModel: viewModel, viewsBuider: parametersViewBuilder)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        let viewControllerItem = UITabBarItem()
+        viewControllerItem.title = "Settings"
+        viewControllerItem.image = UIImage(systemName: "gear")
+        viewController.tabBarItem = viewControllerItem
+        return navigationController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
     }
     
     private func setupTabBar() {
-        let controllers = [searchViewController, savedRecipesViewController]
+        let controllers = [searchViewController, savedRecipesViewController, settingsViewController]
         viewControllers = controllers
         
         tabBar.tintColor = UIColor(named: "buttonTint")

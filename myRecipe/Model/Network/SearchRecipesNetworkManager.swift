@@ -14,6 +14,8 @@ struct SearchRecipesNetworkManager {
     private let autocompleteBaseURL = "https://api.spoonacular.com/recipes/autocomplete"
     private let apiKey = "6553758da0eb441587641966ca80aeb9"
     
+    private let userDefaults = UserDefaults.standard
+    
     typealias SearchCompletion = (Result<SearchedRecipesResponse, Error>) -> Void
     typealias AutocompleteCompletion = (Result<[AutocompleteRecipeSearchResponse], Error>) -> Void
     
@@ -21,6 +23,7 @@ struct SearchRecipesNetworkManager {
         var components = URLComponents(string: searchBaseURL)
         components?.queryItems = [
             URLQueryItem(name: "query", value: text),
+            URLQueryItem(name: "intolerances", value: userDefaults.string(forKey: "Intolerances")?.lowercased() ?? ""),
             URLQueryItem(name: "offset", value: String(offset)),
             URLQueryItem(name: "number", value: String(number)),
             URLQueryItem(name: "apiKey", value: apiKey)

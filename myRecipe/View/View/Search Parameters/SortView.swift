@@ -9,63 +9,9 @@ import UIKit
 
 final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
-    private let sorts = [
-        "meta-score",
-        "popularity",
-        "healthiness",
-        "price",
-        "time",
-        "random",
-        "max-used-ingredients",
-        "min-missing-ingredients",
-        "alcohol",
-        "caffeine",
-        "copper",
-        "energy",
-        "calories",
-        "calcium",
-        "carbohydrates",
-        "carbs",
-        "choline",
-        "cholesterol",
-        "total-fat",
-        "fluoride",
-        "trans-fat",
-        "saturated-fat",
-        "mono-unsaturated-fat",
-        "poly-unsaturated-fat",
-        "fiber",
-        "folate",
-        "folic-acid",
-        "iodine",
-        "iron",
-        "magnesium",
-        "manganese",
-        "vitamin-b3",
-        "niacin",
-        "vitamin-b5",
-        "pantothenic-acid",
-        "phosphorus",
-        "potassium",
-        "protein",
-        "vitamin-b2",
-        "riboflavin",
-        "selenium",
-        "sodium",
-        "vitamin-b1",
-        "thiamin",
-        "vitamin-a",
-        "vitamin-b6",
-        "vitamin-b12",
-        "vitamin-c",
-        "vitamin-d",
-        "vitamin-e",
-        "vitamin-k",
-        "sugar",
-        "zinc"
-    ]
+    private let sorts = ChoosingSearchParameters.sorts
     
     var chosenSort = "" {
         didSet {
@@ -124,7 +70,7 @@ final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
 
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

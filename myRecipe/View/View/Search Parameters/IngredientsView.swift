@@ -9,7 +9,7 @@ import UIKit
 
 final class IngredientsView: UIView {
 
-    private let viewsBuilder: SearchParametersViewsBuilder
+    private let viewsBuilder: ParametersViewBuilder
     
     var includedIngredients = ""
     var excludedIngredients = ""
@@ -47,7 +47,7 @@ final class IngredientsView: UIView {
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: SearchParametersViewsBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()
