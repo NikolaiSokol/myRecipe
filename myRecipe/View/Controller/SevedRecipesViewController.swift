@@ -6,28 +6,12 @@
 //
 
 import UIKit
-import CoreData
 
-final class SevedRecipesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+final class SevedRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let viewModel: SavedRecipesViewModel
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
-    
-    private lazy var fetchedResultsController: NSFetchedResultsController<RecipeCoreData> = {
-        let request = NSFetchRequest<RecipeCoreData>(entityName: "RecipeCoreData")
-        request.sortDescriptors = [.init(key: "savedDate", ascending: false)]
-        
-        let frc = NSFetchedResultsController(
-            fetchRequest: request,
-            managedObjectContext: viewModel.getContext(),
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
-        
-        frc.delegate = self
-        return frc
-    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -58,10 +42,21 @@ final class SevedRecipesViewController: UIViewController, NSFetchedResultsContro
         setupViews()
         setupAutoLayout()
         
-        try? fetchedResultsController.performFetch()
+        viewModel.performFetch()
     }
     
     private func bindViewModel() {
+        viewModel.recipesChanged = { [weak self] in
+            guard let self = self else { return }
+            UIView.transition(
+                with: self.tableView,
+                duration: 0.3,
+                options: .transitionCrossDissolve,
+                animations: { self.tableView.reloadData() },
+                completion: nil
+            )
+        }
+        
         viewModel.errorOccured = { [weak self] in
             self?.showErrorAlert()
         }
@@ -97,18 +92,17 @@ final class SevedRecipesViewController: UIViewController, NSFetchedResultsContro
         }
     }
     
-    // MARK: - FetchedResultsController delegate
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
-    }
-    
     // MARK: - Table View
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        let recipe = viewModel.fetchedResultsController.object(at: indexPath)
+        viewModel.deleteRecipeFromCoreData(id: Int(recipe.id))
+      }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let recipe = fetchedResultsController.object(at: indexPath)
+        let recipe = viewModel.fetchedResultsController.object(at: indexPath)
         
         let recipeViewModel = RecipeViewModel(
             imageLoader: imageLoader,
@@ -121,7 +115,7 @@ final class SevedRecipesViewController: UIViewController, NSFetchedResultsContro
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else { return 0 }
+        guard let sections = viewModel.fetchedResultsController.sections else { return 0 }
         let numberOfRows = sections[section].numberOfObjects
         if numberOfRows == 0 {
             tableView.setEmptyView(text: "No saved recipes")
@@ -136,12 +130,19 @@ final class SevedRecipesViewController: UIViewController, NSFetchedResultsContro
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell
         else { preconditionFailure("Failed to load table view cell") }
         
-        let recipe = fetchedResultsController.object(at: indexPath)
+        let recipe = viewModel.fetchedResultsController.object(at: indexPath)
         
             cell.setRecipeName(recipe.title)
-            viewModel.loadImage(url: recipe.image) { image in
+        
+        if let image = recipe.image {
+            viewModel.loadImage(url: image) { image in
                 cell.setRecipeImage(image)
             }
+        } else {
+            if let noImage = UIImage(named: "noImage") {
+                cell.setRecipeImage(noImage)
+            }
+        }
         
         return cell
     }

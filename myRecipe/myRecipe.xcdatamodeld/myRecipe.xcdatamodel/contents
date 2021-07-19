@@ -7,8 +7,7 @@
         <relationship name="nutrition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionCoreData" inverseName="caloricBreakdown" inverseEntity="NutritionCoreData"/>
     </entity>
     <entity name="ExtendedIngredientsCoreData" representedClassName="ExtendedIngredientsCoreData" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="image" attributeType="String" defaultValueString=""/>
+        <attribute name="image" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <relationship name="measures" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresCoreData" inverseName="extendedIngredients" inverseEntity="MeasuresCoreData"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeCoreData" inverseName="extendedIngredients" inverseEntity="RecipeCoreData"/>
@@ -41,7 +40,7 @@
         <attribute name="dishTypes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" attributeType="String" defaultValueString=""/>
-        <attribute name="instructions" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="instructions" attributeType="String" defaultValueString=""/>
         <attribute name="readyInMinutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="savedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="servings" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -58,7 +57,7 @@
     </entity>
     <elements>
         <element name="CaloricBreakdownCoreData" positionX="-18" positionY="72" width="128" height="103"/>
-        <element name="ExtendedIngredientsCoreData" positionX="-36" positionY="81" width="128" height="104"/>
+        <element name="ExtendedIngredientsCoreData" positionX="-36" positionY="81" width="128" height="89"/>
         <element name="MeasuresCoreData" positionX="0" positionY="90" width="128" height="88"/>
         <element name="MetricCoreData" positionX="-9" positionY="90" width="128" height="89"/>
         <element name="NutrientsCoreData" positionX="27" positionY="108" width="128" height="104"/>

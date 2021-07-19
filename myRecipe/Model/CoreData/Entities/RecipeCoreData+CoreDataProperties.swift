@@ -17,7 +17,7 @@ extension RecipeCoreData {
 
     @NSManaged public var dishTypes: [String]
     @NSManaged public var id: Int64
-    @NSManaged public var image: String
+    @NSManaged public var image: String?
     @NSManaged public var instructions: String
     @NSManaged public var readyInMinutes: Int64
     @NSManaged public var savedDate: Date?

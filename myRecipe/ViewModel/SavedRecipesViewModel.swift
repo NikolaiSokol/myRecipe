@@ -8,11 +8,16 @@
 import UIKit
 import CoreData
 
-final class SavedRecipesViewModel {
+final class SavedRecipesViewModel: NSObject, NSFetchedResultsControllerDelegate {
     
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
     
+    private(set) lazy var fetchedResultsController: NSFetchedResultsController<RecipeCoreData> = {
+        FetchedResultsController.getFetchedResultsController(delegate: self, context: coreDataStack.backgroundContext)
+    }()
+    
+    var recipesChanged: (() -> Void)?
     var errorOccured: (() -> Void)?
     
     init(imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
@@ -20,8 +25,24 @@ final class SavedRecipesViewModel {
         self.coreDataStack = coreDataStack
     }
     
-    func getContext() -> NSManagedObjectContext {
-        coreDataStack.backgroundContext
+    func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            errorOccured?()
+        }
+    }
+    
+    func deleteRecipeFromCoreData(id: Int) {
+        coreDataStack.deleteRecipe(id: id)
+    }
+    
+    // MARK: - Fetched Results Controller Delegate
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        DispatchQueue.main.async { [weak self] in
+            self?.recipesChanged?()
+        }
     }
     
     // MARK: - Image

@@ -23,7 +23,14 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
         button.addTarget(self, action: #selector(saveRecipe), for: .touchUpInside)
-        button.isEnabled = false
+        return button
+    }()
+    
+    private lazy var deleteRecipeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Delete", for: .normal)
+        button.tintColor = .systemRed
+        button.addTarget(self, action: #selector(deleteRecipe), for: .touchUpInside)
         return button
     }()
     
@@ -212,7 +219,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     private func bindViewModel() {
-        viewModel.recipeLoaded = { [weak self] in
+        viewModel.recipeChanged = { [weak self] in
             self?.setupRecipeData()
         }
         
@@ -227,8 +234,6 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     
     private func setupViews() {
         view.backgroundColor = UIColor(named: "background")
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveRecipeButton)
         
         view.addSubview(scrollView)
         scrollView.addSubview(recipeStackView)
@@ -262,6 +267,8 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         viewModel.loadMainImage { [weak self] image in
             self?.recipeImageView.image = image
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: viewModel.isRecipeSaved() ? deleteRecipeButton : saveRecipeButton)
         
         if let recipe = viewModel.recipe {
             title = recipe.title
@@ -301,6 +308,10 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     // MARK: - Core Data
+    
+    @objc private func deleteRecipe() {
+        viewModel.deleteRecipeFromCoreData()
+    }
     
     @objc private func saveRecipe() {
         viewModel.saveToCoreData()
@@ -373,9 +384,16 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         else { preconditionFailure("Failed to load collection view cell") }
         
         if let recipe = viewModel.recipe {
-            viewModel.loadIngredientImage(name: recipe.extendedIngredients[indexPath.item].image) { image in
-                cell.setIngredientImage(image)
+            if let imageName = recipe.extendedIngredients[indexPath.item].image {
+                viewModel.loadIngredientImage(name: imageName) { image in
+                    cell.setIngredientImage(image)
+                }
+            } else {
+                if let noImage = UIImage(named: "noImage") {
+                    cell.setIngredientImage(noImage)
+                }
             }
+            
             cell.setName(recipe.extendedIngredients[indexPath.item].name.capitalizingFirstLetter())
             
             switch chosenMeasure {

@@ -9,7 +9,6 @@ import Foundation
 
 struct ExtendedIngredients: Codable {
     let name: String
-    let id: Int
-    let image: String
+    let image: String?
     let measures: Measures
 }

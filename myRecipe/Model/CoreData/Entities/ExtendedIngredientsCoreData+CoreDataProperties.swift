@@ -2,7 +2,7 @@
 //  ExtendedIngredientsCoreData+CoreDataProperties.swift
 //  myRecipe
 //
-//  Created by Nikolai Sokol on 15.07.2021.
+//  Created by Nikolai Sokol on 19.07.2021.
 //
 //
 
@@ -15,8 +15,7 @@ extension ExtendedIngredientsCoreData {
         NSFetchRequest<ExtendedIngredientsCoreData>(entityName: "ExtendedIngredientsCoreData")
     }
 
-    @NSManaged public var id: Int64
-    @NSManaged public var image: String
+    @NSManaged public var image: String?
     @NSManaged public var name: String
     @NSManaged public var measures: MeasuresCoreData
     @NSManaged public var recipe: RecipeCoreData?

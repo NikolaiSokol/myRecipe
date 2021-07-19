@@ -2,7 +2,7 @@
 //  ExtendedIngredientsCoreData+CoreDataClass.swift
 //  myRecipe
 //
-//  Created by Nikolai Sokol on 15.07.2021.
+//  Created by Nikolai Sokol on 19.07.2021.
 //
 //
 
