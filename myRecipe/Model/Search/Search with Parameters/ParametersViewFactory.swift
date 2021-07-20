@@ -1,5 +1,5 @@
 //
-//  ParametersViewBuilder.swift
+//  ParametersViewFactory.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 23.06.2021.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class ParametersViewBuilder {
+final class ParametersViewFactory {
     
-    func buildTitleLabel(text: String) -> UILabel {
+    func createTitleLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textAlignment = .left
         return label
     }
     
-    func buildChosenLabel(text: String) -> UILabel {
+    func createChosenLabel(text: String) -> UILabel {
         let label = UILabel()
         label.textColor = .systemGray
         label.text = text
@@ -25,7 +25,7 @@ final class ParametersViewBuilder {
         return label
     }
     
-    func buildTextField(placeholder: String) -> UITextField {
+    func createTextField(placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
         textField.textAlignment = .right
@@ -33,7 +33,7 @@ final class ParametersViewBuilder {
         return textField
     }
     
-    func buildHorizontalStack() -> UIStackView {
+    func createHorizontalStack() -> UIStackView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -47,32 +47,11 @@ final class ParametersViewBuilder {
         return stack
     }
     
-    func buildVerticalStack() -> UIStackView {
+    func createVerticalStack() -> UIStackView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 1
-        return stack
-    }
-    
-    func buildMinMaxStack(minTextField: UITextField, maxTextField: UITextField) -> UIStackView {
-        let stack = UIStackView()
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        stack.spacing = 5
-        stack.axis = .horizontal
-        
-        minTextField.keyboardType = .numberPad
-        maxTextField.keyboardType = .numberPad
-        
-        let dashLabel = UILabel()
-        dashLabel.text = "-"
-        dashLabel.textColor = .systemGray
-        
-        stack.addArrangedSubview(minTextField)
-        stack.addArrangedSubview(dashLabel)
-        stack.addArrangedSubview(maxTextField)
-        
         return stack
     }
 }

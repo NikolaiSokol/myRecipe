@@ -10,7 +10,8 @@ import UIKit
 final class SearchParametersViewController: UIViewController {
     
     private let viewModel: SearchViewModel
-    private let viewsBuilder: ParametersViewBuilder
+    private let parametersViewFactory: ParametersViewFactory
+    private lazy var minMaxViewfactory = MinMaxViewFactory(parametersViewFactory: parametersViewFactory)
     
     private let spacingBetweenGroups: CGFloat = 20
     
@@ -23,14 +24,14 @@ final class SearchParametersViewController: UIViewController {
     // MARK: - Key Words
     
     private lazy var keyWordsView: KeyWordsView = {
-        let view = KeyWordsView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = KeyWordsView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // MARK: - Cuisine
     private lazy var cuisineView: CuisineView = {
-        let view = CuisineView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = CuisineView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingCuisinePicker = { [weak self] _ in
@@ -46,7 +47,7 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Diet and Intolerances
     private lazy var dietView: DietView = {
-        let view = DietView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = DietView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingDietPicker = { [weak self] _ in
@@ -62,21 +63,21 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Equipment
     private lazy var equipmentView: EquipmentView = {
-        let view = EquipmentView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = EquipmentView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Ingredients
     private lazy var ingredientsView: IngredientsView = {
-        let view = IngredientsView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = IngredientsView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Type
     private lazy var typeView: TypeView = {
-        let view = TypeView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = TypeView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingTypePicker = { [weak self] _ in
@@ -88,21 +89,21 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Instructions Required
     private lazy var instructionsRequiredView: InstructionsRequiredView = {
-        let view = InstructionsRequiredView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = InstructionsRequiredView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Max Ready Time
     private lazy var maxReadyTimeView: MaxReadyTimeView = {
-        let view = MaxReadyTimeView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = MaxReadyTimeView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Sort
     private lazy var sortView: SortView = {
-        let view = SortView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = SortView(frame: .zero, viewsBuilder: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingSortPicker = { [weak self] _ in
@@ -114,14 +115,14 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Carbs, Protein, Fat, Calories
     private lazy var carbsProteinFatCaloriesView: CarbsProteinFatCaloriesView = {
-        let view = CarbsProteinFatCaloriesView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = CarbsProteinFatCaloriesView(frame: .zero, factory: minMaxViewfactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // MARK: - From Alchohol to Zinc
     private lazy var fromAlchoholToZincView: FromAlchoholToZincView = {
-        let view = FromAlchoholToZincView(frame: .zero, viewsBuilder: viewsBuilder)
+        let view = FromAlchoholToZincView(frame: .zero, parametersViewFactory: parametersViewFactory, minMaxViewfactory: minMaxViewfactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -160,9 +161,9 @@ final class SearchParametersViewController: UIViewController {
         return view
     }()
     
-    init(viewModel: SearchViewModel, viewsBuilder: ParametersViewBuilder) {
+    init(viewModel: SearchViewModel, parametersViewFactory: ParametersViewFactory) {
         self.viewModel = viewModel
-        self.viewsBuilder = viewsBuilder
+        self.parametersViewFactory = parametersViewFactory
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -298,78 +299,78 @@ final class SearchParametersViewController: UIViewController {
             maxReadyTime: maxReadyTimeView.maxReadyTime,
             sort: sortView.chosenSort,
             sortDirection: sortView.chosenSortDirection,
-            minCarbs: carbsProteinFatCaloriesView.minCarbs,
-            maxCarbs: carbsProteinFatCaloriesView.maxCarbs,
-            minProtein: carbsProteinFatCaloriesView.minProtein,
-            maxProtein: carbsProteinFatCaloriesView.maxProtein,
-            minCalories: carbsProteinFatCaloriesView.minCalories,
-            maxCalories: carbsProteinFatCaloriesView.maxCalories,
-            minFat: carbsProteinFatCaloriesView.minFat,
-            maxFat: carbsProteinFatCaloriesView.maxFat,
-            minAlcohol: fromAlchoholToZincView.minAlcohol,
-            maxAlcohol: fromAlchoholToZincView.maxAlcohol,
-            minCaffeine: fromAlchoholToZincView.minCaffeine,
-            maxCaffeine: fromAlchoholToZincView.maxCaffeine,
-            minCopper: fromAlchoholToZincView.minCopper,
-            maxCopper: fromAlchoholToZincView.maxCopper,
-            minCalcium: fromAlchoholToZincView.minCalcium,
-            maxCalcium: fromAlchoholToZincView.maxCalcium,
-            minCholine: fromAlchoholToZincView.minCholine,
-            maxCholine: fromAlchoholToZincView.maxCholine,
-            minCholesterol: fromAlchoholToZincView.minCholesterol,
-            maxCholesterol: fromAlchoholToZincView.maxCholesterol,
-            minFluoride: fromAlchoholToZincView.minFluoride,
-            maxFluoride: fromAlchoholToZincView.maxFluoride,
-            minSaturatedFat: fromAlchoholToZincView.minSaturatedFat,
-            maxSaturatedFat: fromAlchoholToZincView.maxSaturatedFat,
-            minVitaminA: fromAlchoholToZincView.minVitaminA,
-            maxVitaminA: fromAlchoholToZincView.maxVitaminA,
-            minVitaminC: fromAlchoholToZincView.minVitaminC,
-            maxVitaminC: fromAlchoholToZincView.maxVitaminC,
-            minVitaminD: fromAlchoholToZincView.minVitaminD,
-            maxVitaminD: fromAlchoholToZincView.maxVitaminD,
-            minVitaminE: fromAlchoholToZincView.minVitaminE,
-            maxVitaminE: fromAlchoholToZincView.maxVitaminE,
-            minVitaminK: fromAlchoholToZincView.minVitaminK,
-            maxVitaminK: fromAlchoholToZincView.maxVitaminK,
-            minVitaminB1: fromAlchoholToZincView.minVitaminB1,
-            maxVitaminB1: fromAlchoholToZincView.maxVitaminB1,
-            minVitaminB2: fromAlchoholToZincView.minVitaminB2,
-            maxVitaminB2: fromAlchoholToZincView.maxVitaminB2,
-            minVitaminB3: fromAlchoholToZincView.minVitaminB3,
-            maxVitaminB3: fromAlchoholToZincView.maxVitaminB3,
-            minVitaminB5: fromAlchoholToZincView.minVitaminB5,
-            maxVitaminB5: fromAlchoholToZincView.maxVitaminB5,
-            minVitaminB6: fromAlchoholToZincView.minVitaminB6,
-            maxVitaminB6: fromAlchoholToZincView.maxVitaminB6,
-            minVitaminB12: fromAlchoholToZincView.minVitaminB12,
-            maxVitaminB12: fromAlchoholToZincView.maxVitaminB12,
-            minFiber: fromAlchoholToZincView.minFiber,
-            maxFiber: fromAlchoholToZincView.maxFiber,
-            minFolate: fromAlchoholToZincView.minFolate,
-            maxFolate: fromAlchoholToZincView.maxFolate,
-            minFolicAcid: fromAlchoholToZincView.minFolicAcid,
-            maxFolicAcid: fromAlchoholToZincView.maxFolicAcid,
-            minIodine: fromAlchoholToZincView.minIodine,
-            maxIodine: fromAlchoholToZincView.maxIodine,
-            minIron: fromAlchoholToZincView.minIron,
-            maxIron: fromAlchoholToZincView.maxIron,
-            minMagnesium: fromAlchoholToZincView.minMagnesium,
-            maxMagnesium: fromAlchoholToZincView.maxMagnesium,
-            minManganese: fromAlchoholToZincView.minManganese,
-            maxManganese: fromAlchoholToZincView.maxManganese,
-            minPhosphorus: fromAlchoholToZincView.minPhosphorus,
-            maxPhosphorus: fromAlchoholToZincView.maxPhosphorus,
-            minPotassium: fromAlchoholToZincView.minPotassium,
-            maxPotassium: fromAlchoholToZincView.maxPotassium,
-            minSelenium: fromAlchoholToZincView.minSelenium,
-            maxSelenium: fromAlchoholToZincView.maxSelenium,
-            minSodium: fromAlchoholToZincView.minSodium,
-            maxSodium: fromAlchoholToZincView.maxSodium,
-            minSugar: fromAlchoholToZincView.minSugar,
-            maxSugar: fromAlchoholToZincView.maxSugar,
-            minZinc: fromAlchoholToZincView.minZinc,
-            maxZinc: fromAlchoholToZincView.maxZinc
+            minCarbs: carbsProteinFatCaloriesView.carbsView.chosenMin,
+            maxCarbs: carbsProteinFatCaloriesView.carbsView.chosenMax,
+            minProtein: carbsProteinFatCaloriesView.proteinView.chosenMin,
+            maxProtein: carbsProteinFatCaloriesView.proteinView.chosenMax,
+            minCalories: carbsProteinFatCaloriesView.caloriesView.chosenMin,
+            maxCalories: carbsProteinFatCaloriesView.caloriesView.chosenMax,
+            minFat: carbsProteinFatCaloriesView.fatView.chosenMin,
+            maxFat: carbsProteinFatCaloriesView.fatView.chosenMax,
+            minAlcohol: fromAlchoholToZincView.alcoholView.chosenMin,
+            maxAlcohol: fromAlchoholToZincView.alcoholView.chosenMax,
+            minCaffeine: fromAlchoholToZincView.caffeineView.chosenMin,
+            maxCaffeine: fromAlchoholToZincView.caffeineView.chosenMax,
+            minCopper: fromAlchoholToZincView.copperView.chosenMin,
+            maxCopper: fromAlchoholToZincView.copperView.chosenMax,
+            minCalcium: fromAlchoholToZincView.calciumView.chosenMin,
+            maxCalcium: fromAlchoholToZincView.calciumView.chosenMax,
+            minCholine: fromAlchoholToZincView.cholineView.chosenMin,
+            maxCholine: fromAlchoholToZincView.cholineView.chosenMax,
+            minCholesterol: fromAlchoholToZincView.cholesterolView.chosenMin,
+            maxCholesterol: fromAlchoholToZincView.cholesterolView.chosenMax,
+            minFluoride: fromAlchoholToZincView.fluorideView.chosenMin,
+            maxFluoride: fromAlchoholToZincView.fluorideView.chosenMax,
+            minSaturatedFat: fromAlchoholToZincView.saturatedFatView.chosenMin,
+            maxSaturatedFat: fromAlchoholToZincView.saturatedFatView.chosenMax,
+            minVitaminA: fromAlchoholToZincView.vitaminAView.chosenMin,
+            maxVitaminA: fromAlchoholToZincView.vitaminAView.chosenMax,
+            minVitaminC: fromAlchoholToZincView.vitaminCView.chosenMin,
+            maxVitaminC: fromAlchoholToZincView.vitaminCView.chosenMax,
+            minVitaminD: fromAlchoholToZincView.vitaminDView.chosenMin,
+            maxVitaminD: fromAlchoholToZincView.vitaminDView.chosenMax,
+            minVitaminE: fromAlchoholToZincView.vitaminEView.chosenMin,
+            maxVitaminE: fromAlchoholToZincView.vitaminEView.chosenMax,
+            minVitaminK: fromAlchoholToZincView.vitaminKView.chosenMin,
+            maxVitaminK: fromAlchoholToZincView.vitaminKView.chosenMax,
+            minVitaminB1: fromAlchoholToZincView.vitaminB1View.chosenMin,
+            maxVitaminB1: fromAlchoholToZincView.vitaminB1View.chosenMax,
+            minVitaminB2: fromAlchoholToZincView.vitaminB2View.chosenMin,
+            maxVitaminB2: fromAlchoholToZincView.vitaminB2View.chosenMax,
+            minVitaminB3: fromAlchoholToZincView.vitaminB3View.chosenMin,
+            maxVitaminB3: fromAlchoholToZincView.vitaminB3View.chosenMax,
+            minVitaminB5: fromAlchoholToZincView.vitaminB5View.chosenMin,
+            maxVitaminB5: fromAlchoholToZincView.vitaminB5View.chosenMax,
+            minVitaminB6: fromAlchoholToZincView.vitaminB6View.chosenMin,
+            maxVitaminB6: fromAlchoholToZincView.vitaminB6View.chosenMax,
+            minVitaminB12: fromAlchoholToZincView.vitaminB12View.chosenMin,
+            maxVitaminB12: fromAlchoholToZincView.vitaminB12View.chosenMax,
+            minFiber: fromAlchoholToZincView.fiberView.chosenMin,
+            maxFiber: fromAlchoholToZincView.fiberView.chosenMax,
+            minFolate: fromAlchoholToZincView.folateView.chosenMin,
+            maxFolate: fromAlchoholToZincView.folateView.chosenMax,
+            minFolicAcid: fromAlchoholToZincView.folicAcidView.chosenMin,
+            maxFolicAcid: fromAlchoholToZincView.folicAcidView.chosenMax,
+            minIodine: fromAlchoholToZincView.iodineView.chosenMin,
+            maxIodine: fromAlchoholToZincView.iodineView.chosenMax,
+            minIron: fromAlchoholToZincView.ironView.chosenMin,
+            maxIron: fromAlchoholToZincView.ironView.chosenMax,
+            minMagnesium: fromAlchoholToZincView.magnesiumView.chosenMin,
+            maxMagnesium: fromAlchoholToZincView.magnesiumView.chosenMax,
+            minManganese: fromAlchoholToZincView.manganeseView.chosenMin,
+            maxManganese: fromAlchoholToZincView.manganeseView.chosenMax,
+            minPhosphorus: fromAlchoholToZincView.phosphorusView.chosenMin,
+            maxPhosphorus: fromAlchoholToZincView.phosphorusView.chosenMax,
+            minPotassium: fromAlchoholToZincView.potassiumView.chosenMin,
+            maxPotassium: fromAlchoholToZincView.potassiumView.chosenMax,
+            minSelenium: fromAlchoholToZincView.seleniumView.chosenMin,
+            maxSelenium: fromAlchoholToZincView.seleniumView.chosenMax,
+            minSodium: fromAlchoholToZincView.sodiumView.chosenMin,
+            maxSodium: fromAlchoholToZincView.sodiumView.chosenMax,
+            minSugar: fromAlchoholToZincView.sugarView.chosenMin,
+            maxSugar: fromAlchoholToZincView.sugarView.chosenMax,
+            minZinc: fromAlchoholToZincView.zincView.chosenMin,
+            maxZinc: fromAlchoholToZincView.zincView.chosenMax
         )
         
         navigationController?.popViewController(animated: true)

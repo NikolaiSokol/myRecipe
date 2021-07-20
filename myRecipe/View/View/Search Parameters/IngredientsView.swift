@@ -9,45 +9,45 @@ import UIKit
 
 final class IngredientsView: UIView {
 
-    private let viewsBuilder: ParametersViewBuilder
+    private let viewsBuilder: ParametersViewFactory
     
     var includedIngredients = ""
     var excludedIngredients = ""
     
     private lazy var ingredientsGroupStackView: UIStackView = {
-        let stack = viewsBuilder.buildVerticalStack()
+        let stack = viewsBuilder.createVerticalStack()
         stack.addArrangedSubview(includeIngredientsStackView)
         stack.addArrangedSubview(excludeIngredientsStackView)
         return stack
     }()
 
     private lazy var includeIngredientsStackView: UIStackView = {
-        let stack = viewsBuilder.buildHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.buildTitleLabel(text: "Include Ingredients"))
+        let stack = viewsBuilder.createHorizontalStack()
+        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Include Ingredients"))
         stack.addArrangedSubview(includeIngredientsTextField)
         return stack
     }()
 
     private lazy var includeIngredientsTextField: UITextField = {
-        let textField = viewsBuilder.buildTextField(placeholder: "tomato, cheese")
+        let textField = viewsBuilder.createTextField(placeholder: "tomato, cheese")
         textField.addTarget(self, action: #selector(includeIngredientsDidChange), for: .editingChanged)
         return textField
     }()
 
     private lazy var excludeIngredientsStackView: UIStackView = {
-        let stack = viewsBuilder.buildHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.buildTitleLabel(text: "Exclude Ingredients"))
+        let stack = viewsBuilder.createHorizontalStack()
+        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Exclude Ingredients"))
         stack.addArrangedSubview(excludeIngredientsTextField)
         return stack
     }()
     
     private lazy var excludeIngredientsTextField: UITextField = {
-        let textField = viewsBuilder.buildTextField(placeholder: "eggs")
+        let textField = viewsBuilder.createTextField(placeholder: "eggs")
         textField.addTarget(self, action: #selector(excludeIngredientsDidChange), for: .editingChanged)
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

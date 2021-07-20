@@ -12,7 +12,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private let loadingScreen = LoadingScreenViewController()
     
     private let viewModel: SearchViewModel
-    private let parametersViewBuilder: ParametersViewBuilder
+    private let parametersViewFactory: ParametersViewFactory
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
     
@@ -55,9 +55,9 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         return tableView
     }()
     
-    init(viewModel: SearchViewModel, parametersViewBuilder: ParametersViewBuilder, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
+    init(viewModel: SearchViewModel, parametersViewFactory: ParametersViewFactory, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
         self.viewModel = viewModel
-        self.parametersViewBuilder = parametersViewBuilder
+        self.parametersViewFactory = parametersViewFactory
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
         super.init(nibName: nil, bundle: nil)
@@ -114,7 +114,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Search parameters
     
     @objc private func showSearchParametersController() {
-        let parametersController = SearchParametersViewController(viewModel: viewModel, viewsBuilder: parametersViewBuilder)
+        let parametersController = SearchParametersViewController(viewModel: viewModel, parametersViewFactory: parametersViewFactory)
         navigationController?.pushViewController(parametersController, animated: true)
     }
     

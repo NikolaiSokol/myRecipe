@@ -9,14 +9,14 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
     
-    private let parametersViewBuilder = ParametersViewBuilder()
+    private let parametersViewFactory = ParametersViewFactory()
     private let imageLoader = ImageLoadingManager()
     private let coreDataStack = CoreDataStack()
 
     private lazy var searchViewController: UIViewController = {
         let searchViewModel = SearchViewModel(imageLoader: imageLoader)
         
-        let viewController = SearchViewController(viewModel: searchViewModel, parametersViewBuilder: parametersViewBuilder, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let viewController = SearchViewController(viewModel: searchViewModel, parametersViewFactory: parametersViewFactory, imageLoader: imageLoader, coreDataStack: coreDataStack)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Search"
@@ -40,7 +40,7 @@ final class TabBarViewController: UITabBarController {
     private lazy var settingsViewController: UIViewController = {
         let viewModel = SettingsViewModel()
         
-        let viewController = SettingsViewController(viewModel: viewModel, viewsBuider: parametersViewBuilder)
+        let viewController = SettingsViewController(viewModel: viewModel, parametersViewFactory: parametersViewFactory)
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Settings"

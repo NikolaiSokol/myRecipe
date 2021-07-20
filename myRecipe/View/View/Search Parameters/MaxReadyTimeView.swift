@@ -9,25 +9,25 @@ import UIKit
 
 final class MaxReadyTimeView: UIView {
     
-    private let viewsBuilder: ParametersViewBuilder
+    private let viewsBuilder: ParametersViewFactory
     
     var maxReadyTime = "60"
     
     private lazy var maxReadyTimeStackView: UIStackView = {
-        let stack = viewsBuilder.buildHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.buildTitleLabel(text: "Max. Ready Time, minutes"))
+        let stack = viewsBuilder.createHorizontalStack()
+        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Max. Ready Time, minutes"))
         stack.addArrangedSubview(maxReadyTimeTextField)
         return stack
     }()
     
     private lazy var maxReadyTimeTextField: UITextField = {
-        let textField = viewsBuilder.buildTextField(placeholder: "20")
+        let textField = viewsBuilder.createTextField(placeholder: "20")
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(maxReadyTimeDidChange), for: .editingChanged)
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: ParametersViewBuilder) {
+    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
         self.viewsBuilder = viewsBuilder
         super.init(frame: frame)
         setupViews()

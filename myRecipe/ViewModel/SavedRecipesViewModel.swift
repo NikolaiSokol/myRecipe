@@ -17,6 +17,18 @@ final class SavedRecipesViewModel: NSObject, NSFetchedResultsControllerDelegate 
         FetchedResultsController.getFetchedResultsController(delegate: self, context: coreDataStack.backgroundContext)
     }()
     
+    var searchedText = "" {
+        didSet {
+            if searchedText.isEmpty {
+                fetchedResultsController.fetchRequest.predicate = nil
+                performFetch()
+            } else {
+                fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "title CONTAINS %@", searchedText)
+                performFetch()
+            }
+        }
+    }
+    
     var recipesChanged: (() -> Void)?
     var errorOccured: (() -> Void)?
     
@@ -31,6 +43,8 @@ final class SavedRecipesViewModel: NSObject, NSFetchedResultsControllerDelegate 
         } catch {
             errorOccured?()
         }
+        
+        recipesChanged?()
     }
     
     func deleteRecipeFromCoreData(id: Int) {

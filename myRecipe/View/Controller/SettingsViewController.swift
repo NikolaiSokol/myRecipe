@@ -10,7 +10,7 @@ import UIKit
 final class SettingsViewController: UIViewController {
     
     private let viewModel: SettingsViewModel
-    private let viewsBuilder: ParametersViewBuilder
+    private let parametersViewFactory: ParametersViewFactory
     
     private let spacingBetweenGroups: CGFloat = 20
     
@@ -21,14 +21,14 @@ final class SettingsViewController: UIViewController {
     }()
     
     private lazy var intolerancesStackView: UIStackView = {
-        let stack = viewsBuilder.buildHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.buildTitleLabel(text: "Your Intolerances"))
+        let stack = parametersViewFactory.createHorizontalStack()
+        stack.addArrangedSubview(parametersViewFactory.createTitleLabel(text: "Your Intolerances"))
         stack.addArrangedSubview(chosenIntolerancesLabel)
         return stack
     }()
     
     private lazy var chosenIntolerancesLabel: UILabel = {
-        let label = viewsBuilder.buildChosenLabel(text: viewModel.getUserIntolerances() ?? "Choose")
+        let label = parametersViewFactory.createChosenLabel(text: viewModel.getUserIntolerances() ?? "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(showMultipleChoosingController))
@@ -38,8 +38,8 @@ final class SettingsViewController: UIViewController {
     }()
     
     private lazy var measureSystemStackView: UIStackView = {
-        let stack = viewsBuilder.buildHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.buildTitleLabel(text: "Prefered Measure System"))
+        let stack = parametersViewFactory.createHorizontalStack()
+        stack.addArrangedSubview(parametersViewFactory.createTitleLabel(text: "Prefered Measure System"))
         stack.addArrangedSubview(chosenMeasureSystemSegmentedControl)
         return stack
     }()
@@ -60,9 +60,9 @@ final class SettingsViewController: UIViewController {
         return segmentedControl
     }()
     
-    init(viewModel: SettingsViewModel, viewsBuider: ParametersViewBuilder) {
+    init(viewModel: SettingsViewModel, parametersViewFactory: ParametersViewFactory) {
         self.viewModel = viewModel
-        self.viewsBuilder = viewsBuider
+        self.parametersViewFactory = parametersViewFactory
         super.init(nibName: nil, bundle: nil)
     }
     

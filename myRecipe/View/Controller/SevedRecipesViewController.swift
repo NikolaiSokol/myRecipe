@@ -7,11 +7,20 @@
 
 import UIKit
 
-final class SevedRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class SevedRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     private let viewModel: SavedRecipesViewModel
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search"
+        return searchController
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -65,6 +74,7 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
     private func setupViews() {
         view.backgroundColor = UIColor(named: "background")
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
+        navigationItem.searchController = searchController
         
         view.addSubview(tableView)
     }
@@ -76,6 +86,13 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    // MARK: - Searching
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        viewModel.searchedText = text
     }
     
     // MARK: - Error Alert
