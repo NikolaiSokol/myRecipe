@@ -9,25 +9,25 @@ import UIKit
 
 final class KeyWordsView: UIView {
     
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     var keyWords = ""
     
     private lazy var keyWordsStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Key words"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Key words"))
         stack.addArrangedSubview(keyWordsTextField)
         return stack
     }()
     
     private lazy var keyWordsTextField: UITextField = {
-        let textField = viewsBuilder.createTextField(placeholder: "pasta with tomatoes")
+        let textField = viewsFactory.createTextField(placeholder: "pasta with tomatoes")
         textField.addTarget(self, action: #selector(keyWordsDidChange), for: .editingChanged)
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

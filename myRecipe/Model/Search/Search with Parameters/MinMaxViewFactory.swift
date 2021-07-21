@@ -16,6 +16,6 @@ final class MinMaxViewFactory {
     }
     
     func create(title: String) -> MinMaxView {
-        MinMaxView(frame: .zero, parametersViewFactory: parametersViewFactory, title: title)
+        MinMaxView(frame: .zero, viewsFactory: parametersViewFactory, title: title)
     }
 }

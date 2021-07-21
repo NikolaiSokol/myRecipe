@@ -9,13 +9,13 @@ import UIKit
 
 final class InstructionsRequiredView: UIView {
 
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     var instructionsRequired = false 
     
     private lazy var instructionsRequiredStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Instructions Required"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Instructions Required"))
         stack.addArrangedSubview(switchView)
         return stack
     }()
@@ -26,8 +26,8 @@ final class InstructionsRequiredView: UIView {
         return switchView
     }()
 
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

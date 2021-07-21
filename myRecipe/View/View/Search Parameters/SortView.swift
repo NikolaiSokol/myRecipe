@@ -9,7 +9,7 @@ import UIKit
 
 final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     private let sorts = ChoosingSearchParameters.sorts
     
@@ -24,21 +24,21 @@ final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     var showingSortPicker: ((Bool) -> Void)?
     
     private lazy var sortGroupStackView: UIStackView = {
-        let stack = viewsBuilder.createVerticalStack()
+        let stack = viewsFactory.createVerticalStack()
         stack.addArrangedSubview(sortStackView)
         stack.addArrangedSubview(sortDirectionStackView)
         return stack
     }()
 
     private lazy var sortStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Sorted by"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Sorted by"))
         stack.addArrangedSubview(chosenSortLabel)
         return stack
     }()
 
     private lazy var chosenSortLabel: UILabel = {
-        let label = viewsBuilder.createChosenLabel(text: "Choose")
+        let label = viewsFactory.createChosenLabel(text: "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(chooseSort))
@@ -48,8 +48,8 @@ final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }()
 
     private lazy var sortDirectionStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Sort Direction"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Sort Direction"))
         stack.addArrangedSubview(sortDirectionSegmentedControl)
         return stack
     }()
@@ -70,8 +70,8 @@ final class SortView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
 
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

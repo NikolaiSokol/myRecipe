@@ -13,10 +13,10 @@ struct Recipe: Codable {
     let image: String?
     let servings: Int
     let readyInMinutes: Int
-    let instructions: String
+    let instructions: String?
     let dishTypes: [String]
     let extendedIngredients: [ExtendedIngredients]
     let nutrition: Nutrition
-    let sourceName: String
+    let sourceName: String?
     let sourceUrl: String
 }

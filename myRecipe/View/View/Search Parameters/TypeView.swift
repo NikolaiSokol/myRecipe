@@ -9,7 +9,7 @@ import UIKit
 
 final class TypeView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     private let types = ChoosingSearchParameters.types
     
@@ -22,14 +22,14 @@ final class TypeView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     var showingTypePicker: ((Bool) -> Void)?
     
     private lazy var typeStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Type"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Type"))
         stack.addArrangedSubview(chosenTypeLabel)
         return stack
     }()
 
     private lazy var chosenTypeLabel: UILabel = {
-        let label = viewsBuilder.createChosenLabel(text: "Choose")
+        let label = viewsFactory.createChosenLabel(text: "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(chooseType))
@@ -46,8 +46,8 @@ final class TypeView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
 
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

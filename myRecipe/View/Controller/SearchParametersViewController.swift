@@ -24,14 +24,14 @@ final class SearchParametersViewController: UIViewController {
     // MARK: - Key Words
     
     private lazy var keyWordsView: KeyWordsView = {
-        let view = KeyWordsView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = KeyWordsView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // MARK: - Cuisine
     private lazy var cuisineView: CuisineView = {
-        let view = CuisineView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = CuisineView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingCuisinePicker = { [weak self] _ in
@@ -47,7 +47,7 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Diet and Intolerances
     private lazy var dietView: DietView = {
-        let view = DietView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = DietView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingDietPicker = { [weak self] _ in
@@ -63,21 +63,21 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Equipment
     private lazy var equipmentView: EquipmentView = {
-        let view = EquipmentView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = EquipmentView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Ingredients
     private lazy var ingredientsView: IngredientsView = {
-        let view = IngredientsView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = IngredientsView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Type
     private lazy var typeView: TypeView = {
-        let view = TypeView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = TypeView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingTypePicker = { [weak self] _ in
@@ -89,21 +89,21 @@ final class SearchParametersViewController: UIViewController {
 
     // MARK: - Instructions Required
     private lazy var instructionsRequiredView: InstructionsRequiredView = {
-        let view = InstructionsRequiredView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = InstructionsRequiredView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Max Ready Time
     private lazy var maxReadyTimeView: MaxReadyTimeView = {
-        let view = MaxReadyTimeView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = MaxReadyTimeView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     // MARK: - Sort
     private lazy var sortView: SortView = {
-        let view = SortView(frame: .zero, viewsBuilder: parametersViewFactory)
+        let view = SortView(frame: .zero, viewsFactory: parametersViewFactory)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.showingSortPicker = { [weak self] _ in

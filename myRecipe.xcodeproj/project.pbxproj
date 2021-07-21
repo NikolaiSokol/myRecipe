@@ -11,6 +11,9 @@
 		60007B7826848BBC0019A56C /* MultipleChoosingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60007B7726848BBC0019A56C /* MultipleChoosingTableViewCell.swift */; };
 		60384DE026A0944400C04EC2 /* RecipeCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60384DDE26A0944400C04EC2 /* RecipeCoreData+CoreDataClass.swift */; };
 		60384DE126A0944400C04EC2 /* RecipeCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60384DDF26A0944400C04EC2 /* RecipeCoreData+CoreDataProperties.swift */; };
+		603DA96926A7F3B100959DBB /* SimilarRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DA96826A7F3B100959DBB /* SimilarRecipesView.swift */; };
+		603DA96B26A7F58A00959DBB /* SimilarRecipesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DA96A26A7F58A00959DBB /* SimilarRecipesCollectionViewCell.swift */; };
+		603DA96D26A7FED000959DBB /* SimilarRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DA96C26A7FED000959DBB /* SimilarRecipe.swift */; };
 		604447932683611500B6A512 /* ParametersViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447922683611500B6A512 /* ParametersViewFactory.swift */; };
 		604447972683622A00B6A512 /* KeyWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604447962683622A00B6A512 /* KeyWordsView.swift */; };
 		60444799268365D300B6A512 /* CuisineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60444798268365D300B6A512 /* CuisineView.swift */; };
@@ -110,6 +113,9 @@
 		60007B7726848BBC0019A56C /* MultipleChoosingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoosingTableViewCell.swift; sourceTree = "<group>"; };
 		60384DDE26A0944400C04EC2 /* RecipeCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		60384DDF26A0944400C04EC2 /* RecipeCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		603DA96826A7F3B100959DBB /* SimilarRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarRecipesView.swift; sourceTree = "<group>"; };
+		603DA96A26A7F58A00959DBB /* SimilarRecipesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarRecipesCollectionViewCell.swift; sourceTree = "<group>"; };
+		603DA96C26A7FED000959DBB /* SimilarRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarRecipe.swift; sourceTree = "<group>"; };
 		604447922683611500B6A512 /* ParametersViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersViewFactory.swift; sourceTree = "<group>"; };
 		604447962683622A00B6A512 /* KeyWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordsView.swift; sourceTree = "<group>"; };
 		60444798268365D300B6A512 /* CuisineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineView.swift; sourceTree = "<group>"; };
@@ -222,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				604447952683620700B6A512 /* Search Parameters */,
-				608C49F626A6AEBD002FB7CA /* MinMaxView.swift */,
+				603DA96826A7F3B100959DBB /* SimilarRecipesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 				604447A626836CDF00B6A512 /* SortView.swift */,
 				604447A826836DBC00B6A512 /* CarbsProteinFatCaloriesView.swift */,
 				604447AA26836E6300B6A512 /* FromAlchoholToZincView.swift */,
+				608C49F626A6AEBD002FB7CA /* MinMaxView.swift */,
 			);
 			path = "Search Parameters";
 			sourceTree = "<group>";
@@ -425,6 +432,7 @@
 				60007B7726848BBC0019A56C /* MultipleChoosingTableViewCell.swift */,
 				60F8C55A269C84B900D952C7 /* ExtendedIngredientsCollectionViewCell.swift */,
 				6074601D269ED3570055248E /* NutrientsTableViewCell.swift */,
+				603DA96A26A7F58A00959DBB /* SimilarRecipesCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -457,6 +465,7 @@
 				60746021269ED64C0055248E /* Nutrients.swift */,
 				60746027269ED71E0055248E /* CaloricBreakdown.swift */,
 				60746029269ED7330055248E /* WeightPerServing.swift */,
+				603DA96C26A7FED000959DBB /* SimilarRecipe.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				604447A126836AF100B6A512 /* TypeView.swift in Sources */,
 				606281C8266E9CF500D05EE2 /* SearchViewController.swift in Sources */,
 				60746022269ED64C0055248E /* Nutrients.swift in Sources */,
+				603DA96D26A7FED000959DBB /* SimilarRecipe.swift in Sources */,
 				60746024269ED6B90055248E /* Measures.swift in Sources */,
 				60A1486C26A57EA600C53279 /* FetchedResultsController.swift in Sources */,
 				60384DE126A0944400C04EC2 /* RecipeCoreData+CoreDataProperties.swift in Sources */,
@@ -623,6 +633,7 @@
 				60B8A69C267A2BF200063ADF /* AutocompleteRecipeSearchResponse.swift in Sources */,
 				6087A73426723BE80039563C /* Cells.swift in Sources */,
 				609382672678CD79002178A8 /* ImageLoadingManager.swift in Sources */,
+				603DA96926A7F3B100959DBB /* SimilarRecipesView.swift in Sources */,
 				608341CC268B9A0000463715 /* LoadingScreenViewController.swift in Sources */,
 				604447AB26836E6300B6A512 /* FromAlchoholToZincView.swift in Sources */,
 				6044479D2683695700B6A512 /* EquipmentView.swift in Sources */,
@@ -681,6 +692,7 @@
 				60444799268365D300B6A512 /* CuisineView.swift in Sources */,
 				608C49F926A6B04B002FB7CA /* MinMaxViewFactory.swift in Sources */,
 				60F8C557269C325200D952C7 /* Nutrition.swift in Sources */,
+				603DA96B26A7F58A00959DBB /* SimilarRecipesCollectionViewCell.swift in Sources */,
 				60EDC5C62692145700216C63 /* URLError.swift in Sources */,
 				6044479B268367F700B6A512 /* DietView.swift in Sources */,
 				60A1487026A5B8F200C53279 /* ExtendedIngredientsCoreData+CoreDataProperties.swift in Sources */,

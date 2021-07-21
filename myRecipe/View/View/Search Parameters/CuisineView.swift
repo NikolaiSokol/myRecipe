@@ -9,7 +9,7 @@ import UIKit
 
 final class CuisineView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     private let cuisines = ChoosingSearchParameters.cuisines
     
@@ -33,21 +33,21 @@ final class CuisineView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     var showingExcludingCuisinesChoosing: ((MultipleChoosingViewController) -> Void)?
     
     private lazy var cuisineGroupStackView: UIStackView = {
-        let stack = viewsBuilder.createVerticalStack()
+        let stack = viewsFactory.createVerticalStack()
         stack.addArrangedSubview(cuisineStackView)
         stack.addArrangedSubview(excludedCuisinesStackView)
         return stack
     }()
 
     private lazy var cuisineStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Cuisine"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Cuisine"))
         stack.addArrangedSubview(chosenCuisineLabel)
         return stack
     }()
 
     private lazy var chosenCuisineLabel: UILabel = {
-        let label = viewsBuilder.createChosenLabel(text: "Choose")
+        let label = viewsFactory.createChosenLabel(text: "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(chooseCuisine))
@@ -57,14 +57,14 @@ final class CuisineView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }()
 
     private lazy var excludedCuisinesStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Excluded Cuisines"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Excluded Cuisines"))
         stack.addArrangedSubview(chosenExcludededCuisinesLabel)
         return stack
     }()
 
     private lazy var chosenExcludededCuisinesLabel: UILabel = {
-        let label = viewsBuilder.createChosenLabel(text: "Choose")
+        let label = viewsFactory.createChosenLabel(text: "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(showMultipleChoosingController))
@@ -81,8 +81,8 @@ final class CuisineView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
     
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

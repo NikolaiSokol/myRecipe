@@ -9,7 +9,7 @@ import UIKit
 
 final class MinMaxView: UIView {
     
-    private let parametersViewFactory: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     private let title: String
     
@@ -20,7 +20,7 @@ final class MinMaxView: UIView {
     var chosenMax = "10000"
     
     private lazy var stackView: UIStackView = {
-        let stack = parametersViewFactory.createHorizontalStack()
+        let stack = viewsFactory.createHorizontalStack()
         
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(minMaxStack)
@@ -76,8 +76,8 @@ final class MinMaxView: UIView {
         return label
     }()
     
-    init(frame: CGRect, parametersViewFactory: ParametersViewFactory, title: String) {
-        self.parametersViewFactory = parametersViewFactory
+    init(frame: CGRect, viewsFactory: ParametersViewFactory, title: String) {
+        self.viewsFactory = viewsFactory
         self.title = title
         super.init(frame: frame)
         setupView()

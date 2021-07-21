@@ -9,7 +9,7 @@ import UIKit
 
 final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     private let userDefaults = UserDefaults.standard
     
@@ -37,21 +37,21 @@ final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     var showingIntolerancesChoosing: ((MultipleChoosingViewController) -> Void)?
     
     private lazy var dietGroupStackView: UIStackView = {
-        let stack = viewsBuilder.createVerticalStack()
+        let stack = viewsFactory.createVerticalStack()
         stack.addArrangedSubview(dietStackView)
         stack.addArrangedSubview(intolerancesStackView)
         return stack
     }()
 
     private lazy var dietStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Diet"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Diet"))
         stack.addArrangedSubview(chosenDietLabel)
         return stack
     }()
 
     private lazy var chosenDietLabel: UILabel = {
-        let label = viewsBuilder.createChosenLabel(text: "Choose")
+        let label = viewsFactory.createChosenLabel(text: "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(chooseDiet))
@@ -61,14 +61,14 @@ final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }()
 
     private lazy var intolerancesStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Intolerances"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Intolerances"))
         stack.addArrangedSubview(chosenIntolerancesLabel)
         return stack
     }()
 
     private lazy var chosenIntolerancesLabel: UILabel = {
-        let label = viewsBuilder.createChosenLabel(text: userDefaults.string(forKey: "Intolerances") ?? "Choose")
+        let label = viewsFactory.createChosenLabel(text: userDefaults.string(forKey: "Intolerances") ?? "Choose")
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(showMultipleChoosingController))
@@ -85,8 +85,8 @@ final class DietView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return picker
     }()
     
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

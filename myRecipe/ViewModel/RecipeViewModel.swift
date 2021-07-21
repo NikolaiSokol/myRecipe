@@ -35,6 +35,12 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
+    var similarRecipes = [SearchedRecipe]() {
+        didSet {
+            similarRecipesChanged?()
+        }
+    }
+    
     private(set) lazy var chosenMeasure: MeasureSystem = {
         if let chosenMeasure = userDefaults.string(forKey: "MeasureSystem") {
             if chosenMeasure == "Metric" {
@@ -47,6 +53,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     }()
     
     var recipeChanged: (() -> Void)?
+    var similarRecipesChanged: (() -> Void)?
     var showingSpinner: ((Bool) -> Void)?
     var errorOccured: (() -> Void)?
     
@@ -76,6 +83,8 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                 self?.makeRecipeFromCoreData()
             }
         }
+        
+        loadSimilarRecipes()
     }
     
     private func performFetch() {
@@ -97,6 +106,19 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                 case .failure:
                     self?.errorOccured?()
                     self?.isLoading = false
+                }
+            }
+        }
+    }
+    
+    private func loadSimilarRecipes() {
+        recipeManager.loadSimilarRecipes(id: recipeId) { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let recipes):
+                    self?.similarRecipes = recipes
+                case .failure:
+                    self?.errorOccured?()
                 }
             }
         }
@@ -261,15 +283,10 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     
     // MARK: - Image
     
-    func loadMainImage(completion: @escaping (UIImage) -> Void) {
-        guard let recipe = recipe else {
-            errorOccured?()
-            return
-        }
-        
-        if let image = recipe.image {
-            imageLoader.loadImage(imageUrl: image) { result in
-                DispatchQueue.main.async {  [weak self] in
+    func loadImage(image: String, completion: @escaping (UIImage) -> Void) {
+        queue.async { [weak self] in
+            self?.imageLoader.loadImage(imageUrl: image) { result in
+                DispatchQueue.main.async {
                     switch result {
                     case .success(let loadedImage):
                         completion(loadedImage)
@@ -278,26 +295,31 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                     }
                 }
             }
-        } else {
-            if let noImage = UIImage(named: "noImage") {
-                completion(noImage)
-            } else {
-                errorOccured?()
-            }
         }
-        
     }
     
     func loadIngredientImage(name: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: "https://spoonacular.com/cdn/ingredients_100x100/" + name) { result in
-            DispatchQueue.main.async {  [weak self] in
-                switch result {
-                case .success(let loadedImage):
-                    completion(loadedImage)
-                case .failure:
-                    self?.errorOccured?()
+        queue.async { [weak self] in
+            self?.imageLoader.loadImage(imageUrl: "https://spoonacular.com/cdn/ingredients_100x100/" + name) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let loadedImage):
+                        completion(loadedImage)
+                    case .failure:
+                        self?.errorOccured?()
+                    }
                 }
             }
         }
+    }
+    
+    // MARK: - Getters for showing similar recipes
+    
+    func getImageLoader() -> ImageLoadingManager {
+        imageLoader
+    }
+    
+    func getCoreDataStack() -> CoreDataStack {
+        coreDataStack
     }
 }

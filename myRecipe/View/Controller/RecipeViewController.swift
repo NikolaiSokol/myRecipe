@@ -41,7 +41,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         stack.spacing = 15
         stack.distribution = .fill
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 20, right: 5)
+        stack.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
         stack.addArrangedSubview(recipeImageView)
         stack.addArrangedSubview(recipeTitleLabel)
@@ -194,6 +194,22 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         return button
     }()
     
+    private lazy var similarRecipes: SimilarRecipesView = {
+        let view = SimilarRecipesView(frame: .zero, viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.showRecipe = { [weak self] id in
+            guard let self = self else { return }
+            let recipeViewModel = RecipeViewModel(
+                imageLoader: self.viewModel.getImageLoader(),
+                coreDataStack: self.viewModel.getCoreDataStack(),
+                recipeId: id
+            )
+            let recipeViewController = RecipeViewController(viewModel: recipeViewModel)
+            self.navigationController?.pushViewController(recipeViewController, animated: true)
+        }
+        return view
+    }()
+    
     init(viewModel: RecipeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -238,6 +254,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         
         view.addSubview(scrollView)
         scrollView.addSubview(recipeStackView)
+        scrollView.addSubview(similarRecipes)
     }
     
     private func makeShortInfoLabel() -> UILabel {
@@ -254,24 +271,31 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
+            recipeImageView.heightAnchor.constraint(equalToConstant: view.frame.height / 3),
+            
             recipeStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             recipeStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             recipeStackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            recipeStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
             
-            recipeImageView.heightAnchor.constraint(equalToConstant: view.frame.height / 3)
-            
+            similarRecipes.topAnchor.constraint(equalTo: recipeStackView.bottomAnchor, constant: 10),
+            similarRecipes.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            similarRecipes.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            similarRecipes.heightAnchor.constraint(equalToConstant: 250),
+            similarRecipes.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
         ])
     }
     
     private func setupRecipeData() {
-        viewModel.loadMainImage { [weak self] image in
-            self?.recipeImageView.image = image
-        }
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: viewModel.isRecipeSaved() ? deleteRecipeButton : saveRecipeButton)
         
         if let recipe = viewModel.recipe {
+            
+            if let image = recipe.image {
+                viewModel.loadImage(image: image) { [weak self] image in
+                    self?.recipeImageView.image = image
+                }
+            }
+            
             title = recipe.title
             
             recipeTitleLabel.text = recipe.title
@@ -291,10 +315,12 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
             extendedIngredientsCollectionView.reloadData()
             changeCollectionViewHeight()
             
-            if recipe.instructions.isEmpty {
-                recipeSourceButton.setTitle("Read the detailed instructions on " + recipe.sourceName, for: .normal)
-            } else {
-                instructionsLabel.text = recipe.instructions.removedHtmlTags()
+            if let instructions = recipe.instructions, let sourceName = recipe.sourceName {
+                if instructions.isEmpty {
+                    recipeSourceButton.setTitle("Read the detailed instructions on " + sourceName, for: .normal)
+                } else {
+                    instructionsLabel.text = instructions.removedHtmlTags()
+                }
             }
         }
     }

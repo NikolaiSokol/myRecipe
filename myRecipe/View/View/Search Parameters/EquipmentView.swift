@@ -9,25 +9,25 @@ import UIKit
 
 final class EquipmentView: UIView {
     
-    private let viewsBuilder: ParametersViewFactory
+    private let viewsFactory: ParametersViewFactory
     
     var equipment = ""
     
     private lazy var equipmentStackView: UIStackView = {
-        let stack = viewsBuilder.createHorizontalStack()
-        stack.addArrangedSubview(viewsBuilder.createTitleLabel(text: "Equipment"))
+        let stack = viewsFactory.createHorizontalStack()
+        stack.addArrangedSubview(viewsFactory.createTitleLabel(text: "Equipment"))
         stack.addArrangedSubview(equipmentTextField)
         return stack
     }()
     
     private lazy var equipmentTextField: UITextField = {
-        let textField = viewsBuilder.createTextField(placeholder: "blender, frying pan, bowl")
+        let textField = viewsFactory.createTextField(placeholder: "blender, frying pan, bowl")
         textField.addTarget(self, action: #selector(equipmentDidChange), for: .editingChanged)
         return textField
     }()
     
-    init(frame: CGRect, viewsBuilder: ParametersViewFactory) {
-        self.viewsBuilder = viewsBuilder
+    init(frame: CGRect, viewsFactory: ParametersViewFactory) {
+        self.viewsFactory = viewsFactory
         super.init(frame: frame)
         setupViews()
         setupAutoLayout()

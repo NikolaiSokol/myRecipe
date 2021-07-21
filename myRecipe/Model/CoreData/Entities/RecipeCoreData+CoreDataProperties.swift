@@ -18,11 +18,11 @@ extension RecipeCoreData {
     @NSManaged public var dishTypes: [String]
     @NSManaged public var id: Int64
     @NSManaged public var image: String?
-    @NSManaged public var instructions: String
+    @NSManaged public var instructions: String?
     @NSManaged public var readyInMinutes: Int64
     @NSManaged public var savedDate: Date?
     @NSManaged public var servings: Int64
-    @NSManaged public var sourceName: String
+    @NSManaged public var sourceName: String?
     @NSManaged public var sourceUrl: String
     @NSManaged public var title: String
     @NSManaged public var extendedIngredients: NSSet?
