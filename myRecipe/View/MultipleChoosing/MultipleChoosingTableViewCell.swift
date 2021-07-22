@@ -54,7 +54,7 @@ final class MultipleChoosingTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkBoxImageView.tintColor = isSelected ? UIColor(named: "buttonTint") : .systemGray4
+        checkBoxImageView.tintColor = isSelected ? UIColor(named: "accent") : .systemGray4
     }
     
     func setItemName(_ text: String) {

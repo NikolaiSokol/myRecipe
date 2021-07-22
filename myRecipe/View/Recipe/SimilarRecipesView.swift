@@ -63,7 +63,7 @@ final class SimilarRecipesView: UIView, UICollectionViewDelegate, UICollectionVi
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),

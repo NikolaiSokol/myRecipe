@@ -130,7 +130,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         let button = UIButton(type: .system)
         button.setTitle("Detailed Nutrients", for: .normal)
         button.backgroundColor = UIColor(named: "cell")
-        button.tintColor = UIColor(named: "buttonTint")
+        button.tintColor = UIColor(named: "accent")
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(showNutriesController), for: .touchUpInside)
         return button
@@ -170,7 +170,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.isScrollEnabled = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(ExtendedIngredientsCollectionViewCell.self, forCellWithReuseIdentifier: ExtendedIngredientsCollectionViewCell.reuseIdentifier)
+        collectionView.register(IngredientsCollectionViewCell.self, forCellWithReuseIdentifier: IngredientsCollectionViewCell.reuseIdentifier)
         return collectionView
     }()
     
@@ -407,7 +407,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedIngredientsCollectionViewCell.reuseIdentifier, for: indexPath) as? ExtendedIngredientsCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientsCollectionViewCell.reuseIdentifier, for: indexPath) as? IngredientsCollectionViewCell
         else { preconditionFailure("Failed to load collection view cell") }
         
         if let recipe = viewModel.recipe {

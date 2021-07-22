@@ -37,6 +37,18 @@ final class TabBarViewController: UITabBarController {
         return navigationController
     }()
     
+    private lazy var inFridgeViewController: UIViewController = {
+        let viewModel = InFridgeViewModel(imageLoader: imageLoader)
+        
+        let viewController = InFridgeViewController(viewModel: viewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        let viewControllerItem = UITabBarItem()
+        viewControllerItem.title = "In Fridge"
+        viewControllerItem.image = UIImage(systemName: "questionmark.square")
+        viewController.tabBarItem = viewControllerItem
+        return navigationController
+    }()
+    
     private lazy var settingsViewController: UIViewController = {
         let viewModel = SettingsViewModel()
         
@@ -55,10 +67,10 @@ final class TabBarViewController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let controllers = [searchViewController, savedRecipesViewController, settingsViewController]
+        let controllers = [searchViewController, savedRecipesViewController, inFridgeViewController, settingsViewController]
         viewControllers = controllers
         
-        tabBar.tintColor = UIColor(named: "buttonTint")
+        tabBar.tintColor = UIColor(named: "accent")
         tabBar.unselectedItemTintColor = .systemGray3
     }
 }

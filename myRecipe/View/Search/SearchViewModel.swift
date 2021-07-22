@@ -70,8 +70,8 @@ final class SearchViewModel {
     func loadRecipesWithText() {
         if offset < totalResults {
             isLoading = true
-            searchManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { result in
-                DispatchQueue.main.async { [weak self] in
+            searchManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { [weak self] result in
+                DispatchQueue.main.async {
                     switch result {
                     case .success(let loadedRecipes):
                         self?.lastSearch = .withText
@@ -92,8 +92,8 @@ final class SearchViewModel {
         
         if offset < totalResults {
             isLoading = true
-            searchManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { result in
-                DispatchQueue.main.async { [weak self] in
+            searchManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { [weak self] result in
+                DispatchQueue.main.async {
                     switch result {
                     case .success(let loadedRecipes):
                         self?.lastSearch = .withParameters
@@ -122,9 +122,9 @@ final class SearchViewModel {
     
     // MARK: - Autocomplete
     
-    func loadAutocomplete() {
-        searchManager.loadAutocomplete(text: searchedText.lowercased()) { result in
-            DispatchQueue.main.async { [weak self] in
+    private func loadAutocomplete() {
+        searchManager.loadAutocomplete(text: searchedText.lowercased()) { [weak self] result in
+            DispatchQueue.main.async {
                 switch result {
                 case .success(let autocompletions):
                     self?.autocompletions = autocompletions
@@ -138,8 +138,8 @@ final class SearchViewModel {
     // MARK: - Image
     
     func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: url) { result in
-            DispatchQueue.main.async {  [weak self] in
+        imageLoader.loadImage(imageUrl: url) { [weak self] result in
+            DispatchQueue.main.async {
                 switch result {
                 case .success(let loadedImage):
                     completion(loadedImage)

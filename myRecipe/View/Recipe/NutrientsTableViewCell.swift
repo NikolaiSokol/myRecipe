@@ -20,7 +20,7 @@ final class NutrientsTableViewCell: UITableViewCell {
     private lazy var dailyNeedsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "buttonTint")
+        view.backgroundColor = UIColor(named: "accent")
         view.layer.cornerRadius = 5
         return view
     }()
@@ -28,7 +28,7 @@ final class NutrientsTableViewCell: UITableViewCell {
     private lazy var percentsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(named: "buttonTint")
+        label.textColor = UIColor(named: "accent")
         label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()

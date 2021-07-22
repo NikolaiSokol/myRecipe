@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
     
-    var autocompletionTimer: Timer?
+    private var autocompletionTimer: Timer?
     
     private lazy var searchController: UISearchController = {
         let resultController = SearchResultsViewController(viewModel: viewModel)
@@ -27,7 +27,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search"
         
-        resultController.autocompletionWasChosen = { [weak self] _ in
+        resultController.autocompletionWasChosen = { [weak self] in
             self?.viewModel.recipes.removeAll()
             self?.viewModel.loadRecipesWithText()
             searchController.searchBar.text = self?.viewModel.searchedText
@@ -39,7 +39,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private lazy var searchParametersButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "slider.vertical.3"), for: .normal)
-        button.tintColor = UIColor(named: "buttonTint")
+        button.tintColor = UIColor(named: "accent")
         button.addTarget(self, action: #selector(showSearchParametersController), for: .touchUpInside)
         return button
     }()

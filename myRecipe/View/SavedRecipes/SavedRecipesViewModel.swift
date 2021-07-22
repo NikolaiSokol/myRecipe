@@ -62,8 +62,8 @@ final class SavedRecipesViewModel: NSObject, NSFetchedResultsControllerDelegate 
     // MARK: - Image
     
     func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: url) { result in
-            DispatchQueue.main.async {  [weak self] in
+        imageLoader.loadImage(imageUrl: url) { [weak self] result in
+            DispatchQueue.main.async {
                 switch result {
                 case .success(let loadedImage):
                     completion(loadedImage)

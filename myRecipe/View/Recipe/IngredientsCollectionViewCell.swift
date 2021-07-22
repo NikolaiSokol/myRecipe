@@ -1,5 +1,5 @@
 //
-//  ExtendedIngredientsCollectionViewCell.swift
+//  IngredientsCollectionViewCell.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 12.07.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ExtendedIngredientsCollectionViewCell: UICollectionViewCell {
+final class IngredientsCollectionViewCell: UICollectionViewCell {
     
     private lazy var ingredientImageView: UIImageView = {
         let imageView = UIImageView()

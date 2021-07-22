@@ -11,7 +11,7 @@ final class SearchResultsViewController: UIViewController, UITableViewDelegate, 
     
     private let viewModel: SearchViewModel
     
-    var autocompletionWasChosen: ((Bool) -> Void)?
+    var autocompletionWasChosen: (() -> Void)?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -61,7 +61,7 @@ final class SearchResultsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.searchedText = viewModel.autocompletions[indexPath.row].title.capitalizingFirstLetter()
-        autocompletionWasChosen?(true)
+        autocompletionWasChosen?()
         dismiss(animated: true, completion: nil)
     }
     

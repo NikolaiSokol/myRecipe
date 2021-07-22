@@ -133,7 +133,7 @@ final class SearchParametersViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.layer.cornerRadius = 25
         button.setTitle("Search", for: .normal)
-        button.tintColor = UIColor(named: "buttonTint")
+        button.tintColor = UIColor(named: "accent")
         button.backgroundColor = UIColor(named: "cell")
         button.addTarget(self, action: #selector(search), for: .touchUpInside)
         return button
