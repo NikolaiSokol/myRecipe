@@ -7,10 +7,12 @@
 
 import UIKit
 
-final class RecipeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+final class RecipeViewController: UIViewController {
     
     private let viewModel: RecipeViewModel
     private let loadingScreen = LoadingScreenViewController()
+
+    private var extendedIngredientsViewHeightConstraint = NSLayoutConstraint()
     
     private lazy var saveRecipeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -48,7 +50,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         stack.addArrangedSubview(shortInfoStack)
         stack.addArrangedSubview(extendedIngredientsTitleLabel)
         stack.addArrangedSubview(measuresSegmentedControl)
-        stack.addArrangedSubview(extendedIngredientsCollectionView)
+        stack.addArrangedSubview(extendedIngredientsView)
         stack.addArrangedSubview(instructionsTitleLabel)
         stack.addArrangedSubview(instructionsLabel)
         stack.addArrangedSubview(recipeSourceButton)
@@ -160,18 +162,10 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         return segmentedControl
     }()
     
-    private lazy var extendedIngredientsCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 100, height: 200)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(named: "cell")
-        collectionView.isScrollEnabled = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(IngredientsCollectionViewCell.self, forCellWithReuseIdentifier: IngredientsCollectionViewCell.reuseIdentifier)
-        return collectionView
+    private lazy var extendedIngredientsView: ExtendedIngredientsView = {
+        let view = ExtendedIngredientsView(frame: .zero, viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var instructionsTitleLabel: UILabel = {
@@ -312,7 +306,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
             carbsLabel.text = "Carbs: " + String(recipe.nutrition.caloricBreakdown.percentCarbs) + "%"
             nutrientsButton.isEnabled = true
             
-            extendedIngredientsCollectionView.reloadData()
+            extendedIngredientsView.reloadData()
             changeCollectionViewHeight()
             
             if let instructions = recipe.instructions, let sourceName = recipe.sourceName {
@@ -328,10 +322,11 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: - Changing Collection View height
     
     private func changeCollectionViewHeight() {
-        extendedIngredientsCollectionView.constraints.forEach { $0.isActive = false }
-        let height = extendedIngredientsCollectionView.collectionViewLayout.collectionViewContentSize.height
-        
-        extendedIngredientsCollectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        extendedIngredientsViewHeightConstraint.isActive = false
+        extendedIngredientsViewHeightConstraint = extendedIngredientsView.heightAnchor.constraint(
+            equalToConstant: extendedIngredientsView.getContentSizeHeight()
+        )
+        extendedIngredientsViewHeightConstraint.isActive = true
     }
     
     // MARK: - Core Data
@@ -360,7 +355,7 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
             viewModel.setMeasureSystem(.US)
         }
         
-        extendedIngredientsCollectionView.reloadData()
+        extendedIngredientsView.reloadData()
     }
     
     // MARK: - Opening instructions in Safari
@@ -396,41 +391,5 @@ final class RecipeViewController: UIViewController, UICollectionViewDelegate, UI
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let recipe = viewModel.recipe {
-            return recipe.extendedIngredients.count
-        } else {
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientsCollectionViewCell.reuseIdentifier, for: indexPath) as? IngredientsCollectionViewCell
-        else { preconditionFailure("Failed to load collection view cell") }
-        
-        if let recipe = viewModel.recipe {
-            if let imageName = recipe.extendedIngredients[indexPath.item].image {
-                viewModel.loadIngredientImage(name: imageName) { image in
-                    cell.setIngredientImage(image)
-                }
-            } else {
-                if let noImage = UIImage(named: "noImage") {
-                    cell.setIngredientImage(noImage)
-                }
-            }
-            
-            cell.setName(recipe.extendedIngredients[indexPath.item].name.capitalizingFirstLetter())
-            
-            switch viewModel.chosenMeasure {
-            case .metric:
-                cell.setAmount(String(recipe.extendedIngredients[indexPath.item].measures.metric.amount) + " " + recipe.extendedIngredients[indexPath.item].measures.metric.unitLong)
-            case .US:
-                cell.setAmount(String(recipe.extendedIngredients[indexPath.item].measures.us.amount) + " " + recipe.extendedIngredients[indexPath.item].measures.us.unitLong)
-            }
-        }
-        
-        return cell
     }
 }

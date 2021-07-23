@@ -83,8 +83,9 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                 self?.makeRecipeFromCoreData()
             }
         }
-        
-        loadSimilarRecipes()
+
+        // Отключил потому, что сжирает много дневной квоты на запросы
+//        loadSimilarRecipes()
     }
     
     private func performFetch() {

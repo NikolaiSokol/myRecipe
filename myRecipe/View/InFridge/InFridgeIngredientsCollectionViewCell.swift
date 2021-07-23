@@ -62,10 +62,12 @@ final class InFridgeIngredientsCollectionViewCell: UICollectionViewCell {
 
             nameLabel.centerYAnchor.constraint(equalTo: nameBackgroundView.centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: nameBackgroundView.leadingAnchor, constant: 10),
-            nameLabel.trailingAnchor.constraint(equalTo: nameBackgroundView.trailingAnchor, constant: -40),
+            nameLabel.trailingAnchor.constraint(equalTo: nameBackgroundView.trailingAnchor, constant: -35),
 
             deleteButton.centerYAnchor.constraint(equalTo: nameBackgroundView.centerYAnchor),
-            deleteButton.trailingAnchor.constraint(equalTo: nameBackgroundView.trailingAnchor, constant: -5)
+            deleteButton.trailingAnchor.constraint(equalTo: nameBackgroundView.trailingAnchor, constant: -5),
+            deleteButton.widthAnchor.constraint(equalToConstant: 30),
+            deleteButton.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 

@@ -14,6 +14,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
     private let coreDataStack: CoreDataStack
     
     private var autocompletionTimer: Timer?
+    private var chosenIngredientsViewHeightConstraint = NSLayoutConstraint()
     
     private lazy var searchController: UISearchController = {
         let searchResultsController = IngredientsSearchResultsViewController(viewModel: viewModel)
@@ -32,11 +33,18 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         return searchController
     }()
 
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
     private lazy var whatsInFridgeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "What's in your fridge?"
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         return label
     }()
 
@@ -44,6 +52,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.backgroundColor = UIColor(named: "accent")
         button.tintColor = .white
         button.layer.cornerRadius = 25
@@ -64,7 +73,10 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         button.tintColor = UIColor(named: "accent")
         button.backgroundColor = UIColor(named: "cell")
         button.layer.cornerRadius = 20
+        button.layer.borderColor = UIColor(named: "accent")?.cgColor
+        button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(showSearchResults), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
 
@@ -97,7 +109,21 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         setupAutoLayout()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { [weak self] _ in
+            self?.changeChosenIngredientsViewHeight()
+        }
+    }
+
     private func bindViewModel() {
+        viewModel.ingredientsChanged = { [weak self] in
+            guard let self = self else { return }
+            self.chosenIngredientsView.reloadData()
+            self.changeChosenIngredientsViewHeight()
+            self.searchButton.isEnabled = !self.viewModel.ingredients.isEmpty
+        }
+
         viewModel.errorOccured = { [weak self] in
             self?.showErrorAlert()
         }
@@ -108,33 +134,47 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
         navigationItem.searchController = searchController
 
-        view.addSubview(whatsInFridgeLabel)
-        view.addSubview(addIngredientButton)
-        view.addSubview(chosenIngredientsView)
-        view.addSubview(searchButton)
+        view.addSubview(scrollView)
+        scrollView.addSubview(whatsInFridgeLabel)
+        scrollView.addSubview(chosenIngredientsView)
+        scrollView.addSubview(addIngredientButton)
+        scrollView.addSubview(searchButton)
     }
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            whatsInFridgeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            whatsInFridgeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            whatsInFridgeLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            whatsInFridgeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            whatsInFridgeLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
+            whatsInFridgeLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -20),
 
-            addIngredientButton.topAnchor.constraint(equalTo: whatsInFridgeLabel.bottomAnchor, constant: 10),
-            addIngredientButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            chosenIngredientsView.topAnchor.constraint(equalTo: whatsInFridgeLabel.bottomAnchor, constant: 10),
+            chosenIngredientsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
+            chosenIngredientsView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -20),
+
+            addIngredientButton.topAnchor.constraint(equalTo: chosenIngredientsView.bottomAnchor, constant: 10),
+            addIngredientButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
             addIngredientButton.widthAnchor.constraint(equalToConstant: 50),
             addIngredientButton.heightAnchor.constraint(equalToConstant: 50),
 
-            chosenIngredientsView.centerYAnchor.constraint(equalTo: addIngredientButton.centerYAnchor),
-            chosenIngredientsView.leadingAnchor.constraint(equalTo: addIngredientButton.trailingAnchor),
-            chosenIngredientsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            chosenIngredientsView.heightAnchor.constraint(equalTo: addIngredientButton.heightAnchor),
-
             searchButton.topAnchor.constraint(equalTo: addIngredientButton.bottomAnchor, constant: 10),
-            searchButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            searchButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            searchButton.heightAnchor.constraint(equalToConstant: 40)
+            searchButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
+            searchButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -20),
+            searchButton.heightAnchor.constraint(equalToConstant: 40),
+            searchButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
+    }
+
+    private func changeChosenIngredientsViewHeight() {
+        chosenIngredientsViewHeightConstraint.isActive = false
+        chosenIngredientsViewHeightConstraint = chosenIngredientsView.heightAnchor.constraint(
+            equalToConstant: chosenIngredientsView.getContentSizeHeight()
+        )
+        chosenIngredientsViewHeightConstraint.isActive = true
     }
 
     @objc private func addIngredient() {

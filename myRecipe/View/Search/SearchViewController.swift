@@ -28,8 +28,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         searchController.searchBar.placeholder = "Search"
         
         resultController.autocompletionWasChosen = { [weak self] in
-            self?.viewModel.recipes.removeAll()
-            self?.viewModel.loadRecipesWithText()
+            self?.search()
             searchController.searchBar.text = self?.viewModel.searchedText
         }
         
@@ -43,6 +42,15 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         button.addTarget(self, action: #selector(showSearchParametersController), for: .touchUpInside)
         return button
     }()
+
+    private lazy var youMayLikeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "You may like these recipes"
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        return label
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -54,6 +62,8 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
         return tableView
     }()
+
+    private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: youMayLikeLabel.bottomAnchor, constant: 10)
     
     init(viewModel: SearchViewModel, parametersViewFactory: ParametersViewFactory, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
         self.viewModel = viewModel
@@ -74,6 +84,8 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         setupNavigationBar()
         setupViews()
         setupAutoLayout()
+
+        viewModel.loadRandomRecipes()
     }
     
     private func bindViewModel() {
@@ -98,13 +110,18 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     private func setupViews() {
         view.backgroundColor = UIColor(named: "background")
-        
+
+        view.addSubview(youMayLikeLabel)
         view.addSubview(tableView)
     }
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            youMayLikeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            youMayLikeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            youMayLikeLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+
+            tableViewTopConstraint,
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -158,12 +175,23 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchController.dismiss(animated: true, completion: nil)
-        viewModel.recipes.removeAll()
-        viewModel.loadRecipesWithText()
+        search()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewModel.autocompletions.removeAll()
+    }
+
+    private func search() {
+        if youMayLikeLabel.isDescendant(of: view) {
+            youMayLikeLabel.removeFromSuperview()
+            tableViewTopConstraint.isActive = false
+            tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+            tableViewTopConstraint.isActive = true
+        }
+
+        viewModel.recipes.removeAll()
+        viewModel.loadRecipesWithText()
     }
     
     // MARK: - Infinite Scrolling

@@ -66,6 +66,22 @@ final class SearchViewModel {
     }
     
     // MARK: - Recipes
+
+    func loadRandomRecipes() {
+        isLoading = true
+        searchManager.loadRandomRecipes { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let loadedRandom):
+                    self?.recipes = loadedRandom.recipes
+                    self?.isLoading = false
+                case .failure:
+                    self?.errorOccured?()
+                    self?.isLoading = false
+                }
+            }
+        }
+    }
     
     func loadRecipesWithText() {
         if offset < totalResults {

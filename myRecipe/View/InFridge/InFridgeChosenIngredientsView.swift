@@ -7,20 +7,18 @@
 
 import UIKit
 
-final class InFridgeChosenIngredientsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+final class InFridgeChosenIngredientsView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     private let viewModel: InFridgeViewModel
 
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        flowLayout.scrollDirection = .horizontal
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor(named: "background")
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(InFridgeIngredientsCollectionViewCell.self, forCellWithReuseIdentifier: InFridgeIngredientsCollectionViewCell.reuseIdentifier)
@@ -30,7 +28,6 @@ final class InFridgeChosenIngredientsView: UIView, UICollectionViewDelegate, UIC
     init(frame: CGRect, viewModel: InFridgeViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
-        bindViewModel()
         setupViews()
         setupAutoLayout()
     }
@@ -38,12 +35,6 @@ final class InFridgeChosenIngredientsView: UIView, UICollectionViewDelegate, UIC
     @available(*, unavailable)
     required init(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    private func bindViewModel() {
-        viewModel.ingredientsChanged = { [weak self] in
-            self?.collectionView.reloadData()
-        }
     }
 
     private func setupViews() {
@@ -58,6 +49,23 @@ final class InFridgeChosenIngredientsView: UIView, UICollectionViewDelegate, UIC
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    func reloadData() {
+        collectionView.reloadData()
+    }
+
+    func getContentSizeHeight() -> CGFloat {
+        collectionView.collectionViewLayout.collectionViewContentSize.height
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = viewModel.ingredients[indexPath.item]
+        let itemSize = item.size(withAttributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)
+        ])
+
+        return CGSize(width: itemSize.width + 50, height: 50)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
