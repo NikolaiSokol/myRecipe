@@ -7,15 +7,16 @@
 
 import Foundation
 
-struct InFridgeNetworkManager {
+struct InFridgeNetworkManager: InFridgeNetworkManagerProtocol {
     
-    private let session: URLSession = .shared
+    private let session: URLSessionProtocol
     private let searchBaseURL = "https://api.spoonacular.com/recipes/findByIngredients"
     private let autocompleteBaseURL = "https://api.spoonacular.com/food/ingredients/autocomplete"
     private let apiKey = "6553758da0eb441587641966ca80aeb9"
-    
-    typealias AutocompleteCompletion = (Result<[AutocompleteIngredientResponse], Error>) -> Void
-    typealias RecipesCompletion = (Result<[SearchedRecipe], Error>) -> Void
+
+    init(session: URLSessionProtocol) {
+        self.session = session
+    }
     
     func loadAutocomplete(text: String, completion: @escaping AutocompleteCompletion) {
         var components = URLComponents(string: autocompleteBaseURL)
@@ -34,7 +35,7 @@ struct InFridgeNetworkManager {
         session.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
-                    let decodedResponse = try JSONDecoder().decode([AutocompleteIngredientResponse].self, from: data)
+                    let decodedResponse = try JSONDecoder().decode([AutocompleteIngredient].self, from: data)
                     let autocomplete = decodedResponse
                     completion(.success(autocomplete))
                 } catch let DecodingError.dataCorrupted(context) {
@@ -57,6 +58,11 @@ struct InFridgeNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+
         }.resume()
     }
 
@@ -100,6 +106,11 @@ struct InFridgeNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+            
         }.resume()
     }
 }

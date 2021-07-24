@@ -7,16 +7,17 @@
 
 import Foundation
 
-struct RecipeNetworkManager {
+struct RecipeNetworkManager: RecipeNetworkManagerProtocol {
     
-    private let session: URLSession = .shared
+    private let session: URLSessionProtocol
     private let baseURL = "https://api.spoonacular.com/recipes/"
     private let apiKey = "6553758da0eb441587641966ca80aeb9"
     
     private let queue = DispatchQueue(label: "RecipeNetworkManagerQueue", attributes: .concurrent)
-    
-    typealias RecipeCompletion = (Result<Recipe, Error>) -> Void
-    typealias SimilarRecipesCompletion = (Result<[SearchedRecipe], Error>) -> Void
+
+    init(session: URLSessionProtocol) {
+        self.session = session
+    }
     
     func loadRecipe(id: Int, completion: @escaping RecipeCompletion) {
         var components = URLComponents(string: baseURL + String(id) + "/information")
@@ -57,6 +58,11 @@ struct RecipeNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+
         }.resume()
     }
     
@@ -76,28 +82,8 @@ struct RecipeNetworkManager {
                 do {
                     let decodedResponse = try JSONDecoder().decode([SimilarRecipe].self, from: data)
                     let similarRecipes = decodedResponse
-
-                    let group = DispatchGroup()
-                    
-                    var recipes = [SearchedRecipe]()
-                    similarRecipes.forEach {
-                        group.enter()
-                        loadRecipe(id: $0.id) { result in
-                            switch result {
-                            case .success(let recipeInfo):
-                                if let image = recipeInfo.image {
-                                    let recipe = SearchedRecipe(id: recipeInfo.id, title: recipeInfo.title, image: image)
-                                    recipes.append(recipe)
-                                    group.leave()
-                                }
-                            case .failure(let error):
-                                completion(.failure(error))
-                            }
-                        }
-                    }
-                    
-                    group.notify(queue: queue) {
-                        completion(.success(recipes))
+                    loadSimilarRecipesImages(similarRecipes: similarRecipes) { result in
+                        completion(result)
                     }
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)
@@ -119,6 +105,36 @@ struct RecipeNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+
         }.resume()
+    }
+
+    private func loadSimilarRecipesImages(similarRecipes: [SimilarRecipe], completion: @escaping SimilarRecipesCompletion) {
+        let group = DispatchGroup()
+
+        var recipes = [SearchedRecipe]()
+        similarRecipes.forEach {
+            group.enter()
+            loadRecipe(id: $0.id) { result in
+                switch result {
+                case .success(let recipeInfo):
+                    if let image = recipeInfo.image {
+                        let recipe = SearchedRecipe(id: recipeInfo.id, title: recipeInfo.title, image: image)
+                        recipes.append(recipe)
+                        group.leave()
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+
+        group.notify(queue: queue) {
+            completion(.success(recipes))
+        }
     }
 }

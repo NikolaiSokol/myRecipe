@@ -12,6 +12,7 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
     private let viewModel: SavedRecipesViewModel
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
+    private let session: URLSessionProtocol
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -33,10 +34,11 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
         return tableView
     }()
     
-    init(viewModel: SavedRecipesViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
+    init(viewModel: SavedRecipesViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, session: URLSessionProtocol) {
         self.viewModel = viewModel
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
+        self.session = session
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -120,6 +122,7 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
         let recipe = viewModel.fetchedResultsController.object(at: indexPath)
         
         let recipeViewModel = RecipeViewModel(
+            networkManager: RecipeNetworkManager(session: session),
             imageLoader: imageLoader,
             coreDataStack: coreDataStack,
             coreDataRecipe: recipe

@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct SearchRecipesNetworkManager {
+struct SearchRecipesNetworkManager: SearchRecipesNetworkManagerProtocol {
     
-    private let session: URLSession = .shared
+    private let session: URLSessionProtocol
     private let searchBaseURL = "https://api.spoonacular.com/recipes/complexSearch"
     private let autocompleteBaseURL = "https://api.spoonacular.com/recipes/autocomplete"
     private let randomBaseURL = "https://api.spoonacular.com/recipes/random"
@@ -17,9 +17,9 @@ struct SearchRecipesNetworkManager {
     
     private let userDefaults = UserDefaults.standard
 
-    typealias AutocompleteCompletion = (Result<[AutocompleteRecipeSearchResponse], Error>) -> Void
-    typealias RandomCompletion = (Result<RandomRecipesResponse, Error>) -> Void
-    typealias SearchCompletion = (Result<SearchedRecipesResponse, Error>) -> Void
+    init(session: URLSessionProtocol) {
+        self.session = session
+    }
 
     func loadAutocomplete(text: String, completion: @escaping AutocompleteCompletion) {
         var components = URLComponents(string: autocompleteBaseURL)
@@ -38,7 +38,7 @@ struct SearchRecipesNetworkManager {
         session.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
-                    let decodedResponse = try JSONDecoder().decode([AutocompleteRecipeSearchResponse].self, from: data)
+                    let decodedResponse = try JSONDecoder().decode([AutocompleteRecipeSearch].self, from: data)
                     let autocomplete = decodedResponse
                     completion(.success(autocomplete))
                 } catch let DecodingError.dataCorrupted(context) {
@@ -61,6 +61,11 @@ struct SearchRecipesNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+
         }.resume()
     }
 
@@ -80,7 +85,7 @@ struct SearchRecipesNetworkManager {
         session.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
-                    let decodedResponse = try JSONDecoder().decode(RandomRecipesResponse.self, from: data)
+                    let decodedResponse = try JSONDecoder().decode(RandomRecipes.self, from: data)
                     let autocomplete = decodedResponse
                     completion(.success(autocomplete))
                 } catch let DecodingError.dataCorrupted(context) {
@@ -103,6 +108,11 @@ struct SearchRecipesNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+
         }.resume()
     }
     
@@ -231,7 +241,7 @@ struct SearchRecipesNetworkManager {
         session.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
-                    let decodedResponse = try JSONDecoder().decode(SearchedRecipesResponse.self, from: data)
+                    let decodedResponse = try JSONDecoder().decode(SearchedRecipes.self, from: data)
                     let recipes = decodedResponse
                     completion(.success(recipes))
                 } catch let DecodingError.dataCorrupted(context) {
@@ -254,6 +264,11 @@ struct SearchRecipesNetworkManager {
                     completion(.failure(error))
                 }
             }
+
+            if let error = error {
+                completion(.failure(error))
+            }
+
         }.resume()
     }
 }

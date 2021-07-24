@@ -138,6 +138,7 @@ final class SearchParametersViewController: UIViewController {
         button.layer.borderColor = UIColor(named: "accent")?.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(search), for: .touchUpInside)
+        button.accessibilityLabel = "searchWithParametersButton"
         return button
     }()
     
@@ -162,6 +163,8 @@ final class SearchParametersViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    var searchButtonWasTapped: (() -> Void)?
     
     init(viewModel: SearchViewModel, parametersViewFactory: ParametersViewFactory) {
         self.viewModel = viewModel
@@ -374,6 +377,8 @@ final class SearchParametersViewController: UIViewController {
             minZinc: fromAlchoholToZincView.zincView.chosenMin,
             maxZinc: fromAlchoholToZincView.zincView.chosenMax
         )
+
+        searchButtonWasTapped?()
         
         navigationController?.popViewController(animated: true)
         

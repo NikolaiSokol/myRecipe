@@ -31,6 +31,7 @@ final class InFridgeIngredientsCollectionViewCell: UICollectionViewCell {
         button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(deleteIngredient), for: .touchUpInside)
+        button.accessibilityIdentifier = "deleteIngredientButton"
         return button
     }()
 

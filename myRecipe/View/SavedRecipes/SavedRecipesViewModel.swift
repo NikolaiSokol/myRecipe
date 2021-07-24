@@ -10,7 +10,7 @@ import CoreData
 
 final class SavedRecipesViewModel: NSObject, NSFetchedResultsControllerDelegate {
     
-    private let imageLoader: ImageLoadingManager
+    private let imageLoader: ImageLoadingManagerProtocol
     private let coreDataStack: CoreDataStack
     
     private(set) lazy var fetchedResultsController: NSFetchedResultsController<RecipeCoreData> = {
@@ -32,7 +32,7 @@ final class SavedRecipesViewModel: NSObject, NSFetchedResultsControllerDelegate 
     var recipesChanged: (() -> Void)?
     var errorOccured: (() -> Void)?
     
-    init(imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
+    init(imageLoader: ImageLoadingManagerProtocol, coreDataStack: CoreDataStack) {
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
     }

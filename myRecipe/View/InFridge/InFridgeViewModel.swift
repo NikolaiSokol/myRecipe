@@ -9,8 +9,8 @@ import UIKit
 
 final class InFridgeViewModel {
     
-    private let imageLoader: ImageLoadingManager
-    private let networkManager = InFridgeNetworkManager()
+    private let imageLoader: ImageLoadingManagerProtocol
+    private let networkManager: InFridgeNetworkManagerProtocol
 
     private var isLoading = false {
         didSet {
@@ -38,7 +38,7 @@ final class InFridgeViewModel {
         }
     }
     
-    var autocompletions = [AutocompleteIngredientResponse]() {
+    var autocompletions = [AutocompleteIngredient]() {
         didSet {
             autocompletionsChanged?()
         }
@@ -50,8 +50,9 @@ final class InFridgeViewModel {
     var showingSpinner: ((Bool) -> Void)?
     var errorOccured: (() -> Void)?
     
-    init(imageLoader: ImageLoadingManager) {
+    init(imageLoader: ImageLoadingManagerProtocol, networkManager: InFridgeNetworkManagerProtocol) {
         self.imageLoader = imageLoader
+        self.networkManager = networkManager
     }
 
     // MARK: - Autocomplete
@@ -63,7 +64,7 @@ final class InFridgeViewModel {
                 case .success(let autocompletions):
                     self?.autocompletions = autocompletions
                 case .failure:
-                    self?.errorOccured?()
+                    break
                 }
             }
         }

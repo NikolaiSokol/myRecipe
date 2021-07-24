@@ -8,15 +8,23 @@
 import UIKit
 
 final class TabBarViewController: UITabBarController {
-    
+
+    private let session: URLSession = .shared
     private let parametersViewFactory = ParametersViewFactory()
-    private let imageLoader = ImageLoadingManager()
+    private lazy var imageLoader = ImageLoadingManager(session: session)
     private let coreDataStack = CoreDataStack()
 
     private lazy var searchViewController: UIViewController = {
-        let searchViewModel = SearchViewModel(imageLoader: imageLoader)
+        let networkManager = SearchRecipesNetworkManager(session: session)
+        let searchViewModel = SearchViewModel(networkManager: networkManager, imageLoader: imageLoader)
         
-        let viewController = SearchViewController(viewModel: searchViewModel, parametersViewFactory: parametersViewFactory, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let viewController = SearchViewController(
+            viewModel: searchViewModel,
+            parametersViewFactory: parametersViewFactory,
+            imageLoader: imageLoader,
+            coreDataStack: coreDataStack,
+            session: session
+        )
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Search"
@@ -28,7 +36,12 @@ final class TabBarViewController: UITabBarController {
     private lazy var savedRecipesViewController: UIViewController = {
         let viewModel = SavedRecipesViewModel(imageLoader: imageLoader, coreDataStack: coreDataStack)
         
-        let viewController = SevedRecipesViewController(viewModel: viewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let viewController = SevedRecipesViewController(
+            viewModel: viewModel,
+            imageLoader: imageLoader,
+            coreDataStack: coreDataStack,
+            session: session
+        )
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "Saved"
@@ -38,9 +51,15 @@ final class TabBarViewController: UITabBarController {
     }()
     
     private lazy var inFridgeViewController: UIViewController = {
-        let viewModel = InFridgeViewModel(imageLoader: imageLoader)
+        let networkManager = InFridgeNetworkManager(session: session)
+        let viewModel = InFridgeViewModel(imageLoader: imageLoader, networkManager: networkManager)
         
-        let viewController = InFridgeViewController(viewModel: viewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let viewController = InFridgeViewController(
+            viewModel: viewModel,
+            imageLoader: imageLoader,
+            coreDataStack: coreDataStack,
+            session: session
+        )
         let navigationController = UINavigationController(rootViewController: viewController)
         let viewControllerItem = UITabBarItem()
         viewControllerItem.title = "In Fridge"

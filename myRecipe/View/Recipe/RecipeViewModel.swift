@@ -11,8 +11,8 @@ import CoreData
 final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     
     private let queue = DispatchQueue(label: "RecipeViewModelQueue", attributes: .concurrent)
-    private let recipeManager = RecipeNetworkManager()
-    private let imageLoader: ImageLoadingManager
+    private let networkManager: RecipeNetworkManagerProtocol
+    private let imageLoader: ImageLoadingManagerProtocol
     private let coreDataStack: CoreDataStack
     private let recipeId: Int
     private let coreDataRecipe: RecipeCoreData?
@@ -57,14 +57,16 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     var showingSpinner: ((Bool) -> Void)?
     var errorOccured: (() -> Void)?
     
-    init(imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, recipeId: Int) {
+    init(networkManager: RecipeNetworkManagerProtocol, imageLoader: ImageLoadingManagerProtocol, coreDataStack: CoreDataStack, recipeId: Int) {
+        self.networkManager = networkManager
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
         self.recipeId = recipeId
         self.coreDataRecipe = nil
     }
     
-    init(imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, coreDataRecipe: RecipeCoreData) {
+    init(networkManager: RecipeNetworkManagerProtocol, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, coreDataRecipe: RecipeCoreData) {
+        self.networkManager = networkManager
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
         self.recipeId = Int(coreDataRecipe.id)
@@ -84,8 +86,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
             }
         }
 
-        // Отключил потому, что сжирает много дневной квоты на запросы
-//        loadSimilarRecipes()
+        loadSimilarRecipes()
     }
     
     private func performFetch() {
@@ -98,7 +99,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     
     private func loadRecipeFromNetwork() {
         isLoading = true
-        recipeManager.loadRecipe(id: recipeId) { result in
+        networkManager.loadRecipe(id: recipeId) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let recipe):
@@ -113,7 +114,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     private func loadSimilarRecipes() {
-        recipeManager.loadSimilarRecipes(id: recipeId) { result in
+        networkManager.loadSimilarRecipes(id: recipeId) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let recipes):
@@ -315,8 +316,12 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     // MARK: - Getters for showing similar recipes
+
+    func getNetworkManager() -> RecipeNetworkManagerProtocol {
+        networkManager
+    }
     
-    func getImageLoader() -> ImageLoadingManager {
+    func getImageLoader() -> ImageLoadingManagerProtocol {
         imageLoader
     }
     

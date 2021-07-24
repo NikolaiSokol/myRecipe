@@ -15,6 +15,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     private let parametersViewFactory: ParametersViewFactory
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
+    private let session: URLSessionProtocol
     
     private var autocompletionTimer: Timer?
     
@@ -40,6 +41,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         button.setImage(UIImage(systemName: "slider.vertical.3"), for: .normal)
         button.tintColor = UIColor(named: "accent")
         button.addTarget(self, action: #selector(showSearchParametersController), for: .touchUpInside)
+        button.accessibilityLabel = "searchParametersButton"
         return button
     }()
 
@@ -60,16 +62,18 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
+        tableView.accessibilityLabel = "searchTableView"
         return tableView
     }()
 
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: youMayLikeLabel.bottomAnchor, constant: 10)
     
-    init(viewModel: SearchViewModel, parametersViewFactory: ParametersViewFactory, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
+    init(viewModel: SearchViewModel, parametersViewFactory: ParametersViewFactory, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, session: URLSessionProtocol) {
         self.viewModel = viewModel
         self.parametersViewFactory = parametersViewFactory
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
+        self.session = session
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -132,6 +136,11 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc private func showSearchParametersController() {
         let parametersController = SearchParametersViewController(viewModel: viewModel, parametersViewFactory: parametersViewFactory)
+        
+        parametersController.searchButtonWasTapped = { [weak self] in
+            self?.removeYouMayLikeLabel()
+        }
+        
         navigationController?.pushViewController(parametersController, animated: true)
     }
     
@@ -183,15 +192,19 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     private func search() {
+        removeYouMayLikeLabel()
+
+        viewModel.recipes.removeAll()
+        viewModel.loadRecipesWithText()
+    }
+
+    private func removeYouMayLikeLabel() {
         if youMayLikeLabel.isDescendant(of: view) {
             youMayLikeLabel.removeFromSuperview()
             tableViewTopConstraint.isActive = false
             tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
             tableViewTopConstraint.isActive = true
         }
-
-        viewModel.recipes.removeAll()
-        viewModel.loadRecipesWithText()
     }
     
     // MARK: - Infinite Scrolling
@@ -209,6 +222,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipeViewModel = RecipeViewModel(
+            networkManager: RecipeNetworkManager(session: session),
             imageLoader: imageLoader,
             coreDataStack: coreDataStack,
             recipeId: viewModel.recipes[indexPath.row].id
@@ -238,6 +252,9 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         viewModel.loadImage(url: imageUrl) { image in
             cell.setRecipeImage(image)
         }
+
+        cell.accessibilityIdentifier = "cell_\(indexPath.row)"
+
         return cell
     }
 }

@@ -14,6 +14,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
     private let viewModel: InFridgeViewModel
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
+    private let session: URLSessionProtocol
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -41,10 +42,11 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
 
     var newSearchButtonWasTapped: (() -> Void)?
 
-    init(viewModel: InFridgeViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
+    init(viewModel: InFridgeViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, session: URLSessionProtocol) {
         self.viewModel = viewModel
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
+        self.session = session
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -112,6 +114,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipeViewModel = RecipeViewModel(
+            networkManager: RecipeNetworkManager(session: session),
             imageLoader: imageLoader,
             coreDataStack: coreDataStack,
             recipeId: viewModel.recipes[indexPath.row].id

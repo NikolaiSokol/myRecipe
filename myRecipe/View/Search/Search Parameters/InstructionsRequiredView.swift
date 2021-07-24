@@ -23,6 +23,7 @@ final class InstructionsRequiredView: UIView {
     private lazy var switchView: UISwitch = {
         let switchView = UISwitch()
         switchView.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        switchView.accessibilityLabel = "instructionsRequiredSwitch"
         return switchView
     }()
 

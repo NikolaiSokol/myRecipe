@@ -14,8 +14,8 @@ final class SearchViewModel {
         case withParameters
     }
     
-    private let searchManager = SearchRecipesNetworkManager()
-    private let imageLoader: ImageLoadingManager
+    private let networkManager: SearchRecipesNetworkManagerProtocol
+    private let imageLoader: ImageLoadingManagerProtocol
     
     private var lastSearch: LastSearchType
     
@@ -49,7 +49,7 @@ final class SearchViewModel {
         }
     }
     
-    var autocompletions = [AutocompleteRecipeSearchResponse]() {
+    var autocompletions = [AutocompleteRecipeSearch]() {
         didSet {
             autocompletionsChanged?()
         }
@@ -60,7 +60,8 @@ final class SearchViewModel {
     var showingSpinner: ((Bool) -> Void)?
     var errorOccured: (() -> Void)?
     
-    init(imageLoader: ImageLoadingManager) {
+    init(networkManager: SearchRecipesNetworkManagerProtocol, imageLoader: ImageLoadingManagerProtocol) {
+        self.networkManager = networkManager
         self.imageLoader = imageLoader
         lastSearch = .withText
     }
@@ -69,7 +70,7 @@ final class SearchViewModel {
 
     func loadRandomRecipes() {
         isLoading = true
-        searchManager.loadRandomRecipes { [weak self] result in
+        networkManager.loadRandomRecipes { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let loadedRandom):
@@ -86,7 +87,7 @@ final class SearchViewModel {
     func loadRecipesWithText() {
         if offset < totalResults {
             isLoading = true
-            searchManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { [weak self] result in
+            networkManager.searchRecipesWith(text: searchedText.lowercased(), offset: offset, number: 20) { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let loadedRecipes):
@@ -108,7 +109,7 @@ final class SearchViewModel {
         
         if offset < totalResults {
             isLoading = true
-            searchManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { [weak self] result in
+            networkManager.searchRecipesWith(parameters: parameters, offset: offset, number: 20) { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let loadedRecipes):
@@ -139,13 +140,13 @@ final class SearchViewModel {
     // MARK: - Autocomplete
     
     private func loadAutocomplete() {
-        searchManager.loadAutocomplete(text: searchedText.lowercased()) { [weak self] result in
+        networkManager.loadAutocomplete(text: searchedText.lowercased()) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let autocompletions):
                     self?.autocompletions = autocompletions
                 case .failure:
-                    self?.errorOccured?()
+                    break
                 }
             }
         }

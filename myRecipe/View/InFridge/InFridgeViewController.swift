@@ -12,6 +12,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
     private let viewModel: InFridgeViewModel
     private let imageLoader: ImageLoadingManager
     private let coreDataStack: CoreDataStack
+    private let session: URLSessionProtocol
     
     private var autocompletionTimer: Timer?
     private var chosenIngredientsViewHeightConstraint = NSLayoutConstraint()
@@ -57,6 +58,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         button.tintColor = .white
         button.layer.cornerRadius = 25
         button.addTarget(self, action: #selector(addIngredient), for: .touchUpInside)
+        button.accessibilityIdentifier = "addIngredientButton"
         return button
     }()
 
@@ -77,11 +79,12 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(showSearchResults), for: .touchUpInside)
         button.isEnabled = false
+        button.accessibilityIdentifier = "searchByIngredientsButton"
         return button
     }()
 
     private lazy var searchResultsController: InFridgeSearchViewController = {
-        let controller = InFridgeSearchViewController(viewModel: viewModel, imageLoader: imageLoader, coreDataStack: coreDataStack)
+        let controller = InFridgeSearchViewController(viewModel: viewModel, imageLoader: imageLoader, coreDataStack: coreDataStack, session: session)
 
         controller.newSearchButtonWasTapped = { [weak self] in
             self?.hideSearchResults()
@@ -90,10 +93,11 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         return controller
     }()
     
-    init(viewModel: InFridgeViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack) {
+    init(viewModel: InFridgeViewModel, imageLoader: ImageLoadingManager, coreDataStack: CoreDataStack, session: URLSessionProtocol) {
         self.viewModel = viewModel
         self.imageLoader = imageLoader
         self.coreDataStack = coreDataStack
+        self.session = session
         super.init(nibName: nil, bundle: nil)
     }
     

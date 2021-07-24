@@ -7,9 +7,15 @@
 
 import UIKit
 
-struct ImageLoadingManager {
+struct ImageLoadingManager: ImageLoadingManagerProtocol {
+
+    private let session: URLSessionProtocol
+
+    init(session: URLSessionProtocol) {
+        self.session = session
+    }
     
-    func loadImage(imageUrl: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    func loadImage(imageUrl: String, completion: @escaping ImageCompletion) {
         guard let url = URL(string: imageUrl) else {
             completion(.failure(URLError.invalidURL))
             return
@@ -17,15 +23,17 @@ struct ImageLoadingManager {
         
         let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        session.dataTask(with: request) { data, _, error in
             if let data = data {
                 if let image = UIImage(data: data) {
                     completion(.success(image))
                 }
             }
+
             if let error = error {
                 completion(.failure(error))
             }
+            
         }.resume()
     }
 }

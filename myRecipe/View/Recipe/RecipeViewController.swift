@@ -194,6 +194,7 @@ final class RecipeViewController: UIViewController {
         view.showRecipe = { [weak self] id in
             guard let self = self else { return }
             let recipeViewModel = RecipeViewModel(
+                networkManager: self.viewModel.getNetworkManager(),
                 imageLoader: self.viewModel.getImageLoader(),
                 coreDataStack: self.viewModel.getCoreDataStack(),
                 recipeId: id
