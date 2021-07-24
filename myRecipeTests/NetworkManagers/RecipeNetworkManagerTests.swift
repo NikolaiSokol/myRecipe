@@ -24,7 +24,7 @@ final class RecipeNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "Recipe", andError: nil)
         recipeNetworkManager = RecipeNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Recipe")
+        let expectation = expectation(description: #function)
 
         recipeNetworkManager.loadRecipe(id: 1) { result in
             switch result {

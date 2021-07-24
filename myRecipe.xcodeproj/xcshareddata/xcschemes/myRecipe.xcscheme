@@ -50,6 +50,16 @@
                ReferencedContainer = "container:myRecipe.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6026E4D626AC7A480021BBB4"
+               BuildableName = "myRecipeSnapshotTests.xctest"
+               BlueprintName = "myRecipeSnapshotTests"
+               ReferencedContainer = "container:myRecipe.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

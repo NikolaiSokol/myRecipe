@@ -20,7 +20,7 @@ final class ImageLoadingManagerTests: XCTestCase {
     func testThatImageLoadsSuccesfully() {
         imageLoadingManager = ImageLoadingManager(session: URLSession.shared)
 
-        let expectation = expectation(description: "Load image")
+        let expectation = expectation(description: #function)
 
         imageLoadingManager.loadImage(imageUrl: "https://spoonacular.com/cdn/ingredients_100x100/milk") { result in
             switch result {

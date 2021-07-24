@@ -26,7 +26,7 @@ final class SearchRecipesNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "SearchAutocomplete", andError: nil)
         searchNetworkManager = SearchRecipesNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Autocomplete")
+        let expectation = expectation(description: #function)
 
         searchNetworkManager.loadAutocomplete(text: "") { result in
             switch result {
@@ -46,7 +46,7 @@ final class SearchRecipesNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "RandomRecipes", andError: nil)
         searchNetworkManager = SearchRecipesNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Random recipes")
+        let expectation = expectation(description: #function)
 
         searchNetworkManager.loadRandomRecipes { result in
             switch result {
@@ -67,7 +67,7 @@ final class SearchRecipesNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "Search", andError: nil)
         searchNetworkManager = SearchRecipesNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Search with text")
+        let expectation = expectation(description: #function)
 
         searchNetworkManager.searchRecipesWith(text: "", offset: 0, number: 0) { result in
             switch result {
@@ -85,7 +85,7 @@ final class SearchRecipesNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "Wrong", andError: URLError.invalidURL)
         searchNetworkManager = SearchRecipesNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Search with text")
+        let expectation = expectation(description: #function)
 
         searchNetworkManager.searchRecipesWith(text: "", offset: 0, number: 0) { result in
             switch result {
@@ -108,7 +108,7 @@ final class SearchRecipesNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "Search", andError: nil)
         searchNetworkManager = SearchRecipesNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Search with parameters")
+        let expectation = expectation(description: #function)
 
         searchNetworkManager.searchRecipesWith(parameters: parameters, offset: 0, number: 0) { result in
             switch result {

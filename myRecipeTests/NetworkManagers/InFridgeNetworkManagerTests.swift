@@ -24,7 +24,7 @@ final class InFridgeNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "IngredientsAutocomplete", andError: nil)
         inFridgeNetworkManager = InFridgeNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Autocomplete")
+        let expectation = expectation(description: #function)
 
         inFridgeNetworkManager.loadAutocomplete(text: "") { result in
             switch result {
@@ -42,7 +42,7 @@ final class InFridgeNetworkManagerTests: XCTestCase {
         mockSession = MockSession.shared.create(fromJsonFile: "SearchByIngredients", andError: nil)
         inFridgeNetworkManager = InFridgeNetworkManager(session: mockSession)
 
-        let expectation = expectation(description: "Search by Ingredients")
+        let expectation = expectation(description: #function)
 
         inFridgeNetworkManager.loadRecipes(ingredients: "") { result in
             switch result {

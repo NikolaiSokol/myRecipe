@@ -43,6 +43,9 @@ warning_threshold: 15
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
+  - myRecipeTests
+  - myRecipeUITests
+  - myRecipeSnapshotTests
 
 line_length: 200
 
