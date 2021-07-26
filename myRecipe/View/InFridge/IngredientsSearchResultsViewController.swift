@@ -19,7 +19,7 @@ final class IngredientsSearchResultsViewController: UIViewController, UICollecti
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(named: "cell")
+        collectionView.backgroundColor = UIColor(named: "secondBackground")
         collectionView.keyboardDismissMode = .onDrag
         collectionView.delegate = self
         collectionView.dataSource = self

@@ -47,7 +47,7 @@ final class SimilarRecipesCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        backgroundColor = UIColor(named: "cell")
+        backgroundColor = UIColor(named: "secondBackground")
         autoresizesSubviews = true
         
         addSubview(recipeImageView)

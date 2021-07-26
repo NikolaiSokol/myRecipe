@@ -26,7 +26,7 @@ final class SimilarRecipesView: UIView, UICollectionViewDelegate, UICollectionVi
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(named: "cell")
+        collectionView.backgroundColor = UIColor(named: "secondBackground")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SimilarRecipesCollectionViewCell.self, forCellWithReuseIdentifier: SimilarRecipesCollectionViewCell.reuseIdentifier)
@@ -55,7 +55,7 @@ final class SimilarRecipesView: UIView, UICollectionViewDelegate, UICollectionVi
     }
     
     private func setupViews() {
-        backgroundColor = UIColor(named: "cell")
+        backgroundColor = UIColor(named: "secondBackground")
         addSubview(titleLabel)
         addSubview(collectionView)
     }

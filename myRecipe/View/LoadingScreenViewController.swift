@@ -8,23 +8,51 @@
 import UIKit
 
 final class LoadingScreenViewController: UIViewController {
-    
-    private lazy var spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .large)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        return spinner
+
+    private lazy var hatImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "hat")
+        return imageView
+    }()
+
+    private lazy var circleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "circle")
+        return imageView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.7)
 
-        view.backgroundColor = UIColor(named: "background")?.withAlphaComponent(0.5)
-        view.addSubview(spinner)
-        spinner.startAnimating()
-        
+        view.addSubview(hatImageView)
+        view.addSubview(circleImageView)
+
         NSLayoutConstraint.activate([
-            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            hatImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            hatImageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            hatImageView.widthAnchor.constraint(equalToConstant: 100),
+            hatImageView.heightAnchor.constraint(equalToConstant: 100),
+
+            circleImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            circleImageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            circleImageView.widthAnchor.constraint(equalToConstant: 100),
+            circleImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = Double.pi * 2
+        rotation.duration = 1
+        rotation.isCumulative = true
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+        circleImageView.layer.add(rotation, forKey: "rotationAnimation")
     }
 }

@@ -28,7 +28,7 @@ final class MultipleChoosingTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         
-        contentView.backgroundColor = UIColor(named: "cell")
+        contentView.backgroundColor = UIColor(named: "secondBackground")
         contentView.addSubview(checkBoxImageView)
         contentView.addSubview(itemNameLabel)
         setupAutoLayout()

@@ -171,6 +171,7 @@
 		60F20BD926AB58BB00313759 /* ImageLoadingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F20BD826AB58BB00313759 /* ImageLoadingManagerTests.swift */; };
 		60F20BDA26AB592600313759 /* ImageLoadingManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F20BD626AB574000313759 /* ImageLoadingManagerProtocol.swift */; };
 		60F20BDB26AB592B00313759 /* ImageLoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609382662678CD79002178A8 /* ImageLoadingManager.swift */; };
+		60F8756926AEA3C400CCF72E /* StartAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8756826AEA3C400CCF72E /* StartAnimationViewController.swift */; };
 		60F8C550269C25F100D952C7 /* RecipeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8C54F269C25F100D952C7 /* RecipeNetworkManager.swift */; };
 		60F8C553269C270B00D952C7 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8C552269C270B00D952C7 /* Recipe.swift */; };
 		60F8C555269C27FA00D952C7 /* ExtendedIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8C554269C27FA00D952C7 /* ExtendedIngredients.swift */; };
@@ -323,6 +324,7 @@
 		60F20BD426AB563900313759 /* SearchByIngredients.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchByIngredients.json; sourceTree = "<group>"; };
 		60F20BD626AB574000313759 /* ImageLoadingManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingManagerProtocol.swift; sourceTree = "<group>"; };
 		60F20BD826AB58BB00313759 /* ImageLoadingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingManagerTests.swift; sourceTree = "<group>"; };
+		60F8756826AEA3C400CCF72E /* StartAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAnimationViewController.swift; sourceTree = "<group>"; };
 		60F8C54F269C25F100D952C7 /* RecipeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkManager.swift; sourceTree = "<group>"; };
 		60F8C552269C270B00D952C7 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		60F8C554269C27FA00D952C7 /* ExtendedIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedIngredients.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 			children = (
 				6087A72D2672386B0039563C /* TabBarViewController.swift */,
 				608341CB268B9A0000463715 /* LoadingScreenViewController.swift */,
+				60F8756826AEA3C400CCF72E /* StartAnimationViewController.swift */,
 				60EC55FF26A95A02009BF0EB /* Search */,
 				60EC560026A95A44009BF0EB /* Recipe */,
 				60EC560126A95A80009BF0EB /* SavedRecipes */,
@@ -969,6 +972,7 @@
 				60F8C553269C270B00D952C7 /* Recipe.swift in Sources */,
 				60746026269ED6FD0055248E /* Metric.swift in Sources */,
 				6044479F26836A0600B6A512 /* IngredientsView.swift in Sources */,
+				60F8756926AEA3C400CCF72E /* StartAnimationViewController.swift in Sources */,
 				6053A35826A042F5006DA4F4 /* NutrientsCoreData+CoreDataClass.swift in Sources */,
 				603DA97726A85D9200959DBB /* AutocompleteIngredient.swift in Sources */,
 				60A1487A26A5E5BC00C53279 /* SettingsViewModel.swift in Sources */,

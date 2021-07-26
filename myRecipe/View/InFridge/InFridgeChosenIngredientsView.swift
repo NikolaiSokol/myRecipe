@@ -38,7 +38,7 @@ final class InFridgeChosenIngredientsView: UIView, UICollectionViewDelegate, UIC
     }
 
     private func setupViews() {
-        backgroundColor = UIColor(named: "cell")
+        backgroundColor = UIColor(named: "secondBackground")
         addSubview(collectionView)
     }
 

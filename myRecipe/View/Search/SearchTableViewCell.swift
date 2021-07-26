@@ -46,8 +46,6 @@ final class SearchTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-        contentView.backgroundColor = UIColor(named: "cell")
-        
         contentView.addSubview(recipeImageView)
         recipeImageView.addSubview(recipeNameLabelBackground)
         recipeNameLabelBackground.addSubview(recipeNameLabel)
@@ -55,10 +53,10 @@ final class SearchTableViewCell: UITableViewCell {
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            recipeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            recipeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            recipeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            recipeImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            recipeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            recipeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            recipeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            recipeImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             
             recipeNameLabelBackground.leadingAnchor.constraint(equalTo: recipeImageView.leadingAnchor),
             recipeNameLabelBackground.trailingAnchor.constraint(equalTo: recipeImageView.trailingAnchor),

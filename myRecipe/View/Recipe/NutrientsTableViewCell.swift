@@ -52,7 +52,7 @@ final class NutrientsTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-        contentView.backgroundColor = UIColor(named: "cell")
+        contentView.backgroundColor = UIColor(named: "secondBackground")
         
         contentView.addSubview(nameAndAmountLabel)
         contentView.addSubview(dailyNeedsView)

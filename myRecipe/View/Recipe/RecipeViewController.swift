@@ -38,7 +38,7 @@ final class RecipeViewController: UIViewController {
     private lazy var recipeStackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = UIColor(named: "cell")
+        stack.backgroundColor = UIColor(named: "secondBackground")
         stack.axis = .vertical
         stack.spacing = 15
         stack.distribution = .fill
@@ -131,7 +131,7 @@ final class RecipeViewController: UIViewController {
     private lazy var nutrientsButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Detailed Nutrients", for: .normal)
-        button.backgroundColor = UIColor(named: "cell")
+        button.backgroundColor = UIColor(named: "secondBackground")
         button.tintColor = UIColor(named: "accent")
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(showNutriesController), for: .touchUpInside)

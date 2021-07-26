@@ -37,7 +37,7 @@ final class ParametersViewFactory {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        stack.backgroundColor = UIColor(named: "cell")
+        stack.backgroundColor = UIColor(named: "secondBackground")
         stack.alignment = .center
         stack.distribution = .equalSpacing
         stack.axis = .horizontal

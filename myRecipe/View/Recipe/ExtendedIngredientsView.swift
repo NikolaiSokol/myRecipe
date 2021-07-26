@@ -17,7 +17,7 @@ final class ExtendedIngredientsView: UIView, UICollectionViewDelegate, UICollect
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(named: "cell")
+        collectionView.backgroundColor = UIColor(named: "secondBackground")
         collectionView.isScrollEnabled = false
         collectionView.delegate = self
         collectionView.dataSource = self

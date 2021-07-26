@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockSession {
+final class MockSession {
 
     static let shared = MockSession()
     private init() {}

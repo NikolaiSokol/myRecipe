@@ -73,7 +73,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Search", for: .normal)
         button.tintColor = UIColor(named: "accent")
-        button.backgroundColor = UIColor(named: "cell")
+        button.backgroundColor = UIColor(named: "secondBackground")
         button.layer.cornerRadius = 20
         button.layer.borderColor = UIColor(named: "accent")?.cgColor
         button.layer.borderWidth = 1

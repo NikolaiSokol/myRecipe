@@ -26,6 +26,7 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor(named: "background")
         tableView.rowHeight = view.frame.height / 5
         tableView.separatorStyle = .none
         tableView.delegate = self

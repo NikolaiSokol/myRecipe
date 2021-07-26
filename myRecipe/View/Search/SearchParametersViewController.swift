@@ -133,7 +133,7 @@ final class SearchParametersViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.setTitle("Search", for: .normal)
         button.tintColor = UIColor(named: "accent")
-        button.backgroundColor = UIColor(named: "cell")
+        button.backgroundColor = UIColor(named: "secondBackground")
         button.layer.cornerRadius = 25
         button.layer.borderColor = UIColor(named: "accent")?.cgColor
         button.layer.borderWidth = 1

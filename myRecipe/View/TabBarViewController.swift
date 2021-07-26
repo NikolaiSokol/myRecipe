@@ -82,7 +82,23 @@ final class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addStartAnimationController()
         setupTabBar()
+    }
+
+    private func addStartAnimationController() {
+        let controller = StartAnimationViewController()
+
+        addChild(controller)
+        controller.view.frame = view.frame
+        view.addSubview(controller.view)
+        controller.didMove(toParent: self)
+
+        controller.animationsFinished = {
+            controller.willMove(toParent: nil)
+            controller.view.removeFromSuperview()
+            controller.removeFromParent()
+        }
     }
     
     private func setupTabBar() {

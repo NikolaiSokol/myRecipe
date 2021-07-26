@@ -19,6 +19,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor(named: "background")
         tableView.rowHeight = view.frame.height / 5
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -31,7 +32,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("New Search", for: .normal)
-        button.backgroundColor = UIColor(named: "cell")
+        button.backgroundColor = UIColor(named: "secondBackground")
         button.tintColor = UIColor(named: "accent")
         button.layer.cornerRadius = 20
         button.layer.borderColor = UIColor(named: "accent")?.cgColor
