@@ -91,26 +91,26 @@ final class InFridgeViewModel {
     // MARK: - Image
 
     func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: url) { [weak self] result in
+        imageLoader.loadImage(imageUrl: url) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let loadedImage):
                     completion(loadedImage)
                 case .failure:
-                    self?.errorOccured?()
+                    break
                 }
             }
         }
     }
     
     func loadIngredientImage(name: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: "https://spoonacular.com/cdn/ingredients_100x100/" + name) { [weak self] result in
+        imageLoader.loadImage(imageUrl: "https://spoonacular.com/cdn/ingredients_100x100/" + name) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let loadedImage):
                     completion(loadedImage)
                 case .failure:
-                    self?.errorOccured?()
+                    break
                 }
                 
             }

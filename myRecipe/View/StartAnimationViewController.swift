@@ -84,7 +84,7 @@ final class StartAnimationViewController: UIViewController {
 
     private func animateSpin() {
         UIView.animate(
-            withDuration: 0.8,
+            withDuration: 0.5,
             delay: 0,
             options: UIView.AnimationOptions.curveLinear,
             animations: { [weak self] in
@@ -94,8 +94,8 @@ final class StartAnimationViewController: UIViewController {
         )
 
         UIView.animate(
-            withDuration: 0.8,
-            delay: 0.8,
+            withDuration: 0.5,
+            delay: 0.5,
             options: UIView.AnimationOptions.curveLinear,
             animations: { [weak self] in
                 self?.circleImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)

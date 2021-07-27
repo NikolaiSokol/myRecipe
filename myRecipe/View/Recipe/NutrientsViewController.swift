@@ -36,6 +36,11 @@ final class NutrientsViewController: UIViewController, UITableViewDelegate, UITa
         setupViews()
         setupAutoLayout()
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.reloadData()
+    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -73,7 +78,7 @@ final class NutrientsViewController: UIViewController, UITableViewDelegate, UITa
         else { preconditionFailure("Failed to load table view cell") }
         
         if let nutrients = viewModel.recipe?.nutrition.nutrients.sorted(by: { $0.name < $1.name }) {
-            cell.setupCell(nutrients: nutrients[indexPath.row])
+            cell.setupNutrients(nutrients: nutrients[indexPath.row])
         }
         
         return cell

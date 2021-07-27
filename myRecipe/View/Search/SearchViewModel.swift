@@ -64,6 +64,7 @@ final class SearchViewModel {
         self.networkManager = networkManager
         self.imageLoader = imageLoader
         lastSearch = .withText
+        loadRandomRecipes()
     }
     
     // MARK: - Recipes
@@ -155,13 +156,13 @@ final class SearchViewModel {
     // MARK: - Image
     
     func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
-        imageLoader.loadImage(imageUrl: url) { [weak self] result in
+        imageLoader.loadImage(imageUrl: url) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let loadedImage):
                     completion(loadedImage)
                 case .failure:
-                    self?.errorOccured?()
+                    break
                 }
             }
         }

@@ -21,9 +21,11 @@ final class SearchTableViewCell: UITableViewCell {
     private lazy var recipeNameLabelBackground: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        if let color = UIColor(named: "background") {
+
+        if let color = UIColor(named: "secondBackground") {
             view.backgroundColor = color.withAlphaComponent(0.7)
         }
+
         return view
     }()
     
@@ -46,6 +48,8 @@ final class SearchTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
+        contentView.backgroundColor = UIColor(named: "background")
+
         contentView.addSubview(recipeImageView)
         recipeImageView.addSubview(recipeNameLabelBackground)
         recipeNameLabelBackground.addSubview(recipeNameLabel)
@@ -61,9 +65,9 @@ final class SearchTableViewCell: UITableViewCell {
             recipeNameLabelBackground.leadingAnchor.constraint(equalTo: recipeImageView.leadingAnchor),
             recipeNameLabelBackground.trailingAnchor.constraint(equalTo: recipeImageView.trailingAnchor),
             recipeNameLabelBackground.bottomAnchor.constraint(equalTo: recipeImageView.bottomAnchor),
-            recipeNameLabelBackground.heightAnchor.constraint(equalTo: recipeNameLabel.heightAnchor),
-            
-            recipeNameLabel.topAnchor.constraint(equalTo: recipeNameLabelBackground.topAnchor),
+            recipeNameLabelBackground.heightAnchor.constraint(equalTo: recipeNameLabel.heightAnchor, constant: 6),
+
+            recipeNameLabel.bottomAnchor.constraint(equalTo: recipeNameLabelBackground.bottomAnchor, constant: -3),
             recipeNameLabel.leadingAnchor.constraint(equalTo: recipeNameLabelBackground.leadingAnchor, constant: 10),
             recipeNameLabel.trailingAnchor.constraint(equalTo: recipeNameLabelBackground.trailingAnchor, constant: -10)
         ])

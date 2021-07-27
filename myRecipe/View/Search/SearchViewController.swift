@@ -58,8 +58,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "background")
-        tableView.rowHeight = view.frame.height / 5
-        tableView.separatorStyle = .none
+        tableView.rowHeight = 200
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
@@ -89,8 +88,11 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         setupNavigationBar()
         setupViews()
         setupAutoLayout()
+    }
 
-        viewModel.loadRandomRecipes()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.separatorStyle = .none
     }
     
     private func bindViewModel() {
@@ -163,7 +165,7 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Error Alert
     
     private func showErrorAlert() {
-        let alert = UIAlertController(title: "Something went wrong", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Couldn't load Recipes", message: "", preferredStyle: .alert)
         
         present(alert, animated: true)
         
@@ -249,11 +251,11 @@ final class SearchViewController: UIViewController, UITableViewDelegate, UITable
         
         cell.setRecipeName(viewModel.recipes[indexPath.row].title)
         
-        let imageUrl = viewModel.recipes[indexPath.row].image
-        viewModel.loadImage(url: imageUrl) { image in
-            cell.setRecipeImage(image)
+        if let imageUrl = viewModel.recipes[indexPath.row].image {
+            viewModel.loadImage(url: imageUrl) { image in
+                cell.setRecipeImage(image)
+            }
         }
-
         cell.accessibilityIdentifier = "cell_\(indexPath.row)"
 
         return cell

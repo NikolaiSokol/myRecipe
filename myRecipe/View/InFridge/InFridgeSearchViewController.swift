@@ -20,8 +20,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "background")
-        tableView.rowHeight = view.frame.height / 5
-        tableView.separatorStyle = .none
+        tableView.rowHeight = 200
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
@@ -34,7 +33,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
         button.setTitle("New Search", for: .normal)
         button.backgroundColor = UIColor(named: "secondBackground")
         button.tintColor = UIColor(named: "accent")
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 25
         button.layer.borderColor = UIColor(named: "accent")?.cgColor
         button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(newSearch), for: .touchUpInside)
@@ -63,6 +62,11 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
         setupAutoLayout()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.separatorStyle = .none
+    }
+
     private func bindViewModel() {
         viewModel.recipesChanged = { [weak self] in
             self?.tableView.reloadData()
@@ -88,7 +92,7 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
             newSearchButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             newSearchButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             newSearchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            newSearchButton.heightAnchor.constraint(equalToConstant: 40)
+            newSearchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
@@ -141,10 +145,12 @@ final class InFridgeSearchViewController: UIViewController, UITableViewDelegate,
 
         cell.setRecipeName(viewModel.recipes[indexPath.row].title)
 
-        let imageUrl = viewModel.recipes[indexPath.row].image
-        viewModel.loadImage(url: imageUrl) { image in
-            cell.setRecipeImage(image)
+        if let imageUrl = viewModel.recipes[indexPath.row].image {
+            viewModel.loadImage(url: imageUrl) { image in
+                cell.setRecipeImage(image)
+            }
         }
+
         return cell
     }
 }

@@ -165,7 +165,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
             addIngredientButton.widthAnchor.constraint(equalToConstant: 50),
             addIngredientButton.heightAnchor.constraint(equalToConstant: 50),
 
-            searchButton.topAnchor.constraint(equalTo: addIngredientButton.bottomAnchor, constant: 10),
+            searchButton.topAnchor.constraint(equalTo: addIngredientButton.bottomAnchor, constant: 20),
             searchButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
             searchButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -20),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
@@ -186,10 +186,10 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
     }
 
     @objc private func showSearchResults() {
-        searchController.searchBar.isHidden = true
+        navigationItem.searchController = nil
 
         addChild(searchResultsController)
-        searchResultsController.view.frame = view.safeAreaLayoutGuide.layoutFrame
+        searchResultsController.view.frame = view.frame
         view.addSubview(searchResultsController.view)
         searchResultsController.didMove(toParent: self)
 
@@ -198,7 +198,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
 
     private func hideSearchResults() {
         viewModel.ingredients.removeAll()
-        searchController.searchBar.isHidden = false
+        navigationItem.searchController = searchController
 
         searchResultsController.willMove(toParent: nil)
         searchResultsController.view.removeFromSuperview()
@@ -231,7 +231,7 @@ final class InFridgeViewController: UIViewController, UISearchResultsUpdating, U
     // MARK: - Error Alert
 
     private func showErrorAlert() {
-        let alert = UIAlertController(title: "Something went wrong", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Couldn't load Recipes", message: "", preferredStyle: .alert)
 
         present(alert, animated: true)
 

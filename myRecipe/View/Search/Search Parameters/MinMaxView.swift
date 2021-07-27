@@ -13,8 +13,8 @@ final class MinMaxView: UIView {
     
     private let title: String
     
-    private let min = "0"
-    private let max = "100"
+    private let min = "min. amount"
+    private let max = "max. amount"
     
     var chosenMin = "0"
     var chosenMax = "10000"
@@ -50,20 +50,14 @@ final class MinMaxView: UIView {
     }()
     
     private lazy var minTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = min
-        textField.textAlignment = .right
-        textField.clearButtonMode = .whileEditing
+        let textField = viewsFactory.createTextField(placeholder: min)
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(minDidChange), for: .editingChanged)
         return textField
     }()
     
     private lazy var maxTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = max
-        textField.textAlignment = .right
-        textField.clearButtonMode = .whileEditing
+        let textField = viewsFactory.createTextField(placeholder: max)
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(maxDidChange), for: .editingChanged)
         return textField

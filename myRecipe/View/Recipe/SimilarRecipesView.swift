@@ -86,11 +86,13 @@ final class SimilarRecipesView: UIView, UICollectionViewDelegate, UICollectionVi
         else { preconditionFailure("Failed to load collection view cell") }
         
         cell.setRecipeName(viewModel.similarRecipes[indexPath.item].title)
-        
-        viewModel.loadImage(image: viewModel.similarRecipes[indexPath.item].image) { image in
-            cell.setRecipeImage(image)
+
+        if let imageUrl = viewModel.similarRecipes[indexPath.item].image {
+            viewModel.loadImage(image: imageUrl) { image in
+                cell.setRecipeImage(image)
+            }
         }
-        
+
         return cell
     }
 }

@@ -27,8 +27,7 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "background")
-        tableView.rowHeight = view.frame.height / 5
-        tableView.separatorStyle = .none
+        tableView.rowHeight = 200
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
@@ -55,6 +54,11 @@ final class SevedRecipesViewController: UIViewController, UITableViewDelegate, U
         setupAutoLayout()
         
         viewModel.performFetch()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.separatorStyle = .none
     }
     
     private func bindViewModel() {

@@ -239,8 +239,8 @@ final class RecipeViewController: UIViewController {
             self?.showLoadingScreen(isLoading)
         }
         
-        viewModel.errorOccured = { [weak self] in
-            self?.showErrorAlert()
+        viewModel.errorOccured = { [weak self] text in
+            self?.showErrorAlert(text: text)
         }
     }
     
@@ -384,8 +384,8 @@ final class RecipeViewController: UIViewController {
     
     // MARK: - Error Alert
     
-    private func showErrorAlert() {
-        let alert = UIAlertController(title: "Something went wrong", message: "", preferredStyle: .alert)
+    private func showErrorAlert(text: String) {
+        let alert = UIAlertController(title: text, message: "", preferredStyle: .alert)
         
         present(alert, animated: true)
         

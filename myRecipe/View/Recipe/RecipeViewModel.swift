@@ -55,7 +55,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     var recipeChanged: (() -> Void)?
     var similarRecipesChanged: (() -> Void)?
     var showingSpinner: ((Bool) -> Void)?
-    var errorOccured: (() -> Void)?
+    var errorOccured: ((String) -> Void)?
     
     init(networkManager: RecipeNetworkManagerProtocol, imageLoader: ImageLoadingManagerProtocol, coreDataStack: CoreDataStack, recipeId: Int) {
         self.networkManager = networkManager
@@ -93,7 +93,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            errorOccured?()
+            errorOccured?("Couldn't load Recipe")
         }
     }
     
@@ -106,7 +106,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                     self?.recipe = recipe
                     self?.isLoading = false
                 case .failure:
-                    self?.errorOccured?()
+                    self?.errorOccured?("Couldn't load Recipe")
                     self?.isLoading = false
                 }
             }
@@ -114,13 +114,16 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     private func loadSimilarRecipes() {
+        isLoading = true
         networkManager.loadSimilarRecipes(id: recipeId) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let recipes):
                     self?.similarRecipes = recipes
+                    self?.isLoading = false
                 case .failure:
-                    self?.errorOccured?()
+                    self?.errorOccured?("Couldn't load Similar Recipes")
+                    self?.isLoading = false
                 }
             }
         }
@@ -293,7 +296,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                     case .success(let loadedImage):
                         completion(loadedImage)
                     case .failure:
-                        self?.errorOccured?()
+                        break
                     }
                 }
             }
@@ -308,7 +311,7 @@ final class RecipeViewModel: NSObject, NSFetchedResultsControllerDelegate {
                     case .success(let loadedImage):
                         completion(loadedImage)
                     case .failure:
-                        self?.errorOccured?()
+                        break
                     }
                 }
             }

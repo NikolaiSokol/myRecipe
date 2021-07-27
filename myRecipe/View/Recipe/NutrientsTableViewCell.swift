@@ -41,10 +41,21 @@ final class NutrientsTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
+
+    private var dailyNeedsViewWidthConstraint = NSLayoutConstraint()
+
+    private var dailyNeedsViewWidth: CGFloat = 0 {
+        didSet {
+            dailyNeedsViewWidthConstraint.isActive = false
+            dailyNeedsViewWidthConstraint = dailyNeedsView.widthAnchor.constraint(equalToConstant: dailyNeedsViewWidth)
+            dailyNeedsViewWidthConstraint.isActive = true
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        setupAutoLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,25 +71,7 @@ final class NutrientsTableViewCell: UITableViewCell {
         contentView.addSubview(ofDailyNeedsLabel)
     }
     
-    func setupCell(nutrients: Nutrients) {
-        nameAndAmountLabel.text = nutrients.name + ": " + String(nutrients.amount) + " " + nutrients.unit
-        percentsLabel.text = String(nutrients.percentOfDailyNeeds) + " %"
-        
-        setupAutoLayout(percentOfDailyNeeds: nutrients.percentOfDailyNeeds)
-    }
-    
-    private func setupAutoLayout(percentOfDailyNeeds: Float) {
-        let availableWidth = safeAreaLayoutGuide.layoutFrame.width - percentsLabel.intrinsicContentSize.width - 25
-        var dailyNeedsViewWidth: CGFloat = 0
-        
-        if percentOfDailyNeeds >= 100 {
-            dailyNeedsViewWidth = availableWidth
-        } else {
-            dailyNeedsViewWidth = availableWidth / 100 * CGFloat(percentOfDailyNeeds)
-        }
-        
-        dailyNeedsView.constraints.forEach { $0.isActive = false }
-        
+    private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             nameAndAmountLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             nameAndAmountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -87,16 +80,31 @@ final class NutrientsTableViewCell: UITableViewCell {
             dailyNeedsView.topAnchor.constraint(equalTo: nameAndAmountLabel.bottomAnchor, constant: 10),
             dailyNeedsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             dailyNeedsView.heightAnchor.constraint(equalToConstant: 15),
-            dailyNeedsView.widthAnchor.constraint(equalToConstant: dailyNeedsViewWidth),
-            
+
             percentsLabel.centerYAnchor.constraint(equalTo: dailyNeedsView.centerYAnchor),
             percentsLabel.leadingAnchor.constraint(equalTo: dailyNeedsView.trailingAnchor, constant: 5),
-            percentsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            ofDailyNeedsLabel.topAnchor.constraint(equalTo: dailyNeedsView.bottomAnchor, constant: 5),
+            ofDailyNeedsLabel.topAnchor.constraint(equalTo: percentsLabel.bottomAnchor, constant: 5),
             ofDailyNeedsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             ofDailyNeedsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             ofDailyNeedsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
+    }
+
+    func setupNutrients(nutrients: Nutrients) {
+        nameAndAmountLabel.text = nutrients.name + ": " + String(nutrients.amount) + " " + nutrients.unit
+        percentsLabel.text = String(nutrients.percentOfDailyNeeds) + " %"
+
+        setupDailyNeedsViewWidth(percentOfDailyNeeds: nutrients.percentOfDailyNeeds)
+    }
+
+    private func setupDailyNeedsViewWidth(percentOfDailyNeeds: Float) {
+        let availableWidth = safeAreaLayoutGuide.layoutFrame.width - percentsLabel.intrinsicContentSize.width - 25
+
+        if percentOfDailyNeeds >= 100 {
+            dailyNeedsViewWidth = availableWidth
+        } else {
+            dailyNeedsViewWidth = availableWidth / 100 * CGFloat(percentOfDailyNeeds)
+        }
     }
 }
