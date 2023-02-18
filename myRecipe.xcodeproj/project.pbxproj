@@ -16,6 +16,65 @@
 		F3316B1429A0EB470089B4D5 /* myRecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B1329A0EB470089B4D5 /* myRecipeTests.swift */; };
 		F3316B1E29A0EB470089B4D5 /* myRecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B1D29A0EB470089B4D5 /* myRecipeUITests.swift */; };
 		F3316B2029A0EB470089B4D5 /* myRecipeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B1F29A0EB470089B4D5 /* myRecipeUITestsLaunchTests.swift */; };
+		F3316B3129A0EC3F0089B4D5 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B3029A0EC3F0089B4D5 /* RootCoordinator.swift */; };
+		F3316B3429A0EC690089B4D5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B3329A0EC690089B4D5 /* Coordinator.swift */; };
+		F3316B3729A0ECAA0089B4D5 /* CoordinatorsFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B3629A0ECAA0089B4D5 /* CoordinatorsFactoring.swift */; };
+		F3316B3929A0ECE50089B4D5 /* CoordinatorsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B3829A0ECE50089B4D5 /* CoordinatorsFactory.swift */; };
+		F3316B3D29A0ED800089B4D5 /* TabBarElementBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B3C29A0ED800089B4D5 /* TabBarElementBuilding.swift */; };
+		F3316B3F29A0ED970089B4D5 /* TabBarElementBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B3E29A0ED970089B4D5 /* TabBarElementBuilder.swift */; };
+		F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B4229A0EDDF0089B4D5 /* TabBarElementType.swift */; };
+		F3316B4529A0EDF30089B4D5 /* TabBarElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B4429A0EDF30089B4D5 /* TabBarElement.swift */; };
+		F3316B4829A0EE1D0089B4D5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B4729A0EE1D0089B4D5 /* Router.swift */; };
+		F3316B4A29A0EE3B0089B4D5 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B4929A0EE3B0089B4D5 /* Routable.swift */; };
+		F3316B4C29A0EE500089B4D5 /* NavigableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B4B29A0EE500089B4D5 /* NavigableView.swift */; };
+		F3316B4E29A0EE650089B4D5 /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B4D29A0EE650089B4D5 /* Navigable.swift */; };
+		F3316B5129A0EED70089B4D5 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B5029A0EED70089B4D5 /* View+.swift */; };
+		F3316B5329A0EF1F0089B4D5 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B5229A0EF1F0089B4D5 /* TabBarCoordinator.swift */; };
+		F3316B5729A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B5629A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift */; };
+		F3316B5929A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B5829A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift */; };
+		F3316B5B29A0EFEF0089B4D5 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B5A29A0EFEF0089B4D5 /* MainScreenCoordinator.swift */; };
+		F3316B5F29A0F0960089B4D5 /* SettingsScreenCoordinatorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B5E29A0F0960089B4D5 /* SettingsScreenCoordinatorInput.swift */; };
+		F3316B6129A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B6029A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift */; };
+		F3316B6329A0F0C70089B4D5 /* SettingsScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B6229A0F0C70089B4D5 /* SettingsScreenCoordinator.swift */; };
+		F3316B6629A0F11B0089B4D5 /* RootModulesFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B6529A0F11B0089B4D5 /* RootModulesFactoring.swift */; };
+		F3316B6829A0F1370089B4D5 /* RootModulesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B6729A0F1370089B4D5 /* RootModulesFactory.swift */; };
+		F3316B6F29A0F1B50089B4D5 /* TabBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B6E29A0F1B50089B4D5 /* TabBarConfigurator.swift */; };
+		F3316B7129A0F1D50089B4D5 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B7029A0F1D50089B4D5 /* TabBarViewModel.swift */; };
+		F3316B7329A0F2070089B4D5 /* TabBarViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B7229A0F2070089B4D5 /* TabBarViewState.swift */; };
+		F3316B7529A0F21B0089B4D5 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B7429A0F21B0089B4D5 /* TabBarView.swift */; };
+		F3316B7729A0F23F0089B4D5 /* TabBarViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B7629A0F23F0089B4D5 /* TabBarViewOutput.swift */; };
+		F3316B7929A0F2510089B4D5 /* TabBarOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B7829A0F2510089B4D5 /* TabBarOutput.swift */; };
+		F3316B7B29A0F2630089B4D5 /* TabBarInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B7A29A0F2630089B4D5 /* TabBarInput.swift */; };
+		F3316B8229A0F3800089B4D5 /* MainScreenRootInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8129A0F3800089B4D5 /* MainScreenRootInput.swift */; };
+		F3316B8429A0F3960089B4D5 /* MainScreenRootOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8329A0F3960089B4D5 /* MainScreenRootOutput.swift */; };
+		F3316B8629A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8529A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift */; };
+		F3316B8829A0F3E10089B4D5 /* MainScreenRootViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8729A0F3E10089B4D5 /* MainScreenRootViewState.swift */; };
+		F3316B8A29A0F3FB0089B4D5 /* MainScreenRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8929A0F3FB0089B4D5 /* MainScreenRootView.swift */; };
+		F3316B8C29A0F4350089B4D5 /* MainScreenRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8B29A0F4350089B4D5 /* MainScreenRootViewModel.swift */; };
+		F3316B8E29A0F4620089B4D5 /* MainScreenRootConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B8D29A0F4620089B4D5 /* MainScreenRootConfigurator.swift */; };
+		F3316B9529A0F4D80089B4D5 /* SettingsScreenRootInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B9429A0F4D80089B4D5 /* SettingsScreenRootInput.swift */; };
+		F3316B9729A0F4E90089B4D5 /* SettingsScreenRootOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B9629A0F4E90089B4D5 /* SettingsScreenRootOutput.swift */; };
+		F3316B9929A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B9829A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift */; };
+		F3316B9B29A0F5130089B4D5 /* SettingsScreenRootViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B9A29A0F5130089B4D5 /* SettingsScreenRootViewState.swift */; };
+		F3316B9D29A0F5250089B4D5 /* SettingsScreenRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B9C29A0F5250089B4D5 /* SettingsScreenRootView.swift */; };
+		F3316B9F29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316B9E29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift */; };
+		F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */; };
+		F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */; };
+		F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */; };
+		F3316BAD29A0F6440089B4D5 /* MainScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BAC29A0F6440089B4D5 /* MainScreenInput.swift */; };
+		F3316BAF29A0F6590089B4D5 /* MainScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BAE29A0F6590089B4D5 /* MainScreenOutput.swift */; };
+		F3316BB129A0F6700089B4D5 /* MainScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB029A0F6700089B4D5 /* MainScreenViewOutput.swift */; };
+		F3316BB329A0F6890089B4D5 /* MainScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB229A0F6890089B4D5 /* MainScreenViewState.swift */; };
+		F3316BB529A0F69B0089B4D5 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB429A0F69B0089B4D5 /* MainScreenView.swift */; };
+		F3316BB729A0F6C30089B4D5 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB629A0F6C30089B4D5 /* MainScreenViewModel.swift */; };
+		F3316BB929A0F6E30089B4D5 /* MainScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB829A0F6E30089B4D5 /* MainScreenConfigurator.swift */; };
+		F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */; };
+		F3316BC229A0F7560089B4D5 /* SettingsScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */; };
+		F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */; };
+		F3316BC629A0F77C0089B4D5 /* SettingsScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC529A0F77C0089B4D5 /* SettingsScreenViewState.swift */; };
+		F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */; };
+		F3316BCA29A0F7AF0089B4D5 /* SettingsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC929A0F7AF0089B4D5 /* SettingsScreenViewModel.swift */; };
+		F3316BCC29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +107,65 @@
 		F3316B1929A0EB470089B4D5 /* myRecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myRecipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3316B1D29A0EB470089B4D5 /* myRecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRecipeUITests.swift; sourceTree = "<group>"; };
 		F3316B1F29A0EB470089B4D5 /* myRecipeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRecipeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F3316B3029A0EC3F0089B4D5 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		F3316B3329A0EC690089B4D5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F3316B3629A0ECAA0089B4D5 /* CoordinatorsFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorsFactoring.swift; sourceTree = "<group>"; };
+		F3316B3829A0ECE50089B4D5 /* CoordinatorsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorsFactory.swift; sourceTree = "<group>"; };
+		F3316B3C29A0ED800089B4D5 /* TabBarElementBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarElementBuilding.swift; sourceTree = "<group>"; };
+		F3316B3E29A0ED970089B4D5 /* TabBarElementBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarElementBuilder.swift; sourceTree = "<group>"; };
+		F3316B4229A0EDDF0089B4D5 /* TabBarElementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarElementType.swift; sourceTree = "<group>"; };
+		F3316B4429A0EDF30089B4D5 /* TabBarElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarElement.swift; sourceTree = "<group>"; };
+		F3316B4729A0EE1D0089B4D5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F3316B4929A0EE3B0089B4D5 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		F3316B4B29A0EE500089B4D5 /* NavigableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigableView.swift; sourceTree = "<group>"; };
+		F3316B4D29A0EE650089B4D5 /* Navigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
+		F3316B5029A0EED70089B4D5 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		F3316B5229A0EF1F0089B4D5 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		F3316B5629A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinatorInput.swift; sourceTree = "<group>"; };
+		F3316B5829A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinatorOutput.swift; sourceTree = "<group>"; };
+		F3316B5A29A0EFEF0089B4D5 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
+		F3316B5E29A0F0960089B4D5 /* SettingsScreenCoordinatorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenCoordinatorInput.swift; sourceTree = "<group>"; };
+		F3316B6029A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenCoordinatorOutput.swift; sourceTree = "<group>"; };
+		F3316B6229A0F0C70089B4D5 /* SettingsScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenCoordinator.swift; sourceTree = "<group>"; };
+		F3316B6529A0F11B0089B4D5 /* RootModulesFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModulesFactoring.swift; sourceTree = "<group>"; };
+		F3316B6729A0F1370089B4D5 /* RootModulesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModulesFactory.swift; sourceTree = "<group>"; };
+		F3316B6E29A0F1B50089B4D5 /* TabBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfigurator.swift; sourceTree = "<group>"; };
+		F3316B7029A0F1D50089B4D5 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		F3316B7229A0F2070089B4D5 /* TabBarViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewState.swift; sourceTree = "<group>"; };
+		F3316B7429A0F21B0089B4D5 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		F3316B7629A0F23F0089B4D5 /* TabBarViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewOutput.swift; sourceTree = "<group>"; };
+		F3316B7829A0F2510089B4D5 /* TabBarOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOutput.swift; sourceTree = "<group>"; };
+		F3316B7A29A0F2630089B4D5 /* TabBarInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInput.swift; sourceTree = "<group>"; };
+		F3316B8129A0F3800089B4D5 /* MainScreenRootInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootInput.swift; sourceTree = "<group>"; };
+		F3316B8329A0F3960089B4D5 /* MainScreenRootOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootOutput.swift; sourceTree = "<group>"; };
+		F3316B8529A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootViewOutput.swift; sourceTree = "<group>"; };
+		F3316B8729A0F3E10089B4D5 /* MainScreenRootViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootViewState.swift; sourceTree = "<group>"; };
+		F3316B8929A0F3FB0089B4D5 /* MainScreenRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootView.swift; sourceTree = "<group>"; };
+		F3316B8B29A0F4350089B4D5 /* MainScreenRootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootViewModel.swift; sourceTree = "<group>"; };
+		F3316B8D29A0F4620089B4D5 /* MainScreenRootConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootConfigurator.swift; sourceTree = "<group>"; };
+		F3316B9429A0F4D80089B4D5 /* SettingsScreenRootInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootInput.swift; sourceTree = "<group>"; };
+		F3316B9629A0F4E90089B4D5 /* SettingsScreenRootOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootOutput.swift; sourceTree = "<group>"; };
+		F3316B9829A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootViewOutput.swift; sourceTree = "<group>"; };
+		F3316B9A29A0F5130089B4D5 /* SettingsScreenRootViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootViewState.swift; sourceTree = "<group>"; };
+		F3316B9C29A0F5250089B4D5 /* SettingsScreenRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootView.swift; sourceTree = "<group>"; };
+		F3316B9E29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootViewModel.swift; sourceTree = "<group>"; };
+		F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootConfigurator.swift; sourceTree = "<group>"; };
+		F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactoring.swift; sourceTree = "<group>"; };
+		F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactory.swift; sourceTree = "<group>"; };
+		F3316BAC29A0F6440089B4D5 /* MainScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInput.swift; sourceTree = "<group>"; };
+		F3316BAE29A0F6590089B4D5 /* MainScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenOutput.swift; sourceTree = "<group>"; };
+		F3316BB029A0F6700089B4D5 /* MainScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewOutput.swift; sourceTree = "<group>"; };
+		F3316BB229A0F6890089B4D5 /* MainScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewState.swift; sourceTree = "<group>"; };
+		F3316BB429A0F69B0089B4D5 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		F3316BB629A0F6C30089B4D5 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		F3316BB829A0F6E30089B4D5 /* MainScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConfigurator.swift; sourceTree = "<group>"; };
+		F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenInput.swift; sourceTree = "<group>"; };
+		F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenOutput.swift; sourceTree = "<group>"; };
+		F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewOutput.swift; sourceTree = "<group>"; };
+		F3316BC529A0F77C0089B4D5 /* SettingsScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewState.swift; sourceTree = "<group>"; };
+		F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
+		F3316BC929A0F7AF0089B4D5 /* SettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewModel.swift; sourceTree = "<group>"; };
+		F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +216,12 @@
 		F3316AFC29A0EB450089B4D5 /* myRecipe */ = {
 			isa = PBXGroup;
 			children = (
-				F3316AFD29A0EB450089B4D5 /* myRecipeApp.swift */,
-				F3316AFF29A0EB450089B4D5 /* ContentView.swift */,
-				F3316B0129A0EB470089B4D5 /* Assets.xcassets */,
-				F3316B0629A0EB470089B4D5 /* Persistence.swift */,
-				F3316B0829A0EB470089B4D5 /* myRecipe.xcdatamodeld */,
-				F3316B0329A0EB470089B4D5 /* Preview Content */,
+				F3316B2C29A0EB960089B4D5 /* App */,
+				F3316B4029A0EDBD0089B4D5 /* Entities */,
+				F3316B2D29A0EBDA0089B4D5 /* Coordinators */,
+				F3316B2E29A0EBEB0089B4D5 /* RootModules */,
+				F3316B2F29A0EBFA0089B4D5 /* Modules */,
+				F3316B4F29A0EEC00089B4D5 /* Extensions */,
 			);
 			path = myRecipe;
 			sourceTree = "<group>";
@@ -131,6 +249,409 @@
 				F3316B1F29A0EB470089B4D5 /* myRecipeUITestsLaunchTests.swift */,
 			);
 			path = myRecipeUITests;
+			sourceTree = "<group>";
+		};
+		F3316B2C29A0EB960089B4D5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F3316AFD29A0EB450089B4D5 /* myRecipeApp.swift */,
+				F3316AFF29A0EB450089B4D5 /* ContentView.swift */,
+				F3316B0129A0EB470089B4D5 /* Assets.xcassets */,
+				F3316B0629A0EB470089B4D5 /* Persistence.swift */,
+				F3316B0829A0EB470089B4D5 /* myRecipe.xcdatamodeld */,
+				F3316B0329A0EB470089B4D5 /* Preview Content */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F3316B2D29A0EBDA0089B4D5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B3229A0EC440089B4D5 /* Protocols */,
+				F3316B3529A0EC880089B4D5 /* CoordinatorsFactory */,
+				F3316B3A29A0ED5E0089B4D5 /* TabBarCoordinator */,
+				F3316B5429A0EF8E0089B4D5 /* MainScreenCoordinator */,
+				F3316B5C29A0F0720089B4D5 /* SettingsScreenCoordinator */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		F3316B2E29A0EBEB0089B4D5 /* RootModules */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B6429A0F10A0089B4D5 /* RootModulesFactory */,
+				F3316B6929A0F1520089B4D5 /* TabBar */,
+				F3316B7C29A0F3230089B4D5 /* MainScreenRoot */,
+				F3316B8F29A0F49E0089B4D5 /* SettingsScreenRoot */,
+			);
+			path = RootModules;
+			sourceTree = "<group>";
+		};
+		F3316B2F29A0EBFA0089B4D5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BA229A0F5970089B4D5 /* ModulesFactory */,
+				F3316BA729A0F5F70089B4D5 /* MainScreen */,
+				F3316BBA29A0F70F0089B4D5 /* SettingsScreen */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		F3316B3229A0EC440089B4D5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B3029A0EC3F0089B4D5 /* RootCoordinator.swift */,
+				F3316B3329A0EC690089B4D5 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F3316B3529A0EC880089B4D5 /* CoordinatorsFactory */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B3629A0ECAA0089B4D5 /* CoordinatorsFactoring.swift */,
+				F3316B3829A0ECE50089B4D5 /* CoordinatorsFactory.swift */,
+			);
+			path = CoordinatorsFactory;
+			sourceTree = "<group>";
+		};
+		F3316B3A29A0ED5E0089B4D5 /* TabBarCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B3B29A0ED6F0089B4D5 /* TabBarElementBuilder */,
+				F3316B5229A0EF1F0089B4D5 /* TabBarCoordinator.swift */,
+			);
+			path = TabBarCoordinator;
+			sourceTree = "<group>";
+		};
+		F3316B3B29A0ED6F0089B4D5 /* TabBarElementBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B3C29A0ED800089B4D5 /* TabBarElementBuilding.swift */,
+				F3316B3E29A0ED970089B4D5 /* TabBarElementBuilder.swift */,
+			);
+			path = TabBarElementBuilder;
+			sourceTree = "<group>";
+		};
+		F3316B4029A0EDBD0089B4D5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B4629A0EE080089B4D5 /* Core */,
+				F3316B4129A0EDD40089B4D5 /* TabBar */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		F3316B4129A0EDD40089B4D5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B4229A0EDDF0089B4D5 /* TabBarElementType.swift */,
+				F3316B4429A0EDF30089B4D5 /* TabBarElement.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		F3316B4629A0EE080089B4D5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B4D29A0EE650089B4D5 /* Navigable.swift */,
+				F3316B4B29A0EE500089B4D5 /* NavigableView.swift */,
+				F3316B4929A0EE3B0089B4D5 /* Routable.swift */,
+				F3316B4729A0EE1D0089B4D5 /* Router.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F3316B4F29A0EEC00089B4D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B5029A0EED70089B4D5 /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3316B5429A0EF8E0089B4D5 /* MainScreenCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B5529A0EF9E0089B4D5 /* Interfaces */,
+				F3316B5A29A0EFEF0089B4D5 /* MainScreenCoordinator.swift */,
+			);
+			path = MainScreenCoordinator;
+			sourceTree = "<group>";
+		};
+		F3316B5529A0EF9E0089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B5629A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift */,
+				F3316B5829A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316B5C29A0F0720089B4D5 /* SettingsScreenCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B5D29A0F0810089B4D5 /* Interfaces */,
+				F3316B6229A0F0C70089B4D5 /* SettingsScreenCoordinator.swift */,
+			);
+			path = SettingsScreenCoordinator;
+			sourceTree = "<group>";
+		};
+		F3316B5D29A0F0810089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B5E29A0F0960089B4D5 /* SettingsScreenCoordinatorInput.swift */,
+				F3316B6029A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316B6429A0F10A0089B4D5 /* RootModulesFactory */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B6529A0F11B0089B4D5 /* RootModulesFactoring.swift */,
+				F3316B6729A0F1370089B4D5 /* RootModulesFactory.swift */,
+			);
+			path = RootModulesFactory;
+			sourceTree = "<group>";
+		};
+		F3316B6929A0F1520089B4D5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B6A29A0F1710089B4D5 /* Configurator */,
+				F3316B6B29A0F17A0089B4D5 /* ViewModel */,
+				F3316B6C29A0F1880089B4D5 /* View */,
+				F3316B6D29A0F1920089B4D5 /* Interfaces */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		F3316B6A29A0F1710089B4D5 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B6E29A0F1B50089B4D5 /* TabBarConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		F3316B6B29A0F17A0089B4D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B7029A0F1D50089B4D5 /* TabBarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3316B6C29A0F1880089B4D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B7229A0F2070089B4D5 /* TabBarViewState.swift */,
+				F3316B7429A0F21B0089B4D5 /* TabBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3316B6D29A0F1920089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B7A29A0F2630089B4D5 /* TabBarInput.swift */,
+				F3316B7829A0F2510089B4D5 /* TabBarOutput.swift */,
+				F3316B7629A0F23F0089B4D5 /* TabBarViewOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316B7C29A0F3230089B4D5 /* MainScreenRoot */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B8029A0F3530089B4D5 /* Configurator */,
+				F3316B7F29A0F3460089B4D5 /* ViewModel */,
+				F3316B7E29A0F33D0089B4D5 /* View */,
+				F3316B7D29A0F3350089B4D5 /* Interfaces */,
+			);
+			path = MainScreenRoot;
+			sourceTree = "<group>";
+		};
+		F3316B7D29A0F3350089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B8129A0F3800089B4D5 /* MainScreenRootInput.swift */,
+				F3316B8329A0F3960089B4D5 /* MainScreenRootOutput.swift */,
+				F3316B8529A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316B7E29A0F33D0089B4D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B8729A0F3E10089B4D5 /* MainScreenRootViewState.swift */,
+				F3316B8929A0F3FB0089B4D5 /* MainScreenRootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3316B7F29A0F3460089B4D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B8B29A0F4350089B4D5 /* MainScreenRootViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3316B8029A0F3530089B4D5 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B8D29A0F4620089B4D5 /* MainScreenRootConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		F3316B8F29A0F49E0089B4D5 /* SettingsScreenRoot */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B9329A0F4C90089B4D5 /* Configurator */,
+				F3316B9229A0F4C10089B4D5 /* ViewModel */,
+				F3316B9129A0F4B90089B4D5 /* View */,
+				F3316B9029A0F4B00089B4D5 /* Interfaces */,
+			);
+			path = SettingsScreenRoot;
+			sourceTree = "<group>";
+		};
+		F3316B9029A0F4B00089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B9429A0F4D80089B4D5 /* SettingsScreenRootInput.swift */,
+				F3316B9629A0F4E90089B4D5 /* SettingsScreenRootOutput.swift */,
+				F3316B9829A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316B9129A0F4B90089B4D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B9A29A0F5130089B4D5 /* SettingsScreenRootViewState.swift */,
+				F3316B9C29A0F5250089B4D5 /* SettingsScreenRootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3316B9229A0F4C10089B4D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3316B9E29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3316B9329A0F4C90089B4D5 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		F3316BA229A0F5970089B4D5 /* ModulesFactory */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */,
+				F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */,
+			);
+			path = ModulesFactory;
+			sourceTree = "<group>";
+		};
+		F3316BA729A0F5F70089B4D5 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BAB29A0F6250089B4D5 /* Configurator */,
+				F3316BAA29A0F61D0089B4D5 /* ViewModel */,
+				F3316BA929A0F6140089B4D5 /* View */,
+				F3316BA829A0F60B0089B4D5 /* Interfaces */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		F3316BA829A0F60B0089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BAC29A0F6440089B4D5 /* MainScreenInput.swift */,
+				F3316BAE29A0F6590089B4D5 /* MainScreenOutput.swift */,
+				F3316BB029A0F6700089B4D5 /* MainScreenViewOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316BA929A0F6140089B4D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BB229A0F6890089B4D5 /* MainScreenViewState.swift */,
+				F3316BB429A0F69B0089B4D5 /* MainScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3316BAA29A0F61D0089B4D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BB629A0F6C30089B4D5 /* MainScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3316BAB29A0F6250089B4D5 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BB829A0F6E30089B4D5 /* MainScreenConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		F3316BBA29A0F70F0089B4D5 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BBE29A0F7380089B4D5 /* Configurator */,
+				F3316BBD29A0F72F0089B4D5 /* ViewModel */,
+				F3316BBC29A0F7260089B4D5 /* View */,
+				F3316BBB29A0F71D0089B4D5 /* Interfaces */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		F3316BBB29A0F71D0089B4D5 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */,
+				F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */,
+				F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3316BBC29A0F7260089B4D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BC529A0F77C0089B4D5 /* SettingsScreenViewState.swift */,
+				F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3316BBD29A0F72F0089B4D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BC929A0F7AF0089B4D5 /* SettingsScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3316BBE29A0F7380089B4D5 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +785,68 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3316B0729A0EB470089B4D5 /* Persistence.swift in Sources */,
+				F3316BB729A0F6C30089B4D5 /* MainScreenViewModel.swift in Sources */,
+				F3316B4A29A0EE3B0089B4D5 /* Routable.swift in Sources */,
+				F3316BB129A0F6700089B4D5 /* MainScreenViewOutput.swift in Sources */,
+				F3316B8829A0F3E10089B4D5 /* MainScreenRootViewState.swift in Sources */,
+				F3316B9D29A0F5250089B4D5 /* SettingsScreenRootView.swift in Sources */,
+				F3316B8629A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift in Sources */,
+				F3316BCC29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift in Sources */,
+				F3316B7B29A0F2630089B4D5 /* TabBarInput.swift in Sources */,
+				F3316B3729A0ECAA0089B4D5 /* CoordinatorsFactoring.swift in Sources */,
+				F3316BC629A0F77C0089B4D5 /* SettingsScreenViewState.swift in Sources */,
+				F3316BC229A0F7560089B4D5 /* SettingsScreenOutput.swift in Sources */,
+				F3316B8E29A0F4620089B4D5 /* MainScreenRootConfigurator.swift in Sources */,
+				F3316B4E29A0EE650089B4D5 /* Navigable.swift in Sources */,
+				F3316B6F29A0F1B50089B4D5 /* TabBarConfigurator.swift in Sources */,
+				F3316B4C29A0EE500089B4D5 /* NavigableView.swift in Sources */,
+				F3316B6629A0F11B0089B4D5 /* RootModulesFactoring.swift in Sources */,
+				F3316B5129A0EED70089B4D5 /* View+.swift in Sources */,
+				F3316B5929A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift in Sources */,
 				F3316B0029A0EB450089B4D5 /* ContentView.swift in Sources */,
+				F3316B7929A0F2510089B4D5 /* TabBarOutput.swift in Sources */,
+				F3316B9929A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift in Sources */,
+				F3316B5729A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift in Sources */,
+				F3316B8A29A0F3FB0089B4D5 /* MainScreenRootView.swift in Sources */,
+				F3316B6829A0F1370089B4D5 /* RootModulesFactory.swift in Sources */,
+				F3316B7129A0F1D50089B4D5 /* TabBarViewModel.swift in Sources */,
+				F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */,
+				F3316B3929A0ECE50089B4D5 /* CoordinatorsFactory.swift in Sources */,
+				F3316B5F29A0F0960089B4D5 /* SettingsScreenCoordinatorInput.swift in Sources */,
+				F3316B4529A0EDF30089B4D5 /* TabBarElement.swift in Sources */,
+				F3316B3429A0EC690089B4D5 /* Coordinator.swift in Sources */,
+				F3316B3129A0EC3F0089B4D5 /* RootCoordinator.swift in Sources */,
+				F3316B8C29A0F4350089B4D5 /* MainScreenRootViewModel.swift in Sources */,
+				F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */,
+				F3316B3D29A0ED800089B4D5 /* TabBarElementBuilding.swift in Sources */,
+				F3316B5B29A0EFEF0089B4D5 /* MainScreenCoordinator.swift in Sources */,
+				F3316B8429A0F3960089B4D5 /* MainScreenRootOutput.swift in Sources */,
+				F3316BB329A0F6890089B4D5 /* MainScreenViewState.swift in Sources */,
 				F3316AFE29A0EB450089B4D5 /* myRecipeApp.swift in Sources */,
+				F3316B9B29A0F5130089B4D5 /* SettingsScreenRootViewState.swift in Sources */,
+				F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */,
+				F3316B9F29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift in Sources */,
+				F3316B6129A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift in Sources */,
+				F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */,
+				F3316BAF29A0F6590089B4D5 /* MainScreenOutput.swift in Sources */,
+				F3316B5329A0EF1F0089B4D5 /* TabBarCoordinator.swift in Sources */,
+				F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */,
+				F3316B3F29A0ED970089B4D5 /* TabBarElementBuilder.swift in Sources */,
+				F3316B7729A0F23F0089B4D5 /* TabBarViewOutput.swift in Sources */,
+				F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */,
+				F3316BCA29A0F7AF0089B4D5 /* SettingsScreenViewModel.swift in Sources */,
+				F3316B7329A0F2070089B4D5 /* TabBarViewState.swift in Sources */,
+				F3316B9729A0F4E90089B4D5 /* SettingsScreenRootOutput.swift in Sources */,
+				F3316BB929A0F6E30089B4D5 /* MainScreenConfigurator.swift in Sources */,
+				F3316B8229A0F3800089B4D5 /* MainScreenRootInput.swift in Sources */,
+				F3316B9529A0F4D80089B4D5 /* SettingsScreenRootInput.swift in Sources */,
 				F3316B0A29A0EB470089B4D5 /* myRecipe.xcdatamodeld in Sources */,
+				F3316BB529A0F69B0089B4D5 /* MainScreenView.swift in Sources */,
+				F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */,
+				F3316B4829A0EE1D0089B4D5 /* Router.swift in Sources */,
+				F3316B7529A0F21B0089B4D5 /* TabBarView.swift in Sources */,
+				F3316B6329A0F0C70089B4D5 /* SettingsScreenCoordinator.swift in Sources */,
+				F3316BAD29A0F6440089B4D5 /* MainScreenInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +1004,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"myRecipe/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"myRecipe/App/Preview Content\"";
 				DEVELOPMENT_TEAM = JCV48HS79W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -453,7 +1033,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"myRecipe/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"myRecipe/App/Preview Content\"";
 				DEVELOPMENT_TEAM = JCV48HS79W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
