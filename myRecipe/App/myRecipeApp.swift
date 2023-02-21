@@ -8,8 +8,7 @@
 import SwiftUI
 
 @main
-// swiftlint:disable type_name
-struct myRecipeApp: App {
+struct MyRecipeApp: App {
     private let tabBarCoordinator: RootCoordinator
     
     init() {

@@ -7,4 +7,7 @@
 
 import Foundation
 
-final class MainScreenViewState: ObservableObject {}
+final class MainScreenViewState: ObservableObject {
+    let searchFieldViewModel = SearchFieldViewModel()
+    let carouselViewModel = SingleSelectionCarouselViewModel()
+}

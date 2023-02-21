@@ -20,8 +20,25 @@ struct MainScreenView: View {
     }
     
     var body: some View {
-        Text("Main Screen")
-            .font(.title)
-            .padding()
+        ScrollView(.vertical, showsIndicators: false) {
+            searchField
+            
+            carousel
+        }
+        .onTapGesture {
+            viewState.searchFieldViewModel.endEditing()
+        }
+    }
+    
+    private var searchField: some View {
+        SearchFieldView(viewModel: viewState.searchFieldViewModel)
+            .padding(.horizontal, UIConstants.Paddings.s)
+    }
+    
+    private var carousel: some View {
+        SingleSelectionCarouselView(
+            viewModel: viewState.carouselViewModel,
+            horizontalInsets: UIConstants.Paddings.s
+        )
     }
 }

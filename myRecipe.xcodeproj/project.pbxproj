@@ -75,6 +75,47 @@
 		F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */; };
 		F3316BCA29A0F7AF0089B4D5 /* SettingsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC929A0F7AF0089B4D5 /* SettingsScreenViewModel.swift */; };
 		F3316BCC29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */; };
+		F369A08C29A3C04300FDDAB2 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A07A29A3C04200FDDAB2 /* Poppins-Black.ttf */; };
+		F369A08D29A3C04300FDDAB2 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A07B29A3C04200FDDAB2 /* Poppins-ExtraLightItalic.ttf */; };
+		F369A08E29A3C04300FDDAB2 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A07C29A3C04200FDDAB2 /* Poppins-LightItalic.ttf */; };
+		F369A08F29A3C04300FDDAB2 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A07D29A3C04200FDDAB2 /* Poppins-ExtraBold.ttf */; };
+		F369A09029A3C04300FDDAB2 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A07E29A3C04200FDDAB2 /* Poppins-Regular.ttf */; };
+		F369A09129A3C04300FDDAB2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A07F29A3C04200FDDAB2 /* Poppins-Bold.ttf */; };
+		F369A09229A3C04300FDDAB2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08029A3C04200FDDAB2 /* Poppins-Medium.ttf */; };
+		F369A09329A3C04300FDDAB2 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08129A3C04200FDDAB2 /* Poppins-Light.ttf */; };
+		F369A09429A3C04300FDDAB2 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08229A3C04200FDDAB2 /* Poppins-SemiBold.ttf */; };
+		F369A09529A3C04300FDDAB2 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08329A3C04200FDDAB2 /* Poppins-MediumItalic.ttf */; };
+		F369A09629A3C04300FDDAB2 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08429A3C04200FDDAB2 /* Poppins-SemiBoldItalic.ttf */; };
+		F369A09729A3C04300FDDAB2 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08529A3C04200FDDAB2 /* Poppins-Thin.ttf */; };
+		F369A09829A3C04300FDDAB2 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08629A3C04200FDDAB2 /* Poppins-BlackItalic.ttf */; };
+		F369A09929A3C04300FDDAB2 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08729A3C04200FDDAB2 /* Poppins-ThinItalic.ttf */; };
+		F369A09A29A3C04300FDDAB2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08829A3C04200FDDAB2 /* Poppins-Italic.ttf */; };
+		F369A09B29A3C04300FDDAB2 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08929A3C04200FDDAB2 /* Poppins-ExtraBoldItalic.ttf */; };
+		F369A09C29A3C04300FDDAB2 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08A29A3C04200FDDAB2 /* Poppins-ExtraLight.ttf */; };
+		F369A09D29A3C04300FDDAB2 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F369A08B29A3C04300FDDAB2 /* Poppins-BoldItalic.ttf */; };
+		F369A0A029A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A09F29A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift */; };
+		F369A0A429A3DEB100FDDAB2 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0A329A3DEB100FDDAB2 /* UIConstants.swift */; };
+		F369A0A729A4037600FDDAB2 /* RecipeCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0A629A4037600FDDAB2 /* RecipeCardViewModel.swift */; };
+		F369A0AA29A405AA00FDDAB2 /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0A929A405AA00FDDAB2 /* SearchFieldView.swift */; };
+		F369A0B129A4121F00FDDAB2 /* SearchFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0B029A4121F00FDDAB2 /* SearchFieldViewModel.swift */; };
+		F369A0B429A4C3C400FDDAB2 /* SingleSelectionCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0B329A4C3C400FDDAB2 /* SingleSelectionCarouselView.swift */; };
+		F369A0B629A4C4F100FDDAB2 /* SingleSelectionCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0B529A4C4F100FDDAB2 /* SingleSelectionCarouselCellView.swift */; };
+		F369A0B829A4D51700FDDAB2 /* SingleSelectionCarouselCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0B729A4D51700FDDAB2 /* SingleSelectionCarouselCellViewModel.swift */; };
+		F369A0BA29A4E2F500FDDAB2 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0B929A4E2F500FDDAB2 /* Int+.swift */; };
+		F369A0BC29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0BB29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift */; };
+		F369A0BE29A4EE4100FDDAB2 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369A0BD29A4EE4100FDDAB2 /* String+.swift */; };
+		F38F19DD29A156D5008E314B /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19DC29A156D5008E314B /* ApiConstants.swift */; };
+		F38F19DF29A15888008E314B /* MethodPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19DE29A15888008E314B /* MethodPath.swift */; };
+		F38F19E229A15956008E314B /* URLBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19E129A15956008E314B /* URLBuilding.swift */; };
+		F38F19E429A1597C008E314B /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19E329A1597C008E314B /* URLBuilder.swift */; };
+		F38F19E629A15A7F008E314B /* URLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19E529A15A7F008E314B /* URLError.swift */; };
+		F38F19E829A15C33008E314B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19E729A15C33008E314B /* HTTPMethod.swift */; };
+		F38F19EB29A15C86008E314B /* URLRequestBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19EA29A15C86008E314B /* URLRequestBuilding.swift */; };
+		F38F19ED29A15D91008E314B /* QueryItemsRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19EC29A15D91008E314B /* QueryItemsRepresentable.swift */; };
+		F38F19EF29A15DD4008E314B /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19EE29A15DD4008E314B /* URLRequestBuilder.swift */; };
+		F38F19F129A15F19008E314B /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F029A15F19008E314B /* URL+.swift */; };
+		F38F19F429A16504008E314B /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F329A16504008E314B /* SearchService.swift */; };
+		F38F19F729A16725008E314B /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F629A16725008E314B /* SearchQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +207,48 @@
 		F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
 		F3316BC929A0F7AF0089B4D5 /* SettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewModel.swift; sourceTree = "<group>"; };
 		F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenConfigurator.swift; sourceTree = "<group>"; };
+		F369A07A29A3C04200FDDAB2 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		F369A07B29A3C04200FDDAB2 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		F369A07C29A3C04200FDDAB2 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		F369A07D29A3C04200FDDAB2 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F369A07E29A3C04200FDDAB2 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		F369A07F29A3C04200FDDAB2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		F369A08029A3C04200FDDAB2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		F369A08129A3C04200FDDAB2 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		F369A08229A3C04200FDDAB2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		F369A08329A3C04200FDDAB2 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		F369A08429A3C04200FDDAB2 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		F369A08529A3C04200FDDAB2 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		F369A08629A3C04200FDDAB2 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		F369A08729A3C04200FDDAB2 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		F369A08829A3C04200FDDAB2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		F369A08929A3C04200FDDAB2 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		F369A08A29A3C04200FDDAB2 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		F369A08B29A3C04300FDDAB2 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		F369A09E29A3C14700FDDAB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F369A09F29A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalRecipeCardView.swift; sourceTree = "<group>"; };
+		F369A0A329A3DEB100FDDAB2 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		F369A0A629A4037600FDDAB2 /* RecipeCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardViewModel.swift; sourceTree = "<group>"; };
+		F369A0A929A405AA00FDDAB2 /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
+		F369A0B029A4121F00FDDAB2 /* SearchFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldViewModel.swift; sourceTree = "<group>"; };
+		F369A0B329A4C3C400FDDAB2 /* SingleSelectionCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionCarouselView.swift; sourceTree = "<group>"; };
+		F369A0B529A4C4F100FDDAB2 /* SingleSelectionCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionCarouselCellView.swift; sourceTree = "<group>"; };
+		F369A0B729A4D51700FDDAB2 /* SingleSelectionCarouselCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionCarouselCellViewModel.swift; sourceTree = "<group>"; };
+		F369A0B929A4E2F500FDDAB2 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		F369A0BB29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionCarouselViewModel.swift; sourceTree = "<group>"; };
+		F369A0BD29A4EE4100FDDAB2 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		F38F19DC29A156D5008E314B /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		F38F19DE29A15888008E314B /* MethodPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodPath.swift; sourceTree = "<group>"; };
+		F38F19E129A15956008E314B /* URLBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilding.swift; sourceTree = "<group>"; };
+		F38F19E329A1597C008E314B /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		F38F19E529A15A7F008E314B /* URLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLError.swift; sourceTree = "<group>"; };
+		F38F19E729A15C33008E314B /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		F38F19EA29A15C86008E314B /* URLRequestBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilding.swift; sourceTree = "<group>"; };
+		F38F19EC29A15D91008E314B /* QueryItemsRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemsRepresentable.swift; sourceTree = "<group>"; };
+		F38F19EE29A15DD4008E314B /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
+		F38F19F029A15F19008E314B /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		F38F19F329A16504008E314B /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		F38F19F629A16725008E314B /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +300,9 @@
 			isa = PBXGroup;
 			children = (
 				F3316B2C29A0EB960089B4D5 /* App */,
+				F38F19DB29A153E9008E314B /* Api */,
+				F369A07829A3BA0800FDDAB2 /* UI */,
+				F38F19F229A16349008E314B /* Services */,
 				F3316B4029A0EDBD0089B4D5 /* Entities */,
 				F3316B2D29A0EBDA0089B4D5 /* Coordinators */,
 				F3316B2E29A0EBEB0089B4D5 /* RootModules */,
@@ -254,6 +340,7 @@
 		F3316B2C29A0EB960089B4D5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F369A09E29A3C14700FDDAB2 /* Info.plist */,
 				F3316AFD29A0EB450089B4D5 /* myRecipeApp.swift */,
 				F3316AFF29A0EB450089B4D5 /* ContentView.swift */,
 				F3316B0129A0EB470089B4D5 /* Assets.xcassets */,
@@ -366,6 +453,9 @@
 			isa = PBXGroup;
 			children = (
 				F3316B5029A0EED70089B4D5 /* View+.swift */,
+				F38F19F029A15F19008E314B /* URL+.swift */,
+				F369A0B929A4E2F500FDDAB2 /* Int+.swift */,
+				F369A0BD29A4EE4100FDDAB2 /* String+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -654,6 +744,121 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		F369A07829A3BA0800FDDAB2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F369A07929A3C00100FDDAB2 /* Fonts */,
+				F369A0B229A4C3A100FDDAB2 /* SingleSelectionCarousel */,
+				F369A0A829A4059000FDDAB2 /* SearchField */,
+				F369A0A529A4036500FDDAB2 /* RecipeCard */,
+				F369A0A329A3DEB100FDDAB2 /* UIConstants.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F369A07929A3C00100FDDAB2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F369A07A29A3C04200FDDAB2 /* Poppins-Black.ttf */,
+				F369A08629A3C04200FDDAB2 /* Poppins-BlackItalic.ttf */,
+				F369A07F29A3C04200FDDAB2 /* Poppins-Bold.ttf */,
+				F369A08B29A3C04300FDDAB2 /* Poppins-BoldItalic.ttf */,
+				F369A07D29A3C04200FDDAB2 /* Poppins-ExtraBold.ttf */,
+				F369A08929A3C04200FDDAB2 /* Poppins-ExtraBoldItalic.ttf */,
+				F369A08A29A3C04200FDDAB2 /* Poppins-ExtraLight.ttf */,
+				F369A07B29A3C04200FDDAB2 /* Poppins-ExtraLightItalic.ttf */,
+				F369A08829A3C04200FDDAB2 /* Poppins-Italic.ttf */,
+				F369A08129A3C04200FDDAB2 /* Poppins-Light.ttf */,
+				F369A07C29A3C04200FDDAB2 /* Poppins-LightItalic.ttf */,
+				F369A08029A3C04200FDDAB2 /* Poppins-Medium.ttf */,
+				F369A08329A3C04200FDDAB2 /* Poppins-MediumItalic.ttf */,
+				F369A07E29A3C04200FDDAB2 /* Poppins-Regular.ttf */,
+				F369A08229A3C04200FDDAB2 /* Poppins-SemiBold.ttf */,
+				F369A08429A3C04200FDDAB2 /* Poppins-SemiBoldItalic.ttf */,
+				F369A08529A3C04200FDDAB2 /* Poppins-Thin.ttf */,
+				F369A08729A3C04200FDDAB2 /* Poppins-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F369A0A529A4036500FDDAB2 /* RecipeCard */ = {
+			isa = PBXGroup;
+			children = (
+				F369A0A629A4037600FDDAB2 /* RecipeCardViewModel.swift */,
+				F369A09F29A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift */,
+			);
+			path = RecipeCard;
+			sourceTree = "<group>";
+		};
+		F369A0A829A4059000FDDAB2 /* SearchField */ = {
+			isa = PBXGroup;
+			children = (
+				F369A0A929A405AA00FDDAB2 /* SearchFieldView.swift */,
+				F369A0B029A4121F00FDDAB2 /* SearchFieldViewModel.swift */,
+			);
+			path = SearchField;
+			sourceTree = "<group>";
+		};
+		F369A0B229A4C3A100FDDAB2 /* SingleSelectionCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				F369A0BB29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift */,
+				F369A0B329A4C3C400FDDAB2 /* SingleSelectionCarouselView.swift */,
+				F369A0B729A4D51700FDDAB2 /* SingleSelectionCarouselCellViewModel.swift */,
+				F369A0B529A4C4F100FDDAB2 /* SingleSelectionCarouselCellView.swift */,
+			);
+			path = SingleSelectionCarousel;
+			sourceTree = "<group>";
+		};
+		F38F19DB29A153E9008E314B /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				F38F19F529A16703008E314B /* Queries */,
+				F38F19E929A15C50008E314B /* URLRequestBuilder */,
+				F38F19E029A15944008E314B /* URLBuilder */,
+				F38F19DC29A156D5008E314B /* ApiConstants.swift */,
+				F38F19DE29A15888008E314B /* MethodPath.swift */,
+				F38F19E529A15A7F008E314B /* URLError.swift */,
+				F38F19E729A15C33008E314B /* HTTPMethod.swift */,
+				F38F19EC29A15D91008E314B /* QueryItemsRepresentable.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		F38F19E029A15944008E314B /* URLBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				F38F19E129A15956008E314B /* URLBuilding.swift */,
+				F38F19E329A1597C008E314B /* URLBuilder.swift */,
+			);
+			path = URLBuilder;
+			sourceTree = "<group>";
+		};
+		F38F19E929A15C50008E314B /* URLRequestBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				F38F19EA29A15C86008E314B /* URLRequestBuilding.swift */,
+				F38F19EE29A15DD4008E314B /* URLRequestBuilder.swift */,
+			);
+			path = URLRequestBuilder;
+			sourceTree = "<group>";
+		};
+		F38F19F229A16349008E314B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F38F19F329A16504008E314B /* SearchService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F38F19F529A16703008E314B /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				F38F19F629A16725008E314B /* SearchQuery.swift */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -759,8 +964,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F369A08D29A3C04300FDDAB2 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				F369A09A29A3C04300FDDAB2 /* Poppins-Italic.ttf in Resources */,
+				F369A09929A3C04300FDDAB2 /* Poppins-ThinItalic.ttf in Resources */,
+				F369A09729A3C04300FDDAB2 /* Poppins-Thin.ttf in Resources */,
+				F369A09529A3C04300FDDAB2 /* Poppins-MediumItalic.ttf in Resources */,
+				F369A09329A3C04300FDDAB2 /* Poppins-Light.ttf in Resources */,
+				F369A09629A3C04300FDDAB2 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				F369A09429A3C04300FDDAB2 /* Poppins-SemiBold.ttf in Resources */,
+				F369A08E29A3C04300FDDAB2 /* Poppins-LightItalic.ttf in Resources */,
+				F369A09829A3C04300FDDAB2 /* Poppins-BlackItalic.ttf in Resources */,
+				F369A09029A3C04300FDDAB2 /* Poppins-Regular.ttf in Resources */,
+				F369A09129A3C04300FDDAB2 /* Poppins-Bold.ttf in Resources */,
+				F369A09B29A3C04300FDDAB2 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				F369A08C29A3C04300FDDAB2 /* Poppins-Black.ttf in Resources */,
+				F369A09C29A3C04300FDDAB2 /* Poppins-ExtraLight.ttf in Resources */,
 				F3316B0529A0EB470089B4D5 /* Preview Assets.xcassets in Resources */,
+				F369A09229A3C04300FDDAB2 /* Poppins-Medium.ttf in Resources */,
+				F369A08F29A3C04300FDDAB2 /* Poppins-ExtraBold.ttf in Resources */,
 				F3316B0229A0EB470089B4D5 /* Assets.xcassets in Resources */,
+				F369A09D29A3C04300FDDAB2 /* Poppins-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,10 +1030,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3316B0729A0EB470089B4D5 /* Persistence.swift in Sources */,
+				F38F19F429A16504008E314B /* SearchService.swift in Sources */,
 				F3316BB729A0F6C30089B4D5 /* MainScreenViewModel.swift in Sources */,
 				F3316B4A29A0EE3B0089B4D5 /* Routable.swift in Sources */,
 				F3316BB129A0F6700089B4D5 /* MainScreenViewOutput.swift in Sources */,
+				F369A0B629A4C4F100FDDAB2 /* SingleSelectionCarouselCellView.swift in Sources */,
+				F369A0A429A3DEB100FDDAB2 /* UIConstants.swift in Sources */,
+				F369A0B429A4C3C400FDDAB2 /* SingleSelectionCarouselView.swift in Sources */,
+				F38F19DD29A156D5008E314B /* ApiConstants.swift in Sources */,
 				F3316B8829A0F3E10089B4D5 /* MainScreenRootViewState.swift in Sources */,
+				F369A0A729A4037600FDDAB2 /* RecipeCardViewModel.swift in Sources */,
 				F3316B9D29A0F5250089B4D5 /* SettingsScreenRootView.swift in Sources */,
 				F3316B8629A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift in Sources */,
 				F3316BCC29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift in Sources */,
@@ -818,26 +1047,37 @@
 				F3316B3729A0ECAA0089B4D5 /* CoordinatorsFactoring.swift in Sources */,
 				F3316BC629A0F77C0089B4D5 /* SettingsScreenViewState.swift in Sources */,
 				F3316BC229A0F7560089B4D5 /* SettingsScreenOutput.swift in Sources */,
+				F38F19EB29A15C86008E314B /* URLRequestBuilding.swift in Sources */,
 				F3316B8E29A0F4620089B4D5 /* MainScreenRootConfigurator.swift in Sources */,
 				F3316B4E29A0EE650089B4D5 /* Navigable.swift in Sources */,
+				F38F19E229A15956008E314B /* URLBuilding.swift in Sources */,
 				F3316B6F29A0F1B50089B4D5 /* TabBarConfigurator.swift in Sources */,
 				F3316B4C29A0EE500089B4D5 /* NavigableView.swift in Sources */,
 				F3316B6629A0F11B0089B4D5 /* RootModulesFactoring.swift in Sources */,
 				F3316B5129A0EED70089B4D5 /* View+.swift in Sources */,
+				F38F19E829A15C33008E314B /* HTTPMethod.swift in Sources */,
 				F3316B5929A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift in Sources */,
 				F3316B0029A0EB450089B4D5 /* ContentView.swift in Sources */,
 				F3316B7929A0F2510089B4D5 /* TabBarOutput.swift in Sources */,
+				F38F19E429A1597C008E314B /* URLBuilder.swift in Sources */,
 				F3316B9929A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift in Sources */,
 				F3316B5729A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift in Sources */,
 				F3316B8A29A0F3FB0089B4D5 /* MainScreenRootView.swift in Sources */,
+				F38F19EF29A15DD4008E314B /* URLRequestBuilder.swift in Sources */,
 				F3316B6829A0F1370089B4D5 /* RootModulesFactory.swift in Sources */,
+				F38F19F729A16725008E314B /* SearchQuery.swift in Sources */,
 				F3316B7129A0F1D50089B4D5 /* TabBarViewModel.swift in Sources */,
 				F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */,
+				F369A0AA29A405AA00FDDAB2 /* SearchFieldView.swift in Sources */,
 				F3316B3929A0ECE50089B4D5 /* CoordinatorsFactory.swift in Sources */,
+				F369A0B829A4D51700FDDAB2 /* SingleSelectionCarouselCellViewModel.swift in Sources */,
 				F3316B5F29A0F0960089B4D5 /* SettingsScreenCoordinatorInput.swift in Sources */,
 				F3316B4529A0EDF30089B4D5 /* TabBarElement.swift in Sources */,
+				F369A0BE29A4EE4100FDDAB2 /* String+.swift in Sources */,
 				F3316B3429A0EC690089B4D5 /* Coordinator.swift in Sources */,
+				F38F19F129A15F19008E314B /* URL+.swift in Sources */,
 				F3316B3129A0EC3F0089B4D5 /* RootCoordinator.swift in Sources */,
+				F369A0BA29A4E2F500FDDAB2 /* Int+.swift in Sources */,
 				F3316B8C29A0F4350089B4D5 /* MainScreenRootViewModel.swift in Sources */,
 				F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */,
 				F3316B3D29A0ED800089B4D5 /* TabBarElementBuilding.swift in Sources */,
@@ -851,6 +1091,7 @@
 				F3316B6129A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift in Sources */,
 				F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */,
 				F3316BAF29A0F6590089B4D5 /* MainScreenOutput.swift in Sources */,
+				F38F19DF29A15888008E314B /* MethodPath.swift in Sources */,
 				F3316B5329A0EF1F0089B4D5 /* TabBarCoordinator.swift in Sources */,
 				F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */,
 				F3316B3F29A0ED970089B4D5 /* TabBarElementBuilder.swift in Sources */,
@@ -861,14 +1102,19 @@
 				F3316B9729A0F4E90089B4D5 /* SettingsScreenRootOutput.swift in Sources */,
 				F3316BB929A0F6E30089B4D5 /* MainScreenConfigurator.swift in Sources */,
 				F3316B8229A0F3800089B4D5 /* MainScreenRootInput.swift in Sources */,
+				F369A0A029A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift in Sources */,
 				F3316B9529A0F4D80089B4D5 /* SettingsScreenRootInput.swift in Sources */,
 				F3316B0A29A0EB470089B4D5 /* myRecipe.xcdatamodeld in Sources */,
 				F3316BB529A0F69B0089B4D5 /* MainScreenView.swift in Sources */,
 				F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */,
 				F3316B4829A0EE1D0089B4D5 /* Router.swift in Sources */,
 				F3316B7529A0F21B0089B4D5 /* TabBarView.swift in Sources */,
+				F369A0B129A4121F00FDDAB2 /* SearchFieldViewModel.swift in Sources */,
 				F3316B6329A0F0C70089B4D5 /* SettingsScreenCoordinator.swift in Sources */,
+				F38F19E629A15A7F008E314B /* URLError.swift in Sources */,
 				F3316BAD29A0F6440089B4D5 /* MainScreenInput.swift in Sources */,
+				F38F19ED29A15D91008E314B /* QueryItemsRepresentable.swift in Sources */,
+				F369A0BC29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,7 +1201,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1009,7 +1255,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1030,11 +1276,12 @@
 				DEVELOPMENT_TEAM = JCV48HS79W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = myRecipe/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1059,11 +1306,12 @@
 				DEVELOPMENT_TEAM = JCV48HS79W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = myRecipe/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
