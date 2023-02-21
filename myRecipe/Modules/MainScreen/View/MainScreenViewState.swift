@@ -10,4 +10,5 @@ import Foundation
 final class MainScreenViewState: ObservableObject {
     let searchFieldViewModel = SearchFieldViewModel()
     let carouselViewModel = SingleSelectionCarouselViewModel()
+    let recipesViewModel = RecipesVerticalListViewModel()
 }

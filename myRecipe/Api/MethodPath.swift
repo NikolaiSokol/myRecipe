@@ -9,11 +9,15 @@ import Foundation
 
 enum MethodPath {
     case search
+    case random
     
     var path: String {
         switch self {
         case .search:
             return "recipes/complexSearch"
+            
+        case .random:
+            return "recipes/random"
         }
     }
 }

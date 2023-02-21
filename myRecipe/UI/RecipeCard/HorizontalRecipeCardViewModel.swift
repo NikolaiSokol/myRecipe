@@ -1,5 +1,5 @@
 //
-//  RecipeCardViewModel.swift
+//  HorizontalRecipeCardViewModel.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 20.02.2023.
@@ -7,24 +7,27 @@
 
 import SwiftUI
 
-final class RecipeCardViewModel: ObservableObject {
-    let image: Image
+final class HorizontalRecipeCardViewModel: ObservableObject, Identifiable {
+    let id: Int
+    let imageUrl: URL?
     let name: String
     let timeToCook: String
-    let recipeCardTapHandler: () -> Void
+    let recipeCardTapHandler: (Int) -> Void
     let saveButtonTapHandler: () -> Void
     
     @Published var isSaved = false
     
     init(
-        image: Image,
+        id: Int,
+        imageUrl: URL?,
         name: String,
         timeToCook: String,
         isSaved: Bool = false,
-        recipeCardTapHandler: @escaping () -> Void,
+        recipeCardTapHandler: @escaping (Int) -> Void,
         saveButtonTapHandler: @escaping () -> Void
     ) {
-        self.image = image
+        self.id = id
+        self.imageUrl = imageUrl
         self.name = name
         self.timeToCook = timeToCook
         self.isSaved = isSaved
@@ -33,7 +36,7 @@ final class RecipeCardViewModel: ObservableObject {
     }
     
     func didTapRecipeCard() {
-        recipeCardTapHandler()
+        recipeCardTapHandler(id)
     }
     
     func didTapSaveButton() {

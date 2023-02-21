@@ -7,9 +7,17 @@
 
 import Foundation
 
-final class ModulesFactory: ModulesFactoring {
+final class ModulesFactory {
+    private let dependencies: DependenciesProtocol
+    
+    init(dependencies: DependenciesProtocol) {
+        self.dependencies = dependencies
+    }
+}
+
+extension ModulesFactory: ModulesFactoring {
     func makeMainScreen(output: MainScreenOutput) -> MainScreenModule {
-        MainScreenConfigurator().configure(output: output)
+        MainScreenConfigurator(dependencies: dependencies).configure(output: output)
     }
     
     func makeSettingsScreen(output: SettingsScreenOutput) -> SettingsScreenModule {

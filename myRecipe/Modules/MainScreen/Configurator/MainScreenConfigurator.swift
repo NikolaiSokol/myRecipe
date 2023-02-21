@@ -15,12 +15,19 @@ struct MainScreenModel {
 }
 
 final class MainScreenConfigurator {
+    private let dependencies: DependenciesProtocol
+    
+    init(dependencies: DependenciesProtocol) {
+        self.dependencies = dependencies
+    }
+    
     func configure(output: MainScreenOutput) -> MainScreenModule {
         let viewState = MainScreenViewState()
         
         let viewModel = MainScreenViewModel(
             viewState: viewState,
-            output: output
+            output: output,
+            searchService: dependencies.searchService
         )
         
         let model = MainScreenModel(viewState: viewState, viewOutput: viewModel)

@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol MainScreenViewOutput: AnyObject {}
+protocol MainScreenViewOutput: AnyObject {
+    func viewAppeared()
+}
