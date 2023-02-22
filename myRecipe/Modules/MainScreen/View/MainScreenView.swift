@@ -21,6 +21,8 @@ struct MainScreenView: View {
     
     var body: some View {
         VStack(spacing: .zero) {
+            header
+            
             searchField
             
             carousel
@@ -37,10 +39,15 @@ struct MainScreenView: View {
         }
     }
     
+    private var header: some View {
+        MainScreenHeaderView()
+            .padding(.horizontal, UIConstants.Paddings.s)
+    }
+    
     private var searchField: some View {
         SearchFieldView(viewModel: viewState.searchFieldViewModel)
             .padding(.horizontal, UIConstants.Paddings.s)
-            .padding(.bottom, UIConstants.Paddings.s)
+            .padding(.top, UIConstants.Paddings.m)
     }
     
     private var carousel: some View {
@@ -48,7 +55,7 @@ struct MainScreenView: View {
             viewModel: viewState.carouselViewModel,
             horizontalInsets: UIConstants.Paddings.s
         )
-        .padding(.bottom, UIConstants.Paddings.xs)
+        .padding(.top, UIConstants.Paddings.s)
     }
     
     private var recipes: some View {
@@ -56,5 +63,6 @@ struct MainScreenView: View {
             RecipesVerticalListView(viewModel: viewState.recipesViewModel)
         }
         .padding(.horizontal, UIConstants.Paddings.s)
+        .padding(.top, UIConstants.Paddings.xs)
     }
 }

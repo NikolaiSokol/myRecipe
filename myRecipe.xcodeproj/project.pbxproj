@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3258B6D29A69494005A00FF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3258B6F29A69494005A00FF /* Localizable.strings */; };
+		F3258B7129A69CB2005A00FF /* MainScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7029A69CB2005A00FF /* MainScreenHeaderView.swift */; };
 		F3316AFE29A0EB450089B4D5 /* MyRecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316AFD29A0EB450089B4D5 /* MyRecipeApp.swift */; };
 		F3316B0029A0EB450089B4D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316AFF29A0EB450089B4D5 /* ContentView.swift */; };
 		F3316B0229A0EB470089B4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3316B0129A0EB470089B4D5 /* Assets.xcassets */; };
@@ -154,6 +156,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F3258B6E29A69494005A00FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3258B7029A69CB2005A00FF /* MainScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderView.swift; sourceTree = "<group>"; };
 		F3316AFA29A0EB450089B4D5 /* myRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3316AFD29A0EB450089B4D5 /* MyRecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeApp.swift; sourceTree = "<group>"; };
 		F3316AFF29A0EB450089B4D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -312,6 +316,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3258B6A29A6944C005A00FF /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B6F29A69494005A00FF /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		F3316AF129A0EB450089B4D5 = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +389,7 @@
 		F3316B2C29A0EB960089B4D5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F3258B6A29A6944C005A00FF /* Localization */,
 				F369A0D229A53B6300FDDAB2 /* Dependencies */,
 				F369A09E29A3C14700FDDAB2 /* Info.plist */,
 				F3316AFD29A0EB450089B4D5 /* MyRecipeApp.swift */,
@@ -806,6 +819,7 @@
 				F369A0BF29A515BC00FDDAB2 /* ViewContentState.swift */,
 				F369A0C329A5170900FDDAB2 /* SkeletonView.swift */,
 				F369A0C529A51D5E00FDDAB2 /* LinearGradientPoints.swift */,
+				F3258B7029A69CB2005A00FF /* MainScreenHeaderView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1092,6 +1106,7 @@
 				F369A09429A3C04300FDDAB2 /* Poppins-SemiBold.ttf in Resources */,
 				F369A08E29A3C04300FDDAB2 /* Poppins-LightItalic.ttf in Resources */,
 				F369A09829A3C04300FDDAB2 /* Poppins-BlackItalic.ttf in Resources */,
+				F3258B6D29A69494005A00FF /* Localizable.strings in Resources */,
 				F369A09029A3C04300FDDAB2 /* Poppins-Regular.ttf in Resources */,
 				F369A09129A3C04300FDDAB2 /* Poppins-Bold.ttf in Resources */,
 				F369A09B29A3C04300FDDAB2 /* Poppins-ExtraBoldItalic.ttf in Resources */,
@@ -1215,6 +1230,7 @@
 				F3316B8429A0F3960089B4D5 /* MainScreenRootOutput.swift in Sources */,
 				F3316BB329A0F6890089B4D5 /* MainScreenViewState.swift in Sources */,
 				F3316AFE29A0EB450089B4D5 /* MyRecipeApp.swift in Sources */,
+				F3258B7129A69CB2005A00FF /* MainScreenHeaderView.swift in Sources */,
 				F3316B9B29A0F5130089B4D5 /* SettingsScreenRootViewState.swift in Sources */,
 				F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */,
 				F3316B9F29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift in Sources */,
@@ -1285,6 +1301,17 @@
 			targetProxy = F3316B1A29A0EB470089B4D5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F3258B6F29A69494005A00FF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3258B6E29A69494005A00FF /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F3316B2129A0EB470089B4D5 /* Debug */ = {

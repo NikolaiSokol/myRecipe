@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  myRecipe
+
+  Created by Nikolai Sokol on 22.02.2023.
+  
+*/
+
+// MARK: - Title
+
+"hello" = "Hello 👋";
+"whatYouWantToCook" = "What you want to cook today?";
+
+// MARK: - Error
+
+"somethingWentWrong" = "Something went wrong";
+"tryAgain" = "Try again";

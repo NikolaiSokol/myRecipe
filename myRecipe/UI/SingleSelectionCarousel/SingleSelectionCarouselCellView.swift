@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct SingleSelectionCarouselCellView: View {
-    private enum LocalConstants {
-        static let textSize: CGFloat = 14
-    }
-    
     @ObservedObject private var viewModel: SingleSelectionCarouselCellViewModel
     
     init(viewModel: SingleSelectionCarouselCellViewModel) {
@@ -33,7 +29,7 @@ struct SingleSelectionCarouselCellView: View {
                 viewModel.isSelected ?
                 Color("primaryAccent") : Color("textAccent")
             )
-            .font(.custom("Poppins", size: LocalConstants.textSize))
+            .font(.custom("Poppins", size: UIConstants.Font.s))
             .fontWeight(.medium)
             .padding(.vertical, UIConstants.Paddings.xs)
             .padding(.horizontal, UIConstants.Paddings.s)

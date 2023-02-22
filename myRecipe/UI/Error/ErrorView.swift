@@ -10,8 +10,6 @@ import SwiftUI
 struct ErrorView: View {
     private enum LocalConstants {
         static let imageWidth = UIScreen.main.bounds.width / 2
-        static let titleFontSize: CGFloat = 20
-        static let secondaryTextSize: CGFloat = 16
         static let buttonHeight: CGFloat = 50
     }
     
@@ -44,7 +42,7 @@ struct ErrorView: View {
     @ViewBuilder private var title: some View {
         if let title = viewModel.title {
             Text(title)
-                .font(.custom("Poppins", size: LocalConstants.titleFontSize))
+                .font(.custom("Poppins", size: UIConstants.Font.l))
                 .fontWeight(.semibold)
                 .padding(.top, UIConstants.Paddings.xl)
         }
@@ -53,7 +51,7 @@ struct ErrorView: View {
     @ViewBuilder private var subTitle: some View {
         if let subTitle = viewModel.subtitle {
             Text(subTitle)
-                .font(.custom("Poppins", size: LocalConstants.secondaryTextSize))
+                .font(.custom("Poppins", size: UIConstants.Font.m))
                 .padding(.top, UIConstants.Paddings.xxs)
         }
     }
@@ -83,7 +81,7 @@ struct ErrorView: View {
         if let buttonText = viewModel.buttonText {
             Text(buttonText)
                 .foregroundColor(.white)
-                .font(.custom("Poppins", size: LocalConstants.secondaryTextSize))
+                .font(.custom("Poppins", size: UIConstants.Font.m))
                 .fontWeight(.semibold)
         }
     }

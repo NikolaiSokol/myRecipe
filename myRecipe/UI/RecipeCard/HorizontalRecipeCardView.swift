@@ -10,8 +10,6 @@ import SwiftUI
 struct HorizontalRecipeCardView: View {
     private enum LocalConstants {
         static let height: CGFloat = 200
-        static let titleSize: CGFloat = 22
-        static let secondaryElementsSize: CGFloat = 16
         static let saveButtonSize: CGFloat = 40
     }
     
@@ -87,7 +85,7 @@ struct HorizontalRecipeCardView: View {
                             .scaledToFit()
                             .foregroundColor(.white)
                             .fontWeight(.semibold)
-                            .frame(width: LocalConstants.secondaryElementsSize)
+                            .frame(width: UIConstants.Font.m)
                     }
             }
             .buttonStyle(.plain)
@@ -117,7 +115,7 @@ struct HorizontalRecipeCardView: View {
             .foregroundColor(.white)
             .lineLimit(2)
             .multilineTextAlignment(.leading)
-            .font(.custom("Poppins", size: LocalConstants.titleSize))
+            .font(.custom("Poppins", size: UIConstants.Font.xl))
             .bold()
     }
     
@@ -128,18 +126,18 @@ struct HorizontalRecipeCardView: View {
                 .scaledToFit()
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
-                .frame(height: LocalConstants.secondaryElementsSize)
+                .frame(height: UIConstants.Font.m)
             
             Text(viewModel.timeToCook)
                 .foregroundColor(.white)
-                .font(.custom("Poppins", size: LocalConstants.secondaryElementsSize))
+                .font(.custom("Poppins", size: UIConstants.Font.m))
                 .fontWeight(.semibold)
         }
     }
     
     private var gradientBackground: some View {
         LinearGradient(
-            colors: [.clear, .black],
+            colors: [.clear, Color("primaryDark")],
             startPoint: .top,
             endPoint: .bottom
         )

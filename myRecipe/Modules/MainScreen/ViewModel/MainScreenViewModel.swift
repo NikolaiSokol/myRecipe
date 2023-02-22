@@ -109,11 +109,10 @@ final class MainScreenViewModel {
     
     // MARK: - Error Screen
     
-    @MainActor
-    private func showErrorScreen() {
+    @MainActor private func showErrorScreen() {
         let errorViewModel = ErrorViewModel(
-            title: "Something went wrong",
-            buttonText: "Try again") { [weak self] in
+            title: "somethingWentWrong".localized(),
+            buttonText: "tryAgain".localized()) { [weak self] in
                 self?.loadRecipes(
                     type: self?.viewState.carouselViewModel.cells
                         .first { $0.isSelected }?.text ?? ""

@@ -8,11 +8,15 @@
 import Foundation
 
 extension String {
-    func capitalizingFirstLetter() -> String {
+    func capitalizingFirstLetter() -> Self {
         prefix(1).capitalized + dropFirst()
     }
 
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
+    }
+    
+    func localized() -> Self {
+        Self(localized: Self.LocalizationValue(self))
     }
 }
