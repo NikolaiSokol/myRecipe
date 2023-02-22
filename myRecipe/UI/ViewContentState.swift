@@ -10,4 +10,5 @@ import Foundation
 enum ViewContentState {
     case skeleton
     case content
+    case error
 }

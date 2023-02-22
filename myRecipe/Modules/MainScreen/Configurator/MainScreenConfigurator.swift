@@ -27,7 +27,7 @@ final class MainScreenConfigurator {
         let viewModel = MainScreenViewModel(
             viewState: viewState,
             output: output,
-            searchService: dependencies.searchService
+            randomRecipesService: dependencies.randomRecipesService
         )
         
         let model = MainScreenModel(viewState: viewState, viewOutput: viewModel)

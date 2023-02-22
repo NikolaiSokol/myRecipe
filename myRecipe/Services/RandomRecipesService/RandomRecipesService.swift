@@ -1,5 +1,5 @@
 //
-//  SearchService.swift
+//  RandomRecipesService.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 18.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SearchService {
+final class RandomRecipesService {
     private let urlBuilder: URLBuilding
     private let requestBuilder: URLRequestBuilding
     private let recipeInformationMapper: RecipeInformationMapping
@@ -23,8 +23,8 @@ final class SearchService {
     }
 }
 
-extension SearchService: SearchServicing {
-    func loadRandomRecipesWithType(_ type: String, number: Int) async throws -> [RecipeInformation] {
+extension RandomRecipesService: RandomRecipesServicing {
+    func loadWithType(_ type: String, number: Int) async throws -> [RecipeInformation] {
         let url = try urlBuilder.buildURL(methodPath: .random)
         let query = RandomRecipesQuery(tags: type, number: number)
         let request = try requestBuilder.buildURLRequest(url: url, query: query, method: .get)

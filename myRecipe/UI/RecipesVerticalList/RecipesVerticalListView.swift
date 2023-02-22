@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-final class RecipesVerticalListViewModel: ObservableObject {
-    @Published var cards: [HorizontalRecipeCardViewModel] = []
-    @Published var contentState: ViewContentState = .skeleton
-}
-
 struct RecipesVerticalListView: View {
     @ObservedObject private var viewModel: RecipesVerticalListViewModel
     
@@ -26,12 +21,15 @@ struct RecipesVerticalListView: View {
             
         case .content:
             content
+            
+        case .error:
+            errorScreen
         }
     }
     
     private var skeleton: some View {
         VStack {
-            ForEach(0 ..< 3) { _ in 
+            ForEach(0 ..< 3) { _ in
                 HorizontalRecipeCardSkeletonView()
             }
         }
@@ -42,6 +40,13 @@ struct RecipesVerticalListView: View {
             ForEach(viewModel.cards) {
                 HorizontalRecipeCardView(viewModel: $0)
             }
+        }
+    }
+    
+    @ViewBuilder private var errorScreen: some View {
+        if let model = viewModel.errorViewModel {
+            ErrorView(viewModel: model)
+                .padding(.top, UIConstants.Paddings.xl)
         }
     }
 }

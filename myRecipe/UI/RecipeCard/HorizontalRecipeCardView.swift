@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HorizontalRecipeCardView: View {
     private enum LocalConstants {
-        static let height: CGFloat = 250
+        static let height: CGFloat = 200
         static let titleSize: CGFloat = 22
         static let secondaryElementsSize: CGFloat = 16
         static let saveButtonSize: CGFloat = 40

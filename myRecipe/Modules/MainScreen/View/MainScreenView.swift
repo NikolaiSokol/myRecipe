@@ -30,7 +30,7 @@ struct MainScreenView: View {
             Spacer()
         }
         .onAppear {
-            output?.viewAppeared()
+            output?.onViewAppear()
         }
         .onTapGesture {
             viewState.searchFieldViewModel.endEditing()

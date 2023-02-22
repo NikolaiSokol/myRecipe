@@ -14,17 +14,21 @@ final class MainScreenViewModel {
     
     private let viewState: MainScreenViewState
     private weak var output: MainScreenOutput?
-    private let searchService: SearchServicing
+    private let randomRecipesService: RandomRecipesServicing
+    
+    private var recipesLoadingTask: Task<Void, Never>?
 
     init(
         viewState: MainScreenViewState,
         output: MainScreenOutput,
-        searchService: SearchServicing
+        randomRecipesService: RandomRecipesServicing
     ) {
         self.viewState = viewState
         self.output = output
-        self.searchService = searchService
+        self.randomRecipesService = randomRecipesService
     }
+    
+    // MARK: - Recipe Type Carousel
     
     private func setupCarousel() {
         viewState.carouselViewModel.cells = ApiConstants.AvailableMealTypes.allCases.map {
@@ -38,6 +42,7 @@ final class MainScreenViewModel {
     }
     
     private func didTapCarouselCell(text: String) {
+        cancelTasks()
         loadRecipes(type: text)
         
         viewState.carouselViewModel.cells.forEach {
@@ -52,21 +57,29 @@ final class MainScreenViewModel {
         }
     }
     
+    // MARK: - Random Recipes
+    
     private func loadRecipes(type: String) {
+        guard recipesLoadingTask.isNil else {
+            return
+        }
+        
         viewState.recipesViewModel.contentState = .skeleton
         
-        Task {
+        recipesLoadingTask = Task {
             do {
-                let recipes = try await searchService.loadRandomRecipesWithType(
+                let recipes = try await randomRecipesService.loadWithType(
                     type.lowercased(),
                     number: LocalConstants.numberOfRecipesToLoad
                 )
                 
                 await updateRecipesList(recipes)
                 
-            } catch let error {
-                print(error.localizedDescription)
+            } catch {
+                await showErrorScreen()
             }
+            
+            recipesLoadingTask = nil
         }
     }
     
@@ -93,6 +106,32 @@ final class MainScreenViewModel {
         
         viewState.recipesViewModel.contentState = .content
     }
+    
+    // MARK: - Error Screen
+    
+    @MainActor
+    private func showErrorScreen() {
+        let errorViewModel = ErrorViewModel(
+            title: "Something went wrong",
+            buttonText: "Try again") { [weak self] in
+                self?.loadRecipes(
+                    type: self?.viewState.carouselViewModel.cells
+                        .first { $0.isSelected }?.text ?? ""
+                )
+                
+                self?.viewState.recipesViewModel.errorViewModel = nil
+            }
+        
+        viewState.recipesViewModel.errorViewModel = errorViewModel
+        viewState.recipesViewModel.contentState = .error
+    }
+    
+    // MARK: - Helpers
+    
+    private func cancelTasks() {
+        recipesLoadingTask?.cancel()
+        recipesLoadingTask = nil
+    }
 }
 
 // MARK: - MainScreenInput
@@ -102,7 +141,7 @@ extension MainScreenViewModel: MainScreenInput {}
 // MARK: - MainScreenViewOutput
 
 extension MainScreenViewModel: MainScreenViewOutput {
-    func viewAppeared() {
+    func onViewAppear() {
         setupCarousel()
         loadRecipes(type: viewState.carouselViewModel.cells.first?.text ?? "")
     }

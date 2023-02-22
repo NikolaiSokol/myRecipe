@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MainScreenViewOutput: AnyObject {
-    func viewAppeared()
+    func onViewAppear()
 }
