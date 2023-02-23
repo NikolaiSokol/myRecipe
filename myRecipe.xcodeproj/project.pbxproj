@@ -137,6 +137,7 @@
 		F38F19F129A15F19008E314B /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F029A15F19008E314B /* URL+.swift */; };
 		F38F19F429A16504008E314B /* RandomRecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F329A16504008E314B /* RandomRecipesService.swift */; };
 		F38F19F729A16725008E314B /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F629A16725008E314B /* SearchQuery.swift */; };
+		F3E2C0C829A7987400F50A8E /* MyRecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2C0C729A7987400F50A8E /* MyRecipeApp.swift */; };
 		F3EC57C229A5A5BC0049A085 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EC57C129A5A5BC0049A085 /* Optional+.swift */; };
 		F3F4D28C29A6820B00CAC355 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4D28B29A6820B00CAC355 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
@@ -293,6 +294,7 @@
 		F38F19F029A15F19008E314B /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
 		F38F19F329A16504008E314B /* RandomRecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecipesService.swift; sourceTree = "<group>"; };
 		F38F19F629A16725008E314B /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
+		F3E2C0C729A7987400F50A8E /* MyRecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeApp.swift; sourceTree = "<group>"; };
 		F3EC57C129A5A5BC0049A085 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		F3F4D28B29A6820B00CAC355 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -464,6 +466,7 @@
 				F369A0D229A53B6300FDDAB2 /* Dependencies */,
 				F369A09E29A3C14700FDDAB2 /* Info.plist */,
 				F3316AFF29A0EB450089B4D5 /* ContentView.swift */,
+				F3E2C0C729A7987400F50A8E /* MyRecipeApp.swift */,
 				F3316B0129A0EB470089B4D5 /* Assets.xcassets */,
 				F3316B0629A0EB470089B4D5 /* Persistence.swift */,
 				F3316B0829A0EB470089B4D5 /* myRecipe.xcdatamodeld */,
@@ -1279,6 +1282,7 @@
 				F3316B9729A0F4E90089B4D5 /* SettingsScreenRootOutput.swift in Sources */,
 				F369A0C629A51D5E00FDDAB2 /* LinearGradientPoints.swift in Sources */,
 				F3316B8229A0F3800089B4D5 /* MainScreenRootInput.swift in Sources */,
+				F3E2C0C829A7987400F50A8E /* MyRecipeApp.swift in Sources */,
 				F369A0A029A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift in Sources */,
 				F3316B9529A0F4D80089B4D5 /* SettingsScreenRootInput.swift in Sources */,
 				F3316B0A29A0EB470089B4D5 /* myRecipe.xcdatamodeld in Sources */,
