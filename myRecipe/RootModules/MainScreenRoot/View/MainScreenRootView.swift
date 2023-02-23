@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct MainScreenRootView: View {
+    private enum LocalConstants {
+        static let animationDuration: CGFloat = 0.2
+        static let minimumScrollOffsetForShowingTopSection: CGFloat = -20
+    }
+    
     @ObservedObject private var state: MainScreenRootViewState
     @ObservedObject private var router: Router
+    
+    @State private var isShowingTopSection = true
     
     private let output: MainScreenRootViewOutput
     
@@ -34,14 +41,20 @@ struct MainScreenRootView: View {
     
     private var actualBody: some View {
         VStack(spacing: .zero) {
-            header
-            
-            searchField
+            if isShowingTopSection {
+                header
+                
+                searchField
+            }
             
             randomRecipesByType
             
             Spacer()
         }
+        .onReceive(
+            (state.randomRecipesByTypeModel?.viewState.recipesViewModel.scrollOffsetSubject).orEmpty(),
+            perform: onRandomRecipesByTypeScrollOffsetChanges
+        )
         .onTapGesture {
             output.endEditing()
         }
@@ -64,6 +77,22 @@ struct MainScreenRootView: View {
         if let model = state.randomRecipesByTypeModel {
             RandomRecipesByTypeView(state: model.viewState, output: model.viewOutput)
                 .padding(.top, UIConstants.Paddings.s)
+        }
+    }
+    
+    private func onRandomRecipesByTypeScrollOffsetChanges(_ offset: CGFloat) {
+        guard let recipesModel = state.randomRecipesByTypeModel,
+        recipesModel.viewState.recipesViewModel.contentState.isContent()
+        else {
+            return
+        }
+
+        withAnimation(.linear(duration: LocalConstants.animationDuration)) {
+            if offset < LocalConstants.minimumScrollOffsetForShowingTopSection, isShowingTopSection {
+                isShowingTopSection = false
+            } else if offset > LocalConstants.minimumScrollOffsetForShowingTopSection, !isShowingTopSection {
+                isShowingTopSection = true
+            }
         }
     }
 }

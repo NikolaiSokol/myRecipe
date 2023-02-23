@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RecipesVerticalListView: View {
+    private enum LocalConstants {
+        static let topAnchorHeight: CGFloat = 1
+        static let topAnchorId = "RecipesVerticalListViewTopAnchorId"
+        static let scrollNameSpace = "RecipesVerticalListViewNameSpace"
+    }
+    
     @ObservedObject private var viewModel: RecipesVerticalListViewModel
     
     init(viewModel: RecipesVerticalListViewModel) {
@@ -15,6 +22,37 @@ struct RecipesVerticalListView: View {
     }
     
     var body: some View {
+        ScrollViewReader { scrollReader in
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack {
+                    topAnchor
+                    
+                    scrollContent
+                }
+                .background(scrollOffsetReader)
+            }
+            .modifier(if: viewModel.contentState.isContent()) {
+                $0.refreshable {
+                    viewModel.refresh()
+                }
+            }
+            .onReceive(viewModel.scrollToTopSubject) {
+                withAnimation {
+                    scrollReader.scrollTo(LocalConstants.topAnchorId)
+                }
+            }
+            .coordinateSpace(name: LocalConstants.scrollNameSpace)
+        }
+    }
+    
+    private var topAnchor: some View {
+        Rectangle()
+            .fill(Color.clear)
+            .frame(height: LocalConstants.topAnchorHeight)
+            .id(LocalConstants.topAnchorId)
+    }
+    
+    @ViewBuilder private var scrollContent: some View {
         switch viewModel.contentState {
         case .skeleton:
             skeleton
@@ -28,18 +66,14 @@ struct RecipesVerticalListView: View {
     }
     
     private var skeleton: some View {
-        VStack {
-            ForEach(0 ..< 3) { _ in
-                HorizontalRecipeCardSkeletonView()
-            }
+        ForEach(0 ..< 3) { _ in
+            HorizontalRecipeCardSkeletonView()
         }
     }
     
     private var content: some View {
-        LazyVStack {
-            ForEach(viewModel.cards) {
-                HorizontalRecipeCardView(viewModel: $0)
-            }
+        ForEach(viewModel.cards) {
+            HorizontalRecipeCardView(viewModel: $0)
         }
     }
     
@@ -47,6 +81,18 @@ struct RecipesVerticalListView: View {
         if let model = viewModel.errorViewModel {
             ErrorView(viewModel: model)
                 .padding(.top, UIConstants.Paddings.xl)
+        }
+    }
+    
+    private var scrollOffsetReader: some View {
+        GeometryReader { proxy -> AnyView in
+            let offset = proxy.frame(in: .named(LocalConstants.scrollNameSpace)).origin.y
+            
+            if viewModel.scrollOffsetSubject.value != offset {
+                viewModel.scrollOffsetSubject.value = offset
+            }
+            
+            return Color.clear.eraseToAnyView()
         }
     }
 }

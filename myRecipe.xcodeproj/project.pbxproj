@@ -135,6 +135,8 @@
 		F38F19F129A15F19008E314B /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F029A15F19008E314B /* URL+.swift */; };
 		F38F19F429A16504008E314B /* RandomRecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F329A16504008E314B /* RandomRecipesService.swift */; };
 		F38F19F729A16725008E314B /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F19F629A16725008E314B /* SearchQuery.swift */; };
+		F39924C029A7D5D200E5C373 /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39924BF29A7D5D200E5C373 /* SizePreferenceKey.swift */; };
+		F39924C229A7D5FD00E5C373 /* GenericPreferenceSizeReaderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39924C129A7D5FD00E5C373 /* GenericPreferenceSizeReaderModifier.swift */; };
 		F3E2C0C829A7987400F50A8E /* MyRecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2C0C729A7987400F50A8E /* MyRecipeApp.swift */; };
 		F3E2C10129A79D6B00F50A8E /* SearchBoxInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2C0FA29A79D6B00F50A8E /* SearchBoxInput.swift */; };
 		F3E2C10229A79D6B00F50A8E /* SearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2C0FB29A79D6B00F50A8E /* SearchBoxView.swift */; };
@@ -306,6 +308,8 @@
 		F38F19F029A15F19008E314B /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
 		F38F19F329A16504008E314B /* RandomRecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecipesService.swift; sourceTree = "<group>"; };
 		F38F19F629A16725008E314B /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
+		F39924BF29A7D5D200E5C373 /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
+		F39924C129A7D5FD00E5C373 /* GenericPreferenceSizeReaderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPreferenceSizeReaderModifier.swift; sourceTree = "<group>"; };
 		F3E2C0C729A7987400F50A8E /* MyRecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeApp.swift; sourceTree = "<group>"; };
 		F3E2C0FA29A79D6B00F50A8E /* SearchBoxInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBoxInput.swift; sourceTree = "<group>"; };
 		F3E2C0FB29A79D6B00F50A8E /* SearchBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBoxView.swift; sourceTree = "<group>"; };
@@ -867,6 +871,7 @@
 		F369A07829A3BA0800FDDAB2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F39924BE29A7D5C700E5C373 /* PreferencesKey */,
 				F360238B29A68E880006DCB1 /* RecipesVerticalList */,
 				F3F4D28D29A6822A00CAC355 /* Error */,
 				F369A07929A3C00100FDDAB2 /* Fonts */,
@@ -1028,6 +1033,15 @@
 				F369A0D529A5413D00FDDAB2 /* RandomRecipesQuery.swift */,
 			);
 			path = Queries;
+			sourceTree = "<group>";
+		};
+		F39924BE29A7D5C700E5C373 /* PreferencesKey */ = {
+			isa = PBXGroup;
+			children = (
+				F39924BF29A7D5D200E5C373 /* SizePreferenceKey.swift */,
+				F39924C129A7D5FD00E5C373 /* GenericPreferenceSizeReaderModifier.swift */,
+			);
+			path = PreferencesKey;
 			sourceTree = "<group>";
 		};
 		F3E2C0E729A79B0F00F50A8E /* SearchBox */ = {
@@ -1389,6 +1403,7 @@
 				F369A0BA29A4E2F500FDDAB2 /* Int+.swift in Sources */,
 				F3316B8C29A0F4350089B4D5 /* MainScreenRootViewModel.swift in Sources */,
 				F3258B8629A6BDE3005A00FF /* RecipeScreenConfigurator.swift in Sources */,
+				F39924C029A7D5D200E5C373 /* SizePreferenceKey.swift in Sources */,
 				F3258B8429A6BDE3005A00FF /* RecipeScreenView.swift in Sources */,
 				F3E2C10629A79D6B00F50A8E /* SearchBoxViewOutput.swift in Sources */,
 				F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */,
@@ -1399,6 +1414,7 @@
 				F3316B8429A0F3960089B4D5 /* MainScreenRootOutput.swift in Sources */,
 				F3258B7129A69CB2005A00FF /* MainScreenHeaderView.swift in Sources */,
 				F3316B9B29A0F5130089B4D5 /* SettingsScreenRootViewState.swift in Sources */,
+				F39924C229A7D5FD00E5C373 /* GenericPreferenceSizeReaderModifier.swift in Sources */,
 				F3258B8229A6BDE3005A00FF /* RecipeScreenInput.swift in Sources */,
 				F3E2C10729A79D6B00F50A8E /* SearchBoxViewState.swift in Sources */,
 				F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */,

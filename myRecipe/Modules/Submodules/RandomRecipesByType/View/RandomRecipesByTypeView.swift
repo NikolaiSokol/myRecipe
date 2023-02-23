@@ -23,7 +23,7 @@ struct RandomRecipesByTypeView: View {
     var body: some View {
         VStack(spacing: .zero) {
             carousel
-            
+
             recipes
         }
     }
@@ -36,10 +36,8 @@ struct RandomRecipesByTypeView: View {
     }
     
     private var recipes: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            RecipesVerticalListView(viewModel: state.recipesViewModel)
-        }
-        .padding(.horizontal, UIConstants.Paddings.s)
-        .padding(.top, UIConstants.Paddings.xs)
+        RecipesVerticalListView(viewModel: state.recipesViewModel)
+            .padding(.horizontal, UIConstants.Paddings.s)
+            .padding(.top, UIConstants.Paddings.xs)
     }
 }

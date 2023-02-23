@@ -29,4 +29,12 @@ extension View {
             self
         }
     }
+    
+    func getViewSize(_ size: Binding<CGSize>, spaceName: String) -> some View {
+        modifier(GenericPreferenceSizeReaderModifier(
+            coordinateSpaceName: spaceName,
+            size: size,
+            preferenceKey: SizePreferenceKey.self
+        ))
+    }
 }

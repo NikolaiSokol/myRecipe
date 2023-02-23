@@ -11,4 +11,8 @@ enum ViewContentState {
     case skeleton
     case content
     case error
+    
+    func isContent() -> Bool {
+        self == .content
+    }
 }
