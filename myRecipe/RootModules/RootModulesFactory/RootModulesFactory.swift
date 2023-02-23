@@ -29,7 +29,7 @@ extension RootModulesFactory: RootModulesFactoring {
         output: MainScreenRootOutput,
         router: Router
     ) -> RootModule<MainScreenRootInput> {
-        MainScreenRootConfigurator(dependencies: dependencies, modulesFactory: modulesFactory)
+        MainScreenRootConfigurator(modulesFactory: modulesFactory)
             .configure(router: router, output: output)
     }
     

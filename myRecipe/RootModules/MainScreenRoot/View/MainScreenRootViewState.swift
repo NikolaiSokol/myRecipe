@@ -8,7 +8,6 @@
 import Foundation
 
 final class MainScreenRootViewState: ObservableObject {
-    let searchFieldViewModel = SearchFieldViewModel()
-    let carouselViewModel = SingleSelectionCarouselViewModel()
-    let recipesViewModel = RecipesVerticalListViewModel()
+    @Published var searchBoxModel: SearchBoxModel?
+    @Published var randomRecipesByTypeModel: RandomRecipesByTypeModel?
 }

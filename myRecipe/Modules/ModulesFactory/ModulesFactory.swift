@@ -23,4 +23,12 @@ extension ModulesFactory: ModulesFactoring {
     func makeRecipeScreen(output: RecipeScreenOutput) -> NavigableModule<RecipeScreenInput> {
         RecipeScreenConfigurator().configure(output: output)
     }
+    
+    func makeSearchBox(output: SearchBoxOutput) -> SearchBoxModule {
+        SearchBoxConfigurator().configure(output: output)
+    }
+    
+    func makeRandomRecipesByType(output: RandomRecipesByTypeOutput) -> RandomRecipesByTypeModule {
+        RandomRecipesByTypeConfigurator(dependencies: dependencies).configure(output: output)
+    }
 }

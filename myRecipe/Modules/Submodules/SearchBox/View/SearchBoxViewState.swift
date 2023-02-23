@@ -1,14 +1,17 @@
 //
-//  SearchFieldViewModel.swift
+//  SearchBoxViewState.swift
 //  myRecipe
 //
-//  Created by Nikolai Sokol on 20.02.2023.
+//  Created by Nikolai Sokol on 23.02.2023.
+//  
 //
 
+import Foundation
 import Combine
 
-final class SearchFieldViewModel: ObservableObject {
+final class SearchBoxViewState: ObservableObject {
     @Published var text = ""
+    
     let endEditingSubject = PassthroughSubject<Void, Never>()
     
     func didTapClearButton() {

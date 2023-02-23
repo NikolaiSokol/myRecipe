@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol MainScreenRootViewOutput: AnyObject {}
+protocol MainScreenRootViewOutput: AnyObject {
+    func endEditing()
+}

@@ -38,14 +38,12 @@ struct MainScreenRootView: View {
             
             searchField
             
-            carousel
-            
-            recipes
+            randomRecipesByType
             
             Spacer()
         }
         .onTapGesture {
-            state.searchFieldViewModel.endEditing()
+            output.endEditing()
         }
     }
     
@@ -54,25 +52,18 @@ struct MainScreenRootView: View {
             .padding(.horizontal, UIConstants.Paddings.s)
     }
     
-    private var searchField: some View {
-        SearchFieldView(viewModel: state.searchFieldViewModel)
-            .padding(.horizontal, UIConstants.Paddings.s)
-            .padding(.top, UIConstants.Paddings.m)
-    }
-    
-    private var carousel: some View {
-        SingleSelectionCarouselView(
-            viewModel: state.carouselViewModel,
-            horizontalInsets: UIConstants.Paddings.s
-        )
-        .padding(.top, UIConstants.Paddings.s)
-    }
-    
-    private var recipes: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            RecipesVerticalListView(viewModel: state.recipesViewModel)
+    @ViewBuilder private var searchField: some View {
+        if let model = state.searchBoxModel {
+            SearchBoxView(state: model.viewState, output: model.viewOutput)
+                .padding(.horizontal, UIConstants.Paddings.s)
+                .padding(.top, UIConstants.Paddings.m)
         }
-        .padding(.horizontal, UIConstants.Paddings.s)
-        .padding(.top, UIConstants.Paddings.xs)
+    }
+    
+    @ViewBuilder private var randomRecipesByType: some View {
+        if let model = state.randomRecipesByTypeModel {
+            RandomRecipesByTypeView(state: model.viewState, output: model.viewOutput)
+                .padding(.top, UIConstants.Paddings.s)
+        }
     }
 }

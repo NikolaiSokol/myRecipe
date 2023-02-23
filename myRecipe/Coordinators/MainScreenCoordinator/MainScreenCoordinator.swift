@@ -66,14 +66,17 @@ extension MainScreenCoordinator: MainScreenCoordinatorInput {
 
 // MARK: - MainScreenRootOutput
 
-extension MainScreenCoordinator: MainScreenRootOutput {}
+extension MainScreenCoordinator: MainScreenRootOutput {
+    func mainScreenRootDidRequest(event: MainScreenRootEvent) {
+        switch event {
+        case let .openRecipe(id):
+            let inputModel = RecipeScreenInputModel(id: id)
+            
+            presentRecipeScreen(inputModel: inputModel)
+        }
+    }
+}
 
 // MARK: - RecipeScreenCoordinatorOutput
 
-extension MainScreenCoordinator: RecipeScreenCoordinatorOutput {
-    func openRecipe(id: Int) {
-        let inputModel = RecipeScreenInputModel(id: id)
-        
-        presentRecipeScreen(inputModel: inputModel)
-    }
-}
+extension MainScreenCoordinator: RecipeScreenCoordinatorOutput {}

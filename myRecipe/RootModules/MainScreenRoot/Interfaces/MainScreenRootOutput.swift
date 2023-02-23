@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MainScreenRootOutput: AnyObject {
-    func openRecipe(id: Int)
+    func mainScreenRootDidRequest(event: MainScreenRootEvent)
 }
