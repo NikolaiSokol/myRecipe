@@ -14,7 +14,10 @@ struct MyRecipeApp: App {
     init() {
         let dependencies = Dependencies()
         let modulesFactory = ModulesFactory(dependencies: dependencies)
-        let rootModulesFactory = RootModulesFactory(modulesFactory: modulesFactory)
+        let rootModulesFactory = RootModulesFactory(
+            dependencies: dependencies,
+            modulesFactory: modulesFactory
+        )
         let coordinatorsFactory = CoordinatorsFactory(
             rootModulesFactory: rootModulesFactory,
             modulesFactory: modulesFactory
