@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		F3258B6D29A69494005A00FF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3258B6F29A69494005A00FF /* Localizable.strings */; };
 		F3258B7129A69CB2005A00FF /* MainScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7029A69CB2005A00FF /* MainScreenHeaderView.swift */; };
+		F3258B7329A6BB1B005A00FF /* RecipeScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7229A6BB1B005A00FF /* RecipeScreenCoordinator.swift */; };
+		F3258B7729A6BB4D005A00FF /* RecipeScreenCoordinatorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7629A6BB4D005A00FF /* RecipeScreenCoordinatorInput.swift */; };
+		F3258B7929A6BB6D005A00FF /* RecipeScreenCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7829A6BB6D005A00FF /* RecipeScreenCoordinatorOutput.swift */; };
+		F3258B8229A6BDE3005A00FF /* RecipeScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7B29A6BDE3005A00FF /* RecipeScreenInput.swift */; };
+		F3258B8329A6BDE3005A00FF /* RecipeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7C29A6BDE3005A00FF /* RecipeScreenViewModel.swift */; };
+		F3258B8429A6BDE3005A00FF /* RecipeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7D29A6BDE3005A00FF /* RecipeScreenView.swift */; };
+		F3258B8529A6BDE3005A00FF /* RecipeScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7E29A6BDE3005A00FF /* RecipeScreenOutput.swift */; };
+		F3258B8629A6BDE3005A00FF /* RecipeScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B7F29A6BDE3005A00FF /* RecipeScreenConfigurator.swift */; };
+		F3258B8729A6BDE3005A00FF /* RecipeScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B8029A6BDE3005A00FF /* RecipeScreenViewOutput.swift */; };
+		F3258B8829A6BDE3005A00FF /* RecipeScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B8129A6BDE3005A00FF /* RecipeScreenViewState.swift */; };
+		F3258B8E29A6BFE3005A00FF /* RecipeScreenInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B8D29A6BFE3005A00FF /* RecipeScreenInputModel.swift */; };
 		F3316AFE29A0EB450089B4D5 /* MyRecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316AFD29A0EB450089B4D5 /* MyRecipeApp.swift */; };
 		F3316B0029A0EB450089B4D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316AFF29A0EB450089B4D5 /* ContentView.swift */; };
 		F3316B0229A0EB470089B4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3316B0129A0EB470089B4D5 /* Assets.xcassets */; };
@@ -63,13 +74,6 @@
 		F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */; };
 		F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */; };
 		F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */; };
-		F3316BAD29A0F6440089B4D5 /* MainScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BAC29A0F6440089B4D5 /* MainScreenInput.swift */; };
-		F3316BAF29A0F6590089B4D5 /* MainScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BAE29A0F6590089B4D5 /* MainScreenOutput.swift */; };
-		F3316BB129A0F6700089B4D5 /* MainScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB029A0F6700089B4D5 /* MainScreenViewOutput.swift */; };
-		F3316BB329A0F6890089B4D5 /* MainScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB229A0F6890089B4D5 /* MainScreenViewState.swift */; };
-		F3316BB529A0F69B0089B4D5 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB429A0F69B0089B4D5 /* MainScreenView.swift */; };
-		F3316BB729A0F6C30089B4D5 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB629A0F6C30089B4D5 /* MainScreenViewModel.swift */; };
-		F3316BB929A0F6E30089B4D5 /* MainScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BB829A0F6E30089B4D5 /* MainScreenConfigurator.swift */; };
 		F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */; };
 		F3316BC229A0F7560089B4D5 /* SettingsScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */; };
 		F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */; };
@@ -158,6 +162,17 @@
 /* Begin PBXFileReference section */
 		F3258B6E29A69494005A00FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F3258B7029A69CB2005A00FF /* MainScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderView.swift; sourceTree = "<group>"; };
+		F3258B7229A6BB1B005A00FF /* RecipeScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenCoordinator.swift; sourceTree = "<group>"; };
+		F3258B7629A6BB4D005A00FF /* RecipeScreenCoordinatorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenCoordinatorInput.swift; sourceTree = "<group>"; };
+		F3258B7829A6BB6D005A00FF /* RecipeScreenCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenCoordinatorOutput.swift; sourceTree = "<group>"; };
+		F3258B7B29A6BDE3005A00FF /* RecipeScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenInput.swift; sourceTree = "<group>"; };
+		F3258B7C29A6BDE3005A00FF /* RecipeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenViewModel.swift; sourceTree = "<group>"; };
+		F3258B7D29A6BDE3005A00FF /* RecipeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenView.swift; sourceTree = "<group>"; };
+		F3258B7E29A6BDE3005A00FF /* RecipeScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenOutput.swift; sourceTree = "<group>"; };
+		F3258B7F29A6BDE3005A00FF /* RecipeScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenConfigurator.swift; sourceTree = "<group>"; };
+		F3258B8029A6BDE3005A00FF /* RecipeScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenViewOutput.swift; sourceTree = "<group>"; };
+		F3258B8129A6BDE3005A00FF /* RecipeScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenViewState.swift; sourceTree = "<group>"; };
+		F3258B8D29A6BFE3005A00FF /* RecipeScreenInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenInputModel.swift; sourceTree = "<group>"; };
 		F3316AFA29A0EB450089B4D5 /* myRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3316AFD29A0EB450089B4D5 /* MyRecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeApp.swift; sourceTree = "<group>"; };
 		F3316AFF29A0EB450089B4D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -215,13 +230,6 @@
 		F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootConfigurator.swift; sourceTree = "<group>"; };
 		F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactoring.swift; sourceTree = "<group>"; };
 		F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactory.swift; sourceTree = "<group>"; };
-		F3316BAC29A0F6440089B4D5 /* MainScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInput.swift; sourceTree = "<group>"; };
-		F3316BAE29A0F6590089B4D5 /* MainScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenOutput.swift; sourceTree = "<group>"; };
-		F3316BB029A0F6700089B4D5 /* MainScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewOutput.swift; sourceTree = "<group>"; };
-		F3316BB229A0F6890089B4D5 /* MainScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewState.swift; sourceTree = "<group>"; };
-		F3316BB429A0F69B0089B4D5 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
-		F3316BB629A0F6C30089B4D5 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
-		F3316BB829A0F6E30089B4D5 /* MainScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenConfigurator.swift; sourceTree = "<group>"; };
 		F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenInput.swift; sourceTree = "<group>"; };
 		F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenOutput.swift; sourceTree = "<group>"; };
 		F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewOutput.swift; sourceTree = "<group>"; };
@@ -324,6 +332,71 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		F3258B7429A6BB27005A00FF /* RecipeScreenCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B7529A6BB35005A00FF /* Interfaces */,
+				F3258B7229A6BB1B005A00FF /* RecipeScreenCoordinator.swift */,
+			);
+			path = RecipeScreenCoordinator;
+			sourceTree = "<group>";
+		};
+		F3258B7529A6BB35005A00FF /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B7629A6BB4D005A00FF /* RecipeScreenCoordinatorInput.swift */,
+				F3258B7829A6BB6D005A00FF /* RecipeScreenCoordinatorOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3258B7A29A6BDBF005A00FF /* RecipeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B8C29A6BDFA005A00FF /* Configurator */,
+				F3258B8B29A6BDF5005A00FF /* ViewModel */,
+				F3258B8A29A6BDF0005A00FF /* View */,
+				F3258B8929A6BDE9005A00FF /* Interfaces */,
+			);
+			path = RecipeScreen;
+			sourceTree = "<group>";
+		};
+		F3258B8929A6BDE9005A00FF /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B7B29A6BDE3005A00FF /* RecipeScreenInput.swift */,
+				F3258B7E29A6BDE3005A00FF /* RecipeScreenOutput.swift */,
+				F3258B8029A6BDE3005A00FF /* RecipeScreenViewOutput.swift */,
+				F3258B8D29A6BFE3005A00FF /* RecipeScreenInputModel.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3258B8A29A6BDF0005A00FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B8129A6BDE3005A00FF /* RecipeScreenViewState.swift */,
+				F3258B7D29A6BDE3005A00FF /* RecipeScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3258B8B29A6BDF5005A00FF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B7C29A6BDE3005A00FF /* RecipeScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F3258B8C29A6BDFA005A00FF /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3258B7F29A6BDE3005A00FF /* RecipeScreenConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		F3316AF129A0EB450089B4D5 = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +483,7 @@
 				F3316B3A29A0ED5E0089B4D5 /* TabBarCoordinator */,
 				F3316B5429A0EF8E0089B4D5 /* MainScreenCoordinator */,
 				F3316B5C29A0F0720089B4D5 /* SettingsScreenCoordinator */,
+				F3258B7429A6BB27005A00FF /* RecipeScreenCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -429,8 +503,8 @@
 			isa = PBXGroup;
 			children = (
 				F3316BA229A0F5970089B4D5 /* ModulesFactory */,
-				F3316BA729A0F5F70089B4D5 /* MainScreen */,
 				F3316BBA29A0F70F0089B4D5 /* SettingsScreen */,
+				F3258B7A29A6BDBF005A00FF /* RecipeScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -703,52 +777,6 @@
 				F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */,
 			);
 			path = ModulesFactory;
-			sourceTree = "<group>";
-		};
-		F3316BA729A0F5F70089B4D5 /* MainScreen */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BAB29A0F6250089B4D5 /* Configurator */,
-				F3316BAA29A0F61D0089B4D5 /* ViewModel */,
-				F3316BA929A0F6140089B4D5 /* View */,
-				F3316BA829A0F60B0089B4D5 /* Interfaces */,
-			);
-			path = MainScreen;
-			sourceTree = "<group>";
-		};
-		F3316BA829A0F60B0089B4D5 /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BAC29A0F6440089B4D5 /* MainScreenInput.swift */,
-				F3316BAE29A0F6590089B4D5 /* MainScreenOutput.swift */,
-				F3316BB029A0F6700089B4D5 /* MainScreenViewOutput.swift */,
-			);
-			path = Interfaces;
-			sourceTree = "<group>";
-		};
-		F3316BA929A0F6140089B4D5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BB229A0F6890089B4D5 /* MainScreenViewState.swift */,
-				F3316BB429A0F69B0089B4D5 /* MainScreenView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F3316BAA29A0F61D0089B4D5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BB629A0F6C30089B4D5 /* MainScreenViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F3316BAB29A0F6250089B4D5 /* Configurator */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BB829A0F6E30089B4D5 /* MainScreenConfigurator.swift */,
-			);
-			path = Configurator;
 			sourceTree = "<group>";
 		};
 		F3316BBA29A0F70F0089B4D5 /* SettingsScreen */ = {
@@ -1164,9 +1192,7 @@
 			files = (
 				F3316B0729A0EB470089B4D5 /* Persistence.swift in Sources */,
 				F38F19F429A16504008E314B /* RandomRecipesService.swift in Sources */,
-				F3316BB729A0F6C30089B4D5 /* MainScreenViewModel.swift in Sources */,
 				F3316B4A29A0EE3B0089B4D5 /* Routable.swift in Sources */,
-				F3316BB129A0F6700089B4D5 /* MainScreenViewOutput.swift in Sources */,
 				F369A0C429A5170900FDDAB2 /* SkeletonView.swift in Sources */,
 				F369A0B629A4C4F100FDDAB2 /* SingleSelectionCarouselCellView.swift in Sources */,
 				F369A0D929A544B000FDDAB2 /* RecipeInformationResponse.swift in Sources */,
@@ -1175,6 +1201,7 @@
 				F38F19DD29A156D5008E314B /* ApiConstants.swift in Sources */,
 				F3316B8829A0F3E10089B4D5 /* MainScreenRootViewState.swift in Sources */,
 				F369A0A729A4037600FDDAB2 /* HorizontalRecipeCardViewModel.swift in Sources */,
+				F3258B8729A6BDE3005A00FF /* RecipeScreenViewOutput.swift in Sources */,
 				F3316B9D29A0F5250089B4D5 /* SettingsScreenRootView.swift in Sources */,
 				F3316B8629A0F3AA0089B4D5 /* MainScreenRootViewOutput.swift in Sources */,
 				F3EC57C229A5A5BC0049A085 /* Optional+.swift in Sources */,
@@ -1190,6 +1217,7 @@
 				F3316B6F29A0F1B50089B4D5 /* TabBarConfigurator.swift in Sources */,
 				F369A0CC29A5287400FDDAB2 /* HorizontalRecipeCardSkeletonView.swift in Sources */,
 				F369A0E029A54A5A00FDDAB2 /* RecipeInformation.swift in Sources */,
+				F3258B8529A6BDE3005A00FF /* RecipeScreenOutput.swift in Sources */,
 				F3316B4C29A0EE500089B4D5 /* NavigableView.swift in Sources */,
 				F3316B6629A0F11B0089B4D5 /* RootModulesFactoring.swift in Sources */,
 				F3316B5129A0EED70089B4D5 /* View+.swift in Sources */,
@@ -1197,16 +1225,20 @@
 				F3316B5929A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift in Sources */,
 				F369A0D129A53B5B00FDDAB2 /* Dependencies.swift in Sources */,
 				F3316B0029A0EB450089B4D5 /* ContentView.swift in Sources */,
+				F3258B7729A6BB4D005A00FF /* RecipeScreenCoordinatorInput.swift in Sources */,
 				F3316B7929A0F2510089B4D5 /* TabBarOutput.swift in Sources */,
 				F38F19E429A1597C008E314B /* URLBuilder.swift in Sources */,
 				F3316B9929A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift in Sources */,
 				F3316B5729A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift in Sources */,
+				F3258B8329A6BDE3005A00FF /* RecipeScreenViewModel.swift in Sources */,
 				F3316B8A29A0F3FB0089B4D5 /* MainScreenRootView.swift in Sources */,
 				F38F19EF29A15DD4008E314B /* URLRequestBuilder.swift in Sources */,
 				F3316B6829A0F1370089B4D5 /* RootModulesFactory.swift in Sources */,
 				F360238929A68B070006DCB1 /* ErrorViewModel.swift in Sources */,
 				F38F19F729A16725008E314B /* SearchQuery.swift in Sources */,
+				F3258B8E29A6BFE3005A00FF /* RecipeScreenInputModel.swift in Sources */,
 				F3316B7129A0F1D50089B4D5 /* TabBarViewModel.swift in Sources */,
+				F3258B8829A6BDE3005A00FF /* RecipeScreenViewState.swift in Sources */,
 				F369A0CF29A53A4100FDDAB2 /* RandomRecipesServicing.swift in Sources */,
 				F360238D29A68E900006DCB1 /* RecipesVerticalListView.swift in Sources */,
 				F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */,
@@ -1218,25 +1250,27 @@
 				F3316B4529A0EDF30089B4D5 /* TabBarElement.swift in Sources */,
 				F369A0BE29A4EE4100FDDAB2 /* String+.swift in Sources */,
 				F3316B3429A0EC690089B4D5 /* Coordinator.swift in Sources */,
+				F3258B7329A6BB1B005A00FF /* RecipeScreenCoordinator.swift in Sources */,
 				F38F19F129A15F19008E314B /* URL+.swift in Sources */,
 				F3F4D28C29A6820B00CAC355 /* ErrorView.swift in Sources */,
 				F3316B3129A0EC3F0089B4D5 /* RootCoordinator.swift in Sources */,
 				F369A0E729A54B3D00FDDAB2 /* RecipeInformationMapping.swift in Sources */,
 				F369A0BA29A4E2F500FDDAB2 /* Int+.swift in Sources */,
 				F3316B8C29A0F4350089B4D5 /* MainScreenRootViewModel.swift in Sources */,
+				F3258B8629A6BDE3005A00FF /* RecipeScreenConfigurator.swift in Sources */,
+				F3258B8429A6BDE3005A00FF /* RecipeScreenView.swift in Sources */,
 				F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */,
 				F3316B3D29A0ED800089B4D5 /* TabBarElementBuilding.swift in Sources */,
 				F3316B5B29A0EFEF0089B4D5 /* MainScreenCoordinator.swift in Sources */,
 				F3316B8429A0F3960089B4D5 /* MainScreenRootOutput.swift in Sources */,
-				F3316BB329A0F6890089B4D5 /* MainScreenViewState.swift in Sources */,
 				F3316AFE29A0EB450089B4D5 /* MyRecipeApp.swift in Sources */,
 				F3258B7129A69CB2005A00FF /* MainScreenHeaderView.swift in Sources */,
 				F3316B9B29A0F5130089B4D5 /* SettingsScreenRootViewState.swift in Sources */,
+				F3258B8229A6BDE3005A00FF /* RecipeScreenInput.swift in Sources */,
 				F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */,
 				F3316B9F29A0F5550089B4D5 /* SettingsScreenRootViewModel.swift in Sources */,
 				F3316B6129A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift in Sources */,
 				F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */,
-				F3316BAF29A0F6590089B4D5 /* MainScreenOutput.swift in Sources */,
 				F38F19DF29A15888008E314B /* MethodPath.swift in Sources */,
 				F3316B5329A0EF1F0089B4D5 /* TabBarCoordinator.swift in Sources */,
 				F369A0DB29A5454100FDDAB2 /* RecipesResponse.swift in Sources */,
@@ -1247,7 +1281,6 @@
 				F3316BCA29A0F7AF0089B4D5 /* SettingsScreenViewModel.swift in Sources */,
 				F3316B7329A0F2070089B4D5 /* TabBarViewState.swift in Sources */,
 				F3316B9729A0F4E90089B4D5 /* SettingsScreenRootOutput.swift in Sources */,
-				F3316BB929A0F6E30089B4D5 /* MainScreenConfigurator.swift in Sources */,
 				F369A0C629A51D5E00FDDAB2 /* LinearGradientPoints.swift in Sources */,
 				F3316B8229A0F3800089B4D5 /* MainScreenRootInput.swift in Sources */,
 				F369A0A029A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift in Sources */,
@@ -1256,7 +1289,6 @@
 				F360238F29A68EF50006DCB1 /* RecipesVerticalListViewModel.swift in Sources */,
 				F369A0C029A515BC00FDDAB2 /* ViewContentState.swift in Sources */,
 				F369A0E329A54B1300FDDAB2 /* RecipeInformationMapper.swift in Sources */,
-				F3316BB529A0F69B0089B4D5 /* MainScreenView.swift in Sources */,
 				F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */,
 				F3316B4829A0EE1D0089B4D5 /* Router.swift in Sources */,
 				F3316B7529A0F21B0089B4D5 /* TabBarView.swift in Sources */,
@@ -1264,9 +1296,9 @@
 				F369A0D429A53B7800FDDAB2 /* DependenciesProtocol.swift in Sources */,
 				F3316B6329A0F0C70089B4D5 /* SettingsScreenCoordinator.swift in Sources */,
 				F38F19E629A15A7F008E314B /* URLError.swift in Sources */,
-				F3316BAD29A0F6440089B4D5 /* MainScreenInput.swift in Sources */,
 				F38F19ED29A15D91008E314B /* QueryItemsRepresentable.swift in Sources */,
 				F369A0BC29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift in Sources */,
+				F3258B7929A6BB6D005A00FF /* RecipeScreenCoordinatorOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

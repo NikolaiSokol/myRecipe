@@ -17,6 +17,8 @@ final class MainScreenCoordinator {
     
     private var mainScreenRootInput: MainScreenRootInput?
     
+    private var recipeScreenCoordinatorInput: RecipeScreenCoordinatorInput?
+    
     init(
         output: MainScreenCoordinatorOutput,
         coordinatorsFactory: CoordinatorsFactoring,
@@ -37,6 +39,12 @@ final class MainScreenCoordinator {
         mainScreenRootInput?.bootstrap()
         
         return unit.view
+    }
+    
+    private func presentRecipeScreen(inputModel: RecipeScreenInputModel) {
+        let unit = coordinatorsFactory.makeRecipeScreenCoordinator(output: self, router: router)
+        recipeScreenCoordinatorInput = unit.input
+        unit.coordinator.start(with: inputModel)
     }
 }
 
@@ -59,3 +67,13 @@ extension MainScreenCoordinator: MainScreenCoordinatorInput {
 // MARK: - MainScreenRootOutput
 
 extension MainScreenCoordinator: MainScreenRootOutput {}
+
+// MARK: - RecipeScreenCoordinatorOutput
+
+extension MainScreenCoordinator: RecipeScreenCoordinatorOutput {
+    func openRecipe(id: Int) {
+        let inputModel = RecipeScreenInputModel(id: id)
+        
+        presentRecipeScreen(inputModel: inputModel)
+    }
+}

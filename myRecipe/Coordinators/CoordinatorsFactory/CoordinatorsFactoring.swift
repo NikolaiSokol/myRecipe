@@ -21,4 +21,9 @@ protocol CoordinatorsFactoring {
     func makeSettingsScreenRootCoordinator(
         output: SettingsScreenCoordinatorOutput
     ) -> RootCoordinatorModule<SettingsScreenCoordinatorInput>
+    
+    func makeRecipeScreenCoordinator(
+        output: RecipeScreenCoordinatorOutput,
+        router: Routable
+    ) -> ConcreteCoordinator<RecipeScreenCoordinatorInput>
 }

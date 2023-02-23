@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol Coordinator {
-    func start()
+protocol CoordinatorOption {}
+
+protocol Coordinator: AnyObject {
+    func start(with option: CoordinatorOption?)
 }

@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol MainScreenRootOutput: AnyObject {}
+protocol MainScreenRootOutput: AnyObject {
+    func openRecipe(id: Int)
+}

@@ -10,6 +10,6 @@ import Foundation
 typealias NavigableModule<T> = (view: NavigableView, input: T)
 
 protocol ModulesFactoring {
-    func makeMainScreen(output: MainScreenOutput) -> MainScreenModule
     func makeSettingsScreen(output: SettingsScreenOutput) -> SettingsScreenModule
+    func makeRecipeScreen(output: RecipeScreenOutput) -> NavigableModule<RecipeScreenInput>
 }

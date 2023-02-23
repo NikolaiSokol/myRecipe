@@ -54,4 +54,17 @@ extension CoordinatorsFactory: CoordinatorsFactoring {
         
         return (coordinator.start(), coordinator)
     }
+    
+    func makeRecipeScreenCoordinator(
+        output: RecipeScreenCoordinatorOutput,
+        router: Routable
+    ) -> ConcreteCoordinator<RecipeScreenCoordinatorInput> {
+        let coordinator = RecipeScreenCoordinator(
+            output: output,
+            modulesFactory: modulesFactory,
+            router: router
+        )
+        
+        return (coordinator, coordinator)
+    }
 }

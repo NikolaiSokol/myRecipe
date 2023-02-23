@@ -8,9 +8,14 @@
 import Foundation
 
 final class MainScreenRootConfigurator {
+    private let dependencies: DependenciesProtocol
     private let modulesFactory: ModulesFactoring
     
-    init(modulesFactory: ModulesFactoring) {
+    init(
+        dependencies: DependenciesProtocol,
+        modulesFactory: ModulesFactoring
+    ) {
+        self.dependencies = dependencies
         self.modulesFactory = modulesFactory
     }
     
@@ -20,7 +25,8 @@ final class MainScreenRootConfigurator {
         let viewModel = MainScreenRootViewModel(
             viewState: viewState,
             output: output,
-            modulesFactory: modulesFactory
+            modulesFactory: modulesFactory,
+            randomRecipesService: dependencies.randomRecipesService
         )
         
         let view = MainScreenRootView(state: viewState, router: router, output: viewModel)

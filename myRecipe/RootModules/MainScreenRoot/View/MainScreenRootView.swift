@@ -24,13 +24,55 @@ struct MainScreenRootView: View {
     }
     
     var body: some View {
-        if let model = state.mainScreenModel {
-            NavigationStack(path: $router.navigableViews) {
-                MainScreenView(viewState: model.viewState, output: model.viewOutput)
-                    .navigationDestination(for: NavigableView.self) {
-                        $0.view
-                    }
-            }
+        NavigationStack(path: $router.navigableViews) {
+            actualBody
+                .navigationDestination(for: NavigableView.self) {
+                    $0.view
+                }
         }
+    }
+    
+    private var actualBody: some View {
+        VStack(spacing: .zero) {
+            header
+            
+            searchField
+            
+            carousel
+            
+            recipes
+            
+            Spacer()
+        }
+        .onTapGesture {
+            state.searchFieldViewModel.endEditing()
+        }
+    }
+    
+    private var header: some View {
+        MainScreenHeaderView()
+            .padding(.horizontal, UIConstants.Paddings.s)
+    }
+    
+    private var searchField: some View {
+        SearchFieldView(viewModel: state.searchFieldViewModel)
+            .padding(.horizontal, UIConstants.Paddings.s)
+            .padding(.top, UIConstants.Paddings.m)
+    }
+    
+    private var carousel: some View {
+        SingleSelectionCarouselView(
+            viewModel: state.carouselViewModel,
+            horizontalInsets: UIConstants.Paddings.s
+        )
+        .padding(.top, UIConstants.Paddings.s)
+    }
+    
+    private var recipes: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            RecipesVerticalListView(viewModel: state.recipesViewModel)
+        }
+        .padding(.horizontal, UIConstants.Paddings.s)
+        .padding(.top, UIConstants.Paddings.xs)
     }
 }

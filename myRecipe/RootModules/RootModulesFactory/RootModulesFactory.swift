@@ -8,9 +8,14 @@
 import Foundation
 
 final class RootModulesFactory {
+    private let dependencies: DependenciesProtocol
     private let modulesFactory: ModulesFactoring
     
-    init(modulesFactory: ModulesFactoring) {
+    init(
+        dependencies: DependenciesProtocol,
+        modulesFactory: ModulesFactoring
+    ) {
+        self.dependencies = dependencies
         self.modulesFactory = modulesFactory
     }
 }
@@ -24,7 +29,7 @@ extension RootModulesFactory: RootModulesFactoring {
         output: MainScreenRootOutput,
         router: Router
     ) -> RootModule<MainScreenRootInput> {
-        MainScreenRootConfigurator(modulesFactory: modulesFactory)
+        MainScreenRootConfigurator(dependencies: dependencies, modulesFactory: modulesFactory)
             .configure(router: router, output: output)
     }
     

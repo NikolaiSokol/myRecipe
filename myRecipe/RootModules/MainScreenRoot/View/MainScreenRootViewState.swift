@@ -8,5 +8,7 @@
 import Foundation
 
 final class MainScreenRootViewState: ObservableObject {
-    @Published var mainScreenModel: MainScreenModel?
+    let searchFieldViewModel = SearchFieldViewModel()
+    let carouselViewModel = SingleSelectionCarouselViewModel()
+    let recipesViewModel = RecipesVerticalListViewModel()
 }
