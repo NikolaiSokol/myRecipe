@@ -8,16 +8,16 @@
 import Foundation
 
 extension String {
+    init(localized: Localized) {
+        self.init(localized: String.LocalizationValue(localized.rawValue))
+    }
+    
     func capitalizingFirstLetter() -> Self {
         prefix(1).capitalized + dropFirst()
     }
 
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
-    }
-    
-    func localized() -> Self {
-        Self(localized: Self.LocalizationValue(self))
     }
     
     func removeHtmlTags() -> Self {

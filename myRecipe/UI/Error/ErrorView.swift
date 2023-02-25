@@ -36,13 +36,13 @@ struct ErrorView: View {
             .resizable()
             .scaledToFit()
             .frame(maxWidth: LocalConstants.imageWidth)
-            .foregroundColor(Color("accentGray"))
+            .foregroundColor(Color(.accentGray))
     }
     
     @ViewBuilder private var title: some View {
         if let title = viewModel.title {
             Text(title)
-                .font(.custom("Poppins", size: UIConstants.Font.l))
+                .customFont(size: UIConstants.Font.l)
                 .fontWeight(.semibold)
                 .padding(.top, UIConstants.Paddings.xl)
         }
@@ -51,7 +51,7 @@ struct ErrorView: View {
     @ViewBuilder private var subTitle: some View {
         if let subTitle = viewModel.subtitle {
             Text(subTitle)
-                .font(.custom("Poppins", size: UIConstants.Font.m))
+                .customFont(size: UIConstants.Font.m)
                 .padding(.top, UIConstants.Paddings.xxs)
         }
     }
@@ -67,7 +67,7 @@ struct ErrorView: View {
     
     private var actionButtonLabel: some View {
         Rectangle()
-            .foregroundColor(Color("primaryAccent"))
+            .foregroundColor(Color(.primaryAccent))
             .frame(height: LocalConstants.buttonHeight)
             .cornerRadius(UIConstants.Radius.m)
             .overlay {
@@ -80,8 +80,8 @@ struct ErrorView: View {
     @ViewBuilder private var actionButtonText: some View {
         if let buttonText = viewModel.buttonText {
             Text(buttonText)
+                .customFont(size: UIConstants.Font.m)
                 .foregroundColor(.white)
-                .font(.custom("Poppins", size: UIConstants.Font.m))
                 .fontWeight(.semibold)
         }
     }

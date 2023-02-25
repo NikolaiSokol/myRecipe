@@ -62,9 +62,9 @@ struct RecipeScreenView: View {
     
     private var imagePlaceholder: some View {
         ZStack {
-            Color("accentGray")
+            Color(.accentGray)
             
-            Image("placeholder")
+            Image(.placeholder)
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: LocalConstants.imageMaxWidth, maxHeight: LocalConstants.imageMaxHeight)
@@ -75,7 +75,7 @@ struct RecipeScreenView: View {
     private var title: some View {
         VStack(alignment: .leading, spacing: UIConstants.Paddings.xxs) {
             Text(state.recipe.title)
-                .font(.custom("Poppins", size: UIConstants.Font.xxl))
+                .customFont(size: UIConstants.Font.xxl)
                 .fontWeight(.semibold)
             
             separator
@@ -88,8 +88,8 @@ struct RecipeScreenView: View {
         if !state.recipe.summary.isEmpty {
             VStack(alignment: .leading, spacing: UIConstants.Paddings.xxxs) {
                 Text(state.recipe.summary)
-                    .font(.custom("Poppins", size: UIConstants.Font.s))
-                    .foregroundColor(Color("textAccent"))
+                    .customFont(size: UIConstants.Font.s)
+                    .foregroundColor(Color(.textAccent))
                     .textSelection(.enabled)
                     .lineLimit(summaryLineLimit)
                     .multilineTextAlignment(.leading)
@@ -115,9 +115,9 @@ struct RecipeScreenView: View {
                 HStack {
                     Spacer()
                     
-                    Text(summaryLineLimit.isNil ? "collapse".localized() : "expand".localized())
-                        .font(.custom("Poppins", size: UIConstants.Font.xs))
-                        .foregroundColor(Color("primaryAccent"))
+                    Text(summaryLineLimit.isNil ? String(localized: .collapse) : String(localized: .expand))
+                        .customFont(size: UIConstants.Font.xs)
+                        .foregroundColor(Color(.primaryAccent))
                         .bold()
                 }
             }
@@ -142,22 +142,22 @@ struct RecipeScreenView: View {
     
     private var ingredients: some View {
         VStack(spacing: .zero) {
-            sectionTitle(text: "ingredients".localized())
+            sectionTitle(text: String(localized: .ingredients))
             
-            
+             
         }
     }
     
     private var separator: some View {
         Rectangle()
-            .foregroundColor(Color("separator"))
+            .foregroundColor(Color(.separator))
             .frame(height: 1)
             .frame(maxWidth: .infinity)
     }
     
     private func sectionTitle(text: String) -> some View {
         Text(text)
-            .font(.custom("Poppins", size: UIConstants.Font.l))
+            .customFont(size: UIConstants.Font.l)
             .padding(.vertical, UIConstants.Paddings.m)
             .fontWeight(.semibold)
             .padding(.horizontal, UIConstants.Paddings.s)

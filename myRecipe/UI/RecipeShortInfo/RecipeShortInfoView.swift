@@ -34,22 +34,22 @@ struct RecipeShortInfoView: View {
     private var topSection: some View {
         HStack(spacing: UIConstants.Paddings.xxs) {
             image
-                .foregroundColor(Color("primaryAccent"))
+                .foregroundColor(Color(.primaryAccent))
                 .scaledToFit()
                 .frame(width: UIConstants.Font.s)
                 
             Text(text)
+                .customFont(size: UIConstants.Font.xs)
                 .lineLimit(1)
-                .font(.custom("Poppins", size: UIConstants.Font.xs))
-                .foregroundColor(Color("primaryAccent"))
+                .foregroundColor(Color(.primaryAccent))
                 .fontWeight(.semibold)
         }
     }
     
     private var name: some View {
         Text(getName())
-            .font(.custom("Poppins", size: UIConstants.Font.xs))
-            .foregroundColor(Color("textAccent"))
+            .customFont(size: UIConstants.Font.xs)
+            .foregroundColor(Color(.textAccent))
     }
     
     private var image: some View {
@@ -76,22 +76,22 @@ struct RecipeShortInfoView: View {
     private func getName() -> String {
         switch type {
         case .cookTime:
-            return "cookTime".localized()
+            return String(localized: .cookTime)
             
         case .serves:
-            return "serves".localized()
+            return String(localized: .serves)
             
         case .cuisine:
-            return "cuisine".localized()
+            return String(localized: .cuisine)
             
         case .perfectFor:
-            return "perfectFor".localized()
+            return String(localized: .perfectFor)
         }
     }
     
     private var background: some View {
         Rectangle()
-            .foregroundColor(Color("secondaryGray"))
+            .foregroundColor(Color(.secondaryGray))
             .cornerRadius(UIConstants.Radius.s)
     }
 }

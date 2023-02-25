@@ -13,7 +13,7 @@ struct HorizontalRecipeCardSkeletonView: View {
             .overlay {
                 SkeletonView()
             }
-            .foregroundColor(Color("primaryLightAccent"))
+            .foregroundColor(Color(.primaryLightAccent))
             .frame(maxWidth: .infinity)
             .frame(height: 200)
             .cornerRadius(UIConstants.Radius.l)

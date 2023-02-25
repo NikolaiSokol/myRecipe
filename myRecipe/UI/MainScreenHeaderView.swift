@@ -25,20 +25,20 @@ struct MainScreenHeaderView: View {
     
     private var text: some View {
         VStack(alignment: .leading, spacing: UIConstants.Paddings.xxxs) {
-            Text("hello".localized())
-                .font(.custom("Poppins", size: UIConstants.Font.l))
+            Text(String(localized: .hello))
+                .customFont(size: UIConstants.Font.l)
                 .bold()
-                .foregroundColor(Color("primaryAccent"))
+                .foregroundColor(Color(.primaryAccent))
             
-            Text("whatYouWantToCook".localized())
-                .font(.custom("Poppins", size: UIConstants.Font.m))
-                .foregroundColor(Color("accentGray"))
+            Text(String(localized: .whatYouWantToCook))
+                .customFont(size: UIConstants.Font.m)
+                .foregroundColor(Color(.accentGray))
         }
     }
     
     private var circle: some View {
         Circle()
-            .foregroundColor(Color("primaryAccent"))
+            .foregroundColor(Color(.primaryAccent))
             .frame(height: LocalConstants.circleHeight)
             .overlay {
                 image
@@ -46,10 +46,10 @@ struct MainScreenHeaderView: View {
     }
     
     private var image: some View {
-        Image("placeholder")
+        Image(.placeholder)
             .resizable()
             .renderingMode(.template)
-            .foregroundColor(Color("primaryLightAccent"))
+            .foregroundColor(Color(.primaryLightAccent))
             .frame(width: LocalConstants.imageSize, height: LocalConstants.imageSize)
     }
 }

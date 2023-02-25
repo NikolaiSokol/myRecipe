@@ -24,12 +24,12 @@ struct SingleSelectionCarouselCellView: View {
     
     private var text: some View {
         Text(viewModel.text)
+            .customFont(size: UIConstants.Font.s)
             .lineLimit(1)
             .foregroundColor(
                 viewModel.isSelected ?
-                Color("primaryAccent") : Color("textAccent")
+                Color(.primaryAccent) : Color(.textAccent)
             )
-            .font(.custom("Poppins", size: UIConstants.Font.s))
             .fontWeight(.medium)
             .padding(.vertical, UIConstants.Paddings.xs)
             .padding(.horizontal, UIConstants.Paddings.s)
@@ -39,7 +39,7 @@ struct SingleSelectionCarouselCellView: View {
         Rectangle()
             .foregroundColor(
                 viewModel.isSelected ?
-                Color("primaryLightAccent") : Color("secondaryGray")
+                Color(.primaryLightAccent) : Color(.secondaryGray)
             )
             .cornerRadius(UIConstants.Radius.s)
     }

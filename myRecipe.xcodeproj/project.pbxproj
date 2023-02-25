@@ -166,6 +166,12 @@
 		F3E2C11F29A7A86F00F50A8E /* MainScreenRootEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2C11E29A7A86F00F50A8E /* MainScreenRootEvent.swift */; };
 		F3EA100029A9438E00A1557E /* RecipeShortInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA0FFF29A9438E00A1557E /* RecipeShortInfoView.swift */; };
 		F3EA100329A943CE00A1557E /* RecipeShortInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100229A943CE00A1557E /* RecipeShortInfoType.swift */; };
+		F3EA100529AA2F4100A1557E /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100429AA2F4100A1557E /* Localized.swift */; };
+		F3EA100729AA37D400A1557E /* Text+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100629AA37D400A1557E /* Text+.swift */; };
+		F3EA100A29AA39F400A1557E /* ColorName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100929AA39F300A1557E /* ColorName.swift */; };
+		F3EA100C29AA3A4900A1557E /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100B29AA3A4900A1557E /* Color+.swift */; };
+		F3EA100F29AA3BDE00A1557E /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100E29AA3BDE00A1557E /* ImageName.swift */; };
+		F3EA101129AA3C0400A1557E /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101029AA3C0400A1557E /* Image+.swift */; };
 		F3EC57C229A5A5BC0049A085 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EC57C129A5A5BC0049A085 /* Optional+.swift */; };
 		F3F4D28C29A6820B00CAC355 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4D28B29A6820B00CAC355 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
@@ -351,6 +357,12 @@
 		F3E2C11E29A7A86F00F50A8E /* MainScreenRootEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRootEvent.swift; sourceTree = "<group>"; };
 		F3EA0FFF29A9438E00A1557E /* RecipeShortInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeShortInfoView.swift; sourceTree = "<group>"; };
 		F3EA100229A943CE00A1557E /* RecipeShortInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeShortInfoType.swift; sourceTree = "<group>"; };
+		F3EA100429AA2F4100A1557E /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		F3EA100629AA37D400A1557E /* Text+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+.swift"; sourceTree = "<group>"; };
+		F3EA100929AA39F300A1557E /* ColorName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorName.swift; sourceTree = "<group>"; };
+		F3EA100B29AA3A4900A1557E /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		F3EA100E29AA3BDE00A1557E /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
+		F3EA101029AA3C0400A1557E /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F3EC57C129A5A5BC0049A085 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		F3F4D28B29A6820B00CAC355 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -384,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				F3258B6F29A69494005A00FF /* Localizable.strings */,
+				F3EA100429AA2F4100A1557E /* Localized.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -640,6 +653,9 @@
 				F369A0B929A4E2F500FDDAB2 /* Int+.swift */,
 				F369A0BD29A4EE4100FDDAB2 /* String+.swift */,
 				F3EC57C129A5A5BC0049A085 /* Optional+.swift */,
+				F3EA100629AA37D400A1557E /* Text+.swift */,
+				F3EA100B29AA3A4900A1557E /* Color+.swift */,
+				F3EA101029AA3C0400A1557E /* Image+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -895,6 +911,8 @@
 		F369A07829A3BA0800FDDAB2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F3EA100D29AA3BD000A1557E /* ImageName */,
+				F3EA100829AA39B200A1557E /* ColorName */,
 				F3C4AB8F29A906B50093B783 /* Modifiers */,
 				F39924BE29A7D5C700E5C373 /* PreferencesKey */,
 				F360238B29A68E880006DCB1 /* RecipesVerticalList */,
@@ -1206,6 +1224,22 @@
 			path = RecipeShortInfo;
 			sourceTree = "<group>";
 		};
+		F3EA100829AA39B200A1557E /* ColorName */ = {
+			isa = PBXGroup;
+			children = (
+				F3EA100929AA39F300A1557E /* ColorName.swift */,
+			);
+			path = ColorName;
+			sourceTree = "<group>";
+		};
+		F3EA100D29AA3BD000A1557E /* ImageName */ = {
+			isa = PBXGroup;
+			children = (
+				F3EA100E29AA3BDE00A1557E /* ImageName.swift */,
+			);
+			path = ImageName;
+			sourceTree = "<group>";
+		};
 		F3F4D28D29A6822A00CAC355 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,6 +1452,7 @@
 				F38F19E229A15956008E314B /* URLBuilding.swift in Sources */,
 				F3316B6F29A0F1B50089B4D5 /* TabBarConfigurator.swift in Sources */,
 				F3E2C11F29A7A86F00F50A8E /* MainScreenRootEvent.swift in Sources */,
+				F3EA101129AA3C0400A1557E /* Image+.swift in Sources */,
 				F369A0CC29A5287400FDDAB2 /* HorizontalRecipeCardSkeletonView.swift in Sources */,
 				F3E2C10429A79D6B00F50A8E /* SearchBoxPresenter.swift in Sources */,
 				F369A0E029A54A5A00FDDAB2 /* Recipe.swift in Sources */,
@@ -1434,6 +1469,7 @@
 				F3316B7929A0F2510089B4D5 /* TabBarOutput.swift in Sources */,
 				F3C4AB7A29A8C0DB0093B783 /* AnalyzedInstructionsStepResponse.swift in Sources */,
 				F38F19E429A1597C008E314B /* URLBuilder.swift in Sources */,
+				F3EA100F29AA3BDE00A1557E /* ImageName.swift in Sources */,
 				F3C4AB7729A8BE690093B783 /* AnalyzedInstructionsResponse.swift in Sources */,
 				F3316B9929A0F4FC0089B4D5 /* SettingsScreenRootViewOutput.swift in Sources */,
 				F3316B5729A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift in Sources */,
@@ -1453,6 +1489,7 @@
 				F369A0CF29A53A4100FDDAB2 /* RandomRecipesServicing.swift in Sources */,
 				F3C4AB8729A8D42B0093B783 /* RecipeIngredient.swift in Sources */,
 				F3E2C10129A79D6B00F50A8E /* SearchBoxInput.swift in Sources */,
+				F3EA100529AA2F4100A1557E /* Localized.swift in Sources */,
 				F360238D29A68E900006DCB1 /* RecipesVerticalListView.swift in Sources */,
 				F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */,
 				F3316B3929A0ECE50089B4D5 /* CoordinatorsFactory.swift in Sources */,
@@ -1467,6 +1504,7 @@
 				F3F4D28C29A6820B00CAC355 /* ErrorView.swift in Sources */,
 				F3316B3129A0EC3F0089B4D5 /* RootCoordinator.swift in Sources */,
 				F369A0E729A54B3D00FDDAB2 /* RecipeInformationMapping.swift in Sources */,
+				F3EA100C29AA3A4900A1557E /* Color+.swift in Sources */,
 				F3E2C10529A79D6B00F50A8E /* SearchBoxConfigurator.swift in Sources */,
 				F369A0BA29A4E2F500FDDAB2 /* Int+.swift in Sources */,
 				F3316B8C29A0F4350089B4D5 /* MainScreenRootPresenter.swift in Sources */,
@@ -1475,6 +1513,7 @@
 				F3258B8429A6BDE3005A00FF /* RecipeScreenView.swift in Sources */,
 				F3E2C10629A79D6B00F50A8E /* SearchBoxViewOutput.swift in Sources */,
 				F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */,
+				F3EA100A29AA39F400A1557E /* ColorName.swift in Sources */,
 				F3316B3D29A0ED800089B4D5 /* TabBarElementBuilding.swift in Sources */,
 				F3316B5B29A0EFEF0089B4D5 /* MainScreenCoordinator.swift in Sources */,
 				F3E2C10229A79D6B00F50A8E /* SearchBoxView.swift in Sources */,
@@ -1494,6 +1533,7 @@
 				F3E2C11D29A7A73800F50A8E /* RandomRecipesByTypeEvent.swift in Sources */,
 				F369A0DB29A5454100FDDAB2 /* RecipesResponse.swift in Sources */,
 				F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */,
+				F3EA100729AA37D400A1557E /* Text+.swift in Sources */,
 				F3316B3F29A0ED970089B4D5 /* TabBarElementBuilder.swift in Sources */,
 				F3316B7729A0F23F0089B4D5 /* TabBarViewOutput.swift in Sources */,
 				F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */,

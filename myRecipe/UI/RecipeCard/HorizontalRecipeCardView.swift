@@ -43,9 +43,9 @@ struct HorizontalRecipeCardView: View {
     
     private var imagePlaceholder: some View {
         ZStack {
-            Color("accentGray")
+            Color(.accentGray)
             
-            Image("placeholder")
+            Image(.placeholder)
                 .resizable()
                 .scaledToFit()
                 .frame(height: LocalConstants.height)
@@ -72,7 +72,7 @@ struct HorizontalRecipeCardView: View {
                 Circle()
                     .fill(
                         RadialGradient(
-                            colors: [Color("accentGray"), .clear],
+                            colors: [Color(.accentGray), .clear],
                             center: .center,
                             startRadius: 0,
                             endRadius: 25
@@ -112,10 +112,10 @@ struct HorizontalRecipeCardView: View {
     
     private var title: some View {
         Text(viewModel.name)
+            .customFont(size: UIConstants.Font.xl)
             .foregroundColor(.white)
             .lineLimit(2)
             .multilineTextAlignment(.leading)
-            .font(.custom("Poppins", size: UIConstants.Font.xl))
             .bold()
     }
     
@@ -129,15 +129,15 @@ struct HorizontalRecipeCardView: View {
                 .frame(height: UIConstants.Font.m)
             
             Text(viewModel.timeToCook)
+                .customFont(size: UIConstants.Font.m)
                 .foregroundColor(.white)
-                .font(.custom("Poppins", size: UIConstants.Font.m))
                 .fontWeight(.semibold)
         }
     }
     
     private var gradientBackground: some View {
         LinearGradient(
-            colors: [.clear, Color("primaryDark")],
+            colors: [.clear, Color(.primaryDark)],
             startPoint: .top,
             endPoint: .bottom
         )

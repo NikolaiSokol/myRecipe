@@ -22,9 +22,9 @@ struct SkeletonView: View {
     
     private let gradient = Gradient(
         colors: [
-            Color("accentGray"),
-            Color("secondaryGray"),
-            Color("accentGray")
+            Color(.accentGray),
+            Color(.secondaryGray),
+            Color(.accentGray)
         ]
     )
     

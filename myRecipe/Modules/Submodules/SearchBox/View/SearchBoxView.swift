@@ -36,7 +36,7 @@ struct SearchBoxView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: LocalConstants.height)
-        .background(Color("secondaryGray"))
+        .background(Color(.secondaryGray))
         .cornerRadius(UIConstants.Radius.s)
         .onReceive(state.endEditingSubject) {
             shouldBeFocused = false
@@ -45,12 +45,12 @@ struct SearchBoxView: View {
     
     private var image: some View {
         Image(systemName: "magnifyingglass")
-            .foregroundColor(Color("accentGray"))
+            .foregroundColor(Color(.accentGray))
             .padding(.leading, UIConstants.Paddings.xxs)
     }
     
     private var textField: some View {
-        TextField("Search recipes", text: $state.text)
+        TextField(String(localized: .searchRecipes), text: $state.text)
             .focused($shouldBeFocused)
     }
     
@@ -58,7 +58,7 @@ struct SearchBoxView: View {
         if !state.text.isEmpty {
             Button(action: state.didTapClearButton) {
                 Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(Color("accentGray"))
+                    .foregroundColor(Color(.accentGray))
             }
             .buttonStyle(.plain)
             .padding(.trailing, UIConstants.Paddings.xxs)

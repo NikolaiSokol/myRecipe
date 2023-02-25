@@ -6,15 +6,10 @@
   
 */
 
-// MARK: - Title
+// MARK: - Main
 
 "hello" = "Hello 👋";
 "whatYouWantToCook" = "What you want to cook today?";
-
-// MARK: - Error
-
-"somethingWentWrong" = "Something went wrong";
-"tryAgain" = "Try again";
 
 // MARK: - Recipe
 
@@ -28,3 +23,12 @@
 "serving" = " serving";
 "cuisine" = "cuisine";
 "perfectFor" = "perfect for";
+
+// MARK: - Search
+
+"searchRecipes" = "Search recipes";
+
+// MARK: - Error
+
+"somethingWentWrong" = "Something went wrong";
+"tryAgain" = "Try again";
