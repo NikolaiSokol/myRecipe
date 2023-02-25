@@ -56,6 +56,7 @@ struct MainScreenRootView: View {
             (state.randomRecipesByTypeModel?.viewState.recipesViewModel.scrollOffsetSubject).orEmpty(),
             perform: onRandomRecipesByTypeScrollOffsetChanges
         )
+        .onReceive(state.showTopSectionSubject, perform: onReceiveShowTopSection)
         .onTapGesture {
             output.endEditing()
         }
@@ -96,6 +97,12 @@ struct MainScreenRootView: View {
             } else if offset > LocalConstants.minimumScrollOffsetForShowingTopSection, !isShowingTopSection {
                 isShowingTopSection = true
             }
+        }
+    }
+    
+    private func onReceiveShowTopSection() {
+        withAnimation(.linear(duration: LocalConstants.animationDuration)) {
+            isShowingTopSection = true
         }
     }
 }

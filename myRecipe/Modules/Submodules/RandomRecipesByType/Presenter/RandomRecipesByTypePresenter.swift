@@ -1,5 +1,5 @@
 //
-//  RandomRecipesByTypeViewModel.swift
+//  RandomRecipesByTypePresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 23.02.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class RandomRecipesByTypeViewModel {
+final class RandomRecipesByTypePresenter {
     private enum LocalConstants {
         static let numberOfRecipesToLoad = 7
     }
@@ -17,6 +17,7 @@ final class RandomRecipesByTypeViewModel {
     private weak var output: RandomRecipesByTypeOutput?
     private let randomRecipesService: RandomRecipesServicing
     
+    private var recipes: [Recipe] = []
     private var recipesLoadingTask: Task<Void, Never>?
     private var currentSelectedType = ""
     
@@ -52,6 +53,8 @@ final class RandomRecipesByTypeViewModel {
             return
         }
         
+        output?.randomRecipesByTypeDidRequest(event: .tappedCarouselCell)
+        
         currentSelectedType = text
         cancelTasks()
         loadRecipes()
@@ -78,17 +81,21 @@ final class RandomRecipesByTypeViewModel {
         if withSkeleton {
             viewState.recipesViewModel.contentState = .skeleton
         }
-        
+
         recipesLoadingTask = Task {
             do {
-                let recipes = try await randomRecipesService.loadWithType(
+                let loadedRecipes = try await randomRecipesService.loadWithType(
                     currentSelectedType.lowercased(),
                     number: LocalConstants.numberOfRecipesToLoad
                 )
 
-                await updateRecipesList(recipes)
+                recipes = loadedRecipes
+
+                await updateRecipesList()
 
             } catch {
+                ErrorLogger.shared.log(error)
+
                 await showErrorScreen()
             }
 
@@ -97,14 +104,18 @@ final class RandomRecipesByTypeViewModel {
     }
     
     private func handleRecipeCardTapped(id: Int) {
-        output?.randomRecipesByTypeDidRequest(event: .openRecipe(id: id))
+        guard let recipe = recipes.first(where: { $0.id == id }) else {
+            return
+        }
+        
+        output?.randomRecipesByTypeDidRequest(event: .openRecipe(recipe))
     }
     
     private func handleSaveRecipeTapped() {
         print("Tapped save recipe")
     }
     
-    @MainActor private func updateRecipesList(_ recipes: [RecipeInformation]) {
+    @MainActor private func updateRecipesList() {
         guard !recipes.isEmpty else {
             showErrorScreen()
             return
@@ -132,8 +143,9 @@ final class RandomRecipesByTypeViewModel {
     
     @MainActor private func showErrorScreen() {
         let errorViewModel = ErrorViewModel(
-            title: "somethingWentWrong".localized(),
-            buttonText: "tryAgain".localized()) { [weak self] in
+            title: String(localized: .somethingWentWrong),
+            buttonText: String(localized: .tryAgain)
+        ) { [weak self] in
                 self?.loadRecipes()
                 self?.viewState.recipesViewModel.errorViewModel = nil
             }
@@ -152,7 +164,7 @@ final class RandomRecipesByTypeViewModel {
 
 // MARK: - RandomRecipesByTypeInput
 
-extension RandomRecipesByTypeViewModel: RandomRecipesByTypeInput {
+extension RandomRecipesByTypePresenter: RandomRecipesByTypeInput {
     func bootstrap() {
         setupCarousel()
         loadRecipes()
@@ -161,4 +173,4 @@ extension RandomRecipesByTypeViewModel: RandomRecipesByTypeInput {
 
 // MARK: - RandomRecipesByTypeViewOutput
 
-extension RandomRecipesByTypeViewModel: RandomRecipesByTypeViewOutput {}
+extension RandomRecipesByTypePresenter: RandomRecipesByTypeViewOutput {}

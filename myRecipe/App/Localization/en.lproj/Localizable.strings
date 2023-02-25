@@ -16,8 +16,8 @@
 "min" = " min";
 "expand" = "expand";
 "collapse" = "collapse";
-"ingredients" = "Ingredients:";
-"instructions" = "Instructions:";
+"ingredients" = "Ingredients";
+"instructions" = "Instructions";
 "cookTime" = "cook time";
 "serves" = "serves";
 "serving" = " serving";

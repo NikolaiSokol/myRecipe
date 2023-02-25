@@ -74,6 +74,9 @@ extension MainScreenRootPresenter: RandomRecipesByTypeOutput {
         switch event {
         case let .openRecipe(recipe):
             output?.mainScreenRootDidRequest(event: .openRecipe(recipe))
+            
+        case .tappedCarouselCell:
+            viewState.showTopSectionSubject.send()
         }
     }
 }

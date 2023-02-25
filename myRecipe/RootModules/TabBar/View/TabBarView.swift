@@ -21,7 +21,7 @@ struct TabBarView: View {
     
     var body: some View {
         TabView(selection: $viewState.selectedTab) {
-            ForEach(viewState.tabs) { element in
+            ForEach(viewState.tabs, id: \.type) { element in
                 element.view
                     .tabItem {
                         element.item

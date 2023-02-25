@@ -24,7 +24,7 @@ struct SingleSelectionCarouselView: View {
         ScrollViewReader { scrollReader in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(viewModel.cells) {
+                    ForEach(viewModel.cells, id: \.id) {
                         let cellIndex = viewModel.cells.firstIndex(of: $0) ?? 0
                         
                         SingleSelectionCarouselCellView(viewModel: $0)

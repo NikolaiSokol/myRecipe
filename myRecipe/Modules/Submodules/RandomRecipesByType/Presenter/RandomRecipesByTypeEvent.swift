@@ -9,4 +9,5 @@ import Foundation
 
 enum RandomRecipesByTypeEvent {
     case openRecipe(Recipe)
+    case tappedCarouselCell
 }

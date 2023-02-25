@@ -31,6 +31,7 @@ struct HorizontalRecipeCardView: View {
     }
     
     private var image: some View {
+        // swiftlint:disable:next multiline_arguments
         AsyncImage(url: viewModel.imageUrl) {
             $0.resizable()
         } placeholder: {

@@ -10,15 +10,17 @@ import SwiftUI
 struct RecipeScreenView: View {
     private enum LocalConstants {
         static let imageMaxWidth = UIScreen.main.bounds.width
-        static let imageMaxHeight = UIScreen.main.bounds.height / 3
+        static let imageMaxHeight = UIScreen.main.bounds.height / 2
         static let summaryNameSpace = "RecipeScreenViewSummaryNameSpace"
         static let collapsedSummaryLineLimit = 4
         static let summaryMaxHeightForCollapsing: CGFloat = 100
+        static let measureToggleWidth = UIScreen.main.bounds.width / 3
     }
     
     @ObservedObject private var state: RecipeScreenViewState
     private let output: RecipeScreenViewOutput
     
+    @State private var measureSystem: MeasureType = .us
     @State private var summaryLineLimit: Int?
     @State private var isShowingSummaryCollapseButton = false
     
@@ -28,6 +30,8 @@ struct RecipeScreenView: View {
     ) {
         self.state = state
         self.output = output
+        
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color(.primaryAccent).opacity(0.8))
     }
     
     var body: some View {
@@ -44,13 +48,16 @@ struct RecipeScreenView: View {
             
             summary
             
-//            sectionTitle(text: "instructions".localized())
+            ingredients
+            
+            instructions
             
             Spacer(minLength: UIConstants.Paddings.s)
         }
     }
     
     private var image: some View {
+        // swiftlint:disable:next multiline_arguments
         AsyncImage(url: state.recipe.imageUrl) {
             $0.resizable()
         } placeholder: {
@@ -140,11 +147,53 @@ struct RecipeScreenView: View {
         .padding(.top, UIConstants.Paddings.s)
     }
     
-    private var ingredients: some View {
-        VStack(spacing: .zero) {
-            sectionTitle(text: String(localized: .ingredients))
-            
-             
+    @ViewBuilder private var ingredients: some View {
+        if !state.recipe.ingredients.isEmpty {
+            VStack(alignment: .leading, spacing: .zero) {
+                HStack {
+                    sectionTitle(text: String(localized: .ingredients))
+                    
+                    Spacer()
+                    
+                    measureToggle
+                }
+                
+                ForEach(state.recipe.ingredients, id: \.id) {
+                    IngredientRowView(ingredient: $0, measureType: measureSystem)
+                        .padding(.bottom, UIConstants.Paddings.xxs)
+                }
+                
+                separator
+                    .padding(.top, UIConstants.Paddings.s)
+            }
+            .padding(.horizontal, UIConstants.Paddings.s)
+        }
+    }
+    
+    private var measureToggle: some View {
+        Picker("", selection: $measureSystem) {
+            ForEach(MeasureType.allCases, id: \.self) {
+                Text($0.rawValue)
+                    .customFont(size: UIConstants.Font.s)
+            }
+        }
+        .pickerStyle(.segmented)
+        .frame(width: LocalConstants.measureToggleWidth)
+    }
+    
+    @ViewBuilder private var instructions: some View {
+        if !state.recipe.steps.isEmpty {
+            VStack(alignment: .leading, spacing: .zero) {
+                sectionTitle(text: String(localized: .instructions))
+                
+                ForEach(state.recipe.steps, id: \.number) {
+                    InstructionRowView(step: $0)
+                        .padding(.bottom, UIConstants.Paddings.xs)
+                }
+                
+                separator
+            }
+            .padding(.horizontal, UIConstants.Paddings.s)
         }
     }
     
@@ -158,9 +207,8 @@ struct RecipeScreenView: View {
     private func sectionTitle(text: String) -> some View {
         Text(text)
             .customFont(size: UIConstants.Font.l)
-            .padding(.vertical, UIConstants.Paddings.m)
+            .padding(.vertical, UIConstants.Paddings.s)
             .fontWeight(.semibold)
-            .padding(.horizontal, UIConstants.Paddings.s)
     }
     
     private func toggleSummaryCollapsing() {

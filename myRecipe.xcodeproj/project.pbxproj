@@ -172,6 +172,10 @@
 		F3EA100C29AA3A4900A1557E /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100B29AA3A4900A1557E /* Color+.swift */; };
 		F3EA100F29AA3BDE00A1557E /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100E29AA3BDE00A1557E /* ImageName.swift */; };
 		F3EA101129AA3C0400A1557E /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101029AA3C0400A1557E /* Image+.swift */; };
+		F3EA101529AA49D500A1557E /* IngredientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101429AA49D500A1557E /* IngredientRowView.swift */; };
+		F3EA101829AA4D6500A1557E /* MeasureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101729AA4D6500A1557E /* MeasureType.swift */; };
+		F3EA101A29AA770600A1557E /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101929AA770600A1557E /* Double+.swift */; };
+		F3EA101F29AA910E00A1557E /* InstructionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101E29AA910E00A1557E /* InstructionRowView.swift */; };
 		F3EC57C229A5A5BC0049A085 /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EC57C129A5A5BC0049A085 /* Optional+.swift */; };
 		F3F4D28C29A6820B00CAC355 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4D28B29A6820B00CAC355 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
@@ -363,6 +367,10 @@
 		F3EA100B29AA3A4900A1557E /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		F3EA100E29AA3BDE00A1557E /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
 		F3EA101029AA3C0400A1557E /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
+		F3EA101429AA49D500A1557E /* IngredientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRowView.swift; sourceTree = "<group>"; };
+		F3EA101729AA4D6500A1557E /* MeasureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureType.swift; sourceTree = "<group>"; };
+		F3EA101929AA770600A1557E /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		F3EA101E29AA910E00A1557E /* InstructionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionRowView.swift; sourceTree = "<group>"; };
 		F3EC57C129A5A5BC0049A085 /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		F3F4D28B29A6820B00CAC355 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -656,6 +664,7 @@
 				F3EA100629AA37D400A1557E /* Text+.swift */,
 				F3EA100B29AA3A4900A1557E /* Color+.swift */,
 				F3EA101029AA3C0400A1557E /* Image+.swift */,
+				F3EA101929AA770600A1557E /* Double+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -926,6 +935,8 @@
 				F369A0C329A5170900FDDAB2 /* SkeletonView.swift */,
 				F369A0C529A51D5E00FDDAB2 /* LinearGradientPoints.swift */,
 				F3258B7029A69CB2005A00FF /* MainScreenHeaderView.swift */,
+				F3EA101429AA49D500A1557E /* IngredientRowView.swift */,
+				F3EA101E29AA910E00A1557E /* InstructionRowView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1013,6 +1024,7 @@
 				F3C4AB8429A8D2EF0093B783 /* RecipeInstructionStep.swift */,
 				F3C4AB8629A8D42B0093B783 /* RecipeIngredient.swift */,
 				F3C4AB8829A8D5720093B783 /* Measures.swift */,
+				F3EA101729AA4D6500A1557E /* MeasureType.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -1421,6 +1433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C4AB8529A8D2EF0093B783 /* RecipeInstructionStep.swift in Sources */,
+				F3EA101F29AA910E00A1557E /* InstructionRowView.swift in Sources */,
 				F3316B0729A0EB470089B4D5 /* Persistence.swift in Sources */,
 				F3E2C11529A7A33A00F50A8E /* RandomRecipesByTypeConfigurator.swift in Sources */,
 				F38F19F429A16504008E314B /* RandomRecipesService.swift in Sources */,
@@ -1514,7 +1527,9 @@
 				F3E2C10629A79D6B00F50A8E /* SearchBoxViewOutput.swift in Sources */,
 				F3316B4329A0EDDF0089B4D5 /* TabBarElementType.swift in Sources */,
 				F3EA100A29AA39F400A1557E /* ColorName.swift in Sources */,
+				F3EA101529AA49D500A1557E /* IngredientRowView.swift in Sources */,
 				F3316B3D29A0ED800089B4D5 /* TabBarElementBuilding.swift in Sources */,
+				F3EA101A29AA770600A1557E /* Double+.swift in Sources */,
 				F3316B5B29A0EFEF0089B4D5 /* MainScreenCoordinator.swift in Sources */,
 				F3E2C10229A79D6B00F50A8E /* SearchBoxView.swift in Sources */,
 				F3E2C11429A7A33A00F50A8E /* RandomRecipesByTypePresenter.swift in Sources */,
@@ -1551,6 +1566,7 @@
 				F3316B9529A0F4D80089B4D5 /* SettingsScreenRootInput.swift in Sources */,
 				F3316B0A29A0EB470089B4D5 /* myRecipe.xcdatamodeld in Sources */,
 				F360238F29A68EF50006DCB1 /* RecipesVerticalListViewModel.swift in Sources */,
+				F3EA101829AA4D6500A1557E /* MeasureType.swift in Sources */,
 				F369A0C029A515BC00FDDAB2 /* ViewContentState.swift in Sources */,
 				F369A0E329A54B1300FDDAB2 /* RecipeInformationMapper.swift in Sources */,
 				F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */,

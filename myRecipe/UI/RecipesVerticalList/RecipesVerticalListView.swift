@@ -74,7 +74,7 @@ struct RecipesVerticalListView: View {
     }
     
     private var content: some View {
-        ForEach(viewModel.cards) {
+        ForEach(viewModel.cards, id: \.id) {
             HorizontalRecipeCardView(viewModel: $0)
         }
     }

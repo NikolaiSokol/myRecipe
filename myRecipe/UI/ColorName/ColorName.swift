@@ -15,4 +15,5 @@ enum ColorName: String {
     case secondaryGray
     case textAccent
     case separator
+    case lightBackground
 }
