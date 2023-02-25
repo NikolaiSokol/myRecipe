@@ -11,6 +11,7 @@ struct MainScreenRootView: View {
     private enum LocalConstants {
         static let animationDuration: CGFloat = 0.2
         static let minimumScrollOffsetForShowingTopSection: CGFloat = -20
+        static let recipesCountToHideTopSection = 2
     }
     
     @ObservedObject private var state: MainScreenRootViewState
@@ -63,6 +64,7 @@ struct MainScreenRootView: View {
     private var header: some View {
         MainScreenHeaderView()
             .padding(.horizontal, UIConstants.Paddings.s)
+            .padding(.top, UIConstants.Paddings.xxs)
     }
     
     @ViewBuilder private var searchField: some View {
@@ -82,7 +84,8 @@ struct MainScreenRootView: View {
     
     private func onRandomRecipesByTypeScrollOffsetChanges(_ offset: CGFloat) {
         guard let recipesModel = state.randomRecipesByTypeModel,
-        recipesModel.viewState.recipesViewModel.contentState.isContent()
+              recipesModel.viewState.recipesViewModel.contentState.isContent(),
+              recipesModel.viewState.recipesViewModel.cards.count > LocalConstants.recipesCountToHideTopSection
         else {
             return
         }

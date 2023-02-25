@@ -19,13 +19,13 @@ final class SearchBoxConfigurator {
     func configure(output: SearchBoxOutput) -> SearchBoxModule {
         let viewState = SearchBoxViewState()
         
-        let viewModel = SearchBoxViewModel(
+        let presenter = SearchBoxPresenter(
             viewState: viewState,
             output: output
         )
         
-        let model = SearchBoxModel(viewState: viewState, viewOutput: viewModel)
+        let model = SearchBoxModel(viewState: viewState, viewOutput: presenter)
         
-        return (model, viewModel)
+        return (model, presenter)
     }
 }

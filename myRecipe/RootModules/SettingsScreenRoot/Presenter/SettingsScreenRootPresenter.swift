@@ -1,5 +1,5 @@
 //
-//  SettingsScreenRootViewModel.swift
+//  SettingsScreenRootPresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 18.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SettingsScreenRootViewModel {
+final class SettingsScreenRootPresenter {
     private let viewState: SettingsScreenRootViewState
     private weak var output: SettingsScreenRootOutput?
     private let modulesFactory: ModulesFactoring
@@ -34,7 +34,7 @@ final class SettingsScreenRootViewModel {
 
 // MARK: - MainScreenRootInput
 
-extension SettingsScreenRootViewModel: SettingsScreenRootInput {
+extension SettingsScreenRootPresenter: SettingsScreenRootInput {
     func bootstrap() {
         setupSettingsScreen()
     }
@@ -42,8 +42,8 @@ extension SettingsScreenRootViewModel: SettingsScreenRootInput {
 
 // MARK: - MainScreenNavigationViewOutput
 
-extension SettingsScreenRootViewModel: SettingsScreenRootViewOutput {}
+extension SettingsScreenRootPresenter: SettingsScreenRootViewOutput {}
 
 // MARK: - SettingsScreenOutput
 
-extension SettingsScreenRootViewModel: SettingsScreenOutput {}
+extension SettingsScreenRootPresenter: SettingsScreenOutput {}

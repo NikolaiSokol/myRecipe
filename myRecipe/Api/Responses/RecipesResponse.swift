@@ -8,5 +8,5 @@
 import Foundation
 
 struct RecipesResponse: Codable {
-    let recipes: [RecipeInformationResponse]
+    let recipes: [RecipeResponse]
 }

@@ -17,14 +17,14 @@ final class SettingsScreenRootConfigurator {
     func configure(router: Router, output: SettingsScreenRootOutput) -> RootModule<SettingsScreenRootInput> {
         let viewState = SettingsScreenRootViewState()
         
-        let viewModel = SettingsScreenRootViewModel(
+        let presenter = SettingsScreenRootPresenter(
             viewState: viewState,
             output: output,
             modulesFactory: modulesFactory
         )
         
-        let view = SettingsScreenRootView(state: viewState, router: router, output: viewModel)
+        let view = SettingsScreenRootView(state: viewState, router: router, output: presenter)
         
-        return (view.eraseToAnyView(), viewModel)
+        return (view.eraseToAnyView(), presenter)
     }
 }

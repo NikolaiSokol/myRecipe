@@ -8,5 +8,5 @@
 import Foundation
 
 struct RecipeScreenInputModel: CoordinatorOption {
-    let id: Int
+    let recipe: Recipe
 }

@@ -11,13 +11,13 @@ final class RecipeScreenConfigurator {
     func configure(output: RecipeScreenOutput) -> NavigableModule<RecipeScreenInput> {
         let viewState = RecipeScreenViewState()
         
-        let viewModel = RecipeScreenViewModel(
+        let presenter = RecipeScreenPresenter(
             viewState: viewState,
             output: output
         )
         
-        let view = RecipeScreenView(state: viewState, output: viewModel)
+        let view = RecipeScreenView(state: viewState, output: presenter)
         
-        return (NavigableView(view: view.eraseToAnyView()), viewModel)
+        return (NavigableView(view: view.eraseToAnyView()), presenter)
     }
 }

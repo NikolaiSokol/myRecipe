@@ -1,5 +1,5 @@
 //
-//  RecipeScreenViewModel.swift
+//  RecipeScreenPresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 22.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RecipeScreenViewModel {
+final class RecipeScreenPresenter {
     private let viewState: RecipeScreenViewState
     private weak var output: RecipeScreenOutput?
 
@@ -22,12 +22,12 @@ final class RecipeScreenViewModel {
 
 // MARK: - RecipeScreenInput
 
-extension RecipeScreenViewModel: RecipeScreenInput {
+extension RecipeScreenPresenter: RecipeScreenInput {
     func configure(inputModel: RecipeScreenInputModel) {
-        viewState.recipeId = inputModel.id
+        viewState.recipe = inputModel.recipe
     }
 }
 
 // MARK: - RecipeScreenViewOutput
 
-extension RecipeScreenViewModel: RecipeScreenViewOutput {}
+extension RecipeScreenPresenter: RecipeScreenViewOutput {}

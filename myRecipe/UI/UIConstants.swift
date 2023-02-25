@@ -45,6 +45,10 @@ enum UIConstants {
     // MARK: - Font
     
     enum Font {
+        /// 10
+        static let xxs: CGFloat = 10
+        /// 12
+        static let xs: CGFloat = 12
         /// 14
         static let s: CGFloat = 14
         /// 16
@@ -53,5 +57,7 @@ enum UIConstants {
         static let l: CGFloat = 20
         /// 22
         static let xl: CGFloat = 22
+        /// 24
+        static let xxl: CGFloat = 24
     }
 }

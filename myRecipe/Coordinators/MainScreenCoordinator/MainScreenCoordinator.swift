@@ -69,10 +69,10 @@ extension MainScreenCoordinator: MainScreenCoordinatorInput {
 extension MainScreenCoordinator: MainScreenRootOutput {
     func mainScreenRootDidRequest(event: MainScreenRootEvent) {
         switch event {
-        case let .openRecipe(id):
-            let inputModel = RecipeScreenInputModel(id: id)
-            
-            presentRecipeScreen(inputModel: inputModel)
+        case let .openRecipe(recipe):
+            presentRecipeScreen(
+                inputModel: RecipeScreenInputModel(recipe: recipe)
+            )
         }
     }
 }

@@ -37,4 +37,18 @@ extension View {
             preferenceKey: SizePreferenceKey.self
         ))
     }
+    
+    func onFrameChanged(
+        in coordinateSpace: String,
+        perform: @escaping (CGRect) -> Void
+    ) -> some View {
+        modifier(
+            GenericPreferenceFrameReaderModifier(
+                coordinateSpace: coordinateSpace,
+                frame: .constant(.zero),
+                preferenceKey: FramePreferenceKey.self,
+                actionBlock: perform
+            )
+        )
+    }
 }

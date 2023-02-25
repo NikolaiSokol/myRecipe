@@ -25,14 +25,14 @@ final class RandomRecipesByTypeConfigurator {
     func configure(output: RandomRecipesByTypeOutput) -> RandomRecipesByTypeModule {
         let viewState = RandomRecipesByTypeViewState()
         
-        let viewModel = RandomRecipesByTypeViewModel(
+        let presenter = RandomRecipesByTypePresenter(
             viewState: viewState,
             output: output,
             randomRecipesService: dependencies.randomRecipesService
         )
         
-        let model = RandomRecipesByTypeModel(viewState: viewState, viewOutput: viewModel)
+        let model = RandomRecipesByTypeModel(viewState: viewState, viewOutput: presenter)
         
-        return (model, viewModel)
+        return (model, presenter)
     }
 }

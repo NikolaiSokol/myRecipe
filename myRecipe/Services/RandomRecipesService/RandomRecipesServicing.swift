@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RandomRecipesServicing {
-    func loadWithType(_ type: String, number: Int) async throws -> [RecipeInformation]
+    func loadWithType(_ type: String, number: Int) async throws -> [Recipe]
 }

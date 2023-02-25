@@ -28,6 +28,8 @@ struct RecipesVerticalListView: View {
                     topAnchor
                     
                     scrollContent
+                    
+                    Spacer(minLength: UIConstants.Paddings.s)
                 }
                 .background(scrollOffsetReader)
             }

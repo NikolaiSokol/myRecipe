@@ -19,4 +19,8 @@ extension String {
     func localized() -> Self {
         Self(localized: Self.LocalizationValue(self))
     }
+    
+    func removeHtmlTags() -> Self {
+        self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
 }

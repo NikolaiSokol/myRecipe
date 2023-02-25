@@ -8,5 +8,5 @@
 import Foundation
 
 enum RandomRecipesByTypeEvent {
-    case openRecipe(id: Int)
+    case openRecipe(Recipe)
 }

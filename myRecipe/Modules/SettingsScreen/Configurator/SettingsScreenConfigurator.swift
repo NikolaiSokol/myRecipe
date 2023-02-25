@@ -18,13 +18,13 @@ final class SettingsScreenConfigurator {
     func configure(output: SettingsScreenOutput) -> SettingsScreenModule {
         let viewState = SettingsScreenViewState()
         
-        let viewModel = SettingsScreenViewModel(
+        let presenter = SettingsScreenPresenter(
             viewState: viewState,
             output: output
         )
         
-        let model = SettingsScreenModel(viewState: viewState, viewOutput: viewModel)
+        let model = SettingsScreenModel(viewState: viewState, viewOutput: presenter)
         
-        return (model, viewModel)
+        return (model, presenter)
     }
 }

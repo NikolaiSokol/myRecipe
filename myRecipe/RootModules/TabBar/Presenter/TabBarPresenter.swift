@@ -1,5 +1,5 @@
 //
-//  TabBarViewModel.swift
+//  TabBarPresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 18.02.2023.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class TabBarViewModel {
+final class TabBarPresenter {
     private let viewState: TabBarViewState
     private weak var output: TabBarOutput?
     
@@ -38,7 +38,7 @@ final class TabBarViewModel {
 
 // MARK: - TabBarInput
 
-extension TabBarViewModel: TabBarInput {
+extension TabBarPresenter: TabBarInput {
     func updateTabs(_ tabs: [TabBarElement]) {
         subscribeToSelectedTab()
         viewState.tabs = tabs
@@ -47,4 +47,4 @@ extension TabBarViewModel: TabBarInput {
 
 // MARK: - TabBarViewOutput
 
-extension TabBarViewModel: TabBarViewOutput {}
+extension TabBarPresenter: TabBarViewOutput {}

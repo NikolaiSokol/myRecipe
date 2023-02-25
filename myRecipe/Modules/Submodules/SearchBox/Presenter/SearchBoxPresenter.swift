@@ -1,5 +1,5 @@
 //
-//  SearchBoxViewModel.swift
+//  SearchBoxPresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 23.02.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class SearchBoxViewModel {
+final class SearchBoxPresenter {
     private let viewState: SearchBoxViewState
     private weak var output: SearchBoxOutput?
 
@@ -23,7 +23,7 @@ final class SearchBoxViewModel {
 
 // MARK: - SearchBoxInput
 
-extension SearchBoxViewModel: SearchBoxInput {
+extension SearchBoxPresenter: SearchBoxInput {
     func endEditing() {
         viewState.endEditing()
     }
@@ -31,4 +31,4 @@ extension SearchBoxViewModel: SearchBoxInput {
 
 // MARK: - SearchBoxViewOutput
 
-extension SearchBoxViewModel: SearchBoxViewOutput {}
+extension SearchBoxPresenter: SearchBoxViewOutput {}

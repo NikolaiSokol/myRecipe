@@ -1,5 +1,5 @@
 //
-//  SettingsScreenViewModel.swift
+//  SettingsScreenPresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 18.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SettingsScreenViewModel {
+final class SettingsScreenPresenter {
     private let viewState: SettingsScreenViewState
     private weak var output: SettingsScreenOutput?
 
@@ -22,8 +22,8 @@ final class SettingsScreenViewModel {
 
 // MARK: - SettingsScreenInput
 
-extension SettingsScreenViewModel: SettingsScreenInput {}
+extension SettingsScreenPresenter: SettingsScreenInput {}
 
 // MARK: - SettingsScreenViewOutput
 
-extension SettingsScreenViewModel: SettingsScreenViewOutput {}
+extension SettingsScreenPresenter: SettingsScreenViewOutput {}

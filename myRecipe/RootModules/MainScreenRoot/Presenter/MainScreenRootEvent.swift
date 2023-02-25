@@ -8,5 +8,5 @@
 import Foundation
 
 enum MainScreenRootEvent {
-    case openRecipe(id: Int)
+    case openRecipe(Recipe)
 }

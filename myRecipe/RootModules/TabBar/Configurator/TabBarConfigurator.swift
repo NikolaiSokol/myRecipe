@@ -12,13 +12,13 @@ final class TabBarConfigurator {
     func configure(output: TabBarOutput) -> RootModule<TabBarInput> {
         let viewState = TabBarViewState()
         
-        let viewModel = TabBarViewModel(
+        let presenter = TabBarPresenter(
             viewState: viewState,
             output: output
         )
         
-        let view = TabBarView(viewState: viewState, output: viewModel)
+        let view = TabBarView(viewState: viewState, output: presenter)
         
-        return (view.eraseToAnyView(), viewModel)
+        return (view.eraseToAnyView(), presenter)
     }
 }

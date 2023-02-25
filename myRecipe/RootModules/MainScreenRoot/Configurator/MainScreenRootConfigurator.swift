@@ -17,14 +17,14 @@ final class MainScreenRootConfigurator {
     func configure(router: Router, output: MainScreenRootOutput) -> RootModule<MainScreenRootInput> {
         let viewState = MainScreenRootViewState()
         
-        let viewModel = MainScreenRootViewModel(
+        let presenter = MainScreenRootPresenter(
             viewState: viewState,
             output: output,
             modulesFactory: modulesFactory
         )
         
-        let view = MainScreenRootView(state: viewState, router: router, output: viewModel)
+        let view = MainScreenRootView(state: viewState, router: router, output: presenter)
         
-        return (view.eraseToAnyView(), viewModel)
+        return (view.eraseToAnyView(), presenter)
     }
 }

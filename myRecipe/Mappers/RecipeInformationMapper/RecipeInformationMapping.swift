@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RecipeInformationMapping {
-    func map(apiResponse: RecipesResponse) -> [RecipeInformation]
+    func map(apiResponse: RecipesResponse) -> [Recipe]
 }

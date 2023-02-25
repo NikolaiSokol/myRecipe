@@ -15,3 +15,16 @@
 
 "somethingWentWrong" = "Something went wrong";
 "tryAgain" = "Try again";
+
+// MARK: - Recipe
+
+"min" = " min";
+"expand" = "expand";
+"collapse" = "collapse";
+"ingredients" = "Ingredients:";
+"instructions" = "Instructions:";
+"cookTime" = "cook time";
+"serves" = "serves";
+"serving" = " serving";
+"cuisine" = "cuisine";
+"perfectFor" = "perfect for";

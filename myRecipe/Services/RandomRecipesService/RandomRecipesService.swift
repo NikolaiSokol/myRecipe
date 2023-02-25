@@ -24,7 +24,7 @@ final class RandomRecipesService {
 }
 
 extension RandomRecipesService: RandomRecipesServicing {
-    func loadWithType(_ type: String, number: Int) async throws -> [RecipeInformation] {
+    func loadWithType(_ type: String, number: Int) async throws -> [Recipe] {
         let url = try urlBuilder.buildURL(methodPath: .random)
         let query = RandomRecipesQuery(tags: type, number: number)
         let request = try requestBuilder.buildURLRequest(url: url, query: query, method: .get)

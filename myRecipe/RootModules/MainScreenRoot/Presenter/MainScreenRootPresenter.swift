@@ -1,5 +1,5 @@
 //
-//  MainScreenRootViewModel.swift
+//  MainScreenRootPresenter.swift
 //  myRecipe
 //
 //  Created by Nikolai Sokol on 18.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MainScreenRootViewModel {
+final class MainScreenRootPresenter {
     private let viewState: MainScreenRootViewState
     private weak var output: MainScreenRootOutput?
     private let modulesFactory: ModulesFactoring
@@ -49,7 +49,7 @@ final class MainScreenRootViewModel {
 
 // MARK: - MainScreenRootInput
 
-extension MainScreenRootViewModel: MainScreenRootInput {
+extension MainScreenRootPresenter: MainScreenRootInput {
     func bootstrap() {
         setupSubmodules()
     }
@@ -57,7 +57,7 @@ extension MainScreenRootViewModel: MainScreenRootInput {
 
 // MARK: - MainScreenNavigationViewOutput
 
-extension MainScreenRootViewModel: MainScreenRootViewOutput {
+extension MainScreenRootPresenter: MainScreenRootViewOutput {
     func endEditing() {
         searchBoxInput?.endEditing()
     }
@@ -65,15 +65,15 @@ extension MainScreenRootViewModel: MainScreenRootViewOutput {
 
 // MARK: - SearchBoxOutput
 
-extension MainScreenRootViewModel: SearchBoxOutput {}
+extension MainScreenRootPresenter: SearchBoxOutput {}
 
 // MARK: - RandomRecipesByTypeOutput
 
-extension MainScreenRootViewModel: RandomRecipesByTypeOutput {
+extension MainScreenRootPresenter: RandomRecipesByTypeOutput {
     func randomRecipesByTypeDidRequest(event: RandomRecipesByTypeEvent) {
         switch event {
-        case let .openRecipe(id):
-            output?.mainScreenRootDidRequest(event: .openRecipe(id: id))
+        case let .openRecipe(recipe):
+            output?.mainScreenRootDidRequest(event: .openRecipe(recipe))
         }
     }
 }

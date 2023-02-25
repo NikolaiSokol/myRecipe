@@ -8,5 +8,7 @@
 import Foundation
 
 final class RecipeScreenViewState: ObservableObject {
-    @Published var recipeId = 0
+    @Published var recipe: Recipe = .empty
+    
+    var didMeasureSummaryHeight = false
 }
