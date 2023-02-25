@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @ObservedObject private var viewState: TabBarViewState
+    @ObservedObject private var state: TabBarViewState
     private let output: TabBarViewOutput
     
     init(
-        viewState: TabBarViewState,
+        state: TabBarViewState,
         output: TabBarViewOutput
     ) {
-        self.viewState = viewState
+        self.state = state
         self.output = output
     }
     
     var body: some View {
-        TabView(selection: $viewState.selectedTab) {
-            ForEach(viewState.tabs, id: \.type) { element in
+        TabView(selection: $state.selectedTab) {
+            ForEach(state.tabs, id: \.type) { element in
                 element.view
                     .tabItem {
                         element.item

@@ -17,7 +17,7 @@ final class TabBarConfigurator {
             output: output
         )
         
-        let view = TabBarView(viewState: viewState, output: presenter)
+        let view = TabBarView(state: viewState, output: presenter)
         
         return (view.eraseToAnyView(), presenter)
     }
