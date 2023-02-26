@@ -52,6 +52,47 @@ final class RecipeInformationMapper {
             unitShort: apiResponse.unitShort
         )
     }
+    
+    private func map(_ apiResponse: NutritionResponse?) -> [Nutrient] {
+        var nutrients = apiResponse?.nutrients.map {
+            Nutrient(
+                name: $0.name,
+                amount: String($0.amount),
+                unit: $0.unit,
+                percentOfDailyNeeds: $0.percentOfDailyNeeds
+            )
+        } ?? []
+        
+        rearrangeNutrients(&nutrients)
+        
+        return nutrients
+    }
+    
+    private func rearrangeNutrients(_ nutrients: inout [Nutrient]) {
+        guard !nutrients.isEmpty else {
+            return
+        }
+        
+        nutrients.sort { $0.name < $1.name }
+        
+        if let proteinIndex = nutrients.firstIndex(
+            where: { $0.name.lowercased() == BasicNutrientType.protein.rawValue }
+        ) {
+            nutrients.insert(nutrients.remove(at: proteinIndex), at: 0)
+        }
+       
+        if let fatIndex = nutrients.firstIndex(
+            where: { $0.name.lowercased() == BasicNutrientType.fat.rawValue }
+        ) {
+            nutrients.insert(nutrients.remove(at: fatIndex), at: 0)
+        }
+        
+        if let caloriesIndex = nutrients.firstIndex(
+            where: { $0.name.lowercased() == BasicNutrientType.calories.rawValue }
+        ) {
+            nutrients.insert(nutrients.remove(at: caloriesIndex), at: 0)
+        }
+    }
 }
 
 extension RecipeInformationMapper: RecipeInformationMapping {
@@ -67,8 +108,13 @@ extension RecipeInformationMapper: RecipeInformationMapping {
                 cuisines: $0.cuisines,
                 dishTypes: $0.dishTypes,
                 steps: map($0.analyzedInstructions),
-                ingredients: map($0.extendedIngredients)
+                ingredients: map($0.extendedIngredients),
+                nutrients: map($0.nutrition)
             )
         }
+    }
+    
+    func map(apiResponse: RecipeResponse) -> [Nutrient] {
+        map(apiResponse.nutrition)
     }
 }

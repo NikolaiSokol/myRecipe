@@ -10,6 +10,7 @@ import Foundation
 enum MethodPath {
     case search
     case random
+    case recipeInformation(Int)
     
     var path: String {
         switch self {
@@ -18,6 +19,9 @@ enum MethodPath {
             
         case .random:
             return "recipes/random"
+            
+        case let .recipeInformation(id):
+            return "recipes/\(id)/information"
         }
     }
 }

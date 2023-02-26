@@ -38,6 +38,9 @@ struct RecipeScreenView: View {
         ScrollView(.vertical, showsIndicators: false) {
             scrollContent
         }
+        .sheet(isPresented: $state.isShowingNutrition) {
+            NutrientsView(nutrients: state.nutrients)
+        }
     }
     
     private var scrollContent: some View {
@@ -74,6 +77,7 @@ struct RecipeScreenView: View {
             Image(.placeholder)
                 .resizable()
                 .scaledToFit()
+                .padding(UIConstants.Paddings.xl)
                 .frame(maxWidth: LocalConstants.imageMaxWidth, maxHeight: LocalConstants.imageMaxHeight)
                 .opacity(0.5)
         }
@@ -85,7 +89,7 @@ struct RecipeScreenView: View {
                 .customFont(size: UIConstants.Font.xxl)
                 .fontWeight(.semibold)
             
-            separator
+            Separator()
         }
         .padding(.top, UIConstants.Paddings.m)
         .padding(.horizontal, UIConstants.Paddings.s)
@@ -94,26 +98,31 @@ struct RecipeScreenView: View {
     @ViewBuilder private var summary: some View {
         if !state.recipe.summary.isEmpty {
             VStack(alignment: .leading, spacing: UIConstants.Paddings.xxxs) {
-                Text(state.recipe.summary)
-                    .customFont(size: UIConstants.Font.s)
-                    .foregroundColor(Color(.textAccent))
-                    .textSelection(.enabled)
-                    .lineLimit(summaryLineLimit)
-                    .multilineTextAlignment(.leading)
-                    .modifier(if: !state.didMeasureSummaryHeight) {
-                        $0.onFrameChanged(in: LocalConstants.summaryNameSpace, perform: onSummaryFrameChanges)
-                    }
+                summaryText
                 
                 summaryCollapsingButton
                 
                 recipeShortInfo
                 
-                separator
-                    .padding(.top, UIConstants.Paddings.s)
+                nutrients
+                
+                Separator()
             }
             .padding(.top, UIConstants.Paddings.s)
             .padding(.horizontal, UIConstants.Paddings.s)
         }
+    }
+    
+    private var summaryText: some View {
+        Text(state.recipe.summary)
+            .customFont(size: UIConstants.Font.s)
+            .foregroundColor(Color(.textAccent))
+            .textSelection(.enabled)
+            .lineLimit(summaryLineLimit)
+            .multilineTextAlignment(.leading)
+            .modifier(if: !state.didMeasureSummaryHeight) {
+                $0.onFrameChanged(in: LocalConstants.summaryNameSpace, perform: onSummaryFrameChanges)
+            }
     }
     
     @ViewBuilder private var summaryCollapsingButton: some View {
@@ -147,6 +156,11 @@ struct RecipeScreenView: View {
         .padding(.top, UIConstants.Paddings.s)
     }
     
+    private var nutrients: some View {
+        NutrientsBlockView(viewModel: state.nutrientBlockViewModel)
+            .padding(.vertical, UIConstants.Paddings.xs)
+    }
+    
     @ViewBuilder private var ingredients: some View {
         if !state.recipe.ingredients.isEmpty {
             VStack(alignment: .leading, spacing: .zero) {
@@ -163,7 +177,7 @@ struct RecipeScreenView: View {
                         .padding(.bottom, UIConstants.Paddings.xxs)
                 }
                 
-                separator
+                Separator()
                     .padding(.top, UIConstants.Paddings.s)
             }
             .padding(.horizontal, UIConstants.Paddings.s)
@@ -191,17 +205,10 @@ struct RecipeScreenView: View {
                         .padding(.bottom, UIConstants.Paddings.xs)
                 }
                 
-                separator
+                Separator()
             }
             .padding(.horizontal, UIConstants.Paddings.s)
         }
-    }
-    
-    private var separator: some View {
-        Rectangle()
-            .foregroundColor(Color(.separator))
-            .frame(height: 1)
-            .frame(maxWidth: .infinity)
     }
     
     private func sectionTitle(text: String) -> some View {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IngredientRowView: View {
     private enum LocalConstants {
-        static let size: CGFloat = 60
+        static let size: CGFloat = 50
     }
     
     private let ingredient: RecipeIngredient
@@ -59,7 +59,7 @@ struct IngredientRowView: View {
     
     private var name: some View {
         Text(ingredient.name.capitalizingFirstLetter())
-            .customFont(size: UIConstants.Font.m)
+            .customFont(size: UIConstants.Font.s)
             .textSelection(.enabled)
             .lineLimit(2)
             .padding(.leading, UIConstants.Paddings.s)

@@ -25,6 +25,9 @@ enum Localized: String {
     case serving
     case cuisine
     case perfectFor
+    case viewMore
+    case nutritionDataIsPerServing
+    case ofDailyNeeds
     
     // MARK: - Search
     

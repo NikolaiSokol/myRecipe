@@ -18,4 +18,11 @@ final class Dependencies: DependenciesProtocol {
         requestBuilder: requestBuilder,
         recipeInformationMapper: recipeInformationMapper
     )
+    
+    private(set) lazy var recipeInformationService: RecipeInformationServicing = RecipeInformationService(
+        urlBuilder: urlBuilder,
+        requestBuilder: requestBuilder,
+        recipeInformationMapper: recipeInformationMapper
+    )
+    
 }

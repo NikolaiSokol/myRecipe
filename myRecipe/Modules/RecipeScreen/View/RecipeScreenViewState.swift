@@ -9,6 +9,9 @@ import Foundation
 
 final class RecipeScreenViewState: ObservableObject {
     @Published var recipe: Recipe = .empty
+    @Published var isShowingNutrition = false
     
     var didMeasureSummaryHeight = false
+    var nutrientBlockViewModel = NutrientsBlockViewModel()
+    var nutrients: [Nutrient] = []
 }

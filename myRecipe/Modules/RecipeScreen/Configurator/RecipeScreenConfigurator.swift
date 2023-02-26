@@ -8,12 +8,19 @@
 import Foundation
 
 final class RecipeScreenConfigurator {
+    private let dependencies: DependenciesProtocol
+    
+    init(dependencies: DependenciesProtocol) {
+        self.dependencies = dependencies
+    }
+    
     func configure(output: RecipeScreenOutput) -> NavigableModule<RecipeScreenInput> {
         let viewState = RecipeScreenViewState()
         
         let presenter = RecipeScreenPresenter(
             viewState: viewState,
-            output: output
+            output: output,
+            recipeInformationService: dependencies.recipeInformationService
         )
         
         let view = RecipeScreenView(state: viewState, output: presenter)

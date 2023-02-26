@@ -18,6 +18,7 @@ struct Recipe {
     let dishTypes: [String]
     let steps: [RecipeInstructionStep]
     let ingredients: [RecipeIngredient]
+    var nutrients: [Nutrient]
     
     static var empty: Recipe {
         Recipe(
@@ -30,7 +31,8 @@ struct Recipe {
             cuisines: [],
             dishTypes: [],
             steps: [],
-            ingredients: []
+            ingredients: [],
+            nutrients: []
         )
     }
 }

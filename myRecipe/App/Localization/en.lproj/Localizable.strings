@@ -23,6 +23,9 @@
 "serving" = " serving";
 "cuisine" = "cuisine";
 "perfectFor" = "perfect for";
+"viewMore" = "view\nmore >";
+"nutritionDataIsPerServing" = "nutrition data is per serving";
+"ofDailyNeeds" = "of daily needs";
 
 // MARK: - Search
 
