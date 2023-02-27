@@ -20,6 +20,16 @@
 		F3258B8729A6BDE3005A00FF /* RecipeScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B8029A6BDE3005A00FF /* RecipeScreenViewOutput.swift */; };
 		F3258B8829A6BDE3005A00FF /* RecipeScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B8129A6BDE3005A00FF /* RecipeScreenViewState.swift */; };
 		F3258B8E29A6BFE3005A00FF /* RecipeScreenInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3258B8D29A6BFE3005A00FF /* RecipeScreenInputModel.swift */; };
+		F3268C8E29ACDA630046067B /* SearchScreenCoordinatorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C8D29ACDA630046067B /* SearchScreenCoordinatorInput.swift */; };
+		F3268C9029ACDA7A0046067B /* SearchScreenCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C8F29ACDA7A0046067B /* SearchScreenCoordinatorOutput.swift */; };
+		F3268C9229ACDAAA0046067B /* SearchScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9129ACDAAA0046067B /* SearchScreenCoordinator.swift */; };
+		F3268C9F29ACDBE70046067B /* SearchScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9829ACDBE70046067B /* SearchScreenInput.swift */; };
+		F3268CA029ACDBE70046067B /* SearchScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9929ACDBE70046067B /* SearchScreenPresenter.swift */; };
+		F3268CA129ACDBE70046067B /* SearchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9A29ACDBE70046067B /* SearchScreenView.swift */; };
+		F3268CA229ACDBE70046067B /* SearchScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9B29ACDBE70046067B /* SearchScreenOutput.swift */; };
+		F3268CA329ACDBE70046067B /* SearchScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9C29ACDBE70046067B /* SearchScreenConfigurator.swift */; };
+		F3268CA429ACDBE70046067B /* SearchScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9D29ACDBE70046067B /* SearchScreenViewOutput.swift */; };
+		F3268CA529ACDBE70046067B /* SearchScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3268C9E29ACDBE70046067B /* SearchScreenViewState.swift */; };
 		F3316B0029A0EB450089B4D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316AFF29A0EB450089B4D5 /* ContentView.swift */; };
 		F3316B0229A0EB470089B4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3316B0129A0EB470089B4D5 /* Assets.xcassets */; };
 		F3316B0529A0EB470089B4D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3316B0429A0EB470089B4D5 /* Preview Assets.xcassets */; };
@@ -225,6 +235,16 @@
 		F3258B8029A6BDE3005A00FF /* RecipeScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenViewOutput.swift; sourceTree = "<group>"; };
 		F3258B8129A6BDE3005A00FF /* RecipeScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenViewState.swift; sourceTree = "<group>"; };
 		F3258B8D29A6BFE3005A00FF /* RecipeScreenInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreenInputModel.swift; sourceTree = "<group>"; };
+		F3268C8D29ACDA630046067B /* SearchScreenCoordinatorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenCoordinatorInput.swift; sourceTree = "<group>"; };
+		F3268C8F29ACDA7A0046067B /* SearchScreenCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenCoordinatorOutput.swift; sourceTree = "<group>"; };
+		F3268C9129ACDAAA0046067B /* SearchScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenCoordinator.swift; sourceTree = "<group>"; };
+		F3268C9829ACDBE70046067B /* SearchScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenInput.swift; sourceTree = "<group>"; };
+		F3268C9929ACDBE70046067B /* SearchScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenPresenter.swift; sourceTree = "<group>"; };
+		F3268C9A29ACDBE70046067B /* SearchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenView.swift; sourceTree = "<group>"; };
+		F3268C9B29ACDBE70046067B /* SearchScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenOutput.swift; sourceTree = "<group>"; };
+		F3268C9C29ACDBE70046067B /* SearchScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenConfigurator.swift; sourceTree = "<group>"; };
+		F3268C9D29ACDBE70046067B /* SearchScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewOutput.swift; sourceTree = "<group>"; };
+		F3268C9E29ACDBE70046067B /* SearchScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewState.swift; sourceTree = "<group>"; };
 		F3316AFA29A0EB450089B4D5 /* myRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3316AFF29A0EB450089B4D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F3316B0129A0EB470089B4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -502,6 +522,70 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		F3268C8B29ACDA2B0046067B /* SearchScreenCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C8C29ACDA4E0046067B /* Interfaces */,
+				F3268C9129ACDAAA0046067B /* SearchScreenCoordinator.swift */,
+			);
+			path = SearchScreenCoordinator;
+			sourceTree = "<group>";
+		};
+		F3268C8C29ACDA4E0046067B /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C8D29ACDA630046067B /* SearchScreenCoordinatorInput.swift */,
+				F3268C8F29ACDA7A0046067B /* SearchScreenCoordinatorOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3268C9329ACDB870046067B /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C9729ACDBD10046067B /* Configurator */,
+				F3268C9629ACDBCA0046067B /* Presenter */,
+				F3268C9529ACDBC50046067B /* View */,
+				F3268C9429ACDBBC0046067B /* Interfaces */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		F3268C9429ACDBBC0046067B /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C9829ACDBE70046067B /* SearchScreenInput.swift */,
+				F3268C9B29ACDBE70046067B /* SearchScreenOutput.swift */,
+				F3268C9D29ACDBE70046067B /* SearchScreenViewOutput.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F3268C9529ACDBC50046067B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C9E29ACDBE70046067B /* SearchScreenViewState.swift */,
+				F3268C9A29ACDBE70046067B /* SearchScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3268C9629ACDBCA0046067B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C9929ACDBE70046067B /* SearchScreenPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F3268C9729ACDBD10046067B /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				F3268C9C29ACDBE70046067B /* SearchScreenConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		F3316AF129A0EB450089B4D5 = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +673,7 @@
 				F3316B5429A0EF8E0089B4D5 /* MainScreenCoordinator */,
 				F3316B5C29A0F0720089B4D5 /* SettingsScreenCoordinator */,
 				F3258B7429A6BB27005A00FF /* RecipeScreenCoordinator */,
+				F3268C8B29ACDA2B0046067B /* SearchScreenCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -611,6 +696,7 @@
 				F3E2C10829A7A0AF00F50A8E /* Submodules */,
 				F3316BBA29A0F70F0089B4D5 /* SettingsScreen */,
 				F3258B7A29A6BDBF005A00FF /* RecipeScreen */,
+				F3268C9329ACDB870046067B /* SearchScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1534,11 +1620,14 @@
 				F3E2C10429A79D6B00F50A8E /* SearchBoxPresenter.swift in Sources */,
 				F369A0E029A54A5A00FDDAB2 /* Recipe.swift in Sources */,
 				F3EA102129AB77BC00A1557E /* NutrientsView.swift in Sources */,
+				F3268C9029ACDA7A0046067B /* SearchScreenCoordinatorOutput.swift in Sources */,
 				F3E2C11329A7A33A00F50A8E /* RandomRecipesByTypeOutput.swift in Sources */,
 				F3258B8529A6BDE3005A00FF /* RecipeScreenOutput.swift in Sources */,
 				F3316B4C29A0EE500089B4D5 /* NavigableView.swift in Sources */,
 				F3316B6629A0F11B0089B4D5 /* RootModulesFactoring.swift in Sources */,
+				F3268CA429ACDBE70046067B /* SearchScreenViewOutput.swift in Sources */,
 				F3316B5129A0EED70089B4D5 /* View+.swift in Sources */,
+				F3268CA229ACDBE70046067B /* SearchScreenOutput.swift in Sources */,
 				F38F19E829A15C33008E314B /* HTTPMethod.swift in Sources */,
 				F3316B5929A0EFD50089B4D5 /* MainScreenCoordinatorOutput.swift in Sources */,
 				F3EA103D29ABF9D500A1557E /* NutrientRowView.swift in Sources */,
@@ -1555,6 +1644,7 @@
 				F3316B5729A0EFB70089B4D5 /* MainScreenCoordinatorInput.swift in Sources */,
 				F3258B8329A6BDE3005A00FF /* RecipeScreenPresenter.swift in Sources */,
 				F3316B8A29A0F3FB0089B4D5 /* MainScreenRootView.swift in Sources */,
+				F3268CA329ACDBE70046067B /* SearchScreenConfigurator.swift in Sources */,
 				F38F19EF29A15DD4008E314B /* URLRequestBuilder.swift in Sources */,
 				F3316B6829A0F1370089B4D5 /* RootModulesFactory.swift in Sources */,
 				F360238929A68B070006DCB1 /* ErrorViewModel.swift in Sources */,
@@ -1572,9 +1662,12 @@
 				F369A0CF29A53A4100FDDAB2 /* RandomRecipesServicing.swift in Sources */,
 				F3C4AB8729A8D42B0093B783 /* RecipeIngredient.swift in Sources */,
 				F3E2C10129A79D6B00F50A8E /* SearchBoxInput.swift in Sources */,
+				F3268C9F29ACDBE70046067B /* SearchScreenInput.swift in Sources */,
 				F3EA100529AA2F4100A1557E /* Localized.swift in Sources */,
+				F3268CA129ACDBE70046067B /* SearchScreenView.swift in Sources */,
 				F360238D29A68E900006DCB1 /* RecipesVerticalListView.swift in Sources */,
 				F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */,
+				F3268C9229ACDAAA0046067B /* SearchScreenCoordinator.swift in Sources */,
 				F3316B3929A0ECE50089B4D5 /* CoordinatorsFactory.swift in Sources */,
 				F369A0B829A4D51700FDDAB2 /* SingleSelectionCarouselCellViewModel.swift in Sources */,
 				F369A0D629A5413D00FDDAB2 /* RandomRecipesQuery.swift in Sources */,
@@ -1625,12 +1718,14 @@
 				F3316B7729A0F23F0089B4D5 /* TabBarViewOutput.swift in Sources */,
 				F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */,
 				F3316BCA29A0F7AF0089B4D5 /* SettingsScreenPresenter.swift in Sources */,
+				F3268CA529ACDBE70046067B /* SearchScreenViewState.swift in Sources */,
 				F3316B7329A0F2070089B4D5 /* TabBarViewState.swift in Sources */,
 				F3E2C11729A7A33A00F50A8E /* RandomRecipesByTypeViewState.swift in Sources */,
 				F3EA100329A943CE00A1557E /* RecipeShortInfoType.swift in Sources */,
 				F3316B9729A0F4E90089B4D5 /* SettingsScreenRootOutput.swift in Sources */,
 				F369A0C629A51D5E00FDDAB2 /* LinearGradientPoints.swift in Sources */,
 				F3316B8229A0F3800089B4D5 /* MainScreenRootInput.swift in Sources */,
+				F3268C8E29ACDA630046067B /* SearchScreenCoordinatorInput.swift in Sources */,
 				F3C4AB7F29A8C1650093B783 /* IngredientResponse.swift in Sources */,
 				F3E2C0C829A7987400F50A8E /* MyRecipeApp.swift in Sources */,
 				F369A0A029A3C6B600FDDAB2 /* HorizontalRecipeCardView.swift in Sources */,
@@ -1650,6 +1745,7 @@
 				F38F19E629A15A7F008E314B /* URLError.swift in Sources */,
 				F38F19ED29A15D91008E314B /* QueryItemsRepresentable.swift in Sources */,
 				F369A0BC29A4ED6300FDDAB2 /* SingleSelectionCarouselViewModel.swift in Sources */,
+				F3268CA029ACDBE70046067B /* SearchScreenPresenter.swift in Sources */,
 				F3258B7929A6BB6D005A00FF /* RecipeScreenCoordinatorOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

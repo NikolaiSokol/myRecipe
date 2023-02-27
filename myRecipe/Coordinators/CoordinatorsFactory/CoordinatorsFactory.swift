@@ -67,4 +67,17 @@ extension CoordinatorsFactory: CoordinatorsFactoring {
         
         return (coordinator, coordinator)
     }
+    
+    func makeSearchScreenCoordinator(
+        output: SearchScreenCoordinatorOutput,
+        router: Routable
+    ) -> ConcreteCoordinator<SearchScreenCoordinatorInput> {
+        let coordinator = SearchScreenCoordinator(
+            output: output,
+            modulesFactory: modulesFactory,
+            router: router
+        )
+        
+        return (coordinator, coordinator)
+    }
 }

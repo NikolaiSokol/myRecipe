@@ -18,6 +18,7 @@ final class MainScreenCoordinator {
     private var mainScreenRootInput: MainScreenRootInput?
     
     private var recipeScreenCoordinatorInput: RecipeScreenCoordinatorInput?
+    private var searchScreenCoordinatorInput: SearchScreenCoordinatorInput?
     
     init(
         output: MainScreenCoordinatorOutput,
@@ -46,6 +47,12 @@ final class MainScreenCoordinator {
         recipeScreenCoordinatorInput = unit.input
         unit.coordinator.start(with: inputModel)
     }
+    
+    private func presentSearchScreen() {
+        let unit = coordinatorsFactory.makeSearchScreenCoordinator(output: self, router: router)
+        searchScreenCoordinatorInput = unit.input
+        unit.coordinator.start(with: nil)
+    }
 }
 
 // MARK: - RootCoordinator
@@ -73,6 +80,9 @@ extension MainScreenCoordinator: MainScreenRootOutput {
             presentRecipeScreen(
                 inputModel: RecipeScreenInputModel(recipe: recipe)
             )
+            
+        case .openSearch:
+            presentSearchScreen()
         }
     }
 }
@@ -80,3 +90,7 @@ extension MainScreenCoordinator: MainScreenRootOutput {
 // MARK: - RecipeScreenCoordinatorOutput
 
 extension MainScreenCoordinator: RecipeScreenCoordinatorOutput {}
+
+// MARK: - SearchScreenCoordinatorOutput
+
+extension MainScreenCoordinator: SearchScreenCoordinatorOutput {}

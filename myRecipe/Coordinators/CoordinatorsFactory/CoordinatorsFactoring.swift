@@ -26,4 +26,9 @@ protocol CoordinatorsFactoring {
         output: RecipeScreenCoordinatorOutput,
         router: Routable
     ) -> ConcreteCoordinator<RecipeScreenCoordinatorInput>
+    
+    func makeSearchScreenCoordinator(
+        output: SearchScreenCoordinatorOutput,
+        router: Routable
+    ) -> ConcreteCoordinator<SearchScreenCoordinatorInput>
 }

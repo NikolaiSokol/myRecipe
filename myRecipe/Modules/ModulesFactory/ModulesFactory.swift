@@ -16,12 +16,20 @@ final class ModulesFactory {
 }
 
 extension ModulesFactory: ModulesFactoring {
-    func makeSettingsScreen(output: SettingsScreenOutput) -> SettingsScreenModule {
-        SettingsScreenConfigurator().configure(output: output)
-    }
+    // MARK: - Navigable
     
     func makeRecipeScreen(output: RecipeScreenOutput) -> NavigableModule<RecipeScreenInput> {
         RecipeScreenConfigurator(dependencies: dependencies).configure(output: output)
+    }
+    
+    func makeSearchScreen(output: SearchScreenOutput) -> NavigableModule<SearchScreenInput> {
+        SearchScreenConfigurator(dependencies: dependencies).configure(output: output)
+    }
+    
+    // MARK: - Submodules
+    
+    func makeSettingsScreen(output: SettingsScreenOutput) -> SettingsScreenModule {
+        SettingsScreenConfigurator().configure(output: output)
     }
     
     func makeSearchBox(output: SearchBoxOutput) -> SearchBoxModule {

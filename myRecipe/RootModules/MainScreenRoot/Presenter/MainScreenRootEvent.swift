@@ -9,4 +9,5 @@ import Foundation
 
 enum MainScreenRootEvent {
     case openRecipe(Recipe)
+    case openSearch
 }
