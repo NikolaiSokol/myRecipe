@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 final class MainScreenRootViewState: ObservableObject {
-    @Published var searchBoxModel: SearchBoxModel?
     @Published var randomRecipesByTypeModel: RandomRecipesByTypeModel?
     
     let showTopSectionSubject = PassthroughSubject<Void, Never>()
+    var searchButtonTapHandler: () -> Void = {}
 }

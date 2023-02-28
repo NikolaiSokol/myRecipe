@@ -11,7 +11,7 @@ struct SettingsScreenRootView: View {
     @ObservedObject private var state: SettingsScreenRootViewState
     @ObservedObject private var router: Router
     
-    private let output: SettingsScreenRootViewOutput
+    private weak var output: SettingsScreenRootViewOutput?
     
     init(
         state: SettingsScreenRootViewState,

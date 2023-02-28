@@ -18,7 +18,7 @@ struct RecipeScreenView: View {
     }
     
     @ObservedObject private var state: RecipeScreenViewState
-    private let output: RecipeScreenViewOutput
+    private weak var output: RecipeScreenViewOutput?
     
     @State private var measureSystem: MeasureType = .us
     @State private var summaryLineLimit: Int?

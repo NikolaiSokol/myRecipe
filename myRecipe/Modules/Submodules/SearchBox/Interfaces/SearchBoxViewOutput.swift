@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol SearchBoxViewOutput: AnyObject {}
+protocol SearchBoxViewOutput: AnyObject {
+    func didTapReturnKey()
+}

@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol SearchBoxOutput: AnyObject {}
+protocol SearchBoxOutput: AnyObject {
+    func searchBoxDidRequest(event: SearchBoxEvent)
+}

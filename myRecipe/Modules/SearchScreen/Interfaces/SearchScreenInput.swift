@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol SearchScreenInput: AnyObject {}
+protocol SearchScreenInput: AnyObject {
+    func bootstrap()
+}

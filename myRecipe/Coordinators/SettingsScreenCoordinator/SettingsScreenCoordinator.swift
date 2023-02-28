@@ -33,6 +33,7 @@ final class SettingsScreenCoordinator {
     
     private func showSettingsScreenRoot() -> AnyView {
         let unit = rootModulesFactory.makeSettingsScreenRoot(output: self, router: router)
+        
         settingsScreenRootInput = unit.input
         settingsScreenRootInput?.bootstrap()
         

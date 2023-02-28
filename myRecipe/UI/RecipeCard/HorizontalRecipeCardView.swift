@@ -120,19 +120,21 @@ struct HorizontalRecipeCardView: View {
             .bold()
     }
     
-    private var timeToCook: some View {
-        HStack {
-            Image(systemName: "clock")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.white)
-                .fontWeight(.semibold)
-                .frame(height: UIConstants.Font.m)
-            
-            Text(viewModel.timeToCook)
-                .customFont(size: UIConstants.Font.m)
-                .foregroundColor(.white)
-                .fontWeight(.semibold)
+    @ViewBuilder private var timeToCook: some View {
+        if let timeToCook = viewModel.timeToCook {
+            HStack {
+                Image(systemName: "clock")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.white)
+                    .fontWeight(.semibold)
+                    .frame(height: UIConstants.Font.m)
+                
+                Text(timeToCook)
+                    .customFont(size: UIConstants.Font.m)
+                    .foregroundColor(.white)
+                    .fontWeight(.semibold)
+            }
         }
     }
     

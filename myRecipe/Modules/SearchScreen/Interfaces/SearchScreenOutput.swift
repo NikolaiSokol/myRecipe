@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol SearchScreenOutput: AnyObject {}
+protocol SearchScreenOutput: AnyObject {
+    func searchScreenDidRequest(event: SearchScreenEvent)
+}

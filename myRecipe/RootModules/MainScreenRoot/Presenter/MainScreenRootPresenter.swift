@@ -11,8 +11,7 @@ final class MainScreenRootPresenter {
     private let viewState: MainScreenRootViewState
     private weak var output: MainScreenRootOutput?
     private let modulesFactory: ModulesFactoring
-    
-    private var searchBoxInput: SearchBoxInput?
+
     private var randomRecipesByTypeInput: RandomRecipesByTypeInput?
     
     init(
@@ -26,15 +25,14 @@ final class MainScreenRootPresenter {
     }
     
     private func setupSubmodules() {
-        setupSearchBox()
+        setupSearchButton()
         setupRandomRecipesByType()
     }
     
-    private func setupSearchBox() {
-        let unit = modulesFactory.makeSearchBox(output: self)
-        
-        searchBoxInput = unit.input
-        viewState.searchBoxModel = unit.model
+    private func setupSearchButton() {
+        viewState.searchButtonTapHandler = { [weak self] in
+            self?.output?.mainScreenRootDidRequest(event: .openSearch)
+        }
     }
     
     private func setupRandomRecipesByType() {
@@ -57,15 +55,7 @@ extension MainScreenRootPresenter: MainScreenRootInput {
 
 // MARK: - MainScreenNavigationViewOutput
 
-extension MainScreenRootPresenter: MainScreenRootViewOutput {
-    func endEditing() {
-        searchBoxInput?.endEditing()
-    }
-}
-
-// MARK: - SearchBoxOutput
-
-extension MainScreenRootPresenter: SearchBoxOutput {}
+extension MainScreenRootPresenter: MainScreenRootViewOutput {}
 
 // MARK: - RandomRecipesByTypeOutput
 

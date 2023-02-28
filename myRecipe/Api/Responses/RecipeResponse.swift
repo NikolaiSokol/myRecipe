@@ -17,6 +17,6 @@ struct RecipeResponse: Codable {
     let cuisines: [String]
     let dishTypes: [String]
     let analyzedInstructions: [AnalyzedInstructionsResponse]
-    let extendedIngredients: [IngredientResponse]
+    let extendedIngredients: [IngredientResponse]?
     let nutrition: NutritionResponse?
 }

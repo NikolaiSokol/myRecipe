@@ -2,30 +2,27 @@
 //  SearchQuery.swift
 //  myRecipe
 //
-//  Created by Nikolai Sokol on 18.02.2023.
+//  Created by Nikolai Sokol on 27.02.2023.
 //
 
 import Foundation
 
 struct SearchQuery: QueryItemsRepresentable {
-    let query: String
-    let addRecipeInformation = true
-    let offset: Int
-    let number: Int
+    let params: SearchParameters
     
     func queryItems() -> [URLQueryItem] {
         var items = [URLQueryItem]()
         
-        let queryItem = URLQueryItem(name: "query", value: query)
+        let queryItem = URLQueryItem(name: "query", value: params.query)
         items.append(queryItem)
         
-        let addRecipeInformationItem = URLQueryItem(name: "addRecipeInformation", value: String(addRecipeInformation))
+        let addRecipeInformationItem = URLQueryItem(name: "addRecipeInformation", value: String(params.addRecipeInformation))
         items.append(addRecipeInformationItem)
         
-        let offsetItem = URLQueryItem(name: "offset", value: String(offset))
+        let offsetItem = URLQueryItem(name: "offset", value: String(params.offset))
         items.append(offsetItem)
         
-        let numberItem = URLQueryItem(name: "number", value: String(number))
+        let numberItem = URLQueryItem(name: "number", value: String(params.number))
         items.append(numberItem)
         
         return items

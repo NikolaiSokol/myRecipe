@@ -9,5 +9,8 @@
 import Foundation
 
 protocol SearchBoxInput: AnyObject {
+    func configure()
     func endEditing()
+    func getText() -> String
+    func updateText(_ text: String)
 }

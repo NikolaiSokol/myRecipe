@@ -8,4 +8,16 @@
 
 import Foundation
 
-final class SearchScreenViewState: ObservableObject {}
+final class SearchScreenViewState: ObservableObject {
+    @Published var searchBoxModel: SearchBoxModel?
+    @Published var isShowingSearchSuggestions = true
+    
+    let suggestionsViewModel = SearchSuggestionsViewModel()
+    let recipesViewModel = RecipesVerticalListViewModel()
+    
+    func updateIsShowingSearchSuggestions(to newValue: Bool) {
+        if isShowingSearchSuggestions != newValue {
+            isShowingSearchSuggestions = newValue
+        }
+    }
+}

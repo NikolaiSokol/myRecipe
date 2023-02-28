@@ -29,11 +29,15 @@ struct RecipesVerticalListView: View {
                     
                     scrollContent
                     
+                    pagination
+                    
                     Spacer(minLength: UIConstants.Paddings.s)
                 }
                 .background(scrollOffsetReader)
             }
-            .modifier(if: viewModel.contentState.isContent()) {
+            .modifier(
+                if: viewModel.isRefreshable && viewModel.contentState.isContent()
+            ) {
                 $0.refreshable {
                     viewModel.refresh()
                 }
@@ -74,8 +78,11 @@ struct RecipesVerticalListView: View {
     }
     
     private var content: some View {
-        ForEach(viewModel.cards, id: \.id) {
-            HorizontalRecipeCardView(viewModel: $0)
+        ForEach(viewModel.cards, id: \.id) { card in
+            HorizontalRecipeCardView(viewModel: card)
+                .onAppear {
+                    viewModel.onCardAppear(id: card.id)
+                }
         }
     }
     
@@ -83,6 +90,12 @@ struct RecipesVerticalListView: View {
         if let model = viewModel.errorViewModel {
             ErrorView(viewModel: model)
                 .padding(.top, UIConstants.Paddings.xl)
+        }
+    }
+    
+    @ViewBuilder private var pagination: some View {
+        if viewModel.isLoadingNextPage {
+            HorizontalRecipeCardSkeletonView()
         }
     }
     

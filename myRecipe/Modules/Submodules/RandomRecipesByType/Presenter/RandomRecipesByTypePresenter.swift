@@ -79,28 +79,28 @@ final class RandomRecipesByTypePresenter {
         }
         
         if withSkeleton {
-            viewState.recipesViewModel.contentState = .skeleton
+            viewState.recipesViewModel.updateContentState(to: .skeleton)
         }
 
-        recipesLoadingTask = Task {
-            do {
-                let loadedRecipes = try await randomRecipesService.loadWithType(
-                    currentSelectedType.lowercased(),
-                    number: LocalConstants.numberOfRecipesToLoad
-                )
-
-                recipes = loadedRecipes
-
-                await updateRecipesList()
-
-            } catch {
-                ErrorLogger.shared.log(error)
-
-                await showErrorScreen()
-            }
-
-            recipesLoadingTask = nil
-        }
+//        recipesLoadingTask = Task {
+//            do {
+//                let loadedRecipes = try await randomRecipesService.loadWithType(
+//                    currentSelectedType.lowercased(),
+//                    number: LocalConstants.numberOfRecipesToLoad
+//                )
+//
+//                recipes = loadedRecipes
+//
+//                await updateRecipesList()
+//
+//            } catch {
+//                ErrorLogger.shared.log(error)
+//
+//                await showErrorScreen()
+//            }
+//
+//            recipesLoadingTask = nil
+//        }
     }
     
     private func handleRecipeCardTapped(id: Int) {
@@ -136,7 +136,7 @@ final class RandomRecipesByTypePresenter {
             self?.loadRecipes(withSkeleton: false)
         }
         
-        viewState.recipesViewModel.contentState = .content
+        viewState.recipesViewModel.updateContentState(to: .content)
     }
     
     // MARK: - Error Screen
@@ -151,7 +151,7 @@ final class RandomRecipesByTypePresenter {
             }
         
         viewState.recipesViewModel.errorViewModel = errorViewModel
-        viewState.recipesViewModel.contentState = .error
+        viewState.recipesViewModel.updateContentState(to: .error)
     }
     
     // MARK: - Helpers

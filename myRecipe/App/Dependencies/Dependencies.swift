@@ -12,6 +12,9 @@ final class Dependencies: DependenciesProtocol {
     private lazy var requestBuilder: URLRequestBuilding = URLRequestBuilder()
     
     private lazy var recipeInformationMapper: RecipeInformationMapping = RecipeInformationMapper()
+    private lazy var searchMapper: SearchMapping = SearchMapper(
+        recipeInformationMapper: recipeInformationMapper
+    )
     
     private(set) lazy var randomRecipesService: RandomRecipesServicing = RandomRecipesService(
         urlBuilder: urlBuilder,
@@ -25,4 +28,11 @@ final class Dependencies: DependenciesProtocol {
         recipeInformationMapper: recipeInformationMapper
     )
     
+    private(set) lazy var searchService: SearchServicing = SearchService(
+        urlBuilder: urlBuilder,
+        requestBuilder: requestBuilder,
+        searchMapper: searchMapper
+    )
+    
+    private(set) lazy var userDefaultsService: UserDefaultsServicing = UserDefaultsService()
 }

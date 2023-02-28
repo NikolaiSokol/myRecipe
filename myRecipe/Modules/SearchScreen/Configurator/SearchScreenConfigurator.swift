@@ -10,9 +10,14 @@ import Foundation
 
 final class SearchScreenConfigurator {
     private let dependencies: DependenciesProtocol
+    private let modulesFactory: ModulesFactoring
     
-    init(dependencies: DependenciesProtocol) {
+    init(
+        dependencies: DependenciesProtocol,
+        modulesFactory: ModulesFactoring
+    ) {
         self.dependencies = dependencies
+        self.modulesFactory = modulesFactory
     }
     
     func configure(output: SearchScreenOutput) -> NavigableModule<SearchScreenInput> {
@@ -20,7 +25,10 @@ final class SearchScreenConfigurator {
         
         let presenter = SearchScreenPresenter(
             viewState: viewState,
-            output: output
+            output: output,
+            modulesFactory: modulesFactory,
+            searchService: dependencies.searchService,
+            userDefaultsService: dependencies.userDefaultsService
         )
         
         let view = SearchScreenView(state: viewState, output: presenter)

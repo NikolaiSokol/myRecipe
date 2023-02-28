@@ -36,6 +36,7 @@ final class MainScreenCoordinator {
     
     private func showMainScreenRoot() -> AnyView {
         let unit = rootModulesFactory.makeMainScreenRoot(output: self, router: router)
+        
         mainScreenRootInput = unit.input
         mainScreenRootInput?.bootstrap()
         
@@ -44,13 +45,17 @@ final class MainScreenCoordinator {
     
     private func presentRecipeScreen(inputModel: RecipeScreenInputModel) {
         let unit = coordinatorsFactory.makeRecipeScreenCoordinator(output: self, router: router)
+        
         recipeScreenCoordinatorInput = unit.input
+        
         unit.coordinator.start(with: inputModel)
     }
     
     private func presentSearchScreen() {
         let unit = coordinatorsFactory.makeSearchScreenCoordinator(output: self, router: router)
+        
         searchScreenCoordinatorInput = unit.input
+        
         unit.coordinator.start(with: nil)
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RandomRecipesByTypeView: View {
     @ObservedObject private var state: RandomRecipesByTypeViewState
-    private let output: RandomRecipesByTypeViewOutput
+    private weak var output: RandomRecipesByTypeViewOutput?
     
     init(
         state: RandomRecipesByTypeViewState,

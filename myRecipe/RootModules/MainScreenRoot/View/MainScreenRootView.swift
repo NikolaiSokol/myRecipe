@@ -19,7 +19,7 @@ struct MainScreenRootView: View {
     
     @State private var isShowingTopSection = true
     
-    private let output: MainScreenRootViewOutput
+    private weak var output: MainScreenRootViewOutput?
     
     init(
         state: MainScreenRootViewState,
@@ -57,9 +57,6 @@ struct MainScreenRootView: View {
             perform: onRandomRecipesByTypeScrollOffsetChanges
         )
         .onReceive(state.showTopSectionSubject, perform: onReceiveShowTopSection)
-        .onTapGesture {
-            output.endEditing()
-        }
     }
     
     private var header: some View {
@@ -69,11 +66,11 @@ struct MainScreenRootView: View {
     }
     
     @ViewBuilder private var searchField: some View {
-        if let model = state.searchBoxModel {
-            SearchBoxView(state: model.viewState, output: model.viewOutput)
-                .padding(.horizontal, UIConstants.Paddings.s)
-                .padding(.top, UIConstants.Paddings.m)
+        SearchButtonView {
+            state.searchButtonTapHandler()
         }
+            .padding(.horizontal, UIConstants.Paddings.s)
+            .padding(.top, UIConstants.Paddings.m)
     }
     
     @ViewBuilder private var randomRecipesByType: some View {

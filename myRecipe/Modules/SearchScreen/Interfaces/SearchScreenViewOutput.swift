@@ -8,4 +8,7 @@
 
 import Foundation
 
-protocol SearchScreenViewOutput: AnyObject {}
+protocol SearchScreenViewOutput: AnyObject {
+    func didTapCancel()
+    func endEditing()
+}

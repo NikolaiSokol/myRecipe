@@ -32,9 +32,13 @@ enum Localized: String {
     // MARK: - Search
     
     case searchRecipes
+    case cancel
+    case previousSearch
     
     // MARK: - Error
     
     case somethingWentWrong
     case tryAgain
+    case notFound
+    case weAreSorry
 }

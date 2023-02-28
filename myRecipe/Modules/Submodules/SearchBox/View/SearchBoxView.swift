@@ -14,9 +14,9 @@ struct SearchBoxView: View {
     }
     
     @ObservedObject private var state: SearchBoxViewState
-    private let output: SearchBoxViewOutput
+    private weak var output: SearchBoxViewOutput?
     
-    @FocusState var shouldBeFocused: Bool
+    @FocusState var isFocused: Bool
     
     init(
         state: SearchBoxViewState,
@@ -38,8 +38,13 @@ struct SearchBoxView: View {
         .frame(height: LocalConstants.height)
         .background(Color(.secondaryGray))
         .cornerRadius(UIConstants.Radius.s)
-        .onReceive(state.endEditingSubject) {
-            shouldBeFocused = false
+        .onReceive(state.shouldBeFocusedSubject) {
+            isFocused = $0
+        }
+        .onChange(of: isFocused) {
+            if $0 {
+                state.didBecomeFocusedSubject.send()
+            }
         }
     }
     
@@ -51,7 +56,11 @@ struct SearchBoxView: View {
     
     private var textField: some View {
         TextField(String(localized: .searchRecipes), text: $state.text)
-            .focused($shouldBeFocused)
+            .focused($isFocused)
+            .submitLabel(.search)
+            .onSubmit {
+                output?.didTapReturnKey()
+            }
     }
     
     @ViewBuilder private var clearButton: some View {

@@ -26,8 +26,10 @@ final class RecipeScreenCoordinator {
     
     private func showRecipeScreen(inputModel: RecipeScreenInputModel) {
         let unit = modulesFactory.makeRecipeScreen(output: self)
+        
         recipeScreenInput = unit.input
         recipeScreenInput?.configure(inputModel: inputModel)
+        
         router.present(unit.view)
     }
 }

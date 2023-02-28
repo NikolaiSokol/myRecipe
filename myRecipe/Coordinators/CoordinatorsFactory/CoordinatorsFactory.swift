@@ -74,6 +74,7 @@ extension CoordinatorsFactory: CoordinatorsFactoring {
     ) -> ConcreteCoordinator<SearchScreenCoordinatorInput> {
         let coordinator = SearchScreenCoordinator(
             output: output,
+            coordinatorsFactory: self,
             modulesFactory: modulesFactory,
             router: router
         )

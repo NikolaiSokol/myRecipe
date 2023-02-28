@@ -11,7 +11,7 @@ final class HorizontalRecipeCardViewModel: ObservableObject, Identifiable {
     let id: Int
     let imageUrl: URL?
     let name: String
-    let timeToCook: String
+    let timeToCook: String?
     let recipeCardTapHandler: (Int) -> Void
     let saveButtonTapHandler: () -> Void
     
@@ -21,7 +21,7 @@ final class HorizontalRecipeCardViewModel: ObservableObject, Identifiable {
         id: Int,
         imageUrl: URL?,
         name: String,
-        timeToCook: String,
+        timeToCook: String?,
         isSaved: Bool = false,
         recipeCardTapHandler: @escaping (Int) -> Void,
         saveButtonTapHandler: @escaping () -> Void

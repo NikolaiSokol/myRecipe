@@ -9,6 +9,7 @@ import Foundation
 
 enum MethodPath {
     case search
+    case autocomplete
     case random
     case recipeInformation(Int)
     
@@ -16,6 +17,9 @@ enum MethodPath {
         switch self {
         case .search:
             return "recipes/complexSearch"
+            
+        case .autocomplete:
+            return "recipes/autocomplete"
             
         case .random:
             return "recipes/random"

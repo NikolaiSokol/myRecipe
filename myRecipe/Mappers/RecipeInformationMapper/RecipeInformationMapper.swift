@@ -8,6 +8,24 @@
 import Foundation
 
 final class RecipeInformationMapper {
+    private func map(_ apiResponse: [RecipeResponse]) -> [Recipe] {
+        apiResponse.map {
+            Recipe(
+                id: $0.id,
+                title: $0.title,
+                imageUrl: URL(string: $0.image ?? ""),
+                summary: $0.summary.removeHtmlTags(),
+                readyInMinutes: String($0.readyInMinutes) + String(localized: .min),
+                servings: String($0.servings) + String(localized: .serving),
+                cuisines: $0.cuisines,
+                dishTypes: $0.dishTypes,
+                steps: map($0.analyzedInstructions),
+                ingredients: map($0.extendedIngredients),
+                nutrients: map($0.nutrition)
+            )
+        }
+    }
+    
     private func map(_ apiResponse: [AnalyzedInstructionsResponse]) -> [RecipeInstructionStep] {
         guard let response = apiResponse.first else {
             return []
@@ -26,15 +44,15 @@ final class RecipeInformationMapper {
         }
     }
     
-    private func map(_ apiResponse: [IngredientResponse]) -> [RecipeIngredient] {
-        apiResponse.map {
+    private func map(_ apiResponse: [IngredientResponse]?) -> [RecipeIngredient] {
+        apiResponse?.map {
             RecipeIngredient(
                 id: $0.id,
                 name: $0.name,
                 imageUrl: URL(string: ApiConstants.ingredientImageUrl + ($0.image ?? "")),
                 measures: map($0.measures)
             )
-        }
+        } ?? []
     }
     
     private func map(_ apiResponse: MeasuresResponse?) -> Measures? {
@@ -97,24 +115,14 @@ final class RecipeInformationMapper {
 
 extension RecipeInformationMapper: RecipeInformationMapping {
     func map(apiResponse: RecipesResponse) -> [Recipe] {
-        apiResponse.recipes.map {
-            Recipe(
-                id: $0.id,
-                title: $0.title,
-                imageUrl: URL(string: $0.image ?? ""),
-                summary: $0.summary.removeHtmlTags(),
-                readyInMinutes: String($0.readyInMinutes) + String(localized: .min),
-                servings: String($0.servings) + String(localized: .serving),
-                cuisines: $0.cuisines,
-                dishTypes: $0.dishTypes,
-                steps: map($0.analyzedInstructions),
-                ingredients: map($0.extendedIngredients),
-                nutrients: map($0.nutrition)
-            )
-        }
+        map(apiResponse.recipes)
     }
     
     func map(apiResponse: RecipeResponse) -> [Nutrient] {
         map(apiResponse.nutrition)
+    }
+    
+    func map(apiResponse: [RecipeResponse]) -> [Recipe] {
+        map(apiResponse)
     }
 }

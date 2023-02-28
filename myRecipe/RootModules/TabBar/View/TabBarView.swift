@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     @ObservedObject private var state: TabBarViewState
-    private let output: TabBarViewOutput
+    private weak var output: TabBarViewOutput?
     
     init(
         state: TabBarViewState,

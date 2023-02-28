@@ -23,7 +23,8 @@ extension ModulesFactory: ModulesFactoring {
     }
     
     func makeSearchScreen(output: SearchScreenOutput) -> NavigableModule<SearchScreenInput> {
-        SearchScreenConfigurator(dependencies: dependencies).configure(output: output)
+        SearchScreenConfigurator(dependencies: dependencies, modulesFactory: self)
+            .configure(output: output)
     }
     
     // MARK: - Submodules
