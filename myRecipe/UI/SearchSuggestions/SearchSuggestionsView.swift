@@ -44,7 +44,7 @@ struct SearchSuggestionsView: View {
     
     private var historyTitle: some View {
         HStack {
-            Text(String(localized: .previousSearch))
+            Text(String(localized: .previousSearches))
                 .customFont(size: UIConstants.Font.l)
                 .fontWeight(.semibold)
             

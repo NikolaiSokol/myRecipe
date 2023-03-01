@@ -12,4 +12,5 @@ struct SearchParameters {
     let addRecipeInformation = true
     let offset: Int
     let number: Int
+    let sorting: SortingOption?
 }

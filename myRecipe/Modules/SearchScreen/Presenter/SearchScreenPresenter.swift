@@ -13,6 +13,7 @@ final class SearchScreenPresenter {
     private enum LocalConstants {
         static let recipesToLoad = 16
         static let autocompletesToLoad = 10
+        static let delayBeforeHidingSheet = 0.1
     }
     
     private let viewState: SearchScreenViewState
@@ -32,6 +33,7 @@ final class SearchScreenPresenter {
     private var searchQuery = ""
     private var recipes: [Recipe] = []
     private var totalResults = 0
+    private var selectedSorting: SortingOption = .default
 
     init(
         viewState: SearchScreenViewState,
@@ -68,6 +70,13 @@ final class SearchScreenPresenter {
         viewState.suggestionsViewModel.clearHistorySuggestionHandler = { [weak self] in
             self?.handleClearSearchHistorySuggestionTapped(text: $0)
         }
+    }
+    
+    private func setupSorting() {
+        viewState.sortingViewModel.options = SortingOption.allCases
+        viewState.sortingViewModel.tapHandler = handleSortingTypeSelected
+        
+        viewState.showSortingTapHandler = handleShowSorting
     }
     
     private func subscribeToRecipeCardAppeared() {
@@ -112,8 +121,10 @@ final class SearchScreenPresenter {
         viewState.recipesViewModel.updateContentState(to: .skeleton)
         viewState.recipesViewModel.updateIsLoadingNextPage(to: false)
         viewState.recipesViewModel.cards.removeAll()
+        viewState.updateIsShowingSortAndFiltersButtons(to: false)
         
         recipes.removeAll()
+        selectedSorting = .default
         
         userDefaultsService.addToSearchHistory(text: searchQuery)
         
@@ -128,7 +139,8 @@ final class SearchScreenPresenter {
         let params = SearchParameters(
             query: searchQuery.lowercased(),
             offset: offset,
-            number: LocalConstants.recipesToLoad
+            number: LocalConstants.recipesToLoad,
+            sorting: selectedSorting.isDefault() ? nil : selectedSorting
         )
         
         recipesLoadingTask = Task {
@@ -173,8 +185,7 @@ final class SearchScreenPresenter {
                 imageUrl: $0.imageUrl,
                 name: $0.title.capitalizingFirstLetter(),
                 timeToCook: $0.readyInMinutes,
-                recipeCardTapHandler: handleRecipeCardTapped,
-                saveButtonTapHandler: handleSaveRecipeTapped
+                recipeCardTapHandler: handleRecipeCardTapped
             )
         }
         
@@ -182,6 +193,7 @@ final class SearchScreenPresenter {
         viewState.recipesViewModel.isRefreshable = false
         viewState.recipesViewModel.updateContentState(to: .content)
         viewState.recipesViewModel.updateIsLoadingNextPage(to: false)
+        viewState.updateIsShowingSortAndFiltersButtons(to: true)
     }
     
     private func updateSearchHistory(_ searches: [String]) {
@@ -224,6 +236,7 @@ final class SearchScreenPresenter {
         viewState.recipesViewModel.errorViewModel = viewModel
         viewState.recipesViewModel.updateContentState(to: .error)
         viewState.recipesViewModel.updateIsLoadingNextPage(to: false)
+        viewState.updateIsShowingSortAndFiltersButtons(to: false)
     }
     
     // MARK: - Tap Handlers
@@ -254,8 +267,23 @@ final class SearchScreenPresenter {
         output?.searchScreenDidRequest(event: .openRecipe(recipe))
     }
     
-    private func handleSaveRecipeTapped() {
-        print("did tap save recipe")
+    private func handleShowSorting() {
+        viewState.sortingViewModel.selectedOption = selectedSorting
+        viewState.isShowingSorting = true
+    }
+    
+    private func handleSortingTypeSelected(type: SortingOption) {
+        if type != selectedSorting {
+            selectedSorting = type
+            
+            runSearch()
+        }
+        
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + LocalConstants.delayBeforeHidingSheet
+        ) { [weak self] in
+            self?.viewState.isShowingSorting = false
+        }
     }
     
     // MARK: - Pagination
@@ -291,6 +319,7 @@ extension SearchScreenPresenter: SearchScreenInput {
     func bootstrap() {
         setupSearchBox()
         setupSearchSuggestions()
+        setupSorting()
         
         subscribeToRecipeCardAppeared()
         subscribeToSearchHistoryChanges()

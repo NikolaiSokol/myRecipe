@@ -10,13 +10,15 @@ import SwiftUI
 
 struct SearchScreenView: View {
     private enum LocalConstants {
-        static let searchBoxNameSpace = "SearchScreenViewSearchBoxNameSpace"
+        static let topSectionSizeNameSpace = "SearchScreenViewSearchBoxNameSpace"
+        static let sortAndFiltersImageSize: CGFloat = 12
     }
     
     @ObservedObject private var state: SearchScreenViewState
     private weak var output: SearchScreenViewOutput?
     
-    @State private var searchBoxSize: CGSize = .zero
+    @State private var topSectionSize: CGSize = .zero
+    @State private var sortingSheetSize: CGSize = .zero
     
     init(
         state: SearchScreenViewState,
@@ -28,11 +30,22 @@ struct SearchScreenView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            searchBox
+            VStack(spacing: UIConstants.Paddings.xs) {
+                searchBox
+                
+                sortAndFilters
+            }
+            .getViewSize($topSectionSize, spaceName: LocalConstants.topSectionSizeNameSpace)
             
             recipesList
             
             searchSuggestions
+        }
+        .sheet(isPresented: $state.isShowingSorting) {
+            SortingView(viewModel: state.sortingViewModel, contentSize: $sortingSheetSize)
+                .presentationDetents([.height(sortingSheetSize.height + UIConstants.Paddings.xl)])
+                .presentationDragIndicator(.visible)
+                .padding(.horizontal, UIConstants.Paddings.s)
         }
         .navigationBarHidden(true)
         .padding(.horizontal, UIConstants.Paddings.s)
@@ -51,15 +64,13 @@ struct SearchScreenView: View {
                 }
                 .buttonStyle(.plain)
             }
-            .padding(.bottom, UIConstants.Paddings.s)
-            .getViewSize($searchBoxSize, spaceName: LocalConstants.searchBoxNameSpace)
         }
     }
     
     @ViewBuilder private var recipesList: some View {
         if !state.isShowingSearchSuggestions {
             RecipesVerticalListView(viewModel: state.recipesViewModel)
-                .padding(.top, searchBoxSize.height)
+                .padding(.top, topSectionSize.height)
                 .onTapGesture {
                     output?.endEditing()
                 }
@@ -69,10 +80,60 @@ struct SearchScreenView: View {
     @ViewBuilder private var searchSuggestions: some View {
         if state.isShowingSearchSuggestions {
             SearchSuggestionsView(viewModel: state.suggestionsViewModel)
-                .padding(.top, searchBoxSize.height)
+                .padding(.top, topSectionSize.height + UIConstants.Paddings.xs)
                 .onTapGesture {
                     output?.endEditing()
                 }
         }
+    }
+    
+    @ViewBuilder private var sortAndFilters: some View {
+        if state.isShowingSortAndFiltersButtons,
+           !state.isShowingSearchSuggestions {
+            VStack(spacing: UIConstants.Paddings.xs) {
+                HStack {
+                    sortingButton
+                    
+                    Spacer()
+                    
+                    filtersButton
+                }
+                .foregroundColor(Color(.primaryAccent))
+                
+                Separator()
+            }
+        }
+    }
+    
+    private var sortingButton: some View {
+        Button(action: state.didTapShowSorting) {
+            HStack(spacing: UIConstants.Paddings.xxxs) {
+                Image(systemName: "arrow.up.arrow.down")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: LocalConstants.sortAndFiltersImageSize)
+                
+                Text(state.sortingViewModel.selectedOption.localizedString().capitalizingFirstLetter())
+                    .customFont(size: UIConstants.Font.s)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+    
+    private var filtersButton: some View {
+        Button(action: state.didTapShowFilters) {
+            HStack(spacing: UIConstants.Paddings.xxxs) {
+                Text(String(localized: .filters))
+                    .customFont(size: UIConstants.Font.s)
+                
+                Image(systemName: "slider.vertical.3")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: LocalConstants.sortAndFiltersImageSize)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 }

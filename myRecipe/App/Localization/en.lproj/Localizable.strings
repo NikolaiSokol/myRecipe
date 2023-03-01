@@ -31,7 +31,12 @@
 
 "searchRecipes" = "Search recipes";
 "cancel" = "Cancel";
-"previousSearch" = "Previous Search";
+"sort" = "Sort";
+"previousSearches" = "Previous Searches";
+"defaultSorting" = "default";
+"popularity" = "popularity";
+"calories" = "calories";
+"filters" = "Filters";
 
 // MARK: - Error
 

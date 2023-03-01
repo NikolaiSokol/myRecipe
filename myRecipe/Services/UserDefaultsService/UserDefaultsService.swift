@@ -26,6 +26,10 @@ final class UserDefaultsService {
 
 extension UserDefaultsService: UserDefaultsServicing {
     func addToSearchHistory(text: String) {
+        guard !text.isEmpty else {
+            return
+        }
+        
         var historySearches = getSearchHistory()
         
         if !historySearches.contains(where: { $0.lowercased() == text.lowercased() }) {

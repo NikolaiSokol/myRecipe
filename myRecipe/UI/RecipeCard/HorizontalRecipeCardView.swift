@@ -57,42 +57,10 @@ struct HorizontalRecipeCardView: View {
     
     private var content: some View {
         VStack {
-            saveButton
-            
             Spacer()
             
             titleWithTimeToCook
         }
-    }
-    
-    private var saveButton: some View {
-        HStack {
-            Spacer()
-            
-            Button(action: viewModel.didTapSaveButton) {
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [Color(.accentGray), .clear],
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: 25
-                        )
-                    )
-                    .frame(height: LocalConstants.saveButtonSize)
-                    .overlay {
-                        Image(systemName: viewModel.isSaved ? "bookmark.fill" : "bookmark")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(.white)
-                            .fontWeight(.semibold)
-                            .frame(width: UIConstants.Font.m)
-                    }
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.horizontal, UIConstants.Paddings.s)
-        .padding(.top, UIConstants.Paddings.xxs)
     }
     
     private var titleWithTimeToCook: some View {
@@ -154,10 +122,7 @@ struct RecipeCard_Previews: PreviewProvider {
                 id: 1,
                 imageUrl: URL(string: "https://spoonacular.com/recipeImages/721059-556x370.jpg"),
                 name: "Blueberry Almond Crescent Rolls",
-                timeToCook: "45 min",
-                recipeCardTapHandler: { _ in print("card tapped") },
-                saveButtonTapHandler: { print("save tapped") }
-            )
+                timeToCook: "45 min") { _ in }
         )
     }
 }

@@ -12,5 +12,5 @@ struct Nutrient: Identifiable {
     let name: String
     let amount: String
     let unit: String
-    let percentOfDailyNeeds: Double
+    let percentOfDailyNeeds: Double?
 }

@@ -50,20 +50,22 @@ struct NutrientRowView: View {
         )
     }
     
-    private func percentOfDailyNeeds(_ percent: Double) -> some View {
-        HStack(spacing: UIConstants.Paddings.xxs) {
-            RoundedRectangle(cornerRadius: LocalConstants.percentageHeight / 2)
-                .foregroundColor(Color(.primaryAccent))
-                .frame(height: LocalConstants.percentageHeight)
-                .frame(maxWidth: calculatePercentOfDailyNeedsWidth(percent))
-            
-            Text(String(percent) + " %")
-                .customFont(size: UIConstants.Font.l)
-                .foregroundColor(Color(.primaryAccent))
-                .getViewSize(
-                    $percentageTextSize,
-                    spaceName: LocalConstants.percentageTextNameSpace
-                )
+    @ViewBuilder private func percentOfDailyNeeds(_ percent: Double?) -> some View {
+        if let percent {
+            HStack(spacing: UIConstants.Paddings.xxs) {
+                RoundedRectangle(cornerRadius: LocalConstants.percentageHeight / 2)
+                    .foregroundColor(Color(.primaryAccent))
+                    .frame(height: LocalConstants.percentageHeight)
+                    .frame(maxWidth: calculatePercentOfDailyNeedsWidth(percent))
+                
+                Text(String(percent) + " %")
+                    .customFont(size: UIConstants.Font.l)
+                    .foregroundColor(Color(.primaryAccent))
+                    .getViewSize(
+                        $percentageTextSize,
+                        spaceName: LocalConstants.percentageTextNameSpace
+                    )
+            }
         }
     }
     

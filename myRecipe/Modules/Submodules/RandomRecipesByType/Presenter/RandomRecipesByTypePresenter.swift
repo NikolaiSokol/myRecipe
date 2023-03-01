@@ -111,10 +111,6 @@ final class RandomRecipesByTypePresenter {
         output?.randomRecipesByTypeDidRequest(event: .openRecipe(recipe))
     }
     
-    private func handleSaveRecipeTapped() {
-        print("Tapped save recipe")
-    }
-    
     @MainActor private func updateRecipesList() {
         guard !recipes.isEmpty else {
             showErrorScreen()
@@ -127,8 +123,7 @@ final class RandomRecipesByTypePresenter {
                 imageUrl: $0.imageUrl,
                 name: $0.title.capitalizingFirstLetter(),
                 timeToCook: $0.readyInMinutes,
-                recipeCardTapHandler: handleRecipeCardTapped,
-                saveButtonTapHandler: handleSaveRecipeTapped
+                recipeCardTapHandler: handleRecipeCardTapped
             )
         }
         

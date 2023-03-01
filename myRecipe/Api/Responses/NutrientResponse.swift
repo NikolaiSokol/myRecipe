@@ -11,5 +11,5 @@ struct NutrientResponse: Codable {
     let name: String
     let amount: Double
     let unit: String
-    let percentOfDailyNeeds: Double
+    let percentOfDailyNeeds: Double?
 }

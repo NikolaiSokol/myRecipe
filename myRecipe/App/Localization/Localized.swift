@@ -33,7 +33,12 @@ enum Localized: String {
     
     case searchRecipes
     case cancel
-    case previousSearch
+    case sort
+    case previousSearches
+    case defaultSorting
+    case popularity
+    case calories
+    case filters
     
     // MARK: - Error
     
