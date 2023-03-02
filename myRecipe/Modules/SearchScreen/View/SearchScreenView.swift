@@ -43,7 +43,13 @@ struct SearchScreenView: View {
         }
         .sheet(isPresented: $state.isShowingSorting) {
             SortingView(viewModel: state.sortingViewModel, contentSize: $sortingSheetSize)
-                .presentationDetents([.height(sortingSheetSize.height + UIConstants.Paddings.xl)])
+                .presentationDetents([.height(sortingSheetSize.height)])
+                .presentationDragIndicator(.visible)
+                .padding(.horizontal, UIConstants.Paddings.s)
+        }
+        .sheet(isPresented: $state.isShowingFilters) {
+            FiltersView(viewModel: state.filtersViewModel)
+                .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
                 .padding(.horizontal, UIConstants.Paddings.s)
         }

@@ -36,7 +36,86 @@
 "defaultSorting" = "default";
 "popularity" = "popularity";
 "calories" = "calories";
+
+// MARK: - Filters
+
 "filters" = "Filters";
+"select" = "Select";
+"clearAll" = "clear all";
+"instructionsRequired" = "Instructions Required";
+"maximumCalories" = "Maximum Calories";
+"amount" = "amount";
+"apply" = "Apply";
+
+"cuisineAfrican" = "African";
+"cuisineAmerican" = "American";
+"cuisineBritish" = "British";
+"cuisineCajun" = "Cajun";
+"cuisineCaribbean" = "Caribbean";
+"cuisineChinese" = "Chinese";
+"cuisineEasternEuropean" = "Eastern European";
+"cuisineEuropean" = "European";
+"cuisineFrench" = "French";
+"cuisineGerman" = "German";
+"cuisineGreek" = "Greek";
+"cuisineIndian" = "Indian";
+"cuisineIrish" = "Irish";
+"cuisineItalian" = "Italian";
+"cuisineJapanese" = "Japanese";
+"cuisineJewish" = "Jewish";
+"cuisineKorean" = "Korean";
+"cuisineLatinAmerican" = "Latin American";
+"cuisineMediterranean" = "Mediterranean";
+"cuisineMexican" = "Mexican";
+"cuisineMiddleEastern" = "Middle Eastern";
+"cuisineNordic" = "Nordic";
+"cuisineSouthern" = "Southern";
+"cuisineSpanish" = "Spanish";
+"cuisineThai" = "Thai";
+"cuisineVietnamese" = "Vietnamese";
+
+"diet" = "Diet";
+"dietGlutenFree" = "Gluten Free";
+"dietKetogenic" = "Ketogenic";
+"dietVegetarian" = "Vegetarian";
+"dietLactoVegetarian" = "Lacto-Vegetarian";
+"dietOvoVegetarian" = "Ovo-Vegetarian";
+"dietVegan" = "Vegan";
+"dietPescetarian" = "Pescetarian";
+"dietPaleo" = "Paleo";
+"dietPrimal" = "Primal";
+"dietLowFODMAP" = "Low FODMAP";
+"dietWhole30" = "Whole30";
+
+"mealType" = "Meal Type";
+"mealTypeBreakfast" = "Breakfast";
+"mealTypeMainCourse" = "Main Course";
+"mealTypeSideDish" = "Side Dish";
+"mealTypeDessert" = "Dessert";
+"mealTypeAppetizer" = "Appetizer";
+"mealTypeSalad" = "Salad";
+"mealTypeBread" = "Bread";
+"mealTypeSoup" = "Soup";
+"mealTypeBeverage" = "Beverage";
+"mealTypeSauce" = "Sauce";
+"mealTypeMarinade" = "Marinade";
+"mealTypeFingerfood" = "Fingerfood";
+"mealTypeSnack" = "Snack";
+"mealTypeDrink" = "Drink";
+
+"intolerances" = "Intolerances";
+"intoleranceDairy" = "Dairy";
+"intoleranceEgg" = "Egg";
+"intoleranceGluten" = "Gluten";
+"intoleranceGrain" = "Grain";
+"intolerancePeanut" = "Peanut";
+"intoleranceSeafood" = "Seafood";
+"intoleranceSesame" = "Sesame";
+"intoleranceShellfish" = "Shellfish";
+"intoleranceSoy" = "Soy";
+"intoleranceSulfite" = "Sulfite";
+"intoleranceTreeNut" = "Tree Nut";
+"intoleranceWheat" = "Wheat";
 
 // MARK: - Error
 

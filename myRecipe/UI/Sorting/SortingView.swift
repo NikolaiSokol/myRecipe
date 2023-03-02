@@ -36,6 +36,7 @@ struct SortingView: View {
             Spacer()
                 .frame(height: UIConstants.Paddings.s)
         }
+        .padding(.top, UIConstants.Paddings.m)
         .getViewSize($contentSize, spaceName: LocalConstants.contentNameSpace)
     }
     

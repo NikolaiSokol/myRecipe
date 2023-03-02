@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct NutrientsView: View {
-    @Environment(\.dismiss) var dismiss
-    
     private let nutrients: [Nutrient]
     
     init(nutrients: [Nutrient]) {
@@ -17,32 +15,9 @@ struct NutrientsView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: .zero) {
-                closeButton
-                
-                content
-            }
-            .padding(.horizontal, UIConstants.Paddings.s)
+        ScrollView(.vertical, showsIndicators: false) {
+            content
         }
-    }
-    
-    private var closeButton: some View {
-        HStack {
-            Spacer()
-            
-            Button(action: close) {
-                Image(systemName: "xmark")
-                    .foregroundColor(.white)
-                    .padding(UIConstants.Paddings.xs)
-                    .background(
-                        Circle()
-                            .foregroundColor(Color(.accentGray))
-                    )
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.top, UIConstants.Paddings.s)
     }
     
     private var content: some View {
@@ -51,11 +26,7 @@ struct NutrientsView: View {
                 NutrientRowView(nutrient: $0)
             }
         }
-        .padding(.top, UIConstants.Paddings.m)
-    }
-    
-    private func close() {
-        dismiss()
+        .padding(.top, UIConstants.Paddings.xl)
     }
 }
 

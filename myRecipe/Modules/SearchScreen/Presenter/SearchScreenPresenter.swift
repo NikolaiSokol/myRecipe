@@ -34,6 +34,7 @@ final class SearchScreenPresenter {
     private var recipes: [Recipe] = []
     private var totalResults = 0
     private var selectedSorting: SortingOption = .default
+    private var appliedFilters = AppliedFilters.default
 
     init(
         viewState: SearchScreenViewState,
@@ -72,11 +73,28 @@ final class SearchScreenPresenter {
         }
     }
     
-    private func setupSorting() {
+    private func setupSortingAndFilters() {
         viewState.sortingViewModel.options = SortingOption.allCases
         viewState.sortingViewModel.tapHandler = handleSortingTypeSelected
         
-        viewState.showSortingTapHandler = handleShowSorting
+        viewState.filtersViewModel.cuisines = CuisineType.allCases
+        viewState.filtersViewModel.diets = DietType.allCases
+        viewState.filtersViewModel.meals = MealType.allCases
+        viewState.filtersViewModel.intolerances = IntoleranceType.allCases
+        
+        viewState.showSortingTapHandler = handleShowSortingTapped
+        viewState.showFiltersTapHandler = handleShowFiltersTapped
+        
+        viewState.filtersViewModel.applyButtonHandler = handleApplyFiltersButtonTapped
+        
+        setSortingAndFiltersToDefault()
+    }
+    
+    private func setSortingAndFiltersToDefault() {
+        selectedSorting = .default
+        
+        appliedFilters = .default
+        appliedFilters.intolerances = userDefaultsService.getIntolerances()
     }
     
     private func subscribeToRecipeCardAppeared() {
@@ -124,7 +142,6 @@ final class SearchScreenPresenter {
         viewState.updateIsShowingSortAndFiltersButtons(to: false)
         
         recipes.removeAll()
-        selectedSorting = .default
         
         userDefaultsService.addToSearchHistory(text: searchQuery)
         
@@ -140,7 +157,8 @@ final class SearchScreenPresenter {
             query: searchQuery.lowercased(),
             offset: offset,
             number: LocalConstants.recipesToLoad,
-            sorting: selectedSorting.isDefault() ? nil : selectedSorting
+            sorting: selectedSorting,
+            filters: appliedFilters
         )
         
         recipesLoadingTask = Task {
@@ -248,6 +266,7 @@ final class SearchScreenPresenter {
         
         searchBoxInput?.updateText(text.capitalizingFirstLetter())
         
+        setSortingAndFiltersToDefault()
         runSearch()
     }
     
@@ -267,9 +286,23 @@ final class SearchScreenPresenter {
         output?.searchScreenDidRequest(event: .openRecipe(recipe))
     }
     
-    private func handleShowSorting() {
+    private func handleShowSortingTapped() {
         viewState.sortingViewModel.selectedOption = selectedSorting
+        
         viewState.isShowingSorting = true
+    }
+    
+    private func handleShowFiltersTapped() {
+        viewState.filtersViewModel.isInstructionsRequired = appliedFilters.instructionsRequired
+        viewState.filtersViewModel.chosenCuisine = appliedFilters.cuisine
+        viewState.filtersViewModel.chosenDiet = appliedFilters.diet
+        viewState.filtersViewModel.chosenMeal = appliedFilters.meal
+        viewState.filtersViewModel.chosenIntolerances = Set(appliedFilters.intolerances)
+        viewState.filtersViewModel.maxCalories = appliedFilters.maxCalories
+        
+        viewState.filtersViewModel.initialFilters = appliedFilters
+        
+        viewState.isShowingFilters = true
     }
     
     private func handleSortingTypeSelected(type: SortingOption) {
@@ -284,6 +317,18 @@ final class SearchScreenPresenter {
         ) { [weak self] in
             self?.viewState.isShowingSorting = false
         }
+    }
+    
+    private func handleApplyFiltersButtonTapped(_ filters: AppliedFilters) {
+        guard appliedFilters != filters else {
+            return
+        }
+        
+        appliedFilters = filters
+        
+        viewState.isShowingFilters = false
+        
+        runSearch()
     }
     
     // MARK: - Pagination
@@ -319,7 +364,7 @@ extension SearchScreenPresenter: SearchScreenInput {
     func bootstrap() {
         setupSearchBox()
         setupSearchSuggestions()
-        setupSorting()
+        setupSortingAndFilters()
         
         subscribeToRecipeCardAppeared()
         subscribeToSearchHistoryChanges()
@@ -355,6 +400,7 @@ extension SearchScreenPresenter: SearchBoxOutput {
             searchQuery = searchBoxInput?.getText() ?? ""
             viewState.updateIsShowingSearchSuggestions(to: false)
             
+            setSortingAndFiltersToDefault()
             cancelTasks()
             runSearch()
             

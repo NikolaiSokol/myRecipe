@@ -34,9 +34,9 @@ final class RandomRecipesByTypePresenter {
     // MARK: - Recipe Type Carousel
     
     private func setupCarousel() {
-        viewState.carouselViewModel.cells = ApiConstants.AvailableMealTypes.allCases.map {
+        viewState.carouselViewModel.cells = MealType.allCases.suffix(from: 1).map {
             SingleSelectionCarouselCellViewModel(
-                text: $0.rawValue.capitalizingFirstLetter(),
+                text: $0.localizedString(),
                 tapHandler: didTapCarouselCell
             )
         }
@@ -82,25 +82,25 @@ final class RandomRecipesByTypePresenter {
             viewState.recipesViewModel.updateContentState(to: .skeleton)
         }
 
-//        recipesLoadingTask = Task {
-//            do {
-//                let loadedRecipes = try await randomRecipesService.loadWithType(
-//                    currentSelectedType.lowercased(),
-//                    number: LocalConstants.numberOfRecipesToLoad
-//                )
-//
-//                recipes = loadedRecipes
-//
-//                await updateRecipesList()
-//
-//            } catch {
-//                ErrorLogger.shared.log(error)
-//
-//                await showErrorScreen()
-//            }
-//
-//            recipesLoadingTask = nil
-//        }
+        recipesLoadingTask = Task {
+            do {
+                let loadedRecipes = try await randomRecipesService.loadWithType(
+                    currentSelectedType.lowercased(),
+                    number: LocalConstants.numberOfRecipesToLoad
+                )
+
+                recipes = loadedRecipes
+
+                await updateRecipesList()
+
+            } catch {
+                ErrorLogger.shared.log(error)
+
+                await showErrorScreen()
+            }
+
+            recipesLoadingTask = nil
+        }
     }
     
     private func handleRecipeCardTapped(id: Int) {

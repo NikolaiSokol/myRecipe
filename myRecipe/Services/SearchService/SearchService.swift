@@ -26,7 +26,14 @@ final class SearchService {
 extension SearchService: SearchServicing {
     func search(params: SearchParameters) async throws -> SearchResults {
         let url = try urlBuilder.buildURL(methodPath: .search)
-        let query = SearchQuery(params: params)
+        let query = SearchQuery(
+            query: params.query,
+            addRecipeInformation: params.addRecipeInformation,
+            offset: params.offset,
+            number: params.number,
+            sorting: params.sorting,
+            filters: params.filters
+        )
         let request = try requestBuilder.buildURLRequest(url: url, query: query, method: .get)
         
         let (data, _) = try await URLSession.shared.data(for: request)

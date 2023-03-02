@@ -10,6 +10,7 @@ import Combine
 
 private enum Keys: String {
     case historySearches
+    case intolerances
 }
 
 final class UserDefaultsService {
@@ -25,6 +26,8 @@ final class UserDefaultsService {
 }
 
 extension UserDefaultsService: UserDefaultsServicing {
+    // MARK: - Search history
+    
     func addToSearchHistory(text: String) {
         guard !text.isEmpty else {
             return
@@ -59,6 +62,26 @@ extension UserDefaultsService: UserDefaultsServicing {
     
     func listenSearchHistory() -> AnyPublisher<[String], Never> {
         defaults.publisher(for: \.historySearches).eraseToAnyPublisher()
+    }
+    
+    // MARK: - Intolerances
+    
+    func saveIntolerances(_ intolerances: [IntoleranceType]) {
+        guard let data = try? JSONEncoder().encode(intolerances) else {
+            return
+        }
+        
+        defaults.set(data, forKey: Keys.intolerances.rawValue)
+    }
+    
+    func getIntolerances() -> [IntoleranceType] {
+        guard let data = defaults.data(forKey: Keys.intolerances.rawValue),
+              let intolerances = try? JSONDecoder().decode([IntoleranceType].self, from: data)
+        else {
+            return []
+        }
+        
+        return intolerances
     }
 }
 

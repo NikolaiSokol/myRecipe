@@ -13,10 +13,12 @@ final class SearchScreenViewState: ObservableObject {
     @Published var isShowingSearchSuggestions = true
     @Published var isShowingSortAndFiltersButtons = false
     @Published var isShowingSorting = false
+    @Published var isShowingFilters = false
     
     let suggestionsViewModel = SearchSuggestionsViewModel()
     let recipesViewModel = RecipesVerticalListViewModel()
     let sortingViewModel = SortingViewModel()
+    let filtersViewModel = FiltersViewModel()
     
     var showSortingTapHandler: (() -> Void)?
     var showFiltersTapHandler: (() -> Void)?

@@ -40,6 +40,9 @@ struct RecipeScreenView: View {
         }
         .sheet(isPresented: $state.isShowingNutrition) {
             NutrientsView(nutrients: state.nutrients)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+                .padding(.horizontal, UIConstants.Paddings.s)
         }
     }
     
