@@ -37,7 +37,7 @@ extension RootModulesFactory: RootModulesFactoring {
         output: SettingsScreenRootOutput,
         router: Router
     ) -> RootModule<SettingsScreenRootInput> {
-        SettingsScreenRootConfigurator(modulesFactory: modulesFactory)
+        SettingsScreenRootConfigurator(dependencies: dependencies)
             .configure(router: router, output: output)
     }
 }

@@ -12,10 +12,10 @@ struct TabBarElementBuilder {
     private func itemForTabBarElement(type: TabBarElementType) -> AnyView {
         switch type {
         case .mainScreenRoot:
-            return Label("Home", systemImage: "house").eraseToAnyView()
+            return Label(String(localized: .home), systemImage: "house").eraseToAnyView()
             
         case .settingsScreenRoot:
-            return Label("Settings", systemImage: "gear").eraseToAnyView()
+            return Label(String(localized: .settings), systemImage: "gear").eraseToAnyView()
         }
     }
 }

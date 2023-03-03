@@ -10,6 +10,15 @@ import Foundation
 enum Localized: String {
     // MARK: - Main
     
+    case home
+    case settings
+    case measureSystem
+    case us
+    case metric
+    case intolerancesSettingsDescription
+    
+    // MARK: - Home
+    
     case hello
     case whatYouWantToCook
     

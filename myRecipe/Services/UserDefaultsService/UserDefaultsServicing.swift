@@ -16,6 +16,11 @@ protocol UserDefaultsServicing {
     func clearSearchHistory()
     func listenSearchHistory() -> AnyPublisher<[String], Never>
     
+    // MARK: - Measure System
+    
+    func saveMeasureSystem(_ system: MeasureSystem)
+    func getMeasureSystem() -> MeasureSystem
+    
     // MARK: - Intolerances
     
     func saveIntolerances(_ intolerances: [IntoleranceType])

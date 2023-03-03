@@ -15,15 +15,18 @@ final class RecipeScreenPresenter {
     private let viewState: RecipeScreenViewState
     private weak var output: RecipeScreenOutput?
     private let recipeInformationService: RecipeInformationServicing
+    private let userDefaultsService: UserDefaultsServicing
     
     init(
         viewState: RecipeScreenViewState,
         output: RecipeScreenOutput,
-        recipeInformationService: RecipeInformationServicing
+        recipeInformationService: RecipeInformationServicing,
+        userDefaultsService: UserDefaultsServicing
     ) {
         self.viewState = viewState
         self.output = output
         self.recipeInformationService = recipeInformationService
+        self.userDefaultsService = userDefaultsService
     }
     
     private func loadNutrients(id: Int) {
@@ -58,6 +61,8 @@ final class RecipeScreenPresenter {
 
 extension RecipeScreenPresenter: RecipeScreenInput {
     func configure(inputModel: RecipeScreenInputModel) {
+        viewState.measureSystem = userDefaultsService.getMeasureSystem()
+        
         viewState.recipe = inputModel.recipe
         loadNutrients(id: inputModel.recipe.id)
     }

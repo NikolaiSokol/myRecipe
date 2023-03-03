@@ -94,13 +94,6 @@
 		F3316BA129A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */; };
 		F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */; };
 		F3316BA629A0F5D00089B4D5 /* ModulesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */; };
-		F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */; };
-		F3316BC229A0F7560089B4D5 /* SettingsScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */; };
-		F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */; };
-		F3316BC629A0F77C0089B4D5 /* SettingsScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC529A0F77C0089B4D5 /* SettingsScreenViewState.swift */; };
-		F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */; };
-		F3316BCA29A0F7AF0089B4D5 /* SettingsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BC929A0F7AF0089B4D5 /* SettingsScreenPresenter.swift */; };
-		F3316BCC29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */; };
 		F33BE1EC29AFFE5600BEDDDD /* MultiSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BE1EB29AFFE5600BEDDDD /* MultiSelectView.swift */; };
 		F33BE1EE29B005E100BEDDDD /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BE1ED29B005E100BEDDDD /* Localizable.swift */; };
 		F33BE1F029B0C57600BEDDDD /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BE1EF29B0C57600BEDDDD /* MealType.swift */; };
@@ -212,7 +205,7 @@
 		F3EA100F29AA3BDE00A1557E /* ImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA100E29AA3BDE00A1557E /* ImageName.swift */; };
 		F3EA101129AA3C0400A1557E /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101029AA3C0400A1557E /* Image+.swift */; };
 		F3EA101529AA49D500A1557E /* IngredientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101429AA49D500A1557E /* IngredientRowView.swift */; };
-		F3EA101829AA4D6500A1557E /* MeasureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101729AA4D6500A1557E /* MeasureType.swift */; };
+		F3EA101829AA4D6500A1557E /* MeasureSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101729AA4D6500A1557E /* MeasureSystem.swift */; };
 		F3EA101A29AA770600A1557E /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101929AA770600A1557E /* Double+.swift */; };
 		F3EA101F29AA910E00A1557E /* InstructionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA101E29AA910E00A1557E /* InstructionRowView.swift */; };
 		F3EA102129AB77BC00A1557E /* NutrientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EA102029AB77BB00A1557E /* NutrientsView.swift */; };
@@ -341,13 +334,6 @@
 		F3316BA029A0F56F0089B4D5 /* SettingsScreenRootConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenRootConfigurator.swift; sourceTree = "<group>"; };
 		F3316BA329A0F5A50089B4D5 /* ModulesFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactoring.swift; sourceTree = "<group>"; };
 		F3316BA529A0F5D00089B4D5 /* ModulesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactory.swift; sourceTree = "<group>"; };
-		F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenInput.swift; sourceTree = "<group>"; };
-		F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenOutput.swift; sourceTree = "<group>"; };
-		F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewOutput.swift; sourceTree = "<group>"; };
-		F3316BC529A0F77C0089B4D5 /* SettingsScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewState.swift; sourceTree = "<group>"; };
-		F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
-		F3316BC929A0F7AF0089B4D5 /* SettingsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenPresenter.swift; sourceTree = "<group>"; };
-		F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreenConfigurator.swift; sourceTree = "<group>"; };
 		F33BE1EB29AFFE5600BEDDDD /* MultiSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectView.swift; sourceTree = "<group>"; };
 		F33BE1ED29B005E100BEDDDD /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F33BE1EF29B0C57600BEDDDD /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
@@ -460,7 +446,7 @@
 		F3EA100E29AA3BDE00A1557E /* ImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageName.swift; sourceTree = "<group>"; };
 		F3EA101029AA3C0400A1557E /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F3EA101429AA49D500A1557E /* IngredientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRowView.swift; sourceTree = "<group>"; };
-		F3EA101729AA4D6500A1557E /* MeasureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureType.swift; sourceTree = "<group>"; };
+		F3EA101729AA4D6500A1557E /* MeasureSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureSystem.swift; sourceTree = "<group>"; };
 		F3EA101929AA770600A1557E /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		F3EA101E29AA910E00A1557E /* InstructionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionRowView.swift; sourceTree = "<group>"; };
 		F3EA102029AB77BB00A1557E /* NutrientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsView.swift; sourceTree = "<group>"; };
@@ -771,7 +757,6 @@
 			children = (
 				F3316BA229A0F5970089B4D5 /* ModulesFactory */,
 				F3E2C10829A7A0AF00F50A8E /* Submodules */,
-				F3316BBA29A0F70F0089B4D5 /* SettingsScreen */,
 				F3258B7A29A6BDBF005A00FF /* RecipeScreen */,
 				F3268C9329ACDB870046067B /* SearchScreen */,
 			);
@@ -1060,52 +1045,6 @@
 			path = ModulesFactory;
 			sourceTree = "<group>";
 		};
-		F3316BBA29A0F70F0089B4D5 /* SettingsScreen */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BBE29A0F7380089B4D5 /* Configurator */,
-				F3316BBD29A0F72F0089B4D5 /* Presenter */,
-				F3316BBC29A0F7260089B4D5 /* View */,
-				F3316BBB29A0F71D0089B4D5 /* Interfaces */,
-			);
-			path = SettingsScreen;
-			sourceTree = "<group>";
-		};
-		F3316BBB29A0F71D0089B4D5 /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BBF29A0F7460089B4D5 /* SettingsScreenInput.swift */,
-				F3316BC129A0F7560089B4D5 /* SettingsScreenOutput.swift */,
-				F3316BC329A0F7670089B4D5 /* SettingsScreenViewOutput.swift */,
-			);
-			path = Interfaces;
-			sourceTree = "<group>";
-		};
-		F3316BBC29A0F7260089B4D5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BC529A0F77C0089B4D5 /* SettingsScreenViewState.swift */,
-				F3316BC729A0F78B0089B4D5 /* SettingsScreenView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F3316BBD29A0F72F0089B4D5 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BC929A0F7AF0089B4D5 /* SettingsScreenPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		F3316BBE29A0F7380089B4D5 /* Configurator */ = {
-			isa = PBXGroup;
-			children = (
-				F3316BCB29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift */,
-			);
-			path = Configurator;
-			sourceTree = "<group>";
-		};
 		F360238B29A68E880006DCB1 /* RecipesVerticalList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1234,7 +1173,7 @@
 				F3C4AB8429A8D2EF0093B783 /* RecipeInstructionStep.swift */,
 				F3C4AB8629A8D42B0093B783 /* RecipeIngredient.swift */,
 				F3C4AB8829A8D5720093B783 /* Measures.swift */,
-				F3EA101729AA4D6500A1557E /* MeasureType.swift */,
+				F3EA101729AA4D6500A1557E /* MeasureSystem.swift */,
 				F3EA102629AB7B6200A1557E /* Nutrient.swift */,
 				F3EA102F29AB8EF800A1557E /* BasicNutrientType.swift */,
 			);
@@ -1762,14 +1701,11 @@
 				F3EA102329AB7A4000A1557E /* NutritionResponse.swift in Sources */,
 				F3EC57C229A5A5BC0049A085 /* Optional+.swift in Sources */,
 				F3EA100029A9438E00A1557E /* RecipeShortInfoView.swift in Sources */,
-				F3316BCC29A0F7C30089B4D5 /* SettingsScreenConfigurator.swift in Sources */,
 				F3316B7B29A0F2630089B4D5 /* TabBarInput.swift in Sources */,
 				F3EA103B29ABF1B800A1557E /* Separator.swift in Sources */,
 				F3EA102C29AB7CAA00A1557E /* RecipeInformationService.swift in Sources */,
 				F3C4AB8929A8D5720093B783 /* Measures.swift in Sources */,
 				F3316B3729A0ECAA0089B4D5 /* CoordinatorsFactoring.swift in Sources */,
-				F3316BC629A0F77C0089B4D5 /* SettingsScreenViewState.swift in Sources */,
-				F3316BC229A0F7560089B4D5 /* SettingsScreenOutput.swift in Sources */,
 				F38F19EB29A15C86008E314B /* URLRequestBuilding.swift in Sources */,
 				F3316B8E29A0F4620089B4D5 /* MainScreenRootConfigurator.swift in Sources */,
 				F3316B4E29A0EE650089B4D5 /* Navigable.swift in Sources */,
@@ -1887,17 +1823,14 @@
 				F3316B9F29A0F5550089B4D5 /* SettingsScreenRootPresenter.swift in Sources */,
 				F3AB3E7229AFE3A3009FCA8A /* IntoleranceType.swift in Sources */,
 				F3316B6129A0F0AF0089B4D5 /* SettingsScreenCoordinatorOutput.swift in Sources */,
-				F3316BC429A0F7670089B4D5 /* SettingsScreenViewOutput.swift in Sources */,
 				F38F19DF29A15888008E314B /* MethodPath.swift in Sources */,
 				F3316B5329A0EF1F0089B4D5 /* TabBarCoordinator.swift in Sources */,
 				F3E2C11D29A7A73800F50A8E /* RandomRecipesByTypeEvent.swift in Sources */,
 				F369A0DB29A5454100FDDAB2 /* RecipesResponse.swift in Sources */,
-				F3316BC829A0F78B0089B4D5 /* SettingsScreenView.swift in Sources */,
 				F3EA100729AA37D400A1557E /* Text+.swift in Sources */,
 				F3316B3F29A0ED970089B4D5 /* TabBarElementBuilder.swift in Sources */,
 				F3316B7729A0F23F0089B4D5 /* TabBarViewOutput.swift in Sources */,
 				F3316BA429A0F5A50089B4D5 /* ModulesFactoring.swift in Sources */,
-				F3316BCA29A0F7AF0089B4D5 /* SettingsScreenPresenter.swift in Sources */,
 				F3268CA529ACDBE70046067B /* SearchScreenViewState.swift in Sources */,
 				F3316B7329A0F2070089B4D5 /* TabBarViewState.swift in Sources */,
 				F3E2C11729A7A33A00F50A8E /* RandomRecipesByTypeViewState.swift in Sources */,
@@ -1916,10 +1849,9 @@
 				F3316B9529A0F4D80089B4D5 /* SettingsScreenRootInput.swift in Sources */,
 				F3316B0A29A0EB470089B4D5 /* myRecipe.xcdatamodeld in Sources */,
 				F360238F29A68EF50006DCB1 /* RecipesVerticalListViewModel.swift in Sources */,
-				F3EA101829AA4D6500A1557E /* MeasureType.swift in Sources */,
+				F3EA101829AA4D6500A1557E /* MeasureSystem.swift in Sources */,
 				F369A0C029A515BC00FDDAB2 /* ViewContentState.swift in Sources */,
 				F369A0E329A54B1300FDDAB2 /* RecipeInformationMapper.swift in Sources */,
-				F3316BC029A0F7460089B4D5 /* SettingsScreenInput.swift in Sources */,
 				F3AB3E5929AF7ABC009FCA8A /* SortingView.swift in Sources */,
 				F3316B4829A0EE1D0089B4D5 /* Router.swift in Sources */,
 				F3316B7529A0F21B0089B4D5 /* TabBarView.swift in Sources */,

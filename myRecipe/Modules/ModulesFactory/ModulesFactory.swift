@@ -29,10 +29,6 @@ extension ModulesFactory: ModulesFactoring {
     
     // MARK: - Submodules
     
-    func makeSettingsScreen(output: SettingsScreenOutput) -> SettingsScreenModule {
-        SettingsScreenConfigurator().configure(output: output)
-    }
-    
     func makeSearchBox(output: SearchBoxOutput) -> SearchBoxModule {
         SearchBoxConfigurator().configure(output: output)
     }

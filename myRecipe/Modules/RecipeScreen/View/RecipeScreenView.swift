@@ -20,7 +20,6 @@ struct RecipeScreenView: View {
     @ObservedObject private var state: RecipeScreenViewState
     private weak var output: RecipeScreenViewOutput?
     
-    @State private var measureSystem: MeasureType = .us
     @State private var summaryLineLimit: Int?
     @State private var isShowingSummaryCollapseButton = false
     
@@ -30,8 +29,6 @@ struct RecipeScreenView: View {
     ) {
         self.state = state
         self.output = output
-        
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color(.primaryAccent).opacity(0.8))
     }
     
     var body: some View {
@@ -176,7 +173,7 @@ struct RecipeScreenView: View {
                 }
                 
                 ForEach(state.recipe.ingredients, id: \.id) {
-                    IngredientRowView(ingredient: $0, measureType: measureSystem)
+                    IngredientRowView(ingredient: $0, measureType: state.measureSystem)
                         .padding(.bottom, UIConstants.Paddings.xxs)
                 }
                 
@@ -188,9 +185,9 @@ struct RecipeScreenView: View {
     }
     
     private var measureToggle: some View {
-        Picker("", selection: $measureSystem) {
-            ForEach(MeasureType.allCases, id: \.self) {
-                Text($0.rawValue)
+        Picker("", selection: $state.measureSystem) {
+            ForEach(MeasureSystem.allCases, id: \.id) {
+                Text($0.localizedString())
                     .customFont(size: UIConstants.Font.s)
             }
         }

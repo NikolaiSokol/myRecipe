@@ -10,6 +10,7 @@ import Combine
 
 private enum Keys: String {
     case historySearches
+    case measureSystem
     case intolerances
 }
 
@@ -62,6 +63,26 @@ extension UserDefaultsService: UserDefaultsServicing {
     
     func listenSearchHistory() -> AnyPublisher<[String], Never> {
         defaults.publisher(for: \.historySearches).eraseToAnyPublisher()
+    }
+    
+    // MARK: - Measure System
+    
+    func saveMeasureSystem(_ system: MeasureSystem) {
+        guard let data = try? JSONEncoder().encode(system) else {
+            return
+        }
+        
+        defaults.set(data, forKey: Keys.measureSystem.rawValue)
+    }
+    
+    func getMeasureSystem() -> MeasureSystem {
+        guard let data = defaults.data(forKey: Keys.measureSystem.rawValue),
+              let system = try? JSONDecoder().decode(MeasureSystem.self, from: data)
+        else {
+            return .us
+        }
+        
+        return system
     }
     
     // MARK: - Intolerances

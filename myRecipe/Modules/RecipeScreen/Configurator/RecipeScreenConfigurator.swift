@@ -20,7 +20,8 @@ final class RecipeScreenConfigurator {
         let presenter = RecipeScreenPresenter(
             viewState: viewState,
             output: output,
-            recipeInformationService: dependencies.recipeInformationService
+            recipeInformationService: dependencies.recipeInformationService,
+            userDefaultsService: dependencies.userDefaultsService
         )
         
         let view = RecipeScreenView(state: viewState, output: presenter)

@@ -8,6 +8,15 @@
 
 // MARK: - Main
 
+"home" = "Home";
+"settings" = "Settings";
+"measureSystem" = "Measure system";
+"us" = "US";
+"metric" = "Metric";
+"intolerancesSettingsDescription" = "Selection of intolerances will be applied to all searches";
+
+// MARK: - Home
+
 "hello" = "Hello 👋";
 "whatYouWantToCook" = "What you want to cook today?";
 

@@ -13,11 +13,11 @@ struct IngredientRowView: View {
     }
     
     private let ingredient: RecipeIngredient
-    private let measureType: MeasureType
+    private let measureType: MeasureSystem
     
     init(
         ingredient: RecipeIngredient,
-        measureType: MeasureType
+        measureType: MeasureSystem
     ) {
         self.ingredient = ingredient
         self.measureType = measureType

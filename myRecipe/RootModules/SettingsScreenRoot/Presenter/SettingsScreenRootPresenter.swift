@@ -6,29 +6,57 @@
 //
 
 import Foundation
+import Combine
 
 final class SettingsScreenRootPresenter {
     private let viewState: SettingsScreenRootViewState
     private weak var output: SettingsScreenRootOutput?
-    private let modulesFactory: ModulesFactoring
+    private let userDefaultsService: UserDefaultsServicing
     
-    private var settingsScreenInput: SettingsScreenInput?
+    private var chosenMeasureSystemSubscription: AnyCancellable?
+    private var chosenIntolerancesSubscription: AnyCancellable?
     
     init(
         viewState: SettingsScreenRootViewState,
         output: SettingsScreenRootOutput,
-        modulesFactory: ModulesFactoring
+        userDefaultsService: UserDefaultsServicing
     ) {
         self.viewState = viewState
         self.output = output
-        self.modulesFactory = modulesFactory
+        self.userDefaultsService = userDefaultsService
     }
     
-    private func setupSettingsScreen() {
-        let unit = modulesFactory.makeSettingsScreen(output: self)
+    // MARK: - Measure System
+    
+    private func setupMeasureSystem() {
+        viewState.chosenMeasureSystem = userDefaultsService.getMeasureSystem()
         
-        settingsScreenInput = unit.input
-        viewState.settingsScreenModel = unit.model
+        subscribeToChosenMeasureSystem()
+    }
+    
+    private func subscribeToChosenMeasureSystem() {
+        chosenMeasureSystemSubscription = viewState.$chosenMeasureSystem
+            .dropFirst()
+            .sink { [weak self] in
+                self?.userDefaultsService.saveMeasureSystem($0)
+            }
+    }
+    
+    // MARK: - Intolerances
+    
+    private func setupIntolerances() {
+        viewState.intolerances = IntoleranceType.allCases
+        viewState.chosenIntolerances = Set(userDefaultsService.getIntolerances())
+        
+        subscribeToChosenIntolerances()
+    }
+    
+    private func subscribeToChosenIntolerances() {
+        chosenIntolerancesSubscription = viewState.$chosenIntolerances
+            .dropFirst()
+            .sink { [weak self] in
+                self?.userDefaultsService.saveIntolerances($0.sorted(by: <))
+            }
     }
 }
 
@@ -36,14 +64,11 @@ final class SettingsScreenRootPresenter {
 
 extension SettingsScreenRootPresenter: SettingsScreenRootInput {
     func bootstrap() {
-        setupSettingsScreen()
+        setupMeasureSystem()
+        setupIntolerances()
     }
 }
 
 // MARK: - MainScreenNavigationViewOutput
 
 extension SettingsScreenRootPresenter: SettingsScreenRootViewOutput {}
-
-// MARK: - SettingsScreenOutput
-
-extension SettingsScreenRootPresenter: SettingsScreenOutput {}

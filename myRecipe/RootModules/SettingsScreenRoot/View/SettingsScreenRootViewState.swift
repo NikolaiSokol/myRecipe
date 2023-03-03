@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 final class SettingsScreenRootViewState: ObservableObject {
-    @Published var settingsScreenModel: SettingsScreenModel?
+    @Published var chosenMeasureSystem: MeasureSystem = .us
+    @Published var chosenIntolerances: Set<IntoleranceType> = []
+
+    var intolerances: [IntoleranceType] = []
 }

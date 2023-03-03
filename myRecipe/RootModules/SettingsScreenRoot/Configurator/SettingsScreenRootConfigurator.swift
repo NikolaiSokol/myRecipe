@@ -8,10 +8,10 @@
 import Foundation
 
 final class SettingsScreenRootConfigurator {
-    private let modulesFactory: ModulesFactoring
+    private let dependencies: DependenciesProtocol
     
-    init(modulesFactory: ModulesFactoring) {
-        self.modulesFactory = modulesFactory
+    init(dependencies: DependenciesProtocol) {
+        self.dependencies = dependencies
     }
     
     func configure(router: Router, output: SettingsScreenRootOutput) -> RootModule<SettingsScreenRootInput> {
@@ -20,7 +20,7 @@ final class SettingsScreenRootConfigurator {
         let presenter = SettingsScreenRootPresenter(
             viewState: viewState,
             output: output,
-            modulesFactory: modulesFactory
+            userDefaultsService: dependencies.userDefaultsService
         )
         
         let view = SettingsScreenRootView(state: viewState, router: router, output: presenter)

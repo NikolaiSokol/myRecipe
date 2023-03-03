@@ -17,7 +17,6 @@ protocol ModulesFactoring {
     
     // MARK: - Submodules
     
-    func makeSettingsScreen(output: SettingsScreenOutput) -> SettingsScreenModule
     func makeSearchBox(output: SearchBoxOutput) -> SearchBoxModule
     func makeRandomRecipesByType(output: RandomRecipesByTypeOutput) -> RandomRecipesByTypeModule
 }
