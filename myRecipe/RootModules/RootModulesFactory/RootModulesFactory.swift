@@ -37,8 +37,10 @@ extension RootModulesFactory: RootModulesFactoring {
         output: SavedRecipesRootOutput,
         router: Router
     ) -> RootModule<SavedRecipesRootInput> {
-        SavedRecipesRootConfigurator(dependencies: dependencies)
-            .configure(router: router, output: output)
+        SavedRecipesRootConfigurator(
+            dependencies: dependencies,
+            modulesFactory: modulesFactory
+        ).configure(router: router, output: output)
     }
     
     func makeSettingsScreenRoot(

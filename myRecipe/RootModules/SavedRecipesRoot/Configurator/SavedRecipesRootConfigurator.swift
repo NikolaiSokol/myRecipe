@@ -10,9 +10,14 @@ import Foundation
 
 final class SavedRecipesRootConfigurator {
     private let dependencies: DependenciesProtocol
+    private let modulesFactory: ModulesFactoring
     
-    init(dependencies: DependenciesProtocol) {
+    init(
+        dependencies: DependenciesProtocol,
+        modulesFactory: ModulesFactoring
+    ) {
         self.dependencies = dependencies
+        self.modulesFactory = modulesFactory
     }
     
     func configure(router: Router, output: SavedRecipesRootOutput) -> RootModule<SavedRecipesRootInput> {
@@ -20,7 +25,8 @@ final class SavedRecipesRootConfigurator {
         
         let presenter = SavedRecipesRootPresenter(
             viewState: viewState,
-            output: output
+            output: output,
+            modulesFactory: modulesFactory
         )
         
         let view = SavedRecipesRootView(state: viewState, router: router, output: presenter)

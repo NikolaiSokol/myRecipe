@@ -36,7 +36,7 @@ struct RecipeScreenView: View {
             scrollContent
         }
         .sheet(isPresented: $state.isShowingNutrition) {
-            NutrientsView(nutrients: state.nutrients)
+            NutrientsView(nutrients: state.recipe.nutrients)
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
                 .padding(.horizontal, UIConstants.Paddings.s)

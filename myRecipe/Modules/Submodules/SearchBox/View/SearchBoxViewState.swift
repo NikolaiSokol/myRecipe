@@ -12,15 +12,11 @@ import Combine
 final class SearchBoxViewState: ObservableObject {
     @Published var text = ""
     
-    let shouldBeFocusedSubject = CurrentValueSubject<Bool, Never>(true)
+    let shouldBeFocusedSubject = CurrentValueSubject<Bool, Never>(false)
     let didBecomeFocusedSubject = PassthroughSubject<Void, Never>()
     
     func didTapClearButton() {
         text.removeAll()
         shouldBeFocusedSubject.send(true)
-    }
-    
-    func endEditing() {
-        shouldBeFocusedSubject.send(false)
     }
 }

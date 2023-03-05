@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol SavedRecipesRootViewOutput: AnyObject {}
+protocol SavedRecipesRootViewOutput: AnyObject {
+    func endEditing()
+}

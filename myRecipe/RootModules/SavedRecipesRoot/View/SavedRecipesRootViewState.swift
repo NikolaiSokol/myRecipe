@@ -8,4 +8,8 @@
 
 import Foundation
 
-final class SavedRecipesRootViewState: ObservableObject {}
+final class SavedRecipesRootViewState: ObservableObject {
+    @Published var searchBoxModel: SearchBoxModel?
+    
+    let recipesViewModel = RecipesVerticalListViewModel()
+}

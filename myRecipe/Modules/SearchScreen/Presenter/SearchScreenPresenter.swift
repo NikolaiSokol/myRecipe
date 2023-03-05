@@ -54,7 +54,7 @@ final class SearchScreenPresenter {
         let unit = modulesFactory.makeSearchBox(output: self)
         
         searchBoxInput = unit.input
-        searchBoxInput?.configure()
+        searchBoxInput?.configure(shouldBeFocused: true)
         
         viewState.searchBoxModel = unit.model
     }

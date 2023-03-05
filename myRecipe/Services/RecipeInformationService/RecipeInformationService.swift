@@ -24,7 +24,7 @@ final class RecipeInformationService {
 }
 
 extension RecipeInformationService: RecipeInformationServicing {
-    func loadNutrients(id: Int) async throws -> [Nutrient] {
+    func loadRecipeInfo(id: Int) async throws -> Recipe {
         let url = try urlBuilder.buildURL(methodPath: .recipeInformation(id))
         let query = RecipeInformationQuery(includeNutrition: true)
         let request = try requestBuilder.buildURLRequest(url: url, query: query, method: .get)

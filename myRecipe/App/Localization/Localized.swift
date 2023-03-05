@@ -12,6 +12,7 @@ enum Localized: String {
     
     case home
     case saved
+    case savedRecipes
     case settings
     case measureSystem
     case us
@@ -135,4 +136,5 @@ enum Localized: String {
     case tryAgain
     case notFound
     case weAreSorry
+    case noRecipes
 }

@@ -64,7 +64,11 @@ struct RecipesVerticalListView: View {
             skeleton
             
         case .content:
-            content
+            if viewModel.cards.isEmpty {
+                noRecipes
+            } else {
+                content
+            }
             
         case .error:
             errorScreen
@@ -91,6 +95,14 @@ struct RecipesVerticalListView: View {
             ErrorView(viewModel: model)
                 .padding(.top, UIConstants.Paddings.xl)
         }
+    }
+    
+    private var noRecipes: some View {
+        Text(String(localized: .noRecipes))
+            .customFont(size: UIConstants.Font.xl)
+            .fontWeight(.semibold)
+            .foregroundColor(Color(.accentGray))
+            .padding(.top, UIConstants.Paddings.xl)
     }
     
     @ViewBuilder private var pagination: some View {

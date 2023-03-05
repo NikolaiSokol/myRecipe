@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RecipeInformationServicing {
-    func loadNutrients(id: Int) async throws -> [Nutrient]
+    func loadRecipeInfo(id: Int) async throws -> Recipe
 }

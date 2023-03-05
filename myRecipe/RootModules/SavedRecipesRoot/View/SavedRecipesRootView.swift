@@ -29,10 +29,30 @@ struct SavedRecipesRootView: View {
                 .navigationDestination(for: NavigableView.self) {
                     $0.view
                 }
+                .navigationTitle(String(localized: .savedRecipes))
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
     
-    private var actualBody: some View {
-        Text("Saved recipes")
+    @ViewBuilder private var actualBody: some View {
+        VStack(spacing: UIConstants.Paddings.xxs) {
+            searchBox
+
+            recipesList
+        }
+        .padding(.horizontal, UIConstants.Paddings.s)
+    }
+    
+    @ViewBuilder private var searchBox: some View {
+        if let model = state.searchBoxModel {
+            SearchBoxView(state: model.viewState, output: model.viewOutput)
+        }
+    }
+
+    private var recipesList: some View {
+        RecipesVerticalListView(viewModel: state.recipesViewModel)
+            .onTapGesture {
+                output?.endEditing()
+            }
     }
 }

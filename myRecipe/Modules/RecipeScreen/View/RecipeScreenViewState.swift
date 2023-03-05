@@ -14,5 +14,4 @@ final class RecipeScreenViewState: ObservableObject {
     
     var didMeasureSummaryHeight = false
     var nutrientBlockViewModel = NutrientsBlockViewModel()
-    var nutrients: [Nutrient] = []
 }

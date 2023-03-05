@@ -29,12 +29,16 @@ final class RecipeScreenPresenter {
         self.userDefaultsService = userDefaultsService
     }
     
-    private func loadNutrients(id: Int) {
+    private func loadRecipeInfo(id: Int) {
+        guard viewState.recipe.nutrients.isEmpty || viewState.recipe.ingredients.isEmpty else {
+            return
+        }
+        
         Task {
             do {
-                let nutrients = try await recipeInformationService.loadNutrients(id: id)
+                let recipe = try await recipeInformationService.loadRecipeInfo(id: id)
                 
-                await updateNutrients(nutrients)
+                await updateRecipe(recipe)
                 
             } catch {
                 ErrorLogger.shared.log(error)
@@ -42,12 +46,12 @@ final class RecipeScreenPresenter {
         }
     }
     
-    @MainActor private func updateNutrients(_ nutrients: [Nutrient]) {
-        viewState.nutrients = nutrients
+    @MainActor private func updateRecipe(_ recipe: Recipe) {
+        viewState.recipe = recipe
         
-        viewState.nutrientBlockViewModel.nutrients = Array(nutrients.prefix(LocalConstants.maxNutrientsToShow))
+        viewState.nutrientBlockViewModel.nutrients = Array(recipe.nutrients.prefix(LocalConstants.maxNutrientsToShow))
         
-        if nutrients.count > LocalConstants.maxNutrientsToShow {
+        if recipe.nutrients.count > LocalConstants.maxNutrientsToShow {
             viewState.nutrientBlockViewModel.viewMoreTapHandler = { [weak self] in
                 self?.viewState.isShowingNutrition = true
             }
@@ -64,7 +68,7 @@ extension RecipeScreenPresenter: RecipeScreenInput {
         viewState.measureSystem = userDefaultsService.getMeasureSystem()
         
         viewState.recipe = inputModel.recipe
-        loadNutrients(id: inputModel.recipe.id)
+        loadRecipeInfo(id: inputModel.recipe.id)
     }
 }
 

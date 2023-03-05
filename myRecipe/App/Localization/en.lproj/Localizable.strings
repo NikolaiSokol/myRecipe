@@ -10,6 +10,7 @@
 
 "home" = "Home";
 "saved" = "Saved";
+"savedRecipes" = "Saved Recipes";
 "settings" = "Settings";
 "measureSystem" = "Measure system";
 "us" = "US";
@@ -133,3 +134,4 @@
 "tryAgain" = "Try again";
 "notFound" = "Not Found";
 "weAreSorry" = "We're sorry, the keyword you were looking for could not be found. Please, search with another keywords.";
+"noRecipes" = "No Recipes";

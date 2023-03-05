@@ -10,20 +10,24 @@ import Foundation
 final class RecipeInformationMapper {
     private func map(_ apiResponse: [RecipeResponse]) -> [Recipe] {
         apiResponse.map {
-            Recipe(
-                id: $0.id,
-                title: $0.title,
-                imageUrl: URL(string: $0.image ?? ""),
-                summary: $0.summary.removeHtmlTags(),
-                readyInMinutes: String($0.readyInMinutes) + String(localized: .min),
-                servings: String($0.servings) + String(localized: .serving),
-                cuisines: $0.cuisines,
-                dishTypes: $0.dishTypes,
-                steps: map($0.analyzedInstructions),
-                ingredients: map($0.extendedIngredients),
-                nutrients: map($0.nutrition)
-            )
+            map($0)
         }
+    }
+    
+    private func map(_ apiResponse: RecipeResponse) -> Recipe {
+        Recipe(
+            id: apiResponse.id,
+            title: apiResponse.title,
+            imageUrl: URL(string: apiResponse.image ?? ""),
+            summary: apiResponse.summary.removeHtmlTags(),
+            readyInMinutes: String(apiResponse.readyInMinutes) + String(localized: .min),
+            servings: String(apiResponse.servings) + String(localized: .serving),
+            cuisines: apiResponse.cuisines,
+            dishTypes: apiResponse.dishTypes,
+            steps: map(apiResponse.analyzedInstructions),
+            ingredients: map(apiResponse.extendedIngredients),
+            nutrients: map(apiResponse.nutrition)
+        )
     }
     
     private func map(_ apiResponse: [AnalyzedInstructionsResponse]) -> [RecipeInstructionStep] {
@@ -118,8 +122,8 @@ extension RecipeInformationMapper: RecipeInformationMapping {
         map(apiResponse.recipes)
     }
     
-    func map(apiResponse: RecipeResponse) -> [Nutrient] {
-        map(apiResponse.nutrition)
+    func map(apiResponse: RecipeResponse) -> Recipe {
+        map(apiResponse)
     }
     
     func map(apiResponse: [RecipeResponse]) -> [Recipe] {

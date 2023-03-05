@@ -57,13 +57,17 @@ final class SearchBoxPresenter {
 // MARK: - SearchBoxInput
 
 extension SearchBoxPresenter: SearchBoxInput {
-    func configure() {
+    func configure(shouldBeFocused: Bool) {
+        if shouldBeFocused {
+            viewState.shouldBeFocusedSubject.send(true)
+        }
+        
         subscribeToTextChanges()
         subscribeToDidBecomeFocused()
     }
     
     func endEditing() {
-        viewState.endEditing()
+        viewState.shouldBeFocusedSubject.send(false)
     }
     
     func getText() -> String {
