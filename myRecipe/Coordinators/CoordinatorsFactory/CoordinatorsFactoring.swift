@@ -18,6 +18,10 @@ protocol CoordinatorsFactoring {
         output: MainScreenCoordinatorOutput
     ) -> RootCoordinatorModule<MainScreenCoordinatorInput>
     
+    func makeSavedRecipesRootCoordinator(
+        output: SavedRecipesCoordinatorOutput
+    ) -> RootCoordinatorModule<SavedRecipesCoordinatorInput>
+    
     func makeSettingsScreenRootCoordinator(
         output: SettingsScreenCoordinatorOutput
     ) -> RootCoordinatorModule<SettingsScreenCoordinatorInput>

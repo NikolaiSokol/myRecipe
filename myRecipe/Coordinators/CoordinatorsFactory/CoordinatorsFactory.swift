@@ -42,6 +42,19 @@ extension CoordinatorsFactory: CoordinatorsFactoring {
         return (coordinator.start(), coordinator)
     }
     
+    func makeSavedRecipesRootCoordinator(
+        output: SavedRecipesCoordinatorOutput
+    ) -> RootCoordinatorModule<SavedRecipesCoordinatorInput> {
+        let coordinator = SavedRecipesCoordinator(
+            output: output,
+            coordinatorsFactory: self,
+            rootModulesFactory: rootModulesFactory,
+            modulesFactory: modulesFactory
+        )
+        
+        return (coordinator.start(), coordinator)
+    }
+    
     func makeSettingsScreenRootCoordinator(
         output: SettingsScreenCoordinatorOutput
     ) -> RootCoordinatorModule<SettingsScreenCoordinatorInput> {

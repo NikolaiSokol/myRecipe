@@ -9,6 +9,7 @@
 // MARK: - Main
 
 "home" = "Home";
+"saved" = "Saved";
 "settings" = "Settings";
 "measureSystem" = "Measure system";
 "us" = "US";

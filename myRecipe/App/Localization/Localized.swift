@@ -11,6 +11,7 @@ enum Localized: String {
     // MARK: - Main
     
     case home
+    case saved
     case settings
     case measureSystem
     case us

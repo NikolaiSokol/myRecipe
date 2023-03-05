@@ -14,6 +14,9 @@ struct TabBarElementBuilder {
         case .mainScreenRoot:
             return Label(String(localized: .home), systemImage: "house").eraseToAnyView()
             
+        case .savedRecipesRoot:
+            return Label(String(localized: .saved), systemImage: "bookmark").eraseToAnyView()
+            
         case .settingsScreenRoot:
             return Label(String(localized: .settings), systemImage: "gear").eraseToAnyView()
         }

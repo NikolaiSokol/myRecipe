@@ -18,6 +18,11 @@ protocol RootModulesFactoring {
         router: Router
     ) -> RootModule<MainScreenRootInput>
     
+    func makeSavedRecipesScreenRoot(
+        output: SavedRecipesRootOutput,
+        router: Router
+    ) -> RootModule<SavedRecipesRootInput>
+    
     func makeSettingsScreenRoot(
         output: SettingsScreenRootOutput,
         router: Router

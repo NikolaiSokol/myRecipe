@@ -16,6 +16,7 @@ final class TabBarCoordinator {
     
     private var tabBarInput: TabBarInput?
     private var mainScreenCoordinatorInput: MainScreenCoordinatorInput?
+    private var savedRecipesCoordinatorInput: SavedRecipesCoordinatorInput?
     private var settingsScreenCoordinatorInput: SettingsScreenCoordinatorInput?
     
     init(
@@ -42,6 +43,7 @@ final class TabBarCoordinator {
     private func prepareTabs() {
         let tabs = [
             prepareMainScreenRootTab(),
+            prepareSavedRecipesRootTab(),
             prepareSettingsScreenRootTab()
         ]
         
@@ -53,6 +55,13 @@ final class TabBarCoordinator {
         mainScreenCoordinatorInput = unit.input
         
         return tabBarElementBuilder.buildTabBarElement(view: unit.view, type: .mainScreenRoot)
+    }
+    
+    private func prepareSavedRecipesRootTab() -> TabBarElement {
+        let unit = coordinatorFactory.makeSavedRecipesRootCoordinator(output: self)
+        savedRecipesCoordinatorInput = unit.input
+        
+        return tabBarElementBuilder.buildTabBarElement(view: unit.view, type: .savedRecipesRoot)
     }
     
     private func prepareSettingsScreenRootTab() -> TabBarElement {
@@ -79,6 +88,9 @@ extension TabBarCoordinator: TabBarOutput {
         case .mainScreenRoot:
             mainScreenCoordinatorInput?.popToRoot()
             
+        case .savedRecipesRoot:
+            savedRecipesCoordinatorInput?.popToRoot()
+            
         case .settingsScreenRoot:
             settingsScreenCoordinatorInput?.popToRoot()
         }
@@ -88,6 +100,10 @@ extension TabBarCoordinator: TabBarOutput {
 // MARK: - MainScreenCoordinatorOutput
 
 extension TabBarCoordinator: MainScreenCoordinatorOutput {}
+
+// MARK: - SavedRecipesCoordinatorOutput
+
+extension TabBarCoordinator: SavedRecipesCoordinatorOutput {}
 
 // MARK: - SettingsScreenCoordinatorOutput
 

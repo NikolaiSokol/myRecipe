@@ -9,5 +9,6 @@ import Foundation
 
 enum TabBarElementType {
     case mainScreenRoot
+    case savedRecipesRoot
     case settingsScreenRoot
 }

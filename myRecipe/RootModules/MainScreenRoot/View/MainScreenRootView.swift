@@ -17,9 +17,9 @@ struct MainScreenRootView: View {
     @ObservedObject private var state: MainScreenRootViewState
     @ObservedObject private var router: Router
     
-    @State private var isShowingTopSection = true
-    
     private weak var output: MainScreenRootViewOutput?
+    
+    @State private var isShowingTopSection = true
     
     init(
         state: MainScreenRootViewState,
