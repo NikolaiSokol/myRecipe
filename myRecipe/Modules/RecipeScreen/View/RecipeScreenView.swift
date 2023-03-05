@@ -15,6 +15,9 @@ struct RecipeScreenView: View {
         static let collapsedSummaryLineLimit = 4
         static let summaryMaxHeightForCollapsing: CGFloat = 100
         static let measureToggleWidth = UIScreen.main.bounds.width / 3
+        static let defaultSavingPopupOffset: CGFloat = -50
+        static let savingPopupOffset: CGFloat = 20
+        static let savingPopupShowingTime = 2.0
     }
     
     @ObservedObject private var state: RecipeScreenViewState
@@ -22,6 +25,7 @@ struct RecipeScreenView: View {
     
     @State private var summaryLineLimit: Int?
     @State private var isShowingSummaryCollapseButton = false
+    @State private var savingPopupOffset = LocalConstants.defaultSavingPopupOffset
     
     init(
         state: RecipeScreenViewState,
@@ -32,8 +36,12 @@ struct RecipeScreenView: View {
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            scrollContent
+        ZStack(alignment: .top) {
+            ScrollView(.vertical, showsIndicators: false) {
+                scrollContent
+            }
+            
+            savingPopup
         }
         .sheet(isPresented: $state.isShowingNutrition) {
             NutrientsView(nutrients: state.recipe.nutrients)
@@ -41,6 +49,10 @@ struct RecipeScreenView: View {
                 .presentationDragIndicator(.visible)
                 .padding(.horizontal, UIConstants.Paddings.s)
         }
+        .toolbar {
+            savingButton
+        }
+        .onReceive(state.shouldShowSavingPopupSubject, perform: showSavingPopup)
     }
     
     private var scrollContent: some View {
@@ -211,6 +223,31 @@ struct RecipeScreenView: View {
         }
     }
     
+    @ViewBuilder private var savingButton: some View {
+        if let output {
+            Button(
+                action: state.isRecipeSaved ? output.didTapDeleteRecipe : output.didTapSaveRecipe
+            ) {
+                Image(systemName: state.isRecipeSaved ? "bookmark.fill" : "bookmark")
+            }
+        }
+    }
+    
+    @ViewBuilder private var savingPopup: some View {
+        Text(String(localized: state.isRecipeSaved ? .recipeSaved : .recipeDeleted))
+            .customFont(size: UIConstants.Font.m)
+            .foregroundColor(.white)
+            .padding(UIConstants.Paddings.xs)
+            .background {
+                RoundedRectangle(cornerRadius: UIConstants.Radius.l)
+                    .foregroundColor(.black)
+                    .opacity(0.9)
+            }
+            .offset(y: savingPopupOffset)
+            .opacity(savingPopupOffset > 0 ? 1 : 0)
+            .padding(.horizontal, UIConstants.Paddings.m)
+    }
+    
     private func sectionTitle(text: String) -> some View {
         Text(text)
             .customFont(size: UIConstants.Font.l)
@@ -234,6 +271,18 @@ struct RecipeScreenView: View {
         if frame.height > LocalConstants.summaryMaxHeightForCollapsing {
             summaryLineLimit = LocalConstants.collapsedSummaryLineLimit
             isShowingSummaryCollapseButton = true
+        }
+    }
+    
+    private func showSavingPopup() {
+        withAnimation {
+            savingPopupOffset = LocalConstants.savingPopupOffset
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + LocalConstants.savingPopupShowingTime) {
+            withAnimation {
+                savingPopupOffset = LocalConstants.defaultSavingPopupOffset
+            }
         }
     }
 }

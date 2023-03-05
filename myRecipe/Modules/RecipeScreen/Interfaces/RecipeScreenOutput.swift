@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol RecipeScreenOutput: AnyObject {}
+protocol RecipeScreenOutput: AnyObject {
+    func recipeScreenDidRequest(event: RecipeScreenEvent)
+}

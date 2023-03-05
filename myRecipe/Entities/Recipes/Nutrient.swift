@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Nutrient: Identifiable {
+struct Nutrient: Identifiable, Equatable {
     let id = UUID()
     let name: String
     let amount: String

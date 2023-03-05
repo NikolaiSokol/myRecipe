@@ -39,6 +39,8 @@ enum Localized: String {
     case viewMore
     case nutritionDataIsPerServing
     case ofDailyNeeds
+    case recipeSaved
+    case recipeDeleted
     
     // MARK: - Search
     

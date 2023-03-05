@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol SearchScreenCoordinatorOutput: AnyObject {}
+protocol SearchScreenCoordinatorOutput: AnyObject {
+    func searchScreenCoordinatorDidRequest(event: SearchScreenCoordinatorEvent)
+}

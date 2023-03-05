@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol MainScreenCoordinatorOutput: AnyObject {}
+protocol MainScreenCoordinatorOutput: AnyObject {
+    func mainScreenCoordinatorDidRequest(event: MainScreenCoordinatorEvent)
+}

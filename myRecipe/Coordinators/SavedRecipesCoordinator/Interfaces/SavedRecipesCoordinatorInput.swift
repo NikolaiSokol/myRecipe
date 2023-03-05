@@ -9,4 +9,5 @@ import Foundation
 
 protocol SavedRecipesCoordinatorInput: AnyObject {
     func popToRoot()
+    func updateRecipes()
 }

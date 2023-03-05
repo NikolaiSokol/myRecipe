@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol SavedRecipesRootOutput: AnyObject {}
+protocol SavedRecipesRootOutput: AnyObject {
+    func savedRecipesRootDidRequest(event: SavedRecipesRootEvent)
+}

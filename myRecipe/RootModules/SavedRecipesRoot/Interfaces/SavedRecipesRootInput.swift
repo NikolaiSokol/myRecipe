@@ -10,4 +10,5 @@ import Foundation
 
 protocol SavedRecipesRootInput: AnyObject {
     func bootstrap()
+    func updateRecipes()
 }

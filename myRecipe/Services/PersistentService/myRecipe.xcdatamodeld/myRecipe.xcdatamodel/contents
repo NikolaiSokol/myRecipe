@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MeasureEntity" representedClassName="MeasureEntity" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unitShort" optional="YES" attributeType="String"/>
+        <relationship name="measuresMetric" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresEntity" inverseName="metric" inverseEntity="MeasuresEntity"/>
+        <relationship name="measuresUs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresEntity" inverseName="us" inverseEntity="MeasuresEntity"/>
+    </entity>
+    <entity name="MeasuresEntity" representedClassName="MeasuresEntity" syncable="YES">
+        <relationship name="ingredient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeIngredientEntity" inverseName="measures" inverseEntity="RecipeIngredientEntity"/>
+        <relationship name="metric" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasureEntity" inverseName="measuresMetric" inverseEntity="MeasureEntity"/>
+        <relationship name="us" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasureEntity" inverseName="measuresUs" inverseEntity="MeasureEntity"/>
+    </entity>
+    <entity name="NutrientEntity" representedClassName="NutrientEntity" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="percentOfDailyNeeds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="nutrients" inverseEntity="RecipeEntity"/>
+    </entity>
+    <entity name="RecipeEntity" representedClassName="RecipeEntity" syncable="YES">
+        <attribute name="cuisines" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="dishTypes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="readyInMinutes" optional="YES" attributeType="String"/>
+        <attribute name="savingDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="servings" optional="YES" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeIngredientEntity" inverseName="recipe" inverseEntity="RecipeIngredientEntity"/>
+        <relationship name="nutrients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientEntity" inverseName="recipe" inverseEntity="NutrientEntity"/>
+        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeInstructionStepEntity" inverseName="recipe" inverseEntity="RecipeInstructionStepEntity"/>
+    </entity>
+    <entity name="RecipeIngredientEntity" representedClassName="RecipeIngredientEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="measures" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MeasuresEntity" inverseName="ingredient" inverseEntity="MeasuresEntity"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="ingredients" inverseEntity="RecipeEntity"/>
+        <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeInstructionStepEntity" inverseName="ingredients" inverseEntity="RecipeInstructionStepEntity"/>
+    </entity>
+    <entity name="RecipeInstructionStepEntity" representedClassName="RecipeInstructionStepEntity" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeIngredientEntity" inverseName="step" inverseEntity="RecipeIngredientEntity"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="steps" inverseEntity="RecipeEntity"/>
+        <relationship name="steps" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeInstructionStepEntity" inverseName="steps" inverseEntity="RecipeInstructionStepEntity"/>
+    </entity>
+</model>

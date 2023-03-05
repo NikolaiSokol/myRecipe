@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeIngredient: Identifiable {
+struct RecipeIngredient: Identifiable, Equatable {
     let id: Int
     let name: String
     let imageUrl: URL?

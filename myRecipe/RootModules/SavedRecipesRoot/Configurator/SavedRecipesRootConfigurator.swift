@@ -26,7 +26,8 @@ final class SavedRecipesRootConfigurator {
         let presenter = SavedRecipesRootPresenter(
             viewState: viewState,
             output: output,
-            modulesFactory: modulesFactory
+            modulesFactory: modulesFactory,
+            persistentService: dependencies.persistentService
         )
         
         let view = SavedRecipesRootView(state: viewState, router: router, output: presenter)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe {
+struct Recipe: Equatable {
     let id: Int
     let title: String
     let imageUrl: URL?
@@ -17,7 +17,7 @@ struct Recipe {
     let cuisines: [String]
     let dishTypes: [String]
     let steps: [RecipeInstructionStep]
-    let ingredients: [RecipeIngredient]
+    var ingredients: [RecipeIngredient]
     var nutrients: [Nutrient]
     
     static var empty: Recipe {

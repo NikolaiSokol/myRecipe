@@ -17,6 +17,8 @@ final class SavedRecipesCoordinator {
     
     private var savedRecipesRootInput: SavedRecipesRootInput?
     
+    private var recipeScreenCoordinatorInput: RecipeScreenCoordinatorInput?
+    
     init(
         output: SavedRecipesCoordinatorOutput,
         coordinatorsFactory: CoordinatorsFactoring,
@@ -39,6 +41,14 @@ final class SavedRecipesCoordinator {
         
         return unit.view
     }
+    
+    private func presentRecipeScreen(inputModel: RecipeScreenInputModel) {
+        let unit = coordinatorsFactory.makeRecipeScreenCoordinator(output: self, router: router)
+        
+        recipeScreenCoordinatorInput = unit.input
+        
+        unit.coordinator.start(with: inputModel)
+    }
 }
 
 // MARK: - RootCoordinator
@@ -55,8 +65,32 @@ extension SavedRecipesCoordinator: SavedRecipesCoordinatorInput {
     func popToRoot() {
         router.popToRoot()
     }
+    
+    func updateRecipes() {
+        savedRecipesRootInput?.updateRecipes()
+    }
 }
 
 // MARK: - SavedRecipesRootOutput
 
-extension SavedRecipesCoordinator: SavedRecipesRootOutput {}
+extension SavedRecipesCoordinator: SavedRecipesRootOutput {
+    func savedRecipesRootDidRequest(event: SavedRecipesRootEvent) {
+        switch event {
+        case let .openRecipe(recipe):
+            presentRecipeScreen(
+                inputModel: RecipeScreenInputModel(recipe: recipe)
+            )
+        }
+    }
+}
+
+// MARK: - RecipeScreenCoordinatorOutput
+
+extension SavedRecipesCoordinator: RecipeScreenCoordinatorOutput {
+    func recipeScreenCoordinatorDidRequest(event: RecipeScreenCoordinatorEvent) {
+        switch event {
+        case .persistentChanged:
+            savedRecipesRootInput?.updateRecipes()
+        }
+    }
+}

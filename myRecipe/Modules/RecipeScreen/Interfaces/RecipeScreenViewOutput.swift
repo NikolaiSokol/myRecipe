@@ -7,4 +7,7 @@
 
 import Foundation
 
-protocol RecipeScreenViewOutput: AnyObject {}
+protocol RecipeScreenViewOutput: AnyObject {
+    func didTapSaveRecipe()
+    func didTapDeleteRecipe()
+}

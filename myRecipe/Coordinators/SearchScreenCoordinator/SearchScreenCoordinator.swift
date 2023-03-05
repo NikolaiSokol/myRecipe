@@ -58,7 +58,14 @@ extension SearchScreenCoordinator: SearchScreenCoordinatorInput {}
 
 // MARK: - RecipeScreenCoordinatorOutput
 
-extension SearchScreenCoordinator: RecipeScreenCoordinatorOutput {}
+extension SearchScreenCoordinator: RecipeScreenCoordinatorOutput {
+    func recipeScreenCoordinatorDidRequest(event: RecipeScreenCoordinatorEvent) {
+        switch event {
+        case .persistentChanged:
+            output?.searchScreenCoordinatorDidRequest(event: .persistentChanged)
+        }
+    }
+}
 
 // MARK: - SearchScreenOutput
 

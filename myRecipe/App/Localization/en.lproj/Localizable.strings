@@ -37,6 +37,8 @@
 "viewMore" = "view\nmore >";
 "nutritionDataIsPerServing" = "nutrition data is per serving";
 "ofDailyNeeds" = "of daily needs";
+"recipeSaved" = "Recipe saved";
+"recipeDeleted" = "Recipe deleted";
 
 // MARK: - Search
 

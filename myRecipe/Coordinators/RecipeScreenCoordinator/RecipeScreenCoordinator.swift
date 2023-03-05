@@ -50,4 +50,11 @@ extension RecipeScreenCoordinator: RecipeScreenCoordinatorInput {}
 
 // MARK: - RecipeScreenOutput
 
-extension RecipeScreenCoordinator: RecipeScreenOutput {}
+extension RecipeScreenCoordinator: RecipeScreenOutput {
+    func recipeScreenDidRequest(event: RecipeScreenEvent) {
+        switch event {
+        case .persistentChanged:
+            output?.recipeScreenCoordinatorDidRequest(event: .persistentChanged)
+        }
+    }
+}

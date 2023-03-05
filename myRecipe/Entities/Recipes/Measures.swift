@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Measures {
+struct Measures: Equatable {
     let us: Measure
     let metric: Measure
 }
 
-struct Measure {
+struct Measure: Equatable {
     let amount: Double
     let unitShort: String
 }

@@ -94,8 +94,22 @@ extension MainScreenCoordinator: MainScreenRootOutput {
 
 // MARK: - RecipeScreenCoordinatorOutput
 
-extension MainScreenCoordinator: RecipeScreenCoordinatorOutput {}
+extension MainScreenCoordinator: RecipeScreenCoordinatorOutput {
+    func recipeScreenCoordinatorDidRequest(event: RecipeScreenCoordinatorEvent) {
+        switch event {
+        case .persistentChanged:
+            output?.mainScreenCoordinatorDidRequest(event: .persistentChanged)
+        }
+    }
+}
 
 // MARK: - SearchScreenCoordinatorOutput
 
-extension MainScreenCoordinator: SearchScreenCoordinatorOutput {}
+extension MainScreenCoordinator: SearchScreenCoordinatorOutput {
+    func searchScreenCoordinatorDidRequest(event: SearchScreenCoordinatorEvent) {
+        switch event {
+        case .persistentChanged:
+            output?.mainScreenCoordinatorDidRequest(event: .persistentChanged)
+        }
+    }
+}

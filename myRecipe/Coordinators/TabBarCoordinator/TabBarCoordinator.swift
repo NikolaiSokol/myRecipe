@@ -99,7 +99,14 @@ extension TabBarCoordinator: TabBarOutput {
 
 // MARK: - MainScreenCoordinatorOutput
 
-extension TabBarCoordinator: MainScreenCoordinatorOutput {}
+extension TabBarCoordinator: MainScreenCoordinatorOutput {
+    func mainScreenCoordinatorDidRequest(event: MainScreenCoordinatorEvent) {
+        switch event {
+        case .persistentChanged:
+            savedRecipesCoordinatorInput?.updateRecipes()
+        }
+    }
+}
 
 // MARK: - SavedRecipesCoordinatorOutput
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeInstructionStep {
+struct RecipeInstructionStep: Equatable {
     let number: Int
     let text: String
     let ingredients: [RecipeIngredient]
