@@ -17,6 +17,7 @@ final class SavedRecipesRootPresenter {
     private var searchBoxInput: SearchBoxInput?
     
     private var recipes: [Recipe] = []
+    private var models: [HorizontalRecipeCardViewModel] = []
 
     init(
         viewState: SavedRecipesRootViewState,
@@ -68,9 +69,7 @@ final class SavedRecipesRootPresenter {
             return
         }
         
-        self.recipes = recipes
-        
-        viewState.recipesViewModel.cards = recipes.map {
+        models = recipes.map {
             HorizontalRecipeCardViewModel(
                 id: $0.id,
                 imageUrl: $0.imageUrl,
@@ -79,6 +78,9 @@ final class SavedRecipesRootPresenter {
                 recipeCardTapHandler: handleRecipeCardTapped
             )
         }
+        
+        self.recipes = recipes
+        viewState.recipesViewModel.cards = models
     }
 }
 
@@ -92,6 +94,7 @@ extension SavedRecipesRootPresenter: SavedRecipesRootInput {
     }
     
     func updateRecipes() {
+        searchBoxInput?.updateText("")
         fetchRecipes()
     }
 }
@@ -110,10 +113,14 @@ extension SavedRecipesRootPresenter: SearchBoxOutput {
     func searchBoxDidRequest(event: SearchBoxEvent) {
         switch event {
         case let .textChanged(text):
-            print(text)
+            if text.isEmpty {
+                viewState.recipesViewModel.cards = models
+            } else {
+                viewState.recipesViewModel.cards = models.filter { $0.name.contains(text) }
+            }
             
         case .returnKeyTapped:
-            break
+            searchBoxInput?.endEditing()
             
         case .textFieldBecameFocused:
             break

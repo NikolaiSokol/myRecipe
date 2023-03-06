@@ -32,6 +32,9 @@ struct SavedRecipesRootView: View {
                 .navigationTitle(String(localized: .savedRecipes))
                 .navigationBarTitleDisplayMode(.inline)
         }
+        .onReceive(state.recipesViewModel.scrollOffsetSubject) { _ in
+            output?.endEditing()
+        }
     }
     
     @ViewBuilder private var actualBody: some View {
@@ -39,6 +42,8 @@ struct SavedRecipesRootView: View {
             searchBox
 
             recipesList
+            
+            Spacer()
         }
         .padding(.horizontal, UIConstants.Paddings.s)
     }
